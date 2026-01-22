@@ -5,7 +5,6 @@ import {
   ExternalLink, FileText, X, ChevronLeft, Calendar, MapPin, Grid, Eye
 } from 'lucide-react';
 
-// --- IMPORT KOMPONEN ---
 import Navbar from './Navbar';
 import HeroSection from './HeroSection';
 import AboutSection from './AboutSection';
@@ -18,13 +17,11 @@ import ContactSection from './ContactSection';
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState('about');
   
-  // --- STATE MANAGEMENT (LOGIC) ---
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showAllCerts, setShowAllCerts] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null);
 
-  // --- LOGIC FUNCTIONS ---
   const openCertImage = (cert) => {
     setSelectedCert(cert);
     document.body.style.overflow = 'hidden';
@@ -84,7 +81,6 @@ export default function Portfolio() {
     document.body.style.overflow = 'unset'; 
   };
 
-  // --- DATA SECTIONS ---
   const contactInfo = {
     email: "jihannabilah624@gmail.com",
     linkedin: "https://www.linkedin.com/in/jihan-nabilah-057318357/",
