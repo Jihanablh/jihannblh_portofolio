@@ -43,6 +43,24 @@ export default function ProjectsSection({
   prevImage 
 }) {
   const [visibleCount, setVisibleCount] = useState(6);
+  
+  // State untuk mendeteksi apakah kursor ada di atas gambar
+  const [isHovered, setIsHovered] = useState(false);
+
+  // --- LOGIC AUTO SLIDE (SMART PAUSE) ---
+  // Timer ditaruh di sini agar bisa dicek apakah sedang di-hover atau tidak
+  useEffect(() => {
+    // Jalankan timer HANYA JIKA:
+    // 1. Ada project yang dibuka (selectedProject)
+    // 2. Kursor TIDAK sedang di atas gambar (!isHovered)
+    if (selectedProject && !isHovered) {
+      const slideInterval = setInterval(() => {
+        nextImage();
+      }, 3000); // Ganti gambar setiap 3 detik
+
+      return () => clearInterval(slideInterval);
+    }
+  }, [selectedProject, isHovered, nextImage]);
 
   const toggleViewMode = () => {
     if (visibleCount < projects.length) {
@@ -77,17 +95,13 @@ export default function ProjectsSection({
       {/* --- GRID PROJECTS --- */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.slice(0, visibleCount).map((project, idx) => (
-          
-          // Efek Staggered: Delay bertambah seiring index (idx * 100)
           <RevealOnScroll key={idx} delay={idx * 100} className="h-full">
             <div 
               onClick={() => openProjectDetail(project)}
               className="group relative h-full bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.15)] cursor-pointer flex flex-col"
             >
-              {/* Image Thumbnail with Zoom Effect */}
               <div className="h-52 overflow-hidden relative">
                 <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
-                {/* Gradient Overlay di bawah gambar supaya teks kebaca */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80 z-10"></div>
                 
                 <img 
@@ -96,7 +110,6 @@ export default function ProjectsSection({
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
                 />
                 
-                {/* Floating Badge */}
                 <div className="absolute top-3 right-3 z-20 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                   <span className="px-3 py-1 bg-blue-600/90 text-white text-[10px] font-bold uppercase tracking-wider rounded-full backdrop-blur-md shadow-lg border border-white/10">
                     {project.category}
@@ -104,7 +117,6 @@ export default function ProjectsSection({
                 </div>
               </div>
 
-              {/* Card Content */}
               <div className="p-6 flex flex-col flex-1 relative z-20 bg-slate-900">
                 <h3 className="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors line-clamp-2">
                   {project.title}
@@ -113,7 +125,6 @@ export default function ProjectsSection({
                   {project.shortDesc}
                 </p>
                 
-                {/* Tech Stack Tags */}
                 <div className="flex flex-wrap gap-2 mb-5">
                   {project.tech.slice(0, 3).map((tech, i) => (
                     <span key={i} className="px-2.5 py-1 bg-slate-800/50 text-xs font-medium text-slate-300 border border-slate-700 rounded-md group-hover:border-slate-600 transition-colors">
@@ -127,7 +138,6 @@ export default function ProjectsSection({
                   )}
                 </div>
 
-                {/* View Details Link with Animated Arrow */}
                 <div className="flex items-center text-blue-400 text-sm font-bold mt-auto group-hover:text-blue-300 transition-colors">
                   View Case Study 
                   <ChevronRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
@@ -163,20 +173,17 @@ export default function ProjectsSection({
         </RevealOnScroll>
       )}
 
-      {/* --- MODAL DETAIL PROJECT (Enhanced Animation) --- */}
+      {/* --- MODAL DETAIL PROJECT --- */}
       {selectedProject && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6">
           
-          {/* Background Gelap Blur */}
           <div 
             className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity animate-in fade-in duration-300"
             onClick={closeProjectDetail}
           ></div>
 
-          {/* Container Modal */}
           <div className="relative w-full max-w-5xl bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl flex flex-col max-h-[90vh] overflow-y-auto scrollbar-hide animate-in zoom-in-95 slide-in-from-bottom-10 duration-300 ease-out">
             
-            {/* Tombol Close Floating */}
             <button 
               onClick={closeProjectDetail}
               className="fixed top-6 right-6 sm:absolute sm:top-5 sm:right-5 z-50 p-2.5 bg-black/40 hover:bg-red-500/80 rounded-full text-white/80 hover:text-white transition-all backdrop-blur-md border border-white/10"
@@ -187,15 +194,21 @@ export default function ProjectsSection({
             <div className="flex flex-col">
               
               {/* Carousel Gambar (Hero) */}
-              <div className="relative w-full h-72 sm:h-[500px] bg-slate-950 group shrink-0 select-none">
+              <div 
+                className="relative w-full h-72 sm:h-[500px] bg-slate-950 group shrink-0 select-none"
+                // Event Listener untuk Pause/Play
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
                 <img 
                   src={selectedProject.images[currentImageIndex]} 
                   alt={selectedProject.title} 
-                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-[3s]"
+                  // 1. Zoom effect dihapus, hanya object-cover biasa
+                  className="w-full h-full object-cover transition-opacity duration-500" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent"></div>
 
-                {/* Navigation Buttons (Hanya muncul saat hover) */}
+                {/* Navigation Buttons */}
                 <button 
                   onClick={(e) => { e.stopPropagation(); prevImage(); }}
                   className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/20 hover:bg-blue-600/80 backdrop-blur-md rounded-full text-white transition-all opacity-0 group-hover:opacity-100 border border-white/10 hover:border-blue-400 hover:scale-110"
@@ -209,7 +222,7 @@ export default function ProjectsSection({
                   <ChevronRight size={24} />
                 </button>
 
-                {/* Image Indicators */}
+                {/* Indicators */}
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
                   {selectedProject.images.map((_, idx) => (
                     <div 
@@ -220,10 +233,8 @@ export default function ProjectsSection({
                 </div>
               </div>
 
-              {/* Detail Konten */}
+              {/* Detail Konten (Text) */}
               <div className="p-8 sm:p-12 -mt-20 relative z-10">
-                
-                {/* Title Section */}
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 border-b border-slate-800 pb-8">
                   <div className="flex-1 space-y-4">
                     <span className="inline-flex px-4 py-1.5 bg-blue-500/10 text-blue-300 rounded-full text-sm border border-blue-500/20 font-bold tracking-wide backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.15)]">
@@ -245,7 +256,6 @@ export default function ProjectsSection({
                 </div>
 
                 <div className="grid lg:grid-cols-3 gap-10">
-                    {/* Kolom Kiri: Deskripsi Utama */}
                     <div className="lg:col-span-2 space-y-10">
                         <div className="prose prose-invert max-w-none">
                             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
@@ -257,7 +267,6 @@ export default function ProjectsSection({
                         </div>
 
                         <div className="grid sm:grid-cols-2 gap-6">
-                             {/* Challenge Card */}
                              <div className="bg-gradient-to-br from-red-500/5 to-transparent border border-red-500/10 rounded-2xl p-6 hover:border-red-500/30 transition-colors">
                                 <h3 className="text-sm font-bold text-red-400 mb-4 uppercase tracking-wider flex items-center gap-2">
                                     🔥 The Challenge
@@ -272,7 +281,6 @@ export default function ProjectsSection({
                                 </ul>
                             </div>
 
-                            {/* Outcome Card */}
                             <div className="bg-gradient-to-br from-emerald-500/5 to-transparent border border-emerald-500/10 rounded-2xl p-6 hover:border-emerald-500/30 transition-colors">
                                 <h3 className="text-sm font-bold text-emerald-400 mb-4 uppercase tracking-wider flex items-center gap-2">
                                     🚀 Key Outcomes
@@ -289,7 +297,6 @@ export default function ProjectsSection({
                         </div>
                     </div>
 
-                    {/* Kolom Kanan: Tech Stack & Info */}
                     <div className="space-y-8">
                         <div className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50 backdrop-blur-sm sticky top-6">
                              <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-5 flex items-center gap-2">

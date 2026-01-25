@@ -64,12 +64,6 @@ export default function Portfolio() {
     }
   };
 
-  useEffect(() => {
-    if (!selectedProject) return;
-    const slideInterval = setInterval(nextImage, 3000);
-    return () => clearInterval(slideInterval);
-  }, [selectedProject]);
-
   const openProjectDetail = (project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
@@ -105,7 +99,7 @@ const projects = [
       outcomes: ['Memberikan roadmap penghematan budget marketing sebesar 15% melalui penargetan ulang (retargeting).', 'Dashboard interaktif untuk memantau performa merchant mitra GoFood.', 'Rekomendasi promosi spesifik berdasarkan jam sibuk (peak hours).'],
       tech: ['SQL', 'Tableau', 'Marketing Analytics', 'Excel'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project01_GoFood_Marketing_Analysis', demo: '#',
-      images: ['https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1526304640152-d4619684e484?auto=format&fit=crop&q=80&w=800']
+      images: ['public/images projects/Dashboard BI Gojek.png', 'public/images projects/Data BI Gojek.png']
     },
     {
       title: 'Global Superstore Executive Dashboard',
@@ -116,7 +110,7 @@ const projects = [
       outcomes: ['Identifikasi 3 negara dengan performa terburuk untuk evaluasi strategi pasar.', 'Peningkatan visibilitas terhadap tren penjualan musiman.', 'Dashboard interaktif yang menjadi standar pelaporan bulanan.'],
       tech: ['Power BI', 'Data Modeling', 'DAX', 'SQL'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project4_Global_Superstore_Analytics', demo: '#',
-      images: ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800']
+      images: ['public/images projects/Dashboard BI Global.png', 'public/images projects/Data BI Global.png']
     },
     {
       title: 'E-Commerce Sales Performance Analysis',
@@ -127,7 +121,7 @@ const projects = [
       outcomes: ['Menemukan korelasi kuat antara keterlambatan pengiriman dan penurunan rating toko.', 'Rekomendasi bundling produk yang meningkatkan rata-rata nilai transaksi (AOV).', 'Laporan tren kategori produk terlaris per kuartal.'],
       tech: ['Python', 'Pandas', 'Seaborn', 'Matplotlib'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project5_Ecommerce_Sales_Analysis', demo: '#',
-      images: ['https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1586880244406-556ebe35f282?auto=format&fit=crop&q=80&w=800']
+      images: ['public/images projects/Dashboard BI Ecommerce.png', 'public/images projects/Data BI Ecommerce.png', 'public/images projects/Star Schema BI Ecommerce.png']
     },
     {
       title: 'HR Analytics: Workforce Architecture',
@@ -138,18 +132,18 @@ const projects = [
       outcomes: ['Dashboard Diversity & Inclusion untuk memantau target kesetaraan perusahaan.', 'Identifikasi departemen dengan tingkat promosi internal tertinggi.', 'Analisis kompensasi untuk memastikan keadilan gaji internal.'],
       tech: ['Looker Studio', 'SQL', 'HR Metrics', 'Spreadsheet'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project2_HR_Analytics_Architecture', demo: '#',
-      images: ['https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800']
+      images: ['public/images projects/Dashboard BI HR.png', 'public/images projects/Data BI HR.png', 'public/images projects/Star Schema BI HR.png']
     },
     {
-      title: 'Python for Data Science: Climate Analytics',
-      category: 'Data Science',
-      shortDesc: 'Analisis prediktif cuaca menggunakan Python (IBM x Hacktiv8 Capstone).',
-      description: 'Proyek Capstone IBM x Hacktiv8 yang menganalisis data cuaca historis untuk memprediksi tren iklim. Mengintegrasikan pembersihan data time-series dan visualisasi geospasial untuk memberikan wawasan tentang pola perubahan suhu.',
-      challenges: ['Menangani dataset time-series dengan missing values yang signifikan.', 'Visualisasi data geospasial untuk memetakan perubahan suhu wilayah.', 'Optimasi algoritma regresi untuk prediksi suhu.'],
-      outcomes: ['Model prediksi cuaca dengan akurasi tinggi menggunakan Scikit-Learn.', 'Dashboard pemantauan anomali cuaca.', 'Sertifikasi IBM Data Science Professional.'],
-      tech: ['Python', 'Pandas', 'Scikit-Learn', 'Matplotlib'],
-      github: 'https://github.com/Jihanablh/Bootcamp_IBM_X_Hacktiv8/tree/main/project1_covid_analysis', demo: '#', // Note: Link seems to be covid repo in input, adjusted title to match input description request or use actual content. Assuming Climate based on user previous request, but link is covid. Sticking to user logic.
-      images: ['https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1561484930-998b6a7b22e8?auto=format&fit=crop&q=80&w=800']
+    title: 'Global Layoffs Analysis: Business Intelligence & Trends',
+    category: 'Data Science',
+    shortDesc: 'Analisis mendalam tren PHK global menggunakan Python (IBM x Hacktiv8 Final Project).',
+    description: 'Proyek Final IBM x Hacktiv8 yang menganalisis dataset PHK global untuk mengungkap pola ekonomi dan dampak sektoral. Mengintegrasikan pembersihan data (data cleaning), analisis eksploratif (EDA), dan visualisasi untuk memberikan wawasan strategis bagi industri dan pencari kerja.',
+    challenges: ['Menangani missing values yang signifikan pada data jumlah PHK dan dana perusahaan.', 'Standardisasi nama industri dan lokasi yang tidak konsisten untuk akurasi kategori.', 'Analisis tren time-series untuk memetakan puncak gelombang PHK tahunan.'],
+    outcomes: ['Identifikasi sektor teknologi sebagai industri dengan dampak PHK terbesar.', 'Visualisasi tren puncak PHK global pada periode 2023-2024.', 'Wawasan strategis mengenai stabilitas perusahaan berdasarkan tahapan pendanaan (Startup vs IPO).'],
+    tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn'],
+    github: 'https://github.com/Jihanablh/Bootcamp_IBM_X_Hacktiv8/tree/main/Project1_Layoffs_Analysis', demo: '#', 
+    images: ['https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=800']
     },
     {
       title: 'AI Job Market Trends Analysis',
@@ -210,42 +204,62 @@ const projects = [
     }
   ];
 
-  const experience = [
+const experience = [
     {
-      role: 'Junior Data Scientist',
-      company: 'Vinix7',
+      role: 'Junior Data Scientist (Studi Independen)',
+      company: 'PT Vinix Seven Aurum (MSIB Batch 3)',
       period: 'Aug 2025 - Dec 2025',
       type: 'Professional',
-      summary: 'Mengikuti program magang intensif (Internship) dengan fokus pada pengembangan model prediktif dan otomatisasi data. Berkontribusi aktif mendukung tim produk dalam mentransformasi data mentah menjadi insight strategis, serta terlibat langsung dalam siklus pengembangan solusi Machine Learning end-to-end.',
-      achievements: ['Sukses mengembangkan model Machine Learning (Supervised Learning) untuk prediksi churn pelanggan dengan akurasi 85% selama periode magang.', 'Membangun sistem pelaporan otomatis (Automated Reporting) menggunakan Python & SQL yang kini diadopsi tim, memangkas waktu kerja manual hingga 40%.', 'Melakukan Exploratory Data Analysis (EDA) mendalam untuk mengidentifikasi pola perilaku user yang menjadi dasar perbaikan fitur produk.', 'Berkolaborasi secara agile dengan tim Senior Data Scientist dan Engineering dalam implementasi fitur berbasis data.'],
-      tech: ['Python', 'SQL', 'Scikit-learn', 'Pandas', 'Matplotlib', 'Machine Learning']
+      summary: 'Terpilih dalam program MSIB Kampus Merdeka "Junior Data Scientist" dengan kurikulum industri intensif. Bertanggung jawab menyelesaikan siklus penuh data sains (End-to-End Data Science Lifecycle) mulai dari akuisisi data, pembersihan (cleansing), eksplorasi (EDA), hingga penyajian insight bisnis. Fokus pada penerapan teknis Python dan SQL untuk memecahkan studi kasus di berbagai sektor industri.',
+      achievements: [
+        'Melakukan Data Acquisition & Cleansing pada dataset mentah (Raw Data) menggunakan Python (Pandas) di Google Colab, memastikan integritas data siap olah.',
+        'Mengimplementasikan Exploratory Data Analysis (EDA) dan teknik Cluster Analysis untuk menemukan pola tersembunyi serta segmentasi data yang mendukung strategi bisnis.',
+        'Menyelesaikan Final Capstone Project yang mengintegrasikan analisis statistik dan pemodelan data, serta mempresentasikan temuan (Actionable Insights) menggunakan teknik Data Storytelling & Infografis.',
+        'Menguasai penggunaan AI Tools untuk efisiensi pengolahan data dan pembuatan laporan kinerja berbasis data yang akurat.'
+      ],
+      tech: ['Python', 'SQL', 'Google Colab', 'Pandas', 'Data Storytelling', 'Cluster Analysis']
     },
     {
       role: 'Asisten Dosen Sistem Operasi',
       company: 'Universitas Bakrie',
-      period: 'Sep 2025 - Dec 2025',
+      period: 'Feb 2025 - Mei 2025',
       type: 'Academic',
-      summary: 'Bertanggung jawab memfasilitasi proses pembelajaran teknis untuk mata kuliah inti Ilmu Komputer. Berperan sebagai mentor utama dalam menjembatani pemahaman teoritis dengan implementasi praktis, serta mengelola evaluasi akademik mahasiswa untuk memastikan standar kompetensi tercapai.',
-      achievements: ['Mengelola sesi praktikum dan mentoring intensif untuk 60+ mahasiswa, menghasilkan peningkatan rata-rata nilai pemahaman praktis.', 'Mengembangkan modul pembelajaran interaktif dan materi ujian praktikum yang relevan dengan standar industri terkini (Linux & Scripting).', 'Memberikan konsultasi teknis (troubleshooting) kepada mahasiswa terkait kendala sistem operasi.', 'Mengevaluasi dan memberikan umpan balik konstruktif terhadap 100+ tugas dan proyek akhir mahasiswa setiap semesternya.'],
-      tech: ['Linux (Ubuntu/CentOS)', 'Bash Scripting', 'C/C++', 'System Administration', 'Teaching']
+      summary: 'Dipercaya oleh fakultas untuk mendampingi Dosen Utama dalam memfasilitasi pembelajaran teknis mata kuliah Sistem Operasi. Berperan strategis dalam menjembatani pemahaman konseptual mahasiswa dengan implementasi praktis di laboratorium, serta memastikan standar kompetensi teknis mahasiswa terpenuhi.',
+      achievements: [
+        'Mengkoordinasikan sesi praktikum mingguan untuk 60+ mahasiswa, mencakup materi teknis mendalam seperti Manajemen Memori, Process Scheduling, dan File Systems.',
+        'Melakukan instalasi, konfigurasi, dan troubleshooting lingkungan praktikum berbasis Linux (Debian) dan Windows pada Virtual Machine, memastikan kelancaran sesi lab.',
+        'Mengembangkan modul pembelajaran interaktif dan skenario troubleshooting untuk ujian praktikum, meningkatkan pemahaman hands-on mahasiswa.',
+        'Melakukan evaluasi objektif terhadap tugas dan proyek akhir, serta memberikan umpan balik teknis yang konstruktif untuk pengembangan skill mahasiswa.'
+      ],
+      tech: ['Linux (Debian)', 'Bash Scripting', 'VMware', 'C++', 'System Administration']
     },
     {
-      role: 'HR Nomination (People Analytics)',
+      role: 'Staff HRN (Human Resource Nomination)',
       company: 'IEEE Student Branch Universitas Bakrie',
-      period: 'Apr 2025 - Present',
+      period: 'Mar 2025 - Present',
       type: 'Organization',
-      summary: 'Memimpin inisiatif pengembangan sumber daya manusia dalam organisasi global cabang universitas. Mengimplementasikan pendekatan berbasis data (Data-Driven HR) untuk proses rekrutmen, penilaian kinerja, dan strategi retensi anggota guna membangun tim yang solid dan berkinerja tinggi.',
-      achievements: ['Merancang sistem evaluasi kinerja anggota menggunakan metode analitis sederhana, membantu memetakan potensi talenta.', 'Mengelola proses rekrutmen end-to-end untuk anggota baru, berhasil menyaring dan melakukan onboarding terhadap 50+ talenta berkualitas.', 'Mengkoordinasi program pengembangan soft skills dan mentoring terstruktur yang meningkatkan tingkat retensi anggota.', 'Menganalisis data keterlibatan anggota (engagement metrics) untuk merumuskan strategi pengembangan organisasi.'],
-      tech: ['HR Analytics', 'Data Analysis', 'Project Management', 'Spreadsheet', 'Leadership']
+      summary: 'Memegang peran kunci dalam manajemen talenta organisasi global cabang universitas. Mengimplementasikan strategi "People Development" untuk merekrut, melatih, dan mempertahankan anggota berkualitas tinggi. Fokus pada penciptaan budaya organisasi yang produktif dan kolaboratif melalui pendekatan yang terstruktur.',
+      achievements: [
+        'Memimpin proses rekrutmen end-to-end (screening hingga onboarding), berhasil menyaring talenta terbaik yang sesuai dengan nilai dan kebutuhan organisasi.',
+        'Merancang dan mengeksekusi program pengembangan kapasitas (Up-skilling) dan pelatihan soft-skills yang meningkatkan retensi dan keterlibatan anggota.',
+        'Menginisiasi sistem administrasi HR yang terstruktur untuk memantau KPI anggota dan mempermudah kolaborasi lintas divisi.',
+        'Bertindak sebagai jembatan komunikasi strategis antar-divisi untuk memastikan penyelarasan tujuan organisasi dan kesejahteraan anggota.'
+      ],
+      tech: ['Talent Acquisition', 'People Development', 'HR Administration', 'Organizational Development', 'Leadership']
     },
     {
       role: 'Humas (Public Relations)',
       company: 'Karang Taruna Cikoko',
       period: 'Jan 2025 - Present',
       type: 'Community',
-      summary: 'Mengelola komunikasi strategis dan hubungan eksternal untuk organisasi kepemudaan tingkat lokal. Bertanggung jawab membangun citra positif organisasi melalui kampanye digital, manajemen acara, dan kolaborasi sinergis dengan pemangku kepentingan pemerintah serta masyarakat.',
-      achievements: ['Mengamankan kerjasama strategis (partnerships) dengan pemangku kepentingan lokal untuk mendukung realisasi 10+ program kerja.', 'Mengelola publikasi digital dan kampanye media sosial yang meningkatkan brand awareness organisasi.', 'Mengkoordinasi alur komunikasi krisis dan logistik untuk berbagai event skala menengah.', 'Menyusun strategi konten komunikasi yang berhasil meningkatkan partisipasi warga dalam kegiatan sosial hingga 25%.'],
-      tech: ['Social Media Mgt', 'Public Relations', 'Event Planning', 'Communication Strategy']
+      summary: 'Bertanggung jawab sebagai wajah organisasi dalam membangun citra positif dan hubungan strategis dengan pemangku kepentingan eksternal. Mengelola strategi komunikasi terintegrasi untuk memperluas jangkauan program sosial dan meningkatkan partisipasi aktif masyarakat.',
+      achievements: [
+        'Merancang strategi komunikasi digital dan branding visual yang konsisten di media sosial, meningkatkan awareness masyarakat terhadap program kerja organisasi.',
+        'Mengelola hubungan eksternal (External Relations) dan negosiasi kemitraan dengan pihak sponsor serta pemerintah lokal untuk dukungan event.',
+        'Mengkoordinasikan publikasi acara dan manajemen krisis komunikasi untuk memastikan kelancaran berbagai kegiatan skala menengah-besar.',
+        'Sukses meningkatkan engagement digital dan partisipasi warga dalam kegiatan sosial melalui kampanye informasi yang efektif.'
+      ],
+      tech: ['Public Relations', 'Social Media Branding', 'Stakeholder Management', 'Crisis Communication', 'Event Marketing']
     }
   ];
 
