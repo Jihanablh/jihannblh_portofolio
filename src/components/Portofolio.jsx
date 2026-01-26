@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { 
   BarChart3, Database, TrendingUp, Code, Mail, Linkedin, Github, 
   Award, Briefcase, GraduationCap, ChevronRight, Users, Trophy, 
-  ExternalLink, FileText, X, ChevronLeft, Calendar, MapPin, Grid, Eye
+  ExternalLink, FileText, X, ChevronLeft, Calendar, MapPin, Grid, 
+  Eye, ChevronDown, ChevronUp, ShieldCheck
 } from 'lucide-react';
 
 import Navbar from './Navbar';
