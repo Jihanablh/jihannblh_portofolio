@@ -143,7 +143,7 @@ export default function Portfolio() {
     outcomes: ['Identifikasi sektor teknologi sebagai industri dengan dampak PHK terbesar.', 'Visualisasi tren puncak PHK global pada periode 2023-2024.', 'Wawasan strategis mengenai stabilitas perusahaan berdasarkan tahapan pendanaan (Startup vs IPO).'],
     tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn'],
     github: 'https://github.com/Jihanablh/Bootcamp_IBM_X_Hacktiv8/tree/main/Project1_Layoffs_Analysis', demo: '#', 
-    images: ['/images_projects/Dashboard_Py_Layoffs.png', '/images_projects/Data_Py_Layoffs.png']
+    images: ['/images_projects/Py_Layoffs.png', '/images_projects/Py_Layoffs2.png', '/images_projects/Py_Layoffs3.png', '/images_projects/Py_Layoffs4.png', '/images_projects/Py_Layoffs5.png']
     },
     {
       title: 'AI Job Market Trends Analysis',
@@ -154,7 +154,7 @@ export default function Portfolio() {
       outcomes: ['Peta persebaran lowongan kerja AI/Data di berbagai industri.', 'Daftar 10 top technical skills yang wajib dikuasai pelamar.', 'Insight mengenai kesenjangan supply dan demand talenta data.'],
       tech: ['Python', 'NLP', 'Data Visualization', 'Pandas'],
       github: 'https://github.com/Jihanablh/Bootcamp_DibimbingID/tree/main/Project2_Ai_Job_Market_Analysis', demo: '#',
-      images: ['https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800']
+      images: ['/images_projects/Py_Job.png', '/images_projects/Py_Job2.png', '/images_projects/Py_Job3.png', '/images_projects/Py_Job4.png', '/images_projects/Py_Job5.png']
     },
 
     // --- SECONDARY PROJECTS (UNTUK "SEE ALL") ---
