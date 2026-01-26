@@ -82,12 +82,63 @@ export default function Portfolio() {
     github: "https://github.com/Jihanablh",
   };
 
-  const skills = [
-    { category: "Programming Languages", icon: <Code size={32} />, items: ["Python", "SQL", "R", "C++", "JavaScript", "Bash Scripting"], gradient: "from-blue-500 via-cyan-500 to-teal-500", iconColor: "text-blue-400" },
-    { category: "Business & Data Analytics", icon: <Database size={32} />, items: ["Data Analysis, Business Intelligence, Statistical Analysis, Customer & Market Analysis , Data-driven Decision Making"], gradient: "from-purple-500 via-pink-500 to-rose-500", iconColor: "text-purple-400" },
-    { category: "Data Visualization", icon: <BarChart3 size={32} />, items: ["Tableau", "Power BI", "Google Looker Studio", "Matplotlib", "Seaborn", "Plotly"], gradient: "from-emerald-500 via-green-500 to-lime-500", iconColor: "text-emerald-400" },
-    { category: "Tools & Platforms", icon: <Trophy size={32} />, items: ["Git & GitHub", "Docker", "Jupyter Lab", "PostgreSQL", "Google Cloud", "VS Code"], gradient: "from-orange-500 via-amber-500 to-yellow-500", iconColor: "text-orange-400" },
-    { category: "Soft Skills", icon: <Users size={32} />, items: ["Data Storytelling", "Critical Thinking", "Problem Solving", "Project Management", "Team Collaboration"], gradient: "from-indigo-500 via-violet-500 to-fuchsia-500", iconColor: "text-indigo-400" }
+  const experience = [
+    {
+      role: 'Junior Data Scientist (Studi Independen)',
+      company: 'PT Vinix Seven Aurum (MSIB Batch 3)',
+      period: 'Aug 2025 - Dec 2025',
+      type: 'Professional',
+      summary: 'Terpilih dalam program MSIB Kampus Merdeka "Junior Data Scientist" dengan kurikulum industri intensif. Bertanggung jawab menyelesaikan siklus penuh data sains (End-to-End Data Science Lifecycle) mulai dari akuisisi data, pembersihan (cleansing), eksplorasi (EDA), hingga penyajian insight bisnis. Fokus pada penerapan teknis Python dan SQL untuk memecahkan studi kasus di berbagai sektor industri.',
+      achievements: [
+        'Melakukan Data Acquisition & Cleansing pada dataset mentah (Raw Data) menggunakan Python (Pandas) di Google Colab, memastikan integritas data siap olah.',
+        'Mengimplementasikan Exploratory Data Analysis (EDA) dan teknik Cluster Analysis untuk menemukan pola tersembunyi serta segmentasi data yang mendukung strategi bisnis.',
+        'Menyelesaikan Final Capstone Project yang mengintegrasikan analisis statistik dan pemodelan data, serta mempresentasikan temuan (Actionable Insights) menggunakan teknik Data Storytelling & Infografis.',
+        'Menguasai penggunaan AI Tools untuk efisiensi pengolahan data dan pembuatan laporan kinerja berbasis data yang akurat.'
+      ],
+      tech: ['Python', 'SQL', 'Google Colab', 'Pandas', 'Data Storytelling', 'Cluster Analysis']
+    },
+    {
+      role: 'Asisten Dosen Sistem Operasi',
+      company: 'Universitas Bakrie',
+      period: 'Feb 2025 - Mei 2025',
+      type: 'Academic',
+      summary: 'Dipercaya oleh fakultas untuk mendampingi Dosen Utama dalam memfasilitasi pembelajaran teknis mata kuliah Sistem Operasi. Berperan strategis dalam menjembatani pemahaman konseptual mahasiswa dengan implementasi praktis di laboratorium, serta memastikan standar kompetensi teknis mahasiswa terpenuhi.',
+      achievements: [
+        'Mengkoordinasikan sesi praktikum mingguan untuk 60+ mahasiswa, mencakup materi teknis mendalam seperti Manajemen Memori, Process Scheduling, dan File Systems.',
+        'Melakukan instalasi, konfigurasi, dan troubleshooting lingkungan praktikum berbasis Linux (Debian) dan Windows pada Virtual Machine, memastikan kelancaran sesi lab.',
+        'Mengembangkan modul pembelajaran interaktif dan skenario troubleshooting untuk ujian praktikum, meningkatkan pemahaman hands-on mahasiswa.',
+        'Melakukan evaluasi objektif terhadap tugas dan proyek akhir, serta memberikan umpan balik teknis yang konstruktif untuk pengembangan skill mahasiswa.'
+      ],
+      tech: ['Linux (Debian)', 'Bash Scripting', 'VMware', 'C++', 'System Administration']
+    },
+    {
+      role: 'Staff HRN (Human Resource Nomination)',
+      company: 'IEEE Student Branch Universitas Bakrie',
+      period: 'Mar 2025 - Present',
+      type: 'Organization',
+      summary: 'Memegang peran kunci dalam manajemen talenta organisasi global cabang universitas. Mengimplementasikan strategi "People Development" untuk merekrut, melatih, dan mempertahankan anggota berkualitas tinggi. Fokus pada penciptaan budaya organisasi yang produktif dan kolaboratif melalui pendekatan yang terstruktur.',
+      achievements: [
+        'Memimpin proses rekrutmen end-to-end (screening hingga onboarding), berhasil menyaring talenta terbaik yang sesuai dengan nilai dan kebutuhan organisasi.',
+        'Merancang dan mengeksekusi program pengembangan kapasitas (Up-skilling) dan pelatihan soft-skills yang meningkatkan retensi dan keterlibatan anggota.',
+        'Menginisiasi sistem administrasi HR yang terstruktur untuk memantau KPI anggota dan mempermudah kolaborasi lintas divisi.',
+        'Bertindak sebagai jembatan komunikasi strategis antar-divisi untuk memastikan penyelarasan tujuan organisasi dan kesejahteraan anggota.'
+      ],
+      tech: ['Talent Acquisition', 'People Development', 'HR Administration', 'Organizational Development', 'Leadership']
+    },
+    {
+      role: 'Humas (Public Relations)',
+      company: 'Karang Taruna Cikoko',
+      period: 'Jan 2025 - Present',
+      type: 'Community',
+      summary: 'Bertanggung jawab sebagai wajah organisasi dalam membangun citra positif dan hubungan strategis dengan pemangku kepentingan eksternal. Mengelola strategi komunikasi terintegrasi untuk memperluas jangkauan program sosial dan meningkatkan partisipasi aktif masyarakat.',
+      achievements: [
+        'Merancang strategi komunikasi digital dan branding visual yang konsisten di media sosial, meningkatkan awareness masyarakat terhadap program kerja organisasi.',
+        'Mengelola hubungan eksternal (External Relations) dan negosiasi kemitraan dengan pihak sponsor serta pemerintah lokal untuk dukungan event.',
+        'Mengkoordinasikan publikasi acara dan manajemen krisis komunikasi untuk memastikan kelancaran berbagai kegiatan skala menengah-besar.',
+        'Sukses meningkatkan engagement digital dan partisipasi warga dalam kegiatan sosial melalui kampanye informasi yang efektif.'
+      ],
+      tech: ['Public Relations', 'Social Media Branding', 'Stakeholder Management', 'Crisis Communication', 'Event Marketing']
+    }
   ];
 
   const projects = [
@@ -192,67 +243,16 @@ export default function Portfolio() {
     }
   ];
 
-  const experience = [
-    {
-      role: 'Junior Data Scientist (Studi Independen)',
-      company: 'PT Vinix Seven Aurum (MSIB Batch 3)',
-      period: 'Aug 2025 - Dec 2025',
-      type: 'Professional',
-      summary: 'Terpilih dalam program MSIB Kampus Merdeka "Junior Data Scientist" dengan kurikulum industri intensif. Bertanggung jawab menyelesaikan siklus penuh data sains (End-to-End Data Science Lifecycle) mulai dari akuisisi data, pembersihan (cleansing), eksplorasi (EDA), hingga penyajian insight bisnis. Fokus pada penerapan teknis Python dan SQL untuk memecahkan studi kasus di berbagai sektor industri.',
-      achievements: [
-        'Melakukan Data Acquisition & Cleansing pada dataset mentah (Raw Data) menggunakan Python (Pandas) di Google Colab, memastikan integritas data siap olah.',
-        'Mengimplementasikan Exploratory Data Analysis (EDA) dan teknik Cluster Analysis untuk menemukan pola tersembunyi serta segmentasi data yang mendukung strategi bisnis.',
-        'Menyelesaikan Final Capstone Project yang mengintegrasikan analisis statistik dan pemodelan data, serta mempresentasikan temuan (Actionable Insights) menggunakan teknik Data Storytelling & Infografis.',
-        'Menguasai penggunaan AI Tools untuk efisiensi pengolahan data dan pembuatan laporan kinerja berbasis data yang akurat.'
-      ],
-      tech: ['Python', 'SQL', 'Google Colab', 'Pandas', 'Data Storytelling', 'Cluster Analysis']
-    },
-    {
-      role: 'Asisten Dosen Sistem Operasi',
-      company: 'Universitas Bakrie',
-      period: 'Feb 2025 - Mei 2025',
-      type: 'Academic',
-      summary: 'Dipercaya oleh fakultas untuk mendampingi Dosen Utama dalam memfasilitasi pembelajaran teknis mata kuliah Sistem Operasi. Berperan strategis dalam menjembatani pemahaman konseptual mahasiswa dengan implementasi praktis di laboratorium, serta memastikan standar kompetensi teknis mahasiswa terpenuhi.',
-      achievements: [
-        'Mengkoordinasikan sesi praktikum mingguan untuk 60+ mahasiswa, mencakup materi teknis mendalam seperti Manajemen Memori, Process Scheduling, dan File Systems.',
-        'Melakukan instalasi, konfigurasi, dan troubleshooting lingkungan praktikum berbasis Linux (Debian) dan Windows pada Virtual Machine, memastikan kelancaran sesi lab.',
-        'Mengembangkan modul pembelajaran interaktif dan skenario troubleshooting untuk ujian praktikum, meningkatkan pemahaman hands-on mahasiswa.',
-        'Melakukan evaluasi objektif terhadap tugas dan proyek akhir, serta memberikan umpan balik teknis yang konstruktif untuk pengembangan skill mahasiswa.'
-      ],
-      tech: ['Linux (Debian)', 'Bash Scripting', 'VMware', 'C++', 'System Administration']
-    },
-    {
-      role: 'Staff HRN (Human Resource Nomination)',
-      company: 'IEEE Student Branch Universitas Bakrie',
-      period: 'Mar 2025 - Present',
-      type: 'Organization',
-      summary: 'Memegang peran kunci dalam manajemen talenta organisasi global cabang universitas. Mengimplementasikan strategi "People Development" untuk merekrut, melatih, dan mempertahankan anggota berkualitas tinggi. Fokus pada penciptaan budaya organisasi yang produktif dan kolaboratif melalui pendekatan yang terstruktur.',
-      achievements: [
-        'Memimpin proses rekrutmen end-to-end (screening hingga onboarding), berhasil menyaring talenta terbaik yang sesuai dengan nilai dan kebutuhan organisasi.',
-        'Merancang dan mengeksekusi program pengembangan kapasitas (Up-skilling) dan pelatihan soft-skills yang meningkatkan retensi dan keterlibatan anggota.',
-        'Menginisiasi sistem administrasi HR yang terstruktur untuk memantau KPI anggota dan mempermudah kolaborasi lintas divisi.',
-        'Bertindak sebagai jembatan komunikasi strategis antar-divisi untuk memastikan penyelarasan tujuan organisasi dan kesejahteraan anggota.'
-      ],
-      tech: ['Talent Acquisition', 'People Development', 'HR Administration', 'Organizational Development', 'Leadership']
-    },
-    {
-      role: 'Humas (Public Relations)',
-      company: 'Karang Taruna Cikoko',
-      period: 'Jan 2025 - Present',
-      type: 'Community',
-      summary: 'Bertanggung jawab sebagai wajah organisasi dalam membangun citra positif dan hubungan strategis dengan pemangku kepentingan eksternal. Mengelola strategi komunikasi terintegrasi untuk memperluas jangkauan program sosial dan meningkatkan partisipasi aktif masyarakat.',
-      achievements: [
-        'Merancang strategi komunikasi digital dan branding visual yang konsisten di media sosial, meningkatkan awareness masyarakat terhadap program kerja organisasi.',
-        'Mengelola hubungan eksternal (External Relations) dan negosiasi kemitraan dengan pihak sponsor serta pemerintah lokal untuk dukungan event.',
-        'Mengkoordinasikan publikasi acara dan manajemen krisis komunikasi untuk memastikan kelancaran berbagai kegiatan skala menengah-besar.',
-        'Sukses meningkatkan engagement digital dan partisipasi warga dalam kegiatan sosial melalui kampanye informasi yang efektif.'
-      ],
-      tech: ['Public Relations', 'Social Media Branding', 'Stakeholder Management', 'Crisis Communication', 'Event Marketing']
-    }
+  const skills = [
+    { category: "Programming Languages", icon: <Code size={32} />, items: ["Python", "SQL", "R", "C++", "JavaScript", "Bash Scripting"], gradient: "from-blue-500 via-cyan-500 to-teal-500", iconColor: "text-blue-400" },
+    { category: "Business & Data Analytics", icon: <Database size={32} />, items: ["Data Analysis", "Business Intelligence", "Statistical Analysis", "Customer & Market Analysis", "Data-driven Decision Making"], gradient: "from-purple-500 via-pink-500 to-rose-500", iconColor: "text-purple-400" },
+    { category: "Data Visualization", icon: <BarChart3 size={32} />, items: ["Tableau", "Power BI", "Google Looker Studio", "Matplotlib", "Seaborn", "Plotly"], gradient: "from-emerald-500 via-green-500 to-lime-500", iconColor: "text-emerald-400" },
+    { category: "Tools & Platforms", icon: <Trophy size={32} />, items: ["Git & GitHub", "Docker", "Jupyter Lab", "PostgreSQL", "Google Cloud", "VS Code"], gradient: "from-orange-500 via-amber-500 to-yellow-500", iconColor: "text-orange-400" },
+    { category: "Soft Skills", icon: <Users size={32} />, items: ["Data Storytelling", "Critical Thinking", "Problem Solving", "Project Management", "Team Collaboration"], gradient: "from-indigo-500 via-violet-500 to-fuchsia-500", iconColor: "text-indigo-400" }
   ];
 
-  const allAchievements = [
-        {
+  const allAchievements = [ 
+    {
       id: 1,
       title: "Data Analyst Project: Business Decision Research",
       issuer: "DQLab",
@@ -260,7 +260,7 @@ export default function Portfolio() {
       type: "Project Cert",
       desc: "Menyelesaikan capstone project analisis data ritel menggunakan SQL dan Python. Fokus pada pengambilan keputusan bisnis berbasis data.",
       icon: <BarChart3 />,
-      link: "https://drive.google.com/open?id=1Lt4AfbTUrkcTd9A32kpnta7tlNTP0rjT&usp=drive_copy" // Cek Link: Business Decision
+      link: "https://drive.google.com/open?id=1VdVcSq99wKfEzSNr9mZ6HhVaL4dh6mD5&usp=drive_copy" 
     },
     {
       id: 2,
@@ -270,17 +270,17 @@ export default function Portfolio() {
       type: "Data Science",
       desc: "Studi kasus nyata melakukan segmentasi pelanggan (Clustering) menggunakan algoritma Machine Learning dengan Python.",
       icon: <Users />,
-      link: "https://drive.google.com/open?id=15gfcV1SfiwaOfCnlWRGCV5TaAqrjZoRL&usp=drive_copy" // Cek Link: Customer Segmentation
+      link: "https://drive.google.com/open?id=1Z2ux4WqLNUC0wA9je4rKaB0k9Td856dx&usp=drive_copy"
     },
     {
       id: 3,
-      title: "Samsung Innovation Campus (SIC) - Batch 5",
+      title: "Samsung Innovation Campus (SIC) - Batch 7",
       issuer: "Samsung & Skilvul",
       date: "2024",
       type: "Bootcamp",
       desc: "Program intensif dan selektif dari Samsung. Mempelajari Python Programming, Logic, dan penyelesaian masalah teknis.",
       icon: <Trophy />,
-      link: "https://drive.google.com/open?id=1y2i5I_Fb8FTjq6WVADKdfD_ihwwcDOLg&usp=drive_copy" // Cek Link: SIC Samsung
+      link: "https://drive.google.com/open?id=12SINu5qwy0CcfnkAwaPz72PzerrPXgUR&usp=drive_copy"
     },
     {
       id: 4,
@@ -290,7 +290,7 @@ export default function Portfolio() {
       type: "Certification",
       desc: "Sertifikasi internasional mengenai penanganan Big Data, integrasi sistem, dan pemrosesan data skala besar (Hadoop/Spark).",
       icon: <Database />,
-      link: "https://drive.google.com/open?id=1JKtGZJ1RHA51mfzqjLXJFZ_WOgm-5QXO&usp=drive_copy" // Cek Link: Big Data Coursera
+      link: "https://drive.google.com/open?id=1i8qEj73Uy0Q1dNtQyZySsz3gnXC9-yX8&usp=drive_copy"
     },
     {
       id: 5,
@@ -300,7 +300,7 @@ export default function Portfolio() {
       type: "Programming",
       desc: "Menguasai sintaks dasar hingga lanjut bahasa Python, termasuk manipulasi data dan Object-Oriented Programming (OOP).",
       icon: <Code />,
-      link: "https://drive.google.com/open?id=1s4b0kJedEElbYCxDYB3Str_UTtmZfrqR&usp=drive_copy" // Cek Link: Python Dicoding
+      link: "https://drive.google.com/open?id=1NWJqIDo0A3gDamRTSMc7yVrSoQS2DW4c&usp=drive_copy"
     },
     {
       id: 6,
@@ -310,17 +310,17 @@ export default function Portfolio() {
       type: "Data Viz",
       desc: "Validasi kemampuan membuat dashboard dan grafik yang efektif untuk menyampaikan insight data kepada stakeholder.",
       icon: <TrendingUp />,
-      link: "https://drive.google.com/open?id=1VdVcSq99wKfEzSNr9mZ6HhVaL4dh6mD5&usp=drive_copy" // Cek Link: Visualisasi Data
+      link: "https://drive.google.com/open?id=1tA90zMwk_0klXY4Myy-wi-HPzSXlsgoi&usp=drive_copy"
     },
     {
       id: 7,
-      title: "Data Analytics Mini Course",
+      title: "Intro to Data Analytics",
       issuer: "RevoU",
       date: "2024",
       type: "Course",
       desc: "Pemahaman kurikulum industri terkini mengenai Data Analytics, SQL, dan strategi pengolahan data.",
       icon: <BarChart3 />,
-      link: "https://drive.google.com/open?id=1cmNSBtonzSY3evvl8PzHbvMTGB7KJekq&usp=drive_copy" // Cek Link: RevoU
+      link: "https://drive.google.com/open?id=13W_d__oi5xDOhswTORAb8u5wqQoGgeHY&usp=drive_copy"
     },
     {
       id: 8,
@@ -330,7 +330,7 @@ export default function Portfolio() {
       type: "Bootcamp",
       desc: "Program pembelajaran intensif mencakup statistik, eksplorasi data, hingga pemodelan prediktif.",
       icon: <Database />,
-      link: "https://drive.google.com/open?id=159DXk1-SvGMZKnhlQaMUDxXNhpGUaxyW&usp=drive_copy" // Cek Link: Data Science Dibimbing
+      link: "https://drive.google.com/open?id=1XML0Gmv6jaxjxyVkcoytO7WNjqtu3-Cg&usp=drive_copy"
     },
     {
       id: 9,
@@ -340,7 +340,7 @@ export default function Portfolio() {
       type: "Methodology",
       desc: "Penerapan mindset Design Thinking untuk memahami kebutuhan pengguna dan merancang solusi bisnis yang tepat guna.",
       icon: <Users />,
-      link: "https://drive.google.com/open?id=1a6Ha-ixQX_-gZEereaFQsORETaY-o8Pi&usp=drive_copy" // Cek Link: Design Thinking
+      link: "https://drive.google.com/open?id=1nYzgJfsUelUnz0QWtPlJn7eOxll6gP1Y&usp=drive_copy"
     },
     {
       id: 10,
@@ -350,17 +350,17 @@ export default function Portfolio() {
       type: "Design",
       desc: "Keahlian membuat wireframe dan mockup dashboard/aplikasi sebelum tahap pengembangan (Skill vital Business Analyst).",
       icon: <Award />,
-      link: "https://drive.google.com/open?id=1Zfxq6Ea1Igo92VThDIYR6LLWInn6RdHB&usp=drive_copy" // Cek Link: Figma
+      link: "https://drive.google.com/open?id=1gLcXewHl71oj4AfpgTfWdtYzsX00lT0O&usp=drive_copy"
     },
     {
       id: 11,
-      title: "Business English & Soft Skill",
-      issuer: "Professional Dev",
+      title: "Business English Soft Skills",
+      issuer: "Universitas Bakrie",
       date: "2024",
       type: "Soft Skill",
       desc: "Kemampuan komunikasi profesional dalam bahasa Inggris, krusial untuk lingkungan kerja multinasional.",
       icon: <ShieldCheck />,
-      link: "https://drive.google.com/open?id=18VxEEHlX50ajjQJbYks7_gk_QDRsJNJM&usp=drive_copy" // Cek Link: Business English
+      link: "https://drive.google.com/open?id=17rIOGcup0tJmwgpnzlHKEAGaHDNiDbHD&usp=drive_copy"
     },
     {
       id: 12,
@@ -370,27 +370,27 @@ export default function Portfolio() {
       type: "Machine Learning",
       desc: "Pemahaman fundamental algoritma Machine Learning sebagai pendukung skill teknis Python.",
       icon: <Code />,
-      link: "https://drive.google.com/open?id=13W_d__oi5xDOhswTORAb8u5wqQoGgeHY&usp=drive_copy" // Cek Link: ML Udemy
+      link: "https://drive.google.com/open?id=1a6Ha-ixQX_-gZEereaFQsORETaY-o8Pi&usp=drive_copy"
     },
     {
       id: 13,
       title: "AI Training & Electives",
-      issuer: "Batch 4 Student Class",
+      issuer: "Generation Girl",
       date: "2024",
       type: "Artificial Intelligence",
       desc: "Mengikuti perkembangan teknologi AI terkini dan penerapannya dalam kasus nyata.",
       icon: <Trophy />,
-      link: "https://drive.google.com/open?id=1lzGdlFK24H8U6-s5NwekMmuyqORLpb7X&usp=drive_copy" // Cek Link: AI Training
+      link: "https://drive.google.com/open?id=1Zfxq6Ea1Igo92VThDIYR6LLWInn6RdHB&usp=drive_copy"
     },
     {
       id: 14,
-      title: "SkillsBuild Completion",
-      issuer: "IBM",
+      title: "Data Classification (IBM Granite)",
+      issuer: "IBM SkillsBuild",
       date: "2024",
       type: "Certification",
-      desc: "Penyelesaian modul kompetensi teknis dan profesional dari IBM SkillsBuild.",
+      desc: "Penyelesaian modul kompetensi teknis mengenai klasifikasi data menggunakan teknologi IBM.",
       icon: <ShieldCheck />,
-      link: "https://drive.google.com/open?id=1zKQsbjD03J2snXoU7X6hQILPkDCjvrTs&usp=drive_copy" // Cek Link: IBM/Lainnya
+      link: "https://drive.google.com/open?id=1s4b0kJedEElbYCxDYB3Str_UTtmZfrqR&usp=drive_copy"
     }
   ];
 
