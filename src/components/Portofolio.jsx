@@ -121,7 +121,7 @@ export default function Portfolio() {
       outcomes: ['Menemukan korelasi kuat antara keterlambatan pengiriman dan penurunan rating toko.', 'Rekomendasi bundling produk yang meningkatkan rata-rata nilai transaksi (AOV).', 'Laporan tren kategori produk terlaris per kuartal.'],
       tech: ['Python', 'Pandas', 'Seaborn', 'Matplotlib'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project5_Ecommerce_Sales_Analysis', demo: '#',
-      images: ['/images_projects/Dashboard_BI_Ecommerce.png', '/images_projects/Data_BI_Ecommerce.png', 'public/images projects/Star Schema BI Ecommerce.png']
+      images: ['/images_projects/Dashboard_BI_Ecommerce.png', '/images_projects/Data_BI_Ecommerce.png', '/images_projects/Star_Schema_BI_Ecommerce.png']
     },
     {
       title: 'HR Analytics: Workforce Architecture',
