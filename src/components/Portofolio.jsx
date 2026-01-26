@@ -260,7 +260,7 @@ export default function Portfolio() {
       type: "Project Cert",
       desc: "Menyelesaikan capstone project analisis data ritel menggunakan SQL dan Python. Fokus pada pengambilan keputusan bisnis berbasis data.",
       icon: <BarChart3 />,
-      link: "https://drive.google.com/open?id=1Lt4AfbTUrkcTd9A32kpnta7tlNTP0rjT&usp=drive_copy" // Cek Link: Business Decision
+      link: "https://drive.google.com/file/d/1tMAbl5-BiZBWr85P-DaYgvHf7ImhkbQe/view?usp=sharing" // Cek Link: Business Decision
     },
     {
       id: 2,
@@ -270,7 +270,7 @@ export default function Portfolio() {
       type: "Data Science",
       desc: "Studi kasus nyata melakukan segmentasi pelanggan (Clustering) menggunakan algoritma Machine Learning dengan Python.",
       icon: <Users />,
-      link: "https://drive.google.com/open?id=15gfcV1SfiwaOfCnlWRGCV5TaAqrjZoRL&usp=drive_copy" // Cek Link: Customer Segmentation
+      link: "https://drive.google.com/file/d/1Z2ux4WqLNUC0wA9je4rKaB0k9Td856dx/view?usp=drive_link", "https://drive.google.com/file/d/1lzGdlFK24H8U6-s5NwekMmuyqORLpb7X/view?usp=drive_link" // Cek Link: Customer Segmentation
     },
     {
       id: 3,
