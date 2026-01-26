@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Trophy, Award, X, ChevronDown, ChevronUp, ExternalLink, Calendar, ShieldCheck } from 'lucide-react';
+import { Trophy, Award, X, ChevronDown, ChevronUp, ExternalLink, Calendar, ShieldCheck, Code, Database, BarChart3, TrendingUp } from 'lucide-react';
 
-// --- REUSABLE ANIMATION COMPONENT ---
+// --- ANIMATION HELPER ---
 const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -36,6 +36,17 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
 export default function CertificationsSection({ allAchievements }) {
   const [visibleCount, setVisibleCount] = useState(6);
   const [selectedCert, setSelectedCert] = useState(null);
+
+  // --- FUNGSI AJAIB: Mengubah Link Drive jadi Embed Preview ---
+  const getEmbedUrl = (url) => {
+    if (!url) return "";
+    // Mengambil ID dari URL Google Drive
+    const idMatch = url.match(/id=([a-zA-Z0-9_-]+)/);
+    if (idMatch && idMatch[1]) {
+      return `https://drive.google.com/file/d/${idMatch[1]}/preview`;
+    }
+    return url;
+  };
 
   const toggleViewMode = () => {
     if (visibleCount < allAchievements.length) {
@@ -76,24 +87,16 @@ export default function CertificationsSection({ allAchievements }) {
               onClick={() => setSelectedCert(item)}
               className="cursor-pointer group relative h-full bg-slate-900 border border-slate-800 rounded-2xl p-6 overflow-hidden hover:border-purple-500/40 transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.15)] hover:-translate-y-2"
             >
-              {/* Background Glow (Purple Neon) */}
+              {/* Background Glow */}
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-600/5 blur-[60px] rounded-full group-hover:bg-purple-600/10 transition-all z-0"></div>
               
-              {/* Decorative Tech Corners (Bingkai Sudut) */}
-              <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity">
-                 <div className="w-2 h-2 border-t-2 border-r-2 border-purple-500"></div>
-              </div>
-              <div className="absolute bottom-0 left-0 p-3 opacity-20 group-hover:opacity-100 transition-opacity">
-                 <div className="w-2 h-2 border-b-2 border-l-2 border-purple-500"></div>
-              </div>
-
+              {/* Content */}
               <div className="relative z-10 flex flex-col h-full">
                 
                 {/* Header Card */}
                 <div className="flex justify-between items-start mb-6">
                   <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    {/* Icon Clone dengan warna baru */}
-                    {React.cloneElement(item.icon, { className: "text-slate-400 group-hover:text-purple-400 transition-colors" })}
+                    {item.icon && React.cloneElement(item.icon, { className: "text-slate-400 group-hover:text-purple-400 transition-colors" })}
                   </div>
                   
                   <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full border bg-slate-800 border-slate-700 text-slate-400 group-hover:bg-purple-500/10 group-hover:border-purple-500/50 group-hover:text-purple-400 transition-all shadow-sm">
@@ -101,7 +104,7 @@ export default function CertificationsSection({ allAchievements }) {
                   </span>
                 </div>
 
-                {/* Content */}
+                {/* Title & Info */}
                 <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors leading-snug line-clamp-2">
                   {item.title}
                 </h3>
@@ -123,7 +126,7 @@ export default function CertificationsSection({ allAchievements }) {
                       <span className="text-xs text-slate-500 font-medium group-hover:text-slate-300">Verified</span>
                    </div>
                   <div className="flex items-center gap-1 text-xs font-bold text-purple-400/80 group-hover:text-purple-400 transition-colors">
-                    View Detail <ExternalLink size={12} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+                    View Cert <ExternalLink size={12} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                   </div>
                 </div>
               </div>
@@ -132,7 +135,7 @@ export default function CertificationsSection({ allAchievements }) {
         ))}
       </div>
 
-      {/* --- TOMBOL SHOW MORE / LESS --- */}
+      {/* --- SHOW MORE BUTTON --- */}
       {allAchievements.length > 6 && (
         <RevealOnScroll delay={200}>
             <div className="mt-14 flex justify-center">
@@ -141,120 +144,67 @@ export default function CertificationsSection({ allAchievements }) {
                 className="group relative inline-flex items-center gap-2 px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-full transition-all duration-300 border border-slate-700 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
             >
                 {visibleCount < allAchievements.length ? (
-                    <>
-                    Show More <ChevronDown size={18} className="group-hover:translate-y-1 transition-transform" />
-                    </>
+                    <>Show More <ChevronDown size={18} /></>
                 ) : (
-                    <>
-                    Show Less <ChevronUp size={18} className="group-hover:-translate-y-1 transition-transform" />
-                    </>
+                    <>Show Less <ChevronUp size={18} /></>
                 )}
             </button>
             </div>
         </RevealOnScroll>
       )}
 
-      {/* --- MODAL DETAIL (POPUP) --- */}
+      {/* --- MODAL DETAIL (POPUP DENGAN GOOGLE DRIVE EMBED) --- */}
       {selectedCert && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-          
-          {/* Backdrop Blur */}
           <div 
             className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity animate-in fade-in duration-300" 
             onClick={() => setSelectedCert(null)}
           ></div>
           
-          {/* Modal Container */}
-          <div className="relative w-full max-w-4xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-5 duration-300 max-h-[90vh]">
+          <div className="relative w-full max-w-5xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-300 h-[85vh]">
             
             {/* Header Modal */}
-            <div className="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900 z-10 shrink-0 relative">
-              {/* Garis Gradasi Atas */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600"></div>
-              
-              <div className="flex items-center gap-5 mt-2">
-                 <div className="p-3 bg-purple-500/10 rounded-xl text-purple-400 border border-purple-500/20 hidden sm:block">
-                    {React.cloneElement(selectedCert.icon, { size: 24 })}
-                 </div>
-                 <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight">{selectedCert.title}</h3>
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-sm">
-                         <span className="text-purple-300 font-bold flex items-center gap-1">
-                            <ShieldCheck size={14} /> {selectedCert.issuer}
-                         </span>
-                        <span className="text-slate-600 hidden sm:inline">•</span> 
-                        <span className="text-slate-400 flex items-center gap-1 font-mono text-xs">
-                             <Calendar size={12} /> {selectedCert.date}
-                        </span>
-                    </div>
-                 </div>
+            <div className="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-900 z-10">
+              <div className="flex items-center gap-3">
+                 <h3 className="text-lg sm:text-xl font-bold text-white truncate max-w-[200px] sm:max-w-md">
+                    {selectedCert.title}
+                 </h3>
+                 <a href={selectedCert.link} target="_blank" rel="noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-white transition-colors" title="Open in New Tab">
+                    <ExternalLink size={16} />
+                 </a>
               </div>
-              <button 
-                onClick={() => setSelectedCert(null)}
-                className="p-2 bg-slate-800 rounded-full text-slate-400 hover:text-white hover:bg-red-500/80 transition-colors ml-4"
-              >
+              <button onClick={() => setSelectedCert(null)} className="p-2 bg-slate-800 rounded-full hover:bg-red-500/20 hover:text-red-400 transition-colors">
                 <X size={20} />
               </button>
             </div>
 
-            {/* Scrollable Content */}
-            <div className="overflow-y-auto p-6 sm:p-8 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
-                <div className="flex flex-col gap-8">
-                    
-                    {/* Gambar Sertifikat dengan Frame */}
-                    {selectedCert.image && (
-                        <div className="relative group perspective-1000">
-                             <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-xl blur opacity-50 group-hover:opacity-100 transition duration-500"></div>
-                             <div className="relative w-full bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-2xl">
-                                <img 
-                                    src={selectedCert.image} 
-                                    alt={selectedCert.title} 
-                                    className="w-full h-auto object-contain max-h-[450px]" 
-                                />
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Deskripsi */}
-                    <div className="grid md:grid-cols-3 gap-6">
-                        <div className="md:col-span-2">
-                             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2 border-b border-slate-800 pb-2">
-                                Credential Details
-                            </h4>
-                            <p className="text-slate-300 leading-7 text-justify">
-                                {selectedCert.desc}
-                            </p>
-                        </div>
-                        
-                        <div className="space-y-4">
-                             <div className="bg-slate-800/50 rounded-xl p-5 border border-slate-700/50">
-                                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Meta Information</h4>
-                                <div className="space-y-3">
-                                    <div className="flex justify-between items-center text-sm">
-                                        <span className="text-slate-500">Type</span>
-                                        <span className="text-white font-medium bg-slate-700/50 px-2 py-0.5 rounded text-xs">{selectedCert.type}</span>
-                                    </div>
-                                    <div className="flex justify-between items-center text-sm">
-                                        <span className="text-slate-500">Status</span>
-                                        <span className="text-green-400 font-medium flex items-center gap-1 text-xs"><ShieldCheck size={12}/> Valid</span>
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
+            {/* AREA UTAMA: GOOGLE DRIVE EMBED */}
+            {/* Ini bagian ajaibnya: iframe menampilkan preview dari link Drive */}
+            <div className="flex-1 bg-slate-950 relative w-full h-full">
+                {selectedCert.link ? (
+                    <iframe 
+                        src={getEmbedUrl(selectedCert.link)}
+                        className="w-full h-full border-0"
+                        allow="autoplay"
+                        title={selectedCert.title}
+                    ></iframe>
+                ) : (
+                    <div className="flex items-center justify-center h-full text-slate-500">
+                        No Document Link Available
                     </div>
-                </div>
+                )}
             </div>
 
             {/* Footer Modal */}
-            <div className="p-4 border-t border-slate-800 bg-slate-900 shrink-0 flex justify-end gap-3">
+            <div className="p-4 border-t border-slate-800 bg-slate-900 flex justify-between items-center">
+                <div className="text-xs text-slate-500 hidden sm:block">
+                    Powered by Google Drive Preview
+                </div>
                 <button 
                     onClick={() => setSelectedCert(null)}
-                    className="px-5 py-2.5 text-slate-400 hover:text-white font-medium text-sm transition-colors"
+                    className="px-5 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-medium text-sm transition-colors shadow-lg shadow-purple-900/20"
                 >
-                    Close
-                </button>
-                <button className="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors font-bold text-sm shadow-lg shadow-purple-900/20 flex items-center gap-2">
-                    Verify Credential <ExternalLink size={16} />
+                    Close Preview
                 </button>
             </div>
             

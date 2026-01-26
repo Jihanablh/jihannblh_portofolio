@@ -252,86 +252,227 @@ const experience = [
     }
   ];
 
-  const allAchievements = [
+  // Data Sertifikat dengan Link Google Drive Asli
+const allAchievements = [
     {
+      id: 1,
       title: "Preparation Course for Azure AI Fundamentals (AI-900)",
       issuer: "Microsoft & Kominfo",
       date: "June 2025",
       type: "Certification",
       desc: "Sertifikasi persiapan resmi Azure AI Fundamentals. Mencakup AI, ML, dan Computer Vision di cloud Azure.",
-      icon: <Award size={24} className="text-blue-400" />,
-      color: "blue",
-      image: "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&q=80&w=800"
+      icon: <Award />, // Pastikan component icon diimport
+      link: "https://drive.google.com/open?id=1zKQsbjD03J2snXoU7X6hQILPkDCjvrTs&usp=drive_copy"
     },
     {
+      id: 2,
       title: "Samsung Innovation Campus - Python Programming",
       issuer: "Samsung & Dibimbing.id",
       date: "Oct 2025",
       type: "Bootcamp",
       desc: "Lulus program intensif Python Programming (Stage 1). Materi: Algoritma, Data Structure, AI Productivity.",
-      icon: <Code size={24} className="text-indigo-400" />,
-      color: "indigo",
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800"
+      icon: <Code />,
+      link: "https://drive.google.com/open?id=1y2i5I_Fb8FTjq6WVADKdfD_ihwwcDOLg&usp=drive_copy"
     },
     {
+      id: 3,
       title: "Kickstart Data Science Journey",
       issuer: "Rakamin Academy",
       date: "Nov 2025",
       type: "Bootcamp",
       desc: "Menyelesaikan simulasi proyek Data Science end-to-end. Pembersihan data, pemodelan prediksi, presentasi bisnis.",
-      icon: <Trophy size={24} className="text-yellow-400" />,
-      color: "yellow",
-      image: "https://images.unsplash.com/photo-1596496050827-8299e0220de0?auto=format&fit=crop&q=80&w=800"
+      icon: <Trophy />,
+      link: "https://drive.google.com/open?id=1JKtGZJ1RHA51mfzqjLXJFZ_WOgm-5QXO&usp=drive_copy"
     },
     {
+      id: 4,
       title: "Get Started with Machine Learning in Azure",
       issuer: "Microsoft Learn",
       date: "June 2025",
       type: "Specialization",
       desc: "Menguasai implementasi model Machine Learning, pelatihan data, dan deployment menggunakan Azure ML Studio.",
-      icon: <Database size={24} className="text-cyan-400" />,
-      color: "cyan",
-      image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=800"
+      icon: <Database />,
+      link: "https://drive.google.com/open?id=1lzGdlFK24H8U6-s5NwekMmuyqORLpb7X&usp=drive_copy"
     },
     {
+      id: 5,
       title: "Data Analyst Project: Business Decision Research",
       issuer: "DQLab",
       date: "Feb 2025",
       type: "Project Cert",
       desc: "Menyelesaikan capstone project analisis data ritel menggunakan SQL dan Python untuk keputusan bisnis.",
-      icon: <BarChart3 size={24} className="text-green-400" />,
-      color: "green",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+      icon: <BarChart3 />,
+      link: "https://drive.google.com/open?id=1Lt4AfbTUrkcTd9A32kpnta7tlNTP0rjT&usp=drive_copy"
     },
     {
-      title: "IEEE Student Membership",
-      issuer: "IEEE Indonesia Section",
-      date: "2025",
-      type: "Membership",
-      desc: "Anggota aktif IEEE (Institute of Electrical and Electronics Engineers). Berpartisipasi dalam komunitas global.",
-      icon: <Users size={24} className="text-blue-500" />,
-      color: "blue",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
-    },
-    {
+      id: 6,
       title: "Data Visualization Track",
       issuer: "DQLab",
       date: "2025",
       type: "Course",
       desc: "Menguasai teknik visualisasi data dan storytelling untuk menyajikan insight bisnis yang efektif.",
-      icon: <TrendingUp size={24} className="text-emerald-400" />,
-      color: "emerald",
-      image: "https://images.unsplash.com/photo-1543286386-713df548e9cc?auto=format&fit=crop&q=80&w=800"
+      icon: <TrendingUp />,
+      link: "https://drive.google.com/open?id=1VdVcSq99wKfEzSNr9mZ6HhVaL4dh6mD5&usp=drive_copy"
     },
     {
+      id: 7,
       title: "Big Data Integration and Processing",
-      issuer: "UCSD (Coursera)",
-      date: "Apr 2025",
+      issuer: "UC San Diego (Coursera)",
+      date: "2024",
       type: "Certification",
-      desc: "Teknik integrasi Big Data dan pemrosesan skala besar untuk keputusan berbasis data.",
-      icon: <Database size={24} className="text-purple-400" />,
-      color: "purple",
-      image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&q=80&w=800"
+      desc: "Menguasai teknik integrasi Big Data dan pemrosesan data skala besar (Hadoop/Spark) untuk bisnis.",
+      icon: <Database />, 
+      link: "https://drive.google.com/open?id=18VxEEHlX50ajjQJbYks7_gk_QDRsJNJM&usp=drive_copy" // Link ke-7
+    },
+    {
+      id: 8,
+      title: "Customer Segmentation with Python",
+      issuer: "DQLab",
+      date: "2024",
+      type: "Data Science",
+      desc: "Implementasi algoritma Machine Learning (K-Means Clustering) untuk segmentasi pelanggan secara otomatis.",
+      icon: <Users />, // Pastikan import Users dari 'lucide-react'
+      link: "https://drive.google.com/open?id=15gfcV1SfiwaOfCnlWRGCV5TaAqrjZoRL&usp=drive_copy" // Link ke-8
+    },
+    {
+      id: 9,
+      title: "Pemrograman Dengan Python",
+      issuer: "Dicoding Indonesia",
+      date: "2024",
+      type: "Programming",
+      desc: "Fondasi pemrograman Python yang kuat, mencakup logika, struktur data, dan OOP.",
+      icon: <Code />, 
+      link: "https://drive.google.com/open?id=1s4b0kJedEElbYCxDYB3Str_UTtmZfrqR&usp=drive_copy" // Link ke-9
+    },
+    {
+      id: 10,
+      title: "Data Analytics Mini Course",
+      issuer: "RevoU",
+      date: "2024",
+      type: "Course",
+      desc: "Memahami konsep dasar analisis data, SQL, dan visualisasi untuk kebutuhan industri.",
+      icon: <BarChart3 />, 
+      link: "https://drive.google.com/open?id=1cmNSBtonzSY3evvl8PzHbvMTGB7KJekq&usp=drive_copy" // Link ke-10
+    },
+    {
+      id: 11,
+      title: "Data Science Bootcamp",
+      issuer: "Dibimbing.id",
+      date: "2024",
+      type: "Bootcamp",
+      desc: "Program intensif Data Science mencakup statistik, Python, dan pemodelan prediktif.",
+      icon: <Trophy />, 
+      link: "https://drive.google.com/open?id=159DXk1-SvGMZKnhlQaMUDxXNhpGUaxyW&usp=drive_copy" // Link ke-11
+    },
+    {
+      id: 12,
+      title: "Figma Tools for UI/UX",
+      issuer: "MySkill",
+      date: "2024",
+      type: "Design",
+      desc: "Keahlian menggunakan Figma untuk prototyping dashboard dan desain antarmuka aplikasi.",
+      icon: <Award />, 
+      link: "https://drive.google.com/open?id=1Zfxq6Ea1Igo92VThDIYR6LLWInn6RdHB&usp=drive_copy" // Link ke-12
+    },
+    {
+      id: 13,
+      title: "Machine Learning Fundamentals",
+      issuer: "Udemy",
+      date: "2024",
+      type: "Machine Learning",
+      desc: "Pemahaman fundamental tentang algoritma Machine Learning menggunakan Python.",
+      icon: <Code />, 
+      link: "https://drive.google.com/open?id=13W_d__oi5xDOhswTORAb8u5wqQoGgeHY&usp=drive_copy" // Link ke-13
+    },
+    {
+      id: 14,
+      title: "Design Thinking",
+      issuer: "Universitas Bakrie",
+      date: "2024",
+      type: "Methodology",
+      desc: "Penerapan pola pikir Design Thinking untuk memecahkan masalah bisnis yang berpusat pada pengguna.",
+      icon: <Users />, 
+      link: "https://drive.google.com/open?id=17rIOGcup0tJmwgpnzlHKEAGaHDNiDbHD&usp=drive_copy" // Link ke-14
+    },
+    {
+      id: 7,
+      title: "Big Data Integration and Processing",
+      issuer: "UC San Diego (Coursera)",
+      date: "2024",
+      type: "Certification",
+      desc: "Menguasai teknik integrasi Big Data dan pemrosesan data skala besar (Hadoop/Spark) untuk bisnis.",
+      icon: <Database />, 
+      link: "https://drive.google.com/open?id=18VxEEHlX50ajjQJbYks7_gk_QDRsJNJM&usp=drive_copy" // Link ke-7
+    },
+    {
+      id: 8,
+      title: "Customer Segmentation with Python",
+      issuer: "DQLab",
+      date: "2024",
+      type: "Data Science",
+      desc: "Implementasi algoritma Machine Learning (K-Means Clustering) untuk segmentasi pelanggan secara otomatis.",
+      icon: <Users />, // Pastikan import Users dari 'lucide-react'
+      link: "https://drive.google.com/open?id=15gfcV1SfiwaOfCnlWRGCV5TaAqrjZoRL&usp=drive_copy" // Link ke-8
+    },
+    {
+      id: 9,
+      title: "Pemrograman Dengan Python",
+      issuer: "Dicoding Indonesia",
+      date: "2024",
+      type: "Programming",
+      desc: "Fondasi pemrograman Python yang kuat, mencakup logika, struktur data, dan OOP.",
+      icon: <Code />, 
+      link: "https://drive.google.com/open?id=1s4b0kJedEElbYCxDYB3Str_UTtmZfrqR&usp=drive_copy" // Link ke-9
+    },
+    {
+      id: 10,
+      title: "Data Analytics Mini Course",
+      issuer: "RevoU",
+      date: "2024",
+      type: "Course",
+      desc: "Memahami konsep dasar analisis data, SQL, dan visualisasi untuk kebutuhan industri.",
+      icon: <BarChart3 />, 
+      link: "https://drive.google.com/open?id=1cmNSBtonzSY3evvl8PzHbvMTGB7KJekq&usp=drive_copy" // Link ke-10
+    },
+    {
+      id: 11,
+      title: "Data Science Bootcamp",
+      issuer: "Dibimbing.id",
+      date: "2024",
+      type: "Bootcamp",
+      desc: "Program intensif Data Science mencakup statistik, Python, dan pemodelan prediktif.",
+      icon: <Trophy />, 
+      link: "https://drive.google.com/open?id=159DXk1-SvGMZKnhlQaMUDxXNhpGUaxyW&usp=drive_copy" // Link ke-11
+    },
+    {
+      id: 12,
+      title: "Figma Tools for UI/UX",
+      issuer: "MySkill",
+      date: "2024",
+      type: "Design",
+      desc: "Keahlian menggunakan Figma untuk prototyping dashboard dan desain antarmuka aplikasi.",
+      icon: <Award />, 
+      link: "https://drive.google.com/open?id=1Zfxq6Ea1Igo92VThDIYR6LLWInn6RdHB&usp=drive_copy" // Link ke-12
+    },
+    {
+      id: 13,
+      title: "Machine Learning Fundamentals",
+      issuer: "Udemy",
+      date: "2024",
+      type: "Machine Learning",
+      desc: "Pemahaman fundamental tentang algoritma Machine Learning menggunakan Python.",
+      icon: <Code />, 
+      link: "https://drive.google.com/open?id=13W_d__oi5xDOhswTORAb8u5wqQoGgeHY&usp=drive_copy" // Link ke-13
+    },
+    {
+      id: 14,
+      title: "Design Thinking",
+      issuer: "Universitas Bakrie",
+      date: "2024",
+      type: "Methodology",
+      desc: "Penerapan pola pikir Design Thinking untuk memecahkan masalah bisnis yang berpusat pada pengguna.",
+      icon: <Users />, 
+      link: "https://drive.google.com/open?id=17rIOGcup0tJmwgpnzlHKEAGaHDNiDbHD&usp=drive_copy" // Link ke-14
     }
   ];
 
