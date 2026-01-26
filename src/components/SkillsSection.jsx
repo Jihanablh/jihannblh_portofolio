@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Code, Cpu, Database, Globe, Layers, Terminal } from 'lucide-react';
 
-// --- KOMPONEN ANIMASI SCROLL (Reusable) ---
+// KOMPONEN ANIMASI SCROLL (Reusable)
 const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -58,7 +58,6 @@ export default function SkillsSection({ skills }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skills.map((skill, idx) => (
           
-          // Efek Staggered (Muncul berurutan)
           <RevealOnScroll key={idx} delay={idx * 100} className="h-full">
             <div className="group relative h-full">
               
@@ -68,10 +67,8 @@ export default function SkillsSection({ skills }) {
               {/* 2. Kartu Utama */}
               <div className="relative h-full bg-slate-900/90 backdrop-blur-xl rounded-2xl p-6 border border-slate-800 hover:border-slate-600/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
                 
-                {/* Tech Grid Pattern (Latar belakang kotak-kotak halus) */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 
-                {/* Radial Gradient overlay saat hover */}
                 <div className={`absolute -right-10 -top-10 w-32 h-32 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-500 rounded-full`}></div>
 
                 {/* Header Kartu */}

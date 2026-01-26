@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Award, Briefcase, Code, Trophy } from 'lucide-react';
+import { Users, Award, Briefcase, Code, Trophy, Mail } from 'lucide-react'; // 1. Tambah import Mail
 
 export default function Navbar({ activeTab, scrollToSection }) {
   
@@ -18,7 +18,8 @@ export default function Navbar({ activeTab, scrollToSection }) {
     { id: 'experience', label: 'Experience', icon: Award },
     { id: 'projects', label: 'Projects', icon: Briefcase },
     { id: 'skills', label: 'Skills', icon: Code },
-    { id: 'certifications', label: 'Certifications', icon: Trophy }
+    { id: 'certifications', label: 'Certifications', icon: Trophy },
+    { id: 'contact', label: 'Contact', icon: Mail } // 2. Tambah menu Contact di sini
   ];
 
   return (
@@ -32,7 +33,7 @@ export default function Navbar({ activeTab, scrollToSection }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center h-10">
           
-          {/* BAGIAN KIRI: CUSTOM NAME (jihannblh Porto) */}
+          {/* BAGIAN KIRI: CUSTOM NAME (Jihannblh Porto) */}
           <div 
             className="cursor-pointer group select-none"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

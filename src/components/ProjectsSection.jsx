@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Briefcase, ChevronRight, X, ChevronLeft, Github, ExternalLink, FileText, ChevronDown, ChevronUp, Layers } from 'lucide-react';
 
-// --- KOMPONEN ANIMASI SCROLL ---
+// KOMPONEN ANIMASI SCROLL
 const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -44,19 +44,13 @@ export default function ProjectsSection({
 }) {
   const [visibleCount, setVisibleCount] = useState(6);
   
-  // State untuk mendeteksi apakah kursor ada di atas gambar
   const [isHovered, setIsHovered] = useState(false);
 
-  // --- LOGIC AUTO SLIDE (SMART PAUSE) ---
-  // Timer ditaruh di sini agar bisa dicek apakah sedang di-hover atau tidak
   useEffect(() => {
-    // Jalankan timer HANYA JIKA:
-    // 1. Ada project yang dibuka (selectedProject)
-    // 2. Kursor TIDAK sedang di atas gambar (!isHovered)
     if (selectedProject && !isHovered) {
       const slideInterval = setInterval(() => {
         nextImage();
-      }, 3000); // Ganti gambar setiap 3 detik
+      }, 3000); 
 
       return () => clearInterval(slideInterval);
     }
@@ -75,7 +69,7 @@ export default function ProjectsSection({
   return (
     <section id="projects" className="max-w-6xl mx-auto scroll-mt-28 px-4 sm:px-6 mt-20 mb-20">
       
-      {/* --- HEADER --- */}
+      {/* HEADER */}
       <RevealOnScroll>
         <div className="flex flex-col mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4 text-white">
@@ -92,7 +86,7 @@ export default function ProjectsSection({
         </div>
       </RevealOnScroll>
 
-      {/* --- GRID PROJECTS --- */}
+      {/* GRID PROJECTS */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.slice(0, visibleCount).map((project, idx) => (
           <RevealOnScroll key={idx} delay={idx * 100} className="h-full">
@@ -148,7 +142,7 @@ export default function ProjectsSection({
         ))}
       </div>
 
-      {/* --- TOMBOL SHOW MORE / LESS --- */}
+      {/* TOMBOL SHOW MORE / LESS */}
       {projects.length > 6 && (
         <RevealOnScroll delay={300}>
             <div className="mt-16 flex justify-center">
@@ -173,7 +167,7 @@ export default function ProjectsSection({
         </RevealOnScroll>
       )}
 
-      {/* --- MODAL DETAIL PROJECT --- */}
+      {/* MODAL DETAIL PROJECT */}
       {selectedProject && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6">
           
@@ -196,7 +190,6 @@ export default function ProjectsSection({
               {/* Carousel Gambar (Hero) */}
               <div 
                 className="relative w-full h-72 sm:h-[500px] bg-slate-950 group shrink-0 select-none"
-                // Event Listener untuk Pause/Play
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >

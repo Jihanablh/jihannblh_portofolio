@@ -3,8 +3,6 @@ import {
   Users, MapPin, Database, Code, GraduationCap, Briefcase 
 } from 'lucide-react';
 
-// --- KOMPONEN PEMBUNGKUS UNTUK ANIMASI ---
-// Ini berfungsi mendeteksi apakah elemen sudah masuk layar atau belum
 const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -14,10 +12,10 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect(); // Hanya animasi sekali saat pertama muncul
+          observer.disconnect(); 
         }
       },
-      { threshold: 0.1 } // Muncul ketika 10% elemen terlihat
+      { threshold: 0.1 } 
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -28,7 +26,6 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   return (
     <div
       ref={ref}
-      // Logika CSS: Jika visible, opacity 1 & posisi normal. Jika belum, opacity 0 & turun 50px (translate-y-12)
       className={`transition-all duration-1000 ease-out transform ${
         isVisible ? "opacity-100 translate-y-0 filter blur-0" : "opacity-0 translate-y-12 filter blur-sm"
       } ${className}`}
@@ -43,7 +40,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="max-w-6xl mx-auto scroll-mt-28 px-4 mt-20 mb-20">
       
-      {/* 1. Header dengan Delay 0ms */}
+      {/* 1. Header */}
       <RevealOnScroll delay={0}>
         <h2 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-3">
           <div className="p-2 bg-slate-800 rounded-lg border border-slate-700 shadow-lg shadow-blue-900/20">
@@ -57,12 +54,11 @@ export default function AboutSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">            
         
-        {/* 2. Kolom Kiri (Bio Utama) - Delay 200ms */}
+        {/* 2. Kolom Kiri (Bio Utama) */}
         <div className="lg:col-span-2 h-full">
             <RevealOnScroll delay={200} className="h-full">
                 <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800/50 backdrop-blur-xl rounded-3xl p-8 border border-white/5 hover:border-blue-500/30 transition-all duration-500 group relative overflow-hidden h-full shadow-2xl hover:shadow-blue-500/10">
                 
-                {/* Efek Glow Bergerak di Background */}
                 <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/20 blur-[100px] rounded-full group-hover:bg-blue-500/30 transition-all duration-700"></div>
                 <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-600/10 blur-[100px] rounded-full group-hover:bg-purple-500/20 transition-all duration-700"></div>
                 
@@ -71,7 +67,6 @@ export default function AboutSection() {
                         <div className="flex-1">
                             <h3 className="text-3xl font-bold text-white flex items-center gap-3">
                                 Hi, I'm Jihan
-                                {/* Custom Animation Wave */}
                                 <span className="inline-block hover:animate-spin cursor-default text-4xl transition-transform hover:scale-125 duration-300">👋</span>
                             </h3>
                             <p className="text-slate-400 text-sm mt-1">Aspiring Data Scientist & Tech Enthusiast</p>
@@ -110,7 +105,7 @@ export default function AboutSection() {
         {/* Kolom Kanan: Cards Info */}
         <div className="flex flex-col gap-6 lg:h-full">
           
-          {/* 3. Card Education - Delay 400ms */}
+          {/* 3. Card Education */}
           <RevealOnScroll delay={400} className="flex-1">
             <div className="bg-slate-900/80 backdrop-blur-md rounded-3xl p-6 border border-slate-700 hover:border-purple-500/50 transition-all duration-300 flex flex-col justify-center h-full group hover:shadow-xl hover:shadow-purple-900/20 hover:-translate-y-1 relative overflow-hidden">
               {/* Efek Hover Gradient Sweep */}
@@ -137,10 +132,9 @@ export default function AboutSection() {
             </div>
           </RevealOnScroll>
 
-          {/* 4. Card Status - Delay 600ms */}
+          {/* 4. Card Status */}
           <RevealOnScroll delay={600} className="flex-1">
             <div className="bg-slate-900/80 backdrop-blur-md rounded-3xl p-6 border border-slate-700 hover:border-green-500/50 transition-all duration-300 flex flex-col justify-center h-full group hover:shadow-xl hover:shadow-green-900/20 hover:-translate-y-1 relative overflow-hidden">
-                {/* Efek Hover Gradient Sweep */}
                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
 
                <div className="relative z-10">

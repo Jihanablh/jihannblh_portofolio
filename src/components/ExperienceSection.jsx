@@ -3,7 +3,6 @@ import {
   Award, Briefcase, GraduationCap, Users, Calendar, ArrowUpRight 
 } from 'lucide-react';
 
-// --- VERSI LEBIH RESPONSIF ---
 const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -11,15 +10,12 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // PERUBAHAN 1: Pakai isIntersecting langsung tanpa threshold ketat
         if (entry.isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
         }
       },
       { 
-        // PERUBAHAN 2: Threshold 0 (begitu nongol dikit langsung trigger)
-        // RootMargin -20px biar ada jeda dikit banget biar ga kaget, tapi tetep cepet
         threshold: 0, 
         rootMargin: "0px 0px -20px 0px" 
       } 
@@ -33,7 +29,6 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   return (
     <div
       ref={ref}
-      // PERUBAHAN 3: duration-500 (lebih ngebut dari sebelumnya 700)
       className={`transition-all duration-500 ease-out ${
         isVisible ? "opacity-100 translate-y-0 filter blur-0" : "opacity-0 translate-y-8 filter blur-[2px]"
       } ${className}`}
@@ -63,7 +58,6 @@ export default function ExperienceSection({ experience }) {
         <div className="absolute left-0 top-4 bottom-4 w-[2px] bg-gradient-to-b from-slate-800 via-slate-700 to-slate-900/0"></div>
 
         {experience.map((exp, idx) => (
-          // PERUBAHAN 4: Delay multiplier dikurangi jadi 100ms (lebih rapet)
           <RevealOnScroll key={idx} delay={idx * 100} className="relative pl-8 md:pl-12 group">
             
             {/* Timeline Dot */}

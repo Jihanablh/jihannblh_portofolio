@@ -17,7 +17,6 @@ import ContactSection from './ContactSection';
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState('about');
-  
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showAllCerts, setShowAllCerts] = useState(false);
@@ -256,7 +255,7 @@ export default function Portfolio() {
       id: 1,
       title: "Data Analyst Project: Business Decision Research",
       issuer: "DQLab",
-      date: "2024",
+      date: "13 Februari 2025",
       type: "Project Cert",
       desc: "Menyelesaikan capstone project analisis data ritel menggunakan SQL dan Python. Fokus pada pengambilan keputusan bisnis berbasis data.",
       icon: <BarChart3 />,
@@ -266,7 +265,7 @@ export default function Portfolio() {
       id: 2,
       title: "Customer Segmentation with Python",
       issuer: "DQLab",
-      date: "2024",
+      date: "12 Maret 2025",
       type: "Data Science",
       desc: "Studi kasus nyata melakukan segmentasi pelanggan (Clustering) menggunakan algoritma Machine Learning dengan Python.",
       icon: <Users />,
@@ -276,17 +275,17 @@ export default function Portfolio() {
       id: 3,
       title: "Samsung Innovation Campus (SIC) - Batch 7",
       issuer: "Samsung & Skilvul",
-      date: "2024",
+      date: "2025/2026",
       type: "Bootcamp",
       desc: "Program intensif dan selektif dari Samsung. Mempelajari Python Programming, Logic, dan penyelesaian masalah teknis.",
       icon: <Trophy />,
-      link: "https://drive.google.com/open?id=12SINu5qwy0CcfnkAwaPz72PzerrPXgUR&usp=drive_copy"
+      link: "https://drive.google.com/open?id=1gaedYptbK1oZPSQnL9RzzJQ60JVW3LC8&usp=drive_copy"
     },
     {
       id: 4,
       title: "Big Data Integration and Processing",
       issuer: "UC San Diego (Coursera)",
-      date: "2024",
+      date: "6 April 2025",
       type: "Certification",
       desc: "Sertifikasi internasional mengenai penanganan Big Data, integrasi sistem, dan pemrosesan data skala besar (Hadoop/Spark).",
       icon: <Database />,
@@ -296,7 +295,7 @@ export default function Portfolio() {
       id: 5,
       title: "Pemrograman Dengan Python",
       issuer: "Dicoding Indonesia",
-      date: "2024",
+      date: "17 November 2024",
       type: "Programming",
       desc: "Menguasai sintaks dasar hingga lanjut bahasa Python, termasuk manipulasi data dan Object-Oriented Programming (OOP).",
       icon: <Code />,
@@ -306,7 +305,7 @@ export default function Portfolio() {
       id: 6,
       title: "Belajar Dasar Visualisasi Data",
       issuer: "Dicoding Indonesia",
-      date: "2024",
+      date: "01 Juli 2025",
       type: "Data Viz",
       desc: "Validasi kemampuan membuat dashboard dan grafik yang efektif untuk menyampaikan insight data kepada stakeholder.",
       icon: <TrendingUp />,
@@ -316,7 +315,7 @@ export default function Portfolio() {
       id: 7,
       title: "Intro to Data Analytics",
       issuer: "RevoU",
-      date: "2024",
+      date: "31 January 2025",
       type: "Course",
       desc: "Pemahaman kurikulum industri terkini mengenai Data Analytics, SQL, dan strategi pengolahan data.",
       icon: <BarChart3 />,
@@ -326,7 +325,7 @@ export default function Portfolio() {
       id: 8,
       title: "Data Science Bootcamp",
       issuer: "Dibimbing.id",
-      date: "2024",
+      date: "2025",
       type: "Bootcamp",
       desc: "Program pembelajaran intensif mencakup statistik, eksplorasi data, hingga pemodelan prediktif.",
       icon: <Database />,
@@ -336,7 +335,7 @@ export default function Portfolio() {
       id: 9,
       title: "Design Thinking for Business",
       issuer: "Universitas Bakrie",
-      date: "2024",
+      date: "12 Maret 2025",
       type: "Methodology",
       desc: "Penerapan mindset Design Thinking untuk memahami kebutuhan pengguna dan merancang solusi bisnis yang tepat guna.",
       icon: <Users />,
@@ -346,7 +345,7 @@ export default function Portfolio() {
       id: 10,
       title: "Figma Tools for UI/UX",
       issuer: "MySkill",
-      date: "2024",
+      date: "9 November 2024",
       type: "Design",
       desc: "Keahlian membuat wireframe dan mockup dashboard/aplikasi sebelum tahap pengembangan (Skill vital Business Analyst).",
       icon: <Award />,
@@ -356,7 +355,7 @@ export default function Portfolio() {
       id: 11,
       title: "Business English Soft Skills",
       issuer: "Universitas Bakrie",
-      date: "2024",
+      date: "13 Maret 2025",
       type: "Soft Skill",
       desc: "Kemampuan komunikasi profesional dalam bahasa Inggris, krusial untuk lingkungan kerja multinasional.",
       icon: <ShieldCheck />,
@@ -366,7 +365,7 @@ export default function Portfolio() {
       id: 12,
       title: "Machine Learning Fundamentals",
       issuer: "Udemy",
-      date: "2024",
+      date: "24 Januari 2025",
       type: "Machine Learning",
       desc: "Pemahaman fundamental algoritma Machine Learning sebagai pendukung skill teknis Python.",
       icon: <Code />,
@@ -376,7 +375,7 @@ export default function Portfolio() {
       id: 13,
       title: "AI Training & Electives",
       issuer: "Generation Girl",
-      date: "2024",
+      date: "30 Agustus 2025",
       type: "Artificial Intelligence",
       desc: "Mengikuti perkembangan teknologi AI terkini dan penerapannya dalam kasus nyata.",
       icon: <Trophy />,
@@ -386,7 +385,7 @@ export default function Portfolio() {
       id: 14,
       title: "Data Classification (IBM Granite)",
       issuer: "IBM SkillsBuild",
-      date: "2024",
+      date: "10 Juni 2025",
       type: "Certification",
       desc: "Penyelesaian modul kompetensi teknis mengenai klasifikasi data menggunakan teknologi IBM.",
       icon: <ShieldCheck />,
@@ -394,10 +393,11 @@ export default function Portfolio() {
     }
   ];
 
-  return (
+return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-white relative">
       <Navbar activeTab={activeTab} scrollToSection={scrollToSection} />
       <HeroSection contactInfo={contactInfo} scrollToSection={scrollToSection} />
+      
       <div className="container mx-auto px-4 sm:px-6 space-y-16">
         <AboutSection />
         <ExperienceSection experience={experience} />
@@ -421,7 +421,10 @@ export default function Portfolio() {
           closeCertImage={closeCertImage} 
         />
       </div>
-      <ContactSection contactInfo={contactInfo} scrollToSection={scrollToSection} />
+      <section id="contact">
+          <ContactSection contactInfo={contactInfo} scrollToSection={scrollToSection} />
+      </section>
+      
     </div>
   );
 }

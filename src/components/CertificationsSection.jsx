@@ -61,7 +61,7 @@ export default function CertificationsSection({ allAchievements }) {
   return (
     <section id="certifications" className="max-w-6xl mx-auto scroll-mt-28 px-4 sm:px-6 mt-20 mb-20">
       
-      {/* --- HEADER --- */}
+      {/* HEADER */}
       <RevealOnScroll>
         <div className="flex flex-col mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4 text-white">
@@ -78,7 +78,7 @@ export default function CertificationsSection({ allAchievements }) {
         </div>
       </RevealOnScroll>
       
-      {/* --- GRID CARD --- */}
+      {/* GRID CARD */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {allAchievements.slice(0, visibleCount).map((item, idx) => (
           
@@ -119,7 +119,6 @@ export default function CertificationsSection({ allAchievements }) {
                   {item.desc}
                 </p>
                 
-                {/* Footer / CTA */}
                 <div className="pt-4 border-t border-slate-800 flex items-center justify-between mt-auto">
                    <div className="flex items-center gap-1.5 group-hover:gap-2 transition-all duration-300">
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
@@ -135,7 +134,7 @@ export default function CertificationsSection({ allAchievements }) {
         ))}
       </div>
 
-      {/* --- SHOW MORE BUTTON --- */}
+      {/* SHOW MORE BUTTON */}
       {allAchievements.length > 6 && (
         <RevealOnScroll delay={200}>
             <div className="mt-14 flex justify-center">
@@ -153,7 +152,7 @@ export default function CertificationsSection({ allAchievements }) {
         </RevealOnScroll>
       )}
 
-      {/* --- MODAL DETAIL (POPUP DENGAN GOOGLE DRIVE EMBED) --- */}
+      {/* MODAL DETAIL */}
       {selectedCert && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
           <div 
@@ -179,7 +178,6 @@ export default function CertificationsSection({ allAchievements }) {
             </div>
 
             {/* AREA UTAMA: GOOGLE DRIVE EMBED */}
-            {/* Ini bagian ajaibnya: iframe menampilkan preview dari link Drive */}
             <div className="flex-1 bg-slate-950 relative w-full h-full">
                 {selectedCert.link ? (
                     <iframe 
@@ -195,7 +193,6 @@ export default function CertificationsSection({ allAchievements }) {
                 )}
             </div>
 
-            {/* Footer Modal */}
             <div className="p-4 border-t border-slate-800 bg-slate-900 flex justify-between items-center">
                 <div className="text-xs text-slate-500 hidden sm:block">
                     Powered by Google Drive Preview

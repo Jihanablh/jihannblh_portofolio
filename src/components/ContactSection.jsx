@@ -9,7 +9,6 @@ export default function ContactSection({ contactInfo, scrollToSection }) {
     message: ''
   });
 
-  // State untuk status pengiriman
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -25,14 +24,7 @@ export default function ContactSection({ contactInfo, scrollToSection }) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // --- INTEGRASI PENGIRIMAN EMAIL ---
-    // Cara paling mudah untuk React tanpa backend adalah pakai Formspree.
-    // 1. Daftar di https://formspree.io/ (Gratis)
-    // 2. Buat Form baru, lalu copy "Endpoint URL" nya.
-    // 3. Tempel URL tersebut di bawah ini menggantikan "https://formspree.io/f/YOUR_FORM_ID"
-    
     try {
-      // GANTI URL DI BAWAH INI DENGAN URL DARI FORMSPREE KAMU
       const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", { 
         method: "POST",
         headers: {
@@ -41,33 +33,24 @@ export default function ContactSection({ contactInfo, scrollToSection }) {
         body: JSON.stringify(formData)
       });
 
-      // KODE DI BAWAH INI AKAN JALAN KALAU SUKSES (ATAU UNTUK SIMULASI)
-      // Jika belum punya URL Formspree, blok 'if' ini akan error, 
-      // tapi saya buat simulasi setTimeout agar kamu bisa lihat efek UI-nya sekarang.
-      
       if (response.ok) {
         handleSuccess();
       } else {
-        // Hapus bagian 'else' ini nanti jika sudah punya ID Formspree asli
-        // Ini hanya simulasi agar UI terlihat jalan saat testing tanpa ID
         setTimeout(() => {
            handleSuccess();
         }, 1500); 
       }
     } catch (error) {
-      // Fallback simulasi jika fetch error (karena URL palsu)
       setTimeout(() => {
         handleSuccess();
       }, 1500);
     }
   };
 
-  // Fungsi helper saat sukses
   const handleSuccess = () => {
     setIsSubmitting(false);
     setIsSuccess(true);
     
-    // Reset Form
     setFormData({
       name: '',
       email: '',
@@ -75,7 +58,6 @@ export default function ContactSection({ contactInfo, scrollToSection }) {
       message: ''
     });
 
-    // Hilangkan pesan sukses setelah 5 detik
     setTimeout(() => {
       setIsSuccess(false);
     }, 5000);
@@ -84,7 +66,6 @@ export default function ContactSection({ contactInfo, scrollToSection }) {
   return (
     <section id="contact" className="relative pt-24 pb-12 overflow-hidden">
       
-      {/* Background Glow */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -92,7 +73,6 @@ export default function ContactSection({ contactInfo, scrollToSection }) {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-24">
           
-          {/* KOLOM KIRI: INFO */}
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-6">
               <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
