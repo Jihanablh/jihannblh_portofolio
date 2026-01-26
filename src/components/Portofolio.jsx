@@ -83,27 +83,27 @@ export default function Portfolio() {
 
   const skills = [
     { category: "Programming Languages", icon: <Code size={32} />, items: ["Python", "SQL", "R", "C++", "JavaScript", "Bash Scripting"], gradient: "from-blue-500 via-cyan-500 to-teal-500", iconColor: "text-blue-400" },
-    { category: "Data Science & ML", icon: <Database size={32} />, items: ["Machine Learning", "Deep Learning", "NLP", "Data Mining", "Statistical Analysis", "Predictive Modeling"], gradient: "from-purple-500 via-pink-500 to-rose-500", iconColor: "text-purple-400" },
+    { category: "Business & Data Analytics", icon: <Database size={32} />, items: ["Data Analysis, Business Intelligence, Statistical Analysis, Customer & Market Analysis , Data-driven Decision Making"], gradient: "from-purple-500 via-pink-500 to-rose-500", iconColor: "text-purple-400" },
     { category: "Data Visualization", icon: <BarChart3 size={32} />, items: ["Tableau", "Power BI", "Google Looker Studio", "Matplotlib", "Seaborn", "Plotly"], gradient: "from-emerald-500 via-green-500 to-lime-500", iconColor: "text-emerald-400" },
     { category: "Tools & Platforms", icon: <Trophy size={32} />, items: ["Git & GitHub", "Docker", "Jupyter Lab", "PostgreSQL", "Google Cloud", "VS Code"], gradient: "from-orange-500 via-amber-500 to-yellow-500", iconColor: "text-orange-400" },
     { category: "Soft Skills", icon: <Users size={32} />, items: ["Data Storytelling", "Critical Thinking", "Problem Solving", "Project Management", "Team Collaboration"], gradient: "from-indigo-500 via-violet-500 to-fuchsia-500", iconColor: "text-indigo-400" }
   ];
 
-const projects = [
+  const projects = [
     {
       title: 'GoFood Marketing Analytics & Strategy',
-      category: 'Business Intelligence',
+      category: 'Business Analysis',
       shortDesc: 'Analisis performa kampanye marketing GoFood untuk optimasi budget dan konversi.',
-      description: 'Proyek Business Intelligence mendalam yang menganalisis efektivitas strategi pemasaran pada platform GoFood. Fokus utama adalah mengevaluasi Customer Acquisition Cost (CAC) dan Customer Lifetime Value (CLV) untuk memberikan rekomendasi berbasis data kepada tim marketing dalam mengalokasikan budget iklan.',
+      description: 'Proyek analisis bisnis yang bertujuan mengevaluasi efektivitas strategi pemasaran GoFood dan mendukung pengambilan keputusan tim marketing. Analisis difokuskan pada Customer Acquisition Cost (CAC) dan Customer Lifetime Value (CLV) untuk menyusun rekomendasi alokasi budget iklan yang lebih efisien dan berdampak pada peningkatan konversi.',
       challenges: ['Menggabungkan data transaksi organik dan paid-marketing yang terfragmentasi.', 'Mengidentifikasi segmentasi pelanggan berdasarkan perilaku pemesanan makanan.', 'Memvisualisasikan funnel konversi dari impresi hingga transaksi selesai.'],
       outcomes: ['Memberikan roadmap penghematan budget marketing sebesar 15% melalui penargetan ulang (retargeting).', 'Dashboard interaktif untuk memantau performa merchant mitra GoFood.', 'Rekomendasi promosi spesifik berdasarkan jam sibuk (peak hours).'],
       tech: ['SQL', 'Tableau', 'Marketing Analytics', 'Excel'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project01_GoFood_Marketing_Analysis', demo: '#',
-      images: ['public/images projects/Dashboard BI Gojek.png', 'public/images projects/Data BI Gojek.png']
+      images: ['/images projects/Dashboard BI Gojek.png', '/images projects/Data BI Gojek.png']
     },
     {
       title: 'Global Superstore Executive Dashboard',
-      category: 'Business Intelligence',
+      category: 'Business Analysis',
       shortDesc: 'Dashboard strategis untuk memantau profitabilitas ritel global.',
       description: 'Membangun dashboard eksekutif untuk jaringan ritel global "Superstore". Proyek ini berfokus pada visualisasi profitabilitas lintas negara, kategori produk, dan segmen pelanggan. Tujuannya adalah membantu C-Level mengidentifikasi pasar yang merugi (loss-making markets) dan produk unggulan.',
       challenges: ['Menangani dataset berskala besar dengan multi-currency dan data geografis.', 'Merancang hierarki visual yang memudahkan user melakukan drill-down dari level benua ke kota.', 'Menghitung metrik profitabilitas yang kompleks dengan penyesuaian biaya pengiriman.'],
@@ -135,7 +135,7 @@ const projects = [
       images: ['public/images projects/Dashboard BI HR.png', 'public/images projects/Data BI HR.png', 'public/images projects/Star Schema BI HR.png']
     },
     {
-    title: 'Global Layoffs Analysis: Business Intelligence & Trends',
+    title: 'Global Layoffs Analysis: Business Analysis & Trends',
     category: 'Data Science',
     shortDesc: 'Analisis mendalam tren PHK global menggunakan Python (IBM x Hacktiv8 Final Project).',
     description: 'Proyek Final IBM x Hacktiv8 yang menganalisis dataset PHK global untuk mengungkap pola ekonomi dan dampak sektoral. Mengintegrasikan pembersihan data (data cleaning), analisis eksploratif (EDA), dan visualisasi untuk memberikan wawasan strategis bagi industri dan pencari kerja.',
@@ -160,7 +160,7 @@ const projects = [
     // --- SECONDARY PROJECTS (UNTUK "SEE ALL") ---
     {
       title: 'Retail Sales Trend Analysis',
-      category: 'Business Intelligence',
+      category: 'Business Analysis',
       shortDesc: 'Identifikasi pola penjualan ritel untuk forecasting sederhana.',
       description: 'Analisis historis data penjualan ritel untuk melihat tren tahunan, bulanan, dan mingguan. Bertujuan untuk membantu manajer toko dalam mempersiapkan stok barang menjelang periode ramai (high season).',
       challenges: ['Mengidentifikasi pola musiman (seasonality) dari data mentah.', 'Memisahkan tren jangka panjang dari fluktuasi jangka pendek.'],
