@@ -167,7 +167,7 @@ export default function Portfolio() {
       outcomes: ['Visualisasi tren penjualan yang jelas dan mudah dipahami.', 'Identifikasi hari-hari dengan penjualan terendah untuk strategi promosi.'],
       tech: ['Excel', 'Tableau', 'Descriptive Analytics'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project3_Retail_Sales_Trend_Analysis', demo: '#',
-      images: ['https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1579621970563-ebec7560eb3e?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&q=80&w=800']
+      images: ['/images_projects/Dashboard_BI_Retail.png', '/images_projects/Data_BI_Retail.png']
     },
     {
       title: 'Marketing Customer Segmentation',
@@ -178,18 +178,7 @@ export default function Portfolio() {
       outcomes: ['Terbentuknya profil persona pelanggan (misal: Loyal, New, Churn Risk).', 'Strategi komunikasi yang berbeda untuk setiap segmen.'],
       tech: ['R Language', 'Data Analysis', 'Statistics'],
       github: 'https://github.com/Jihanablh/Bootcamp_DQLab/tree/main/project2_marketing_customer', demo: '#',
-      images: ['https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800']
-    },
-    {
-      title: 'COVID-19 Impact Analysis',
-      category: 'Data Science',
-      shortDesc: 'Analisis dampak pandemi COVID-19 terhadap berbagai sektor.',
-      description: 'Proyek eksplorasi data yang melihat korelasi antara penyebaran kasus COVID-19 dengan indikator mobilitas atau ekonomi. Menggunakan visualisasi data untuk menceritakan dampak pandemi secara kronologis.',
-      challenges: ['Pembersihan data kesehatan publik yang masif dan sering berubah format.', 'Visualisasi data deret waktu (time-series) yang fluktuatif.'],
-      outcomes: ['Timeline visual penyebaran kasus.', 'Insight mengenai efektivitas pembatasan sosial di berbagai wilayah.'],
-      tech: ['Python', 'Pandas', 'Folium', 'Matplotlib'],
-      github: 'https://github.com/Jihanablh/Bootcamp_IBM_X_Hacktiv8/tree/main/project1_covid_analysis', demo: '#',
-      images: ['https://images.unsplash.com/photo-1584036561566-b93a901ebb85?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1583324113626-70df0f4deaab?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&q=80&w=800']
+      images: ['/images_projects/Py_Marketing.png', '/images_projects/Py_Marketing2.png', '/images_projects/Py_Marketing3.png']
     },
     {
       title: 'Business Decision Research',
@@ -200,7 +189,7 @@ export default function Portfolio() {
       outcomes: ['Laporan rekomendasi keputusan berbasis fakta.', 'Validasi asumsi manajemen dengan data riil.'],
       tech: ['R Language', 'Statistics', 'Data Cleaning'],
       github: 'https://github.com/Jihanablh/Bootcamp_DQLab/tree/main/project1__business_decision', demo: '#',
-      images: ['https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1553484771-371af272b958?auto=format&fit=crop&q=80&w=800', 'https://images.unsplash.com/photo-1599658880436-c61792e70672?auto=format&fit=crop&q=80&w=800']
+      images: ['/images_projects/Py_Business.png', '/images_projects/Py_Marketing2.png', '/images_projects/Py_Marketing3.png']
     }
   ];
 
