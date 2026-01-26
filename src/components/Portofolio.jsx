@@ -99,7 +99,7 @@ export default function Portfolio() {
       outcomes: ['Memberikan roadmap penghematan budget marketing sebesar 15% melalui penargetan ulang (retargeting).', 'Dashboard interaktif untuk memantau performa merchant mitra GoFood.', 'Rekomendasi promosi spesifik berdasarkan jam sibuk (peak hours).'],
       tech: ['SQL', 'Tableau', 'Marketing Analytics', 'Excel'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project01_GoFood_Marketing_Analysis', demo: '#',
-      images: ['/images projects/Dashboard BI Gojek.png', '/images projects/Data BI Gojek.png']
+      images: ['/images_projects/Dashboard_BI_Gojek.png', '/images_projects/Data_BI_Gojek.png']
     },
     {
       title: 'Global Superstore Executive Dashboard',
@@ -110,7 +110,7 @@ export default function Portfolio() {
       outcomes: ['Identifikasi 3 negara dengan performa terburuk untuk evaluasi strategi pasar.', 'Peningkatan visibilitas terhadap tren penjualan musiman.', 'Dashboard interaktif yang menjadi standar pelaporan bulanan.'],
       tech: ['Power BI', 'Data Modeling', 'DAX', 'SQL'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project4_Global_Superstore_Analytics', demo: '#',
-      images: ['public/images projects/Dashboard BI Global.png', 'public/images projects/Data BI Global.png']
+      images: ['/images_projects/Dashboard_BI_Global.png', '/images_projects/Data_BI_Global.png']
     },
     {
       title: 'E-Commerce Sales Performance Analysis',
@@ -121,7 +121,7 @@ export default function Portfolio() {
       outcomes: ['Menemukan korelasi kuat antara keterlambatan pengiriman dan penurunan rating toko.', 'Rekomendasi bundling produk yang meningkatkan rata-rata nilai transaksi (AOV).', 'Laporan tren kategori produk terlaris per kuartal.'],
       tech: ['Python', 'Pandas', 'Seaborn', 'Matplotlib'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project5_Ecommerce_Sales_Analysis', demo: '#',
-      images: ['public/images projects/Dashboard BI Ecommerce.png', 'public/images projects/Data BI Ecommerce.png', 'public/images projects/Star Schema BI Ecommerce.png']
+      images: ['/images_projects/Dashboard_BI_Ecommerce.png', '/images_projects/Data_BI_Ecommerce.png', 'public/images projects/Star Schema BI Ecommerce.png']
     },
     {
       title: 'HR Analytics: Workforce Architecture',
@@ -132,7 +132,7 @@ export default function Portfolio() {
       outcomes: ['Dashboard Diversity & Inclusion untuk memantau target kesetaraan perusahaan.', 'Identifikasi departemen dengan tingkat promosi internal tertinggi.', 'Analisis kompensasi untuk memastikan keadilan gaji internal.'],
       tech: ['Looker Studio', 'SQL', 'HR Metrics', 'Spreadsheet'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project2_HR_Analytics_Architecture', demo: '#',
-      images: ['public/images projects/Dashboard BI HR.png', 'public/images projects/Data BI HR.png', 'public/images projects/Star Schema BI HR.png']
+      images: ['/images_projects/Dashboard_BI_HR.png', '/images_projects/Data_BI_HR.png', '/images_projects/Star_Schema_BI_HR.png']
     },
     {
     title: 'Global Layoffs Analysis: Business Analysis & Trends',
