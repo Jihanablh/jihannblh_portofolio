@@ -88,7 +88,7 @@ export default function AboutSection() {
                     Saya adalah mahasiswa semester 6 <span className="text-white font-semibold underline decoration-blue-500/50 underline-offset-4 decoration-2">Sistem Informasi</span> di Universitas Bakrie, dengan minat kuat pada analisis data dan penerjemahan insight menjadi strategi bisnis yang berdampak.
                   </p>
                   <p className="text-justify">
-                    Saya telah menyelesaikan magang sebagai <span className="text-purple-300 font-semibold bg-purple-500/10 px-1 rounded">Data Analyst / Data Science Intern</span> di Vinix7, berfokus pada analisis data, pembuatan laporan, dan otomatisasi reporting untuk mendukung pengambilan keputusan. Saat ini aktif memimpin inisiatif <span className="text-green-300 font-semibold bg-green-500/10 px-1 rounded">People Analytics</span> di IEEE Student Branch untuk menganalisis data SDM dan meningkatkan efektivitas organisasi.
+                    Saya telah menyelesaikan magang sebagai <span className="text-purple-300 font-semibold bg-purple-500/10 px-1 rounded">Junior Data Science Intern</span> di Vinix7, berfokus pada analisis data, pembuatan laporan, dan otomatisasi reporting untuk mendukung pengambilan keputusan. Saat ini aktif memimpin inisiatif <span className="text-green-300 font-semibold bg-green-500/10 px-1 rounded">People Analytics</span> di IEEE Student Branch untuk menganalisis data SDM dan meningkatkan efektivitas organisasi.
                   </p>
                 </div>
 
