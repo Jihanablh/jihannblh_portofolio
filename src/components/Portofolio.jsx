@@ -270,7 +270,7 @@ export default function Portfolio() {
       type: "Data Science",
       desc: "Studi kasus nyata melakukan segmentasi pelanggan (Clustering) menggunakan algoritma Machine Learning dengan Python.",
       icon: <Users />,
-      link: "https://drive.google.com/file/d/1Z2ux4WqLNUC0wA9je4rKaB0k9Td856dx/view?usp=drive_link", "https://drive.google.com/file/d/1lzGdlFK24H8U6-s5NwekMmuyqORLpb7X/view?usp=drive_link" // Cek Link: Customer Segmentation
+      link: "https://drive.google.com/file/d/1lzGdlFK24H8U6-s5NwekMmuyqORLpb7X/view?usp=drive_link" // Cek Link: Customer Segmentation
     },
     {
       id: 3,
