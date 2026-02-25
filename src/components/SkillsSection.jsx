@@ -7,25 +7,26 @@ export default function SkillsSection({ skills }) {
   const bottomRow = skills.filter((_, i) => i % 2 !== 0);
 
   return (
-    <section id="skills" className="max-w-5xl mx-auto scroll-mt-28 px-4 mt-20 mb-20 overflow-hidden">
-      
-      <div className="mb-12 relative z-10">
-        
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6 flex items-center gap-4">
-          <div className="p-3 bg-slate-800 rounded-xl border border-slate-700 shadow-lg shadow-blue-900/20">
-             <Code className="text-blue-400 w-8 h-8" />
-          </div>
-          <span className="bg-gradient-to-r from-white via-slate-200 to-slate-500 bg-clip-text text-transparent">
-            Skills & Expertise
-          </span>
-        </h2>
+    <section id="skills" className="w-full scroll-mt-28 mt-20 mb-24 overflow-hidden">
 
-        <p className="text-slate-400 max-w-2xl text-lg leading-relaxed ml-1">
-          A continuous loop of my technical stack, tools, and methodologies.
-        </p>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 text-left relative z-10">
+        
+        <div className="flex flex-col mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4 text-white">
+                <div className="p-3 bg-slate-800 rounded-xl border border-slate-700 shadow-lg shadow-blue-900/20">
+                    <Code className="text-blue-400" />
+                </div>
+                <span className="bg-gradient-to-r from-white via-slate-200 to-slate-500 bg-clip-text text-transparent">
+                    Skills & Expertise
+                </span>
+            </h2>
+            <p className="text-slate-400 mt-4 ml-1 text-sm sm:text-base max-w-2xl leading-relaxed">
+                A continuous loop of my technical stack, tools, and methodologies.
+            </p>
+        </div>
       </div>
 
-      <div className="flex flex-col gap-6 relative z-10 w-full">
+      <div className="flex flex-col gap-6 w-full relative z-10">
         <MarqueeRow items={topRow} direction="left" speed="45s" />
         <MarqueeRow items={bottomRow} direction="right" speed="50s" />
       </div>
@@ -45,9 +46,9 @@ function MarqueeRow({ items, direction = "left", speed = "30s" }) {
   const duplicatedItems = [...allSkillsInRow, ...allSkillsInRow, ...allSkillsInRow]; 
 
   return (
-    <div className="relative flex overflow-hidden group">
+    <div className="relative flex overflow-hidden group w-full">
       <div 
-        className={`flex gap-4 sm:gap-6 py-4 animate-marquee-${direction} group-hover:[animation-play-state:paused]`}
+        className={`flex gap-4 sm:gap-6 py-4 animate-marquee-${direction} group-hover:[animation-play-state:paused] w-max`} // w-max penting agar tidak terpotong
         style={{ 
           animationDuration: speed,
         }}
