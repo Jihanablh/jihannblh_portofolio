@@ -3,7 +3,7 @@ import {
   BarChart3, Database, TrendingUp, Code, Mail, Linkedin, Github, 
   Award, Briefcase, GraduationCap, ChevronRight, Users, Trophy, 
   ExternalLink, FileText, X, ChevronLeft, Calendar, MapPin, Grid, 
-  Eye, ChevronDown, ChevronUp, ShieldCheck
+  Eye, ChevronDown, ChevronUp, ShieldCheck, Layout, Server, Smartphone, Globe, Cpu, Terminal 
 } from 'lucide-react';
 
 import Navbar from './Navbar';
@@ -243,11 +243,42 @@ export default function Portfolio() {
   ];
 
   const skills = [
-    { category: "Programming Languages", icon: <Code size={32} />, items: ["Python", "SQL", "R", "C++", "JavaScript", "Bash Scripting"], gradient: "from-blue-500 via-cyan-500 to-teal-500", iconColor: "text-blue-400" },
-    { category: "Business & Data Analytics", icon: <Database size={32} />, items: ["Data Analysis", "Business Intelligence", "Statistical Analysis", "Customer & Market Analysis", "Data-driven Decision Making"], gradient: "from-purple-500 via-pink-500 to-rose-500", iconColor: "text-purple-400" },
-    { category: "Data Visualization", icon: <BarChart3 size={32} />, items: ["Tableau", "Power BI", "Google Looker Studio", "Matplotlib", "Seaborn", "Plotly"], gradient: "from-emerald-500 via-green-500 to-lime-500", iconColor: "text-emerald-400" },
-    { category: "Tools & Platforms", icon: <Trophy size={32} />, items: ["Git & GitHub", "Docker", "Jupyter Lab", "PostgreSQL", "Google Cloud", "VS Code"], gradient: "from-orange-500 via-amber-500 to-yellow-500", iconColor: "text-orange-400" },
-    { category: "Soft Skills", icon: <Users size={32} />, items: ["Data Storytelling", "Critical Thinking", "Problem Solving", "Project Management", "Team Collaboration"], gradient: "from-indigo-500 via-violet-500 to-fuchsia-500", iconColor: "text-indigo-400" }
+    { 
+      category: "Programming", 
+      icon: <Code />, 
+      items: ["Python", "SQL", "R", "C++", "JavaScript", "Bash Scripting", "HTML/CSS"], 
+      iconColor: "text-blue-400" 
+    },
+    { 
+      category: "Data Analysis", 
+      icon: <Database />, 
+      items: ["Data Cleaning", "Business Intelligence", "Statistical Analysis", "A/B Testing", "ETL Pipelines", "Data Warehousing"], 
+      iconColor: "text-purple-400" 
+    },
+    { 
+      category: "Visualization", 
+      icon: <BarChart3 />, 
+      items: ["Tableau", "Power BI", "Looker Studio", "Matplotlib", "Seaborn", "Plotly", "Streamlit"], 
+      iconColor: "text-pink-400" 
+    },
+    { 
+      category: "Machine Learning", 
+      icon: <Cpu />, 
+      items: ["Scikit-Learn", "TensorFlow", "K-Means Clustering", "Regression", "Random Forest", "Neural Networks"], 
+      iconColor: "text-emerald-400" 
+    },
+    { 
+      category: "Tools", 
+      icon: <Terminal />, 
+      items: ["Git", "GitHub", "Docker", "Jupyter", "VS Code", "PostgreSQL", "Google Cloud Platform"], 
+      iconColor: "text-orange-400" 
+    },
+    { 
+      category: "Soft Skills", 
+      icon: <Users />, 
+      items: ["Data Storytelling", "Critical Thinking", "Problem Solving", "Agile/Scrum", "Team Collaboration", "Public Speaking"], 
+      iconColor: "text-yellow-400" 
+    }
   ];
 
   const allAchievements = [ 
