@@ -8,10 +8,8 @@ export default function SkillsSection({ skills }) {
   return (
     <section id="skills" className="py-24 relative overflow-hidden">
       
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[400px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="container mx-auto px-6 mb-16 relative z-10 text-left">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+      <div className="container mx-auto px-4 sm:px-6 mb-10 relative z-10 text-left">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight">
           Skills & <span className="text-blue-500">Expertise</span>
         </h2>
         <p className="text-slate-400 max-w-2xl text-lg leading-relaxed">
