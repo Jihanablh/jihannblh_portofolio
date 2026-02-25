@@ -1,4 +1,5 @@
 import React from 'react';
+import { Code } from 'lucide-react';
 
 export default function SkillsSection({ skills }) {
   
@@ -8,11 +9,18 @@ export default function SkillsSection({ skills }) {
   return (
     <section id="skills" className="py-24 relative overflow-hidden">
       
-      <div className="container mx-auto px-4 sm:px-6 mb-10 relative z-10 text-left">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight">
-          Skills & <span className="text-blue-500">Expertise</span>
+      <div className="container mx-auto px-4 sm:px-6 mb-12 relative z-10">
+        
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 flex items-center gap-4">
+          <div className="p-3 bg-slate-800 rounded-xl border border-slate-700 shadow-lg shadow-blue-900/20">
+             <Code className="text-blue-400 w-8 h-8" />
+          </div>
+          <span className="bg-gradient-to-r from-white via-slate-200 to-slate-500 bg-clip-text text-transparent">
+            Skills & Expertise
+          </span>
         </h2>
-        <p className="text-slate-400 max-w-2xl text-lg leading-relaxed">
+
+        <p className="text-slate-400 max-w-2xl text-lg leading-relaxed ml-1">
           A continuous loop of my technical stack, tools, and methodologies.
         </p>
       </div>
