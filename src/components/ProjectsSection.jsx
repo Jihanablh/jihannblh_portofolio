@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Briefcase, ChevronRight, X, ChevronLeft, Github, ExternalLink, FileText, ChevronDown, ChevronUp, Layers } from 'lucide-react';
 
-// KOMPONEN ANIMASI SCROLL
 const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -69,7 +68,6 @@ export default function ProjectsSection({
   return (
     <section id="projects" className="max-w-6xl mx-auto scroll-mt-28 px-4 sm:px-6 mt-20 mb-20">
       
-      {/* HEADER */}
       <RevealOnScroll>
         <div className="flex flex-col mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4 text-white">
@@ -86,7 +84,6 @@ export default function ProjectsSection({
         </div>
       </RevealOnScroll>
 
-      {/* GRID PROJECTS */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.slice(0, visibleCount).map((project, idx) => (
           <RevealOnScroll key={idx} delay={idx * 100} className="h-full">
@@ -142,7 +139,6 @@ export default function ProjectsSection({
         ))}
       </div>
 
-      {/* TOMBOL SHOW MORE / LESS */}
       {projects.length > 6 && (
         <RevealOnScroll delay={300}>
             <div className="mt-16 flex justify-center">
@@ -167,7 +163,6 @@ export default function ProjectsSection({
         </RevealOnScroll>
       )}
 
-      {/* MODAL DETAIL PROJECT */}
       {selectedProject && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6">
           
@@ -187,7 +182,6 @@ export default function ProjectsSection({
 
             <div className="flex flex-col">
               
-              {/* Carousel Gambar (Hero) */}
               <div 
                 className="relative w-full h-72 sm:h-[500px] bg-slate-950 group shrink-0 select-none"
                 onMouseEnter={() => setIsHovered(true)}
@@ -196,12 +190,10 @@ export default function ProjectsSection({
                 <img 
                   src={selectedProject.images[currentImageIndex]} 
                   alt={selectedProject.title} 
-                  // 1. Zoom effect dihapus, hanya object-cover biasa
                   className="w-full h-full object-cover transition-opacity duration-500" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent"></div>
 
-                {/* Navigation Buttons */}
                 <button 
                   onClick={(e) => { e.stopPropagation(); prevImage(); }}
                   className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/20 hover:bg-blue-600/80 backdrop-blur-md rounded-full text-white transition-all opacity-0 group-hover:opacity-100 border border-white/10 hover:border-blue-400 hover:scale-110"
@@ -215,7 +207,6 @@ export default function ProjectsSection({
                   <ChevronRight size={24} />
                 </button>
 
-                {/* Indicators */}
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
                   {selectedProject.images.map((_, idx) => (
                     <div 
@@ -226,7 +217,6 @@ export default function ProjectsSection({
                 </div>
               </div>
 
-              {/* Detail Konten (Text) */}
               <div className="p-8 sm:p-12 -mt-20 relative z-10">
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 border-b border-slate-800 pb-8">
                   <div className="flex-1 space-y-4">

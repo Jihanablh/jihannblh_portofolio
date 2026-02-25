@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code } from 'lucide-react';
+import { Code } from 'lucide-react'; 
 
 export default function SkillsSection({ skills }) {
   
@@ -7,9 +7,9 @@ export default function SkillsSection({ skills }) {
   const bottomRow = skills.filter((_, i) => i % 2 !== 0);
 
   return (
-    <section id="skills" className="py-24 relative overflow-hidden">
+    <section id="skills" className="max-w-5xl mx-auto scroll-mt-28 px-4 mt-20 mb-20 overflow-hidden">
       
-      <div className="container mx-auto px-4 sm:px-6 mb-12 relative z-10">
+      <div className="mb-12 relative z-10">
         
         <h2 className="text-3xl sm:text-4xl font-bold mb-6 flex items-center gap-4">
           <div className="p-3 bg-slate-800 rounded-xl border border-slate-700 shadow-lg shadow-blue-900/20">
@@ -25,7 +25,7 @@ export default function SkillsSection({ skills }) {
         </p>
       </div>
 
-      <div className="flex flex-col gap-8 relative z-10 w-full">
+      <div className="flex flex-col gap-6 relative z-10 w-full">
         <MarqueeRow items={topRow} direction="left" speed="45s" />
         <MarqueeRow items={bottomRow} direction="right" speed="50s" />
       </div>

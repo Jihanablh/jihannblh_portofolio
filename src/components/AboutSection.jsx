@@ -42,7 +42,6 @@ export default function AboutSection() {
   return (
     <section id="about" className="max-w-6xl mx-auto scroll-mt-28 px-4 mt-20 mb-20">
       
-      {/* Header */}
       <RevealOnScroll delay={0}>
         <h2 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-3">
           <div className="p-2 bg-slate-800 rounded-lg border border-slate-700 shadow-lg shadow-blue-900/20">
@@ -56,7 +55,6 @@ export default function AboutSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">            
         
-        {/* Left Column */}
         <div className="lg:col-span-2 h-full">
           <RevealOnScroll delay={200} className="h-full">
             <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800/50 backdrop-blur-xl rounded-3xl p-8 border border-white/5 hover:border-blue-500/30 transition-all duration-500 group relative overflow-hidden h-full shadow-2xl hover:shadow-blue-500/10">
@@ -66,7 +64,6 @@ export default function AboutSection() {
               
               <div className="relative z-10 flex flex-col h-full">
                 
-                {/* Intro */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8 border-b border-white/5 pb-6">
                   <div className="flex-1">
                     <h3 className="text-3xl font-bold text-white flex items-center gap-3">
@@ -82,7 +79,6 @@ export default function AboutSection() {
                   </span>
                 </div>
 
-                {/* Bio */}
                 <div className="space-y-6 text-lg text-slate-300 leading-relaxed flex-grow">
                   <p className="text-justify">
                     Saya adalah mahasiswa semester 6 <span className="text-white font-semibold underline decoration-blue-500/50 underline-offset-4 decoration-2">Sistem Informasi</span> di Universitas Bakrie, dengan minat kuat pada analisis data dan penerjemahan insight menjadi strategi bisnis yang berdampak.
@@ -92,7 +88,6 @@ export default function AboutSection() {
                   </p>
                 </div>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-3 mt-8 pt-6 border-t border-white/5">
                   {[
                     { icon: <Database size={16} />, text: "Data Analysis", color: "blue" },
@@ -112,10 +107,8 @@ export default function AboutSection() {
           </RevealOnScroll>
         </div>
 
-        {/* Right Column */}
         <div className="flex flex-col gap-6 lg:h-full">
           
-          {/* Education */}
           <RevealOnScroll delay={400} className="flex-1">
             <div className="bg-slate-900/80 backdrop-blur-md rounded-3xl p-6 border border-slate-700 hover:border-purple-500/50 transition-all duration-300 flex flex-col justify-center h-full group hover:shadow-xl hover:shadow-purple-900/20 hover:-translate-y-1 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -147,7 +140,6 @@ export default function AboutSection() {
             </div>
           </RevealOnScroll>
 
-          {/* Status */}
           <RevealOnScroll delay={600} className="flex-1">
             <div className="bg-slate-900/80 backdrop-blur-md rounded-3xl p-6 border border-slate-700 hover:border-green-500/50 transition-all duration-300 flex flex-col justify-center h-full group hover:shadow-xl hover:shadow-green-900/20 hover:-translate-y-1 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>

@@ -4,21 +4,16 @@ import {
   Briefcase, Award, GraduationCap 
 } from 'lucide-react';
 
-// Pastikan menerima props: contactInfo & scrollToSection
 export default function HeroSection({ contactInfo, scrollToSection }) {
   
-  // --- 🛡️ BAGIAN PENGAMAN (SAFETY CHECK) ---
-  // Jika data contactInfo belum diterima, jangan render apa-apa (atau loading)
-  // Ini mencegah layar putih "Cannot read properties of undefined"
   if (!contactInfo) {
-    console.log("Menunggu data contactInfo..."); // Cek di Console browser
+    console.log("Menunggu data contactInfo..."); 
     return <div className="min-h-screen flex items-center justify-center text-white">Loading...</div>;
   }
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 pb-10">
       
-      {/* Background Effects */}
       <div className="absolute inset-0 bg-slate-950">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] animate-pulse"></div>
@@ -27,7 +22,6 @@ export default function HeroSection({ contactInfo, scrollToSection }) {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col h-full justify-between">
         
-        {/* BIO & TEXT */}
         <div className="flex-1 flex flex-col justify-center items-center text-center">
           
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-blue-300 text-xs sm:text-sm font-medium mb-6 shadow-lg cursor-default">
@@ -72,7 +66,6 @@ export default function HeroSection({ contactInfo, scrollToSection }) {
           <div className="flex items-center justify-center gap-6 mb-8">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-slate-700"></div>
             <div className="flex gap-6">
-              {/* Pastikan menggunakan optional chaining (?.) biar aman */}
               <a href={contactInfo?.linkedin || '#'} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-all transform hover:scale-110"><Linkedin size={24} /></a>
               <a href={contactInfo?.github || '#'} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-purple-400 transition-all transform hover:scale-110"><Github size={24} /></a>
               <a href={`mailto:${contactInfo?.email}`} className="text-slate-400 hover:text-pink-400 transition-all transform hover:scale-110"><Mail size={24} /></a>
@@ -81,7 +74,6 @@ export default function HeroSection({ contactInfo, scrollToSection }) {
           </div>
         </div>
 
-        {/* STATS */}
         <div className="w-full max-w-6xl mx-auto mt-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="relative group bg-slate-900 border border-slate-800 rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-900/20 text-left">

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Trophy, Award, X, ChevronDown, ChevronUp, ExternalLink, Calendar, ShieldCheck, Code, Database, BarChart3, TrendingUp } from 'lucide-react';
 
-// --- ANIMATION HELPER ---
 const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -37,10 +36,8 @@ export default function CertificationsSection({ allAchievements }) {
   const [visibleCount, setVisibleCount] = useState(6);
   const [selectedCert, setSelectedCert] = useState(null);
 
-  // --- FUNGSI AJAIB: Mengubah Link Drive jadi Embed Preview ---
   const getEmbedUrl = (url) => {
     if (!url) return "";
-    // Mengambil ID dari URL Google Drive
     const idMatch = url.match(/id=([a-zA-Z0-9_-]+)/);
     if (idMatch && idMatch[1]) {
       return `https://drive.google.com/file/d/${idMatch[1]}/preview`;
@@ -61,7 +58,6 @@ export default function CertificationsSection({ allAchievements }) {
   return (
     <section id="certifications" className="max-w-6xl mx-auto scroll-mt-28 px-4 sm:px-6 mt-20 mb-20">
       
-      {/* HEADER */}
       <RevealOnScroll>
         <div className="flex flex-col mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-4 text-white">
@@ -78,7 +74,6 @@ export default function CertificationsSection({ allAchievements }) {
         </div>
       </RevealOnScroll>
       
-      {/* GRID CARD */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {allAchievements.slice(0, visibleCount).map((item, idx) => (
           
@@ -87,13 +82,9 @@ export default function CertificationsSection({ allAchievements }) {
               onClick={() => setSelectedCert(item)}
               className="cursor-pointer group relative h-full bg-slate-900 border border-slate-800 rounded-2xl p-6 overflow-hidden hover:border-purple-500/40 transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.15)] hover:-translate-y-2"
             >
-              {/* Background Glow */}
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-600/5 blur-[60px] rounded-full group-hover:bg-purple-600/10 transition-all z-0"></div>
-              
-              {/* Content */}
               <div className="relative z-10 flex flex-col h-full">
                 
-                {/* Header Card */}
                 <div className="flex justify-between items-start mb-6">
                   <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     {item.icon && React.cloneElement(item.icon, { className: "text-slate-400 group-hover:text-purple-400 transition-colors" })}
@@ -104,7 +95,6 @@ export default function CertificationsSection({ allAchievements }) {
                   </span>
                 </div>
 
-                {/* Title & Info */}
                 <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors leading-snug line-clamp-2">
                   {item.title}
                 </h3>
@@ -134,7 +124,6 @@ export default function CertificationsSection({ allAchievements }) {
         ))}
       </div>
 
-      {/* SHOW MORE BUTTON */}
       {allAchievements.length > 6 && (
         <RevealOnScroll delay={200}>
             <div className="mt-14 flex justify-center">
@@ -152,7 +141,6 @@ export default function CertificationsSection({ allAchievements }) {
         </RevealOnScroll>
       )}
 
-      {/* MODAL DETAIL */}
       {selectedCert && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
           <div 
@@ -162,7 +150,6 @@ export default function CertificationsSection({ allAchievements }) {
           
           <div className="relative w-full max-w-5xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-300 h-[85vh]">
             
-            {/* Header Modal */}
             <div className="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-900 z-10">
               <div className="flex items-center gap-3">
                  <h3 className="text-lg sm:text-xl font-bold text-white truncate max-w-[200px] sm:max-w-md">
@@ -177,7 +164,6 @@ export default function CertificationsSection({ allAchievements }) {
               </button>
             </div>
 
-            {/* AREA UTAMA: GOOGLE DRIVE EMBED */}
             <div className="flex-1 bg-slate-950 relative w-full h-full">
                 {selectedCert.link ? (
                     <iframe 
