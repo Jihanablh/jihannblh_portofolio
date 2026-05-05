@@ -83,18 +83,19 @@ export default function Portfolio() {
 
   const experience = [
     {
-      role: 'Junior Data Scientist (Studi Independen)',
-      company: 'PT Vinix Seven Aurum (MSIB Batch 3)',
-      period: 'Aug 2025 - Dec 2025',
+      role: 'Data Analyst Intern',
+      company: 'PT Vinix Seven Aurum (MSIB Kampus Merdeka)',
+      period: 'Jan 2026 - Apr 2026',
       type: 'Professional',
-      summary: 'Terpilih dalam program MSIB Kampus Merdeka "Junior Data Scientist" dengan kurikulum industri intensif. Bertanggung jawab menyelesaikan siklus penuh data sains (End-to-End Data Science Lifecycle) mulai dari akuisisi data, pembersihan (cleansing), eksplorasi (EDA), hingga penyajian insight bisnis. Fokus pada penerapan teknis Python dan SQL untuk memecahkan studi kasus di berbagai sektor industri.',
+      summary: 'Bertanggung jawab dalam siklus data analytics secara end-to-end dalam program MSIB Kampus Merdeka. Mengelola pembersihan data kompleks, Exploratory Data Analysis (EDA) mendalam, hingga rekayasa dashboard Business Intelligence (BI) interaktif. Fokus pada penerjemahan data menjadi visualisasi dan insight strategis untuk mendukung keputusan manajemen perusahaan.',
       achievements: [
-        'Melakukan Data Acquisition & Cleansing pada dataset mentah (Raw Data) menggunakan Python (Pandas) di Google Colab, memastikan integritas data siap olah.',
-        'Mengimplementasikan Exploratory Data Analysis (EDA) dan teknik Cluster Analysis untuk menemukan pola tersembunyi serta segmentasi data yang mendukung strategi bisnis.',
-        'Menyelesaikan Final Capstone Project yang mengintegrasikan analisis statistik dan pemodelan data, serta mempresentasikan temuan (Actionable Insights) menggunakan teknik Data Storytelling & Infografis.',
-        'Menguasai penggunaan AI Tools untuk efisiensi pengolahan data dan pembuatan laporan kinerja berbasis data yang akurat.'
+        'Mengeksekusi alur kerja pembersihan dan manipulasi data (data wrangling) menggunakan formula Advanced Excel (Pivot, Lookup) dan teknik AI prompting.',
+        'Melakukan Exploratory Data Analysis (EDA) dan pengujian statistik (hipotesis, regresi) menggunakan Python (Matplotlib, Seaborn) untuk mengungkap tren dan korelasi data.',
+        'Membangun dashboard Business Intelligence (BI) interaktif menggunakan Tableau dan Google Data Studio untuk memantau metrik performa bulanan secara terpusat.',
+        'Menerjemahkan temuan analitis yang kompleks menjadi infografis dan narasi visual menggunakan prinsip Data Storytelling untuk manajemen strategis.',
+        'Menyelesaikan Final Capstone Project analitik data secara end-to-end dan mempresentasikan rekomendasi strategis kepada mentor teknis dan evaluator.'
       ],
-      tech: ['Python', 'SQL', 'Google Colab', 'Pandas', 'Data Storytelling', 'Cluster Analysis']
+      tech: ['Excel', 'Python', 'Tableau', 'Google Data Studio', 'Matplotlib', 'Seaborn', 'Data Storytelling', 'BI Dashboards']
     },
     {
       role: 'Asisten Dosen Sistem Operasi',
