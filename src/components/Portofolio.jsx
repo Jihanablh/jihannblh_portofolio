@@ -89,7 +89,7 @@ export default function Portfolio() {
       type: 'Professional',
       summary: 'Bertanggung jawab dalam siklus data analytics secara end-to-end dalam program MSIB Kampus Merdeka. Mengelola pembersihan data kompleks, Exploratory Data Analysis (EDA) mendalam, hingga rekayasa dashboard Business Intelligence (BI) interaktif. Fokus pada penerjemahan data menjadi visualisasi dan insight strategis untuk mendukung keputusan manajemen perusahaan.',
       achievements: [
-        'Mengeksekusi alur kerja pembersihan dan manipulasi data (data wrangling) menggunakan formula Advanced Excel (Pivot, Lookup) dan teknik AI prompting.',
+        'Mengeksekusi alur kerja pembersihan dan manipulasi data menggunakan formula Advanced Excel (Pivot, Lookup) dan teknik AI prompting.',
         'Melakukan Exploratory Data Analysis (EDA) dan pengujian statistik (hipotesis, regresi) menggunakan Python (Matplotlib, Seaborn) untuk mengungkap tren dan korelasi data.',
         'Membangun dashboard Business Intelligence (BI) interaktif menggunakan Tableau dan Google Data Studio untuk memantau metrik performa bulanan secara terpusat.',
         'Menerjemahkan temuan analitis yang kompleks menjadi infografis dan narasi visual menggunakan prinsip Data Storytelling untuk manajemen strategis.',
