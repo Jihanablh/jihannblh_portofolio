@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   BarChart3, Database, TrendingUp, Code, Mail, Linkedin, Github, 
   Award, Briefcase, GraduationCap, ChevronRight, Users, Trophy, 
@@ -145,101 +145,195 @@ export default function Portfolio() {
     {
       title: 'GoFood Marketing Analytics & Strategy',
       category: 'Business Analysis',
+      projectGroup: 'Data Analytics & BI',
       shortDesc: 'Analisis performa kampanye marketing GoFood untuk optimasi budget dan konversi.',
       description: 'Proyek analisis bisnis yang bertujuan mengevaluasi efektivitas strategi pemasaran GoFood dan mendukung pengambilan keputusan tim marketing. Analisis difokuskan pada Customer Acquisition Cost (CAC) dan Customer Lifetime Value (CLV) untuk menyusun rekomendasi alokasi budget iklan yang lebih efisien dan berdampak pada peningkatan konversi.',
       challenges: ['Menggabungkan data transaksi organik dan paid-marketing yang terfragmentasi.', 'Mengidentifikasi segmentasi pelanggan berdasarkan perilaku pemesanan makanan.', 'Memvisualisasikan funnel konversi dari impresi hingga transaksi selesai.'],
       outcomes: ['Memberikan roadmap penghematan budget marketing sebesar 15% melalui penargetan ulang (retargeting).', 'Dashboard interaktif untuk memantau performa merchant mitra GoFood.', 'Rekomendasi promosi spesifik berdasarkan jam sibuk (peak hours).'],
       tech: ['SQL', 'Tableau', 'Marketing Analytics', 'Excel'],
-      github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project01_GoFood_Marketing_Analysis', demo: '#',
-      images: ['/images_projects/Dashboard_BI_Gojek.png', '/images_projects/Data_BI_Gojek.png']
+      github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project01_GoFood_Marketing_Analysis', demo: '',
+      images: ['/images_projects_data_analis/BI_Gojek/Dashboard_BI_Gojek.png', '/images_projects_data_analis/BI_Gojek/Data_BI_Gojek.png']
     },
     {
       title: 'Global Superstore Executive Dashboard',
       category: 'Business Analysis',
+      projectGroup: 'Data Analytics & BI',
       shortDesc: 'Dashboard strategis untuk memantau profitabilitas ritel global.',
       description: 'Membangun dashboard eksekutif untuk jaringan ritel global "Superstore". Proyek ini berfokus pada visualisasi profitabilitas lintas negara, kategori produk, dan segmen pelanggan. Tujuannya adalah membantu C-Level mengidentifikasi pasar yang merugi (loss-making markets) dan produk unggulan.',
       challenges: ['Menangani dataset berskala besar dengan multi-currency dan data geografis.', 'Merancang hierarki visual yang memudahkan user melakukan drill-down dari level benua ke kota.', 'Menghitung metrik profitabilitas yang kompleks dengan penyesuaian biaya pengiriman.'],
       outcomes: ['Identifikasi 3 negara dengan performa terburuk untuk evaluasi strategi pasar.', 'Peningkatan visibilitas terhadap tren penjualan musiman.', 'Dashboard interaktif yang menjadi standar pelaporan bulanan.'],
       tech: ['Power BI', 'Data Modeling', 'DAX', 'SQL'],
-      github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project4_Global_Superstore_Analytics', demo: '#',
-      images: ['/images_projects/Dashboard_BI_Global.png', '/images_projects/Data_BI_Global.png']
+      github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project4_Global_Superstore_Analytics', demo: '',
+      images: ['/images_projects_data_analis/BI_Global/Dashboard_BI_Global.png', '/images_projects_data_analis/BI_Global/Data_BI_Global.png']
     },
     {
       title: 'E-Commerce Sales Performance Analysis',
       category: 'Data Analysis',
+      projectGroup: 'Data Analytics & BI',
       shortDesc: 'Analisis tren penjualan e-commerce untuk perencanaan stok dan promosi.',
       description: 'Analisis komprehensif terhadap data transaksi e-commerce untuk memahami perilaku belanja konsumen. Proyek ini menggali pola pembelian (basket analysis), churn rate pelanggan, dan efektivitas metode pembayaran. Hasil analisis digunakan untuk strategi inventory planning.',
       challenges: ['Membersihkan data transaksi yang mengandung anomali dan duplikasi.', 'Menganalisis retensi pelanggan menggunakan teknik Cohort Analysis.', 'Menghubungkan data logistik pengiriman dengan kepuasan pelanggan.'],
       outcomes: ['Menemukan korelasi kuat antara keterlambatan pengiriman dan penurunan rating toko.', 'Rekomendasi bundling produk yang meningkatkan rata-rata nilai transaksi (AOV).', 'Laporan tren kategori produk terlaris per kuartal.'],
       tech: ['Python', 'Pandas', 'Seaborn', 'Matplotlib'],
-      github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project5_Ecommerce_Sales_Analysis', demo: '#',
-      images: ['/images_projects/Dashboard_BI_Ecommerce.png', '/images_projects/Data_BI_Ecommerce.png', '/images_projects/Star_Schema_BI_Ecommerce.png']
+      github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project5_Ecommerce_Sales_Analysis', demo: '',
+      images: ['/images_projects_data_analis/BI_Ecommerce/Dashboard_BI_Ecommerce.png', '/images_projects_data_analis/BI_Ecommerce/Data_BI_Ecommerce.png', '/images_projects_data_analis/BI_Ecommerce/Star_Schema_BI_Ecommerce.png']
     },
     {
       title: 'HR Analytics: Workforce Architecture',
       category: 'People Analytics',
+      projectGroup: 'Data Analytics & BI',
       shortDesc: 'Analisis struktur demografi dan kinerja karyawan untuk perencanaan SDM.',
       description: 'Proyek arsitektur data untuk departemen HR yang bertujuan memetakan distribusi talenta dalam perusahaan. Menganalisis keberagaman (diversity), kesenjangan gaji (pay gap), dan distribusi kinerja antar departemen untuk mendukung pengambilan keputusan yang adil dan berbasis data.',
       challenges: ['Menjaga kerahasiaan data karyawan (PII) saat melakukan analisis.', 'Membuat model data yang menghubungkan kinerja individu dengan tujuan bisnis.', 'Visualisasi struktur organisasi yang dinamis.'],
       outcomes: ['Dashboard Diversity & Inclusion untuk memantau target kesetaraan perusahaan.', 'Identifikasi departemen dengan tingkat promosi internal tertinggi.', 'Analisis kompensasi untuk memastikan keadilan gaji internal.'],
       tech: ['Looker Studio', 'SQL', 'HR Metrics', 'Spreadsheet'],
-      github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project2_HR_Analytics_Architecture', demo: '#',
-      images: ['/images_projects/Dashboard_BI_HR.png', '/images_projects/Data_BI_HR.png', '/images_projects/Star_Schema_BI_HR.png']
+      github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project2_HR_Analytics_Architecture', demo: '',
+      images: ['/images_projects_data_analis/BI_HR/Dashboard_BI_HR.png', '/images_projects_data_analis/BI_HR/Data_BI_HR.png', '/images_projects_data_analis/BI_HR/Star_Schema_BI_HR.png']
     },
     {
     title: 'Global Layoffs Analysis: Business Analysis & Trends',
     category: 'Data Science',
+    projectGroup: 'Data Analytics & BI',
     shortDesc: 'Analisis mendalam tren PHK global menggunakan Python (IBM x Hacktiv8 Final Project).',
     description: 'Proyek Final IBM x Hacktiv8 yang menganalisis dataset PHK global untuk mengungkap pola ekonomi dan dampak sektoral. Mengintegrasikan pembersihan data (data cleaning), analisis eksploratif (EDA), dan visualisasi untuk memberikan wawasan strategis bagi industri dan pencari kerja.',
     challenges: ['Menangani missing values yang signifikan pada data jumlah PHK dan dana perusahaan.', 'Standardisasi nama industri dan lokasi yang tidak konsisten untuk akurasi kategori.', 'Analisis tren time-series untuk memetakan puncak gelombang PHK tahunan.'],
     outcomes: ['Identifikasi sektor teknologi sebagai industri dengan dampak PHK terbesar.', 'Visualisasi tren puncak PHK global pada periode 2023-2024.', 'Wawasan strategis mengenai stabilitas perusahaan berdasarkan tahapan pendanaan (Startup vs IPO).'],
     tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn'],
-    github: 'https://github.com/Jihanablh/Bootcamp_IBM_X_Hacktiv8/tree/main/Project1_Layoffs_Analysis', demo: '#', 
-    images: ['/images_projects/Py_Layoffs.png', '/images_projects/Py_Layoffs2.png', '/images_projects/Py_Layoffs3.png', '/images_projects/Py_Layoffs4.png', '/images_projects/Py_Layoffs5.png']
+    github: 'https://github.com/Jihanablh/Bootcamp_IBM_X_Hacktiv8/tree/main/Project1_Layoffs_Analysis', demo: '', 
+    images: ['/images_projects_data_analis/Py_Layoffs/Py_Layoffs.png', '/images_projects_data_analis/Py_Layoffs/Py_Layoffs2.png', '/images_projects_data_analis/Py_Layoffs/Py_Layoffs3.png', '/images_projects_data_analis/Py_Layoffs/Py_Layoffs4.png', '/images_projects_data_analis/Py_Layoffs/Py_Layoffs5.png']
     },
     {
       title: 'AI Job Market Trends Analysis',
       category: 'Market Research',
+      projectGroup: 'Data Analytics & BI',
       shortDesc: 'Analisis tren kebutuhan skill dan gaji di pasar kerja Artificial Intelligence.',
       description: 'Menganalisis dataset lowongan pekerjaan untuk memahami lanskap karir di bidang AI dan Data Science. Fokus pada identifikasi skill yang paling banyak diminta (in-demand skills), persebaran lokasi pekerjaan, dan standar gaji berdasarkan tingkat pengalaman.',
       challenges: ['Natural Language Processing (NLP) sederhana untuk mengekstrak keyword skill dari deskripsi kerja.', 'Normalisasi data gaji yang memiliki format berbeda-beda.', 'Kategorisasi role pekerjaan yang ambigu.'],
       outcomes: ['Peta persebaran lowongan kerja AI/Data di berbagai industri.', 'Daftar 10 top technical skills yang wajib dikuasai pelamar.', 'Insight mengenai kesenjangan supply dan demand talenta data.'],
       tech: ['Python', 'NLP', 'Data Visualization', 'Pandas'],
-      github: 'https://github.com/Jihanablh/Bootcamp_DibimbingID/tree/main/Project2_Ai_Job_Market_Analysis', demo: '#',
-      images: ['/images_projects/Py_Job.png', '/images_projects/Py_Job2.png', '/images_projects/Py_Job3.png', '/images_projects/Py_Job4.png', '/images_projects/Py_Job5.png']
+      github: 'https://github.com/Jihanablh/Bootcamp_DibimbingID/tree/main/Project2_Ai_Job_Market_Analysis', demo: '',
+      images: ['/images_projects_data_analis/Py_Job/Py_Job.png', '/images_projects_data_analis/Py_Job/Py_Job2.png', '/images_projects_data_analis/Py_Job/Py_Job3.png', '/images_projects_data_analis/Py_Job/Py_Job4.png', '/images_projects_data_analis/Py_Job/Py_Job5.png']
     },
     {
       title: 'Retail Sales Trend Analysis',
       category: 'Business Analysis',
+      projectGroup: 'Data Analytics & BI',
       shortDesc: 'Identifikasi pola penjualan ritel untuk forecasting sederhana.',
       description: 'Analisis historis data penjualan ritel untuk melihat tren tahunan, bulanan, dan mingguan. Bertujuan untuk membantu manajer toko dalam mempersiapkan stok barang menjelang periode ramai (high season).',
       challenges: ['Mengidentifikasi pola musiman (seasonality) dari data mentah.', 'Memisahkan tren jangka panjang dari fluktuasi jangka pendek.'],
       outcomes: ['Visualisasi tren penjualan yang jelas dan mudah dipahami.', 'Identifikasi hari-hari dengan penjualan terendah untuk strategi promosi.'],
       tech: ['Excel', 'Tableau', 'Descriptive Analytics'],
-      github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project3_Retail_Sales_Trend_Analysis', demo: '#',
-      images: ['/images_projects/Dashboard_BI_Retail.png', '/images_projects/Data_BI_Retail.png']
+      github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project3_Retail_Sales_Trend_Analysis', demo: '',
+      images: ['/images_projects_data_analis/BI_Retail/Dashboard_BI_Retail.png', '/images_projects_data_analis/BI_Retail/Data_BI_Retail.png']
     },
     {
       title: 'Marketing Customer Segmentation',
       category: 'Data Analysis',
+      projectGroup: 'Data Analytics & BI',
       shortDesc: 'Segmentasi pelanggan (DQLab) untuk strategi pemasaran yang personal.',
       description: 'Menggunakan data pelanggan untuk melakukan segmentasi (clustering) sederhana. Tujuannya adalah memahami profil pelanggan yang berbeda-beda agar tim marketing dapat mengirimkan pesan yang lebih relevan (personalized marketing).',
       challenges: ['Menentukan variabel yang paling berpengaruh untuk segmentasi.', 'Menginterpretasikan karakteristik tiap cluster yang terbentuk.'],
       outcomes: ['Terbentuknya profil persona pelanggan (misal: Loyal, New, Churn Risk).', 'Strategi komunikasi yang berbeda untuk setiap segmen.'],
       tech: ['R Language', 'Data Analysis', 'Statistics'],
-      github: 'https://github.com/Jihanablh/Bootcamp_DQLab/tree/main/project2_marketing_customer', demo: '#',
-      images: ['/images_projects/Py_Marketing.png', '/images_projects/Py_Marketing2.png', '/images_projects/Py_Marketing3.png']
+      github: 'https://github.com/Jihanablh/Bootcamp_DQLab/tree/main/project2_marketing_customer', demo: '',
+      images: ['/images_projects_data_analis/Py_Marketing/Py_Marketing.png', '/images_projects_data_analis/Py_Marketing/Py_Marketing2.png', '/images_projects_data_analis/Py_Marketing/Py_Marketing3.png']
     },
     {
       title: 'Business Decision Research',
       category: 'Business Analytics',
+      projectGroup: 'Data Analytics & BI',
       shortDesc: 'Riset berbasis data untuk mendukung pengambilan keputusan bisnis (DQLab).',
       description: 'Penerapan metode statistik dasar untuk memvalidasi hipotesis bisnis. Proyek ini menggunakan data historis perusahaan untuk menjawab pertanyaan bisnis spesifik terkait efisiensi operasional.',
       challenges: ['Memilih metode uji statistik yang tepat.', 'Menerjemahkan hasil statistik menjadi bahasa bisnis.'],
       outcomes: ['Laporan rekomendasi keputusan berbasis fakta.', 'Validasi asumsi manajemen dengan data riil.'],
       tech: ['R Language', 'Statistics', 'Data Cleaning'],
-      github: 'https://github.com/Jihanablh/Bootcamp_DQLab/tree/main/project1__business_decision', demo: '#',
-      images: ['/images_projects/Py_Business.png', '/images_projects/Py_Marketing2.png', '/images_projects/Py_Marketing3.png']
+      github: 'https://github.com/Jihanablh/Bootcamp_DQLab/tree/main/project1__business_decision', demo: '',
+      images: ['/images_projects_data_analis/Py_Business/Py_Business.png', '/images_projects_data_analis/Py_Business/Py_Business2.png', '/images_projects_data_analis/Py_Business/Py_Business3.png']
+    },
+    {
+      title: '3 Lots Business Diagram',
+      category: 'Business Analysis',
+      projectGroup: 'Business & System Analysis',
+      shortDesc: 'Diagram alur bisnis untuk analisis sistem dengan pendekatan 3 lots menggunakan draw.io.',
+      description: 'Diagram alur bisnis untuk analisis sistem dengan pendekatan 3 lots (swimlane/pool diagram) menggunakan draw.io.',
+      challenges: ['Memisahkan tanggung jawab proses antar lane agar alur lebih jelas.', 'Menyusun proses bisnis dalam format swimlane yang ringkas dan informatif.'],
+      outcomes: ['Swimlane diagram yang memperjelas peran dan alur proses bisnis.', 'Dokumentasi visual untuk mendukung analisis kebutuhan sistem.'],
+      tech: ['draw.io', 'Swimlane Diagram', 'Business Analysis'],
+      github: '',
+      demo: 'https://drive.google.com/file/d/1H6ns4wqD6cMomXW3Cl8gZJ7V2jUc1HTm/view?usp=sharing',
+      images: ['/images_projects_bisnis_analis/project_placeholders/3lots.drawio.png']
+    },
+    {
+      title: 'Aplikasi Bank All-in-One',
+      category: 'UI/UX Design',
+      projectGroup: 'UI/UX Design',
+      shortDesc: 'Desain UI/UX aplikasi perbankan all-in-one dengan user flow, wireframe, dan prototype interaktif.',
+      description: 'Desain UI/UX aplikasi perbankan all-in-one menggunakan Figma. Mencakup alur pengguna, wireframe, dan prototype interaktif untuk pengalaman perbankan yang seamless dan user-friendly.',
+      challenges: ['Merancang pengalaman mobile banking yang mudah dipahami dan efisien.', 'Menyusun flow pengguna yang mendukung kebutuhan transaksi dalam satu aplikasi.'],
+      outcomes: ['Prototype Figma interaktif untuk pengalaman perbankan all-in-one.', 'Rancangan wireframe dan user flow sebagai dasar pengembangan produk.'],
+      tech: ['Figma', 'UI/UX Design', 'Prototyping', 'Mobile App'],
+      github: '',
+      demo: 'https://www.figma.com/design/6Vw12eUHW8SkkMDmfOdtlI/Aplikasi-Bank-All-in-One',
+      images: ['/images_projects_bisnis_analis/project_placeholders/banking_app.png']
+    },
+    {
+      title: 'Enterprise Blueprint',
+      category: 'System Analysis',
+      projectGroup: 'Business & System Analysis',
+      shortDesc: 'Enterprise blueprint diagram untuk memetakan arsitektur, proses bisnis, alur informasi, dan relasi komponen organisasi.',
+      description: 'Pembuatan enterprise blueprint diagram yang memetakan arsitektur dan proses bisnis organisasi secara menyeluruh, mencakup struktur sistem, alur informasi, dan hubungan antar komponen bisnis.',
+      challenges: ['Menghubungkan struktur bisnis, sistem, dan alur informasi ke dalam satu blueprint yang konsisten.', 'Menjaga diagram tetap mudah dibaca meskipun mencakup banyak komponen organisasi.'],
+      outcomes: ['Blueprint enterprise yang membantu memahami arsitektur organisasi secara menyeluruh.', 'Dokumentasi visual untuk mendukung analisis sistem dan proses bisnis.'],
+      tech: ['draw.io', 'Enterprise Architecture', 'Business Process Modeling', 'System Analysis'],
+      github: '',
+      demo: '',
+      images: ['/images_projects_bisnis_analis/project_placeholders/enterpriseblueprint.png', '/images_projects_bisnis_analis/project_placeholders/enterpriseblueprint2.png']
+    },
+    {
+      title: 'Event Hub Platform',
+      category: 'UI/UX Design',
+      projectGroup: 'UI/UX Design',
+      shortDesc: 'Desain platform manajemen event digital untuk pengelolaan, pendaftaran, dan pelaksanaan acara online.',
+      description: 'Desain platform manajemen event digital yang memudahkan pengelolaan, pendaftaran, dan pelaksanaan acara secara online.',
+      challenges: ['Menyusun pengalaman pengguna untuk organizer dan peserta event dalam satu platform.', 'Membuat flow pendaftaran dan pengelolaan event tetap jelas dan efisien.'],
+      outcomes: ['Rancangan platform event digital dengan alur penggunaan yang lebih terstruktur.', 'Desain antarmuka yang mendukung manajemen acara online.'],
+      tech: ['Figma', 'UI/UX Design', 'Platform Design', 'Event Management'],
+      github: '',
+      demo: '',
+      images: ['/images_projects_bisnis_analis/project_placeholders/eventhubplatform.png']
+    },
+    {
+      title: 'UML Bank All-in-One',
+      category: 'UML',
+      projectGroup: 'UML & Diagrams',
+      shortDesc: 'Diagram UML untuk sistem perbankan all-in-one, mencakup class diagram dan swimlane diagram proses bisnis.',
+      description: 'Pembuatan diagram UML lengkap untuk sistem perbankan all-in-one, mencakup class diagram untuk struktur sistem dan swimlane diagram untuk alur proses bisnis perbankan.',
+      challenges: ['Memetakan struktur sistem perbankan ke class diagram yang jelas.', 'Menyelaraskan alur proses bisnis perbankan ke swimlane diagram yang mudah dipahami.'],
+      outcomes: ['Dokumentasi UML yang mencakup struktur dan proses sistem perbankan.', 'Referensi visual untuk analisis dan pengembangan sistem bank all-in-one.'],
+      tech: ['draw.io', 'UML', 'Class Diagram', 'Swimlane Diagram', 'Systems Analysis'],
+      github: '',
+      demo: '',
+      images: ['/images_projects_bisnis_analis/uml_bankallinone/bankallinone_classdiagram.png', '/images_projects_bisnis_analis/uml_bankallinone/bankallinone_swimlanediagram.png']
+    },
+    {
+      title: 'Web GoFun',
+      category: 'Web Development / System Design',
+      projectGroup: 'Web & Data Flow',
+      shortDesc: 'Perancangan sistem dan diagram level platform web GoFun dari level 0 hingga level 2 menggunakan DFD.',
+      description: 'Perancangan sistem dan diagram level untuk platform web GoFun, mencakup arsitektur sistem dari level 0 hingga level 2 yang menggambarkan alur data dan proses secara detail menggunakan Data Flow Diagram (DFD).',
+      challenges: ['Memecah proses web GoFun ke beberapa level DFD tanpa kehilangan konteks utama.', 'Menjaga konsistensi alur data antar level diagram.'],
+      outcomes: ['Dokumentasi DFD level 0 hingga level 2 untuk platform Web GoFun.', 'Gambaran sistem yang lebih detail untuk kebutuhan analisis dan pengembangan web.'],
+      tech: ['draw.io', 'DFD', 'System Design', 'Web Development'],
+      github: '',
+      demo: '',
+      images: [
+        '/images_projects_bisnis_analis/web_gofun/webgofun.png',
+        '/images_projects_bisnis_analis/web_gofun/gofun_level 0.drawio.png',
+        '/images_projects_bisnis_analis/web_gofun/gofun_level1.drawio.png',
+        '/images_projects_bisnis_analis/web_gofun/gofun_level2_p1.drawio.png',
+        '/images_projects_bisnis_analis/web_gofun/gofun_level2_p2.drawio.png',
+        '/images_projects_bisnis_analis/web_gofun/gofun_level2_p9.drawio.png'
+      ]
     }
   ];
 

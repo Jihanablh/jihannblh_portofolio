@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Briefcase, ChevronRight, X, ChevronLeft, Github, ExternalLink, FileText, ChevronDown, ChevronUp, Layers } from 'lucide-react';
+import { Briefcase, ChevronRight, X, ChevronLeft, ExternalLink, FileText, ChevronDown, ChevronUp, Layers } from 'lucide-react';
 
 const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,8 +42,21 @@ export default function ProjectsSection({
   prevImage 
 }) {
   const [visibleCount, setVisibleCount] = useState(6);
-  
+  const [activeCategory, setActiveCategory] = useState('All');
   const [isHovered, setIsHovered] = useState(false);
+  const categoryTabs = [
+    'All',
+    'UI/UX Design',
+    'Business & System Analysis',
+    'UML & Diagrams',
+    'Web & Data Flow',
+    'Data Analytics & BI'
+  ];
+  const filteredProjects = activeCategory === 'All'
+    ? projects
+    : projects.filter((project) => project.projectGroup === activeCategory);
+  const selectedProjectImages = selectedProject?.images?.length ? selectedProject.images : ['/images_projects_bisnis_analis/project_placeholders/enterpriseblueprint.png'];
+  const selectedProjectLink = selectedProject?.demo || selectedProject?.github;
 
   useEffect(() => {
     if (selectedProject && !isHovered) {
@@ -56,8 +69,8 @@ export default function ProjectsSection({
   }, [selectedProject, isHovered, nextImage]);
 
   const toggleViewMode = () => {
-    if (visibleCount < projects.length) {
-      setVisibleCount(projects.length);
+    if (visibleCount < filteredProjects.length) {
+      setVisibleCount(filteredProjects.length);
     } else {
       setVisibleCount(6);
       const section = document.getElementById('projects');
@@ -79,13 +92,45 @@ export default function ProjectsSection({
             </span>
           </h2>
           <p className="text-slate-400 mt-4 ml-1 text-sm sm:text-base max-w-2xl leading-relaxed">
-            Showcasing a collection of <span className="text-white font-medium">{Math.min(visibleCount, projects.length)}</span> selected projects focusing on Data Analytics, Engineering, and Business Intelligence.
+            Showcasing a collection of <span className="text-white font-medium">{Math.min(visibleCount, filteredProjects.length)}</span> selected projects across Data Analytics, Business Intelligence, System Analysis, and UI/UX Design.
           </p>
         </div>
       </RevealOnScroll>
 
+      <RevealOnScroll delay={100}>
+        <div className="mb-10 flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+          {categoryTabs.map((category) => {
+            const count = category === 'All'
+              ? projects.length
+              : projects.filter((project) => project.projectGroup === category).length;
+
+            return (
+              <button
+                key={category}
+                onClick={() => {
+                  setActiveCategory(category);
+                  setVisibleCount(6);
+                }}
+                className={`shrink-0 rounded-full border px-4 py-2 text-sm font-bold transition-all duration-300 ${
+                  activeCategory === category
+                    ? 'border-blue-400 bg-blue-600 text-white shadow-lg shadow-blue-900/30'
+                    : 'border-slate-700 bg-slate-900/70 text-slate-400 hover:border-blue-500/60 hover:text-white'
+                }`}
+              >
+                {category}
+                <span className={`ml-2 rounded-full px-2 py-0.5 text-[10px] ${
+                  activeCategory === category ? 'bg-white/15 text-white' : 'bg-slate-800 text-slate-500'
+                }`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </RevealOnScroll>
+
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.slice(0, visibleCount).map((project, idx) => (
+        {filteredProjects.slice(0, visibleCount).map((project, idx) => (
           <RevealOnScroll key={idx} delay={idx * 100} className="h-full">
             <div 
               onClick={() => openProjectDetail(project)}
@@ -96,7 +141,7 @@ export default function ProjectsSection({
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80 z-10"></div>
                 
                 <img 
-                  src={project.images[0]} 
+                  src={project.images?.[0] || '/images_projects_bisnis_analis/project_placeholders/enterpriseblueprint.png'} 
                   alt={project.title} 
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
                 />
@@ -130,7 +175,7 @@ export default function ProjectsSection({
                 </div>
 
                 <div className="flex items-center text-blue-400 text-sm font-bold mt-auto group-hover:text-blue-300 transition-colors">
-                  View Case Study 
+                  View Details
                   <ChevronRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -139,7 +184,7 @@ export default function ProjectsSection({
         ))}
       </div>
 
-      {projects.length > 6 && (
+      {filteredProjects.length > 6 && (
         <RevealOnScroll delay={300}>
             <div className="mt-16 flex justify-center">
             <button
@@ -188,27 +233,31 @@ export default function ProjectsSection({
                 onMouseLeave={() => setIsHovered(false)}
               >
                 <img 
-                  src={selectedProject.images[currentImageIndex]} 
+                  src={selectedProjectImages[currentImageIndex]} 
                   alt={selectedProject.title} 
                   className="w-full h-full object-cover transition-opacity duration-500" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent"></div>
 
-                <button 
-                  onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/20 hover:bg-blue-600/80 backdrop-blur-md rounded-full text-white transition-all opacity-0 group-hover:opacity-100 border border-white/10 hover:border-blue-400 hover:scale-110"
-                >
-                  <ChevronLeft size={24} />
-                </button>
-                <button 
-                  onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/20 hover:bg-blue-600/80 backdrop-blur-md rounded-full text-white transition-all opacity-0 group-hover:opacity-100 border border-white/10 hover:border-blue-400 hover:scale-110"
-                >
-                  <ChevronRight size={24} />
-                </button>
+                {selectedProjectImages.length > 1 && (
+                  <>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/20 hover:bg-blue-600/80 backdrop-blur-md rounded-full text-white transition-all opacity-0 group-hover:opacity-100 border border-white/10 hover:border-blue-400 hover:scale-110"
+                    >
+                      <ChevronLeft size={24} />
+                    </button>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/20 hover:bg-blue-600/80 backdrop-blur-md rounded-full text-white transition-all opacity-0 group-hover:opacity-100 border border-white/10 hover:border-blue-400 hover:scale-110"
+                    >
+                      <ChevronRight size={24} />
+                    </button>
+                  </>
+                )}
 
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-                  {selectedProject.images.map((_, idx) => (
+                  {selectedProjectImages.map((_, idx) => (
                     <div 
                       key={idx}
                       className={`h-1.5 rounded-full transition-all duration-300 shadow-sm ${idx === currentImageIndex ? 'bg-blue-500 w-8' : 'bg-white/30 w-2'}`}
@@ -229,12 +278,11 @@ export default function ProjectsSection({
                   </div>
                   
                   <div className="flex gap-4 shrink-0">
-                    <a href={selectedProject.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 bg-slate-800 rounded-xl hover:bg-slate-700 text-white transition-all border border-slate-700 hover:border-slate-500 font-bold group shadow-lg">
-                      <Github size={20} className="group-hover:rotate-12 transition-transform"/> Code
+                    {selectedProjectLink && (
+                    <a href={selectedProjectLink} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 bg-blue-600 rounded-xl hover:bg-blue-500 text-white transition-all font-bold shadow-lg shadow-blue-900/30 hover:shadow-blue-500/40 group border border-transparent hover:border-blue-400">
+                      <ExternalLink size={20} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" /> View Project
                     </a>
-                    <a href={selectedProject.demo} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 bg-blue-600 rounded-xl hover:bg-blue-500 text-white transition-all font-bold shadow-lg shadow-blue-900/30 hover:shadow-blue-500/40 group border border-transparent hover:border-blue-400">
-                      <ExternalLink size={20} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" /> Demo
-                    </a>
+                    )}
                   </div>
                 </div>
 
