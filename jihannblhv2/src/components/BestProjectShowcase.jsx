@@ -1,38 +1,29 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, BarChart3, DatabaseZap, Github, Globe2, Map, ShieldAlert } from 'lucide-react';
+import { ArrowUpRight, BarChart3, DatabaseZap, Github, Globe2, Map } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 import MiniLineChart from './MiniLineChart';
 
-const detailCards = [
+const insights = [
   {
     title: 'Data Visualization',
     label: 'INSIGHT LAYER',
-    metric: '1,374',
-    metricLabel: 'Total Events',
     icon: BarChart3,
     description:
-      'Menampilkan data kejadian bencana dalam bentuk visual yang lebih mudah dipahami melalui peta, statistik, dan ringkasan wilayah.',
-    points: ['Disaster data', 'Regional statistics', 'Visual insight'],
+      'Menampilkan data kejadian bencana dalam bentuk visual yang mudah dipahami melalui peta, statistik, dan ringkasan wilayah.',
   },
   {
     title: 'Spatial Analysis',
     label: 'MAP INTELLIGENCE',
-    metric: '5',
-    metricLabel: 'Regions',
     icon: Map,
     description:
-      'Menggunakan data spasial untuk membantu membaca sebaran risiko dan kondisi kebencanaan di wilayah Daerah Istimewa Yogyakarta.',
-    points: ['GeoJSON', 'QGIS', 'Map-based insight'],
+      'Menggunakan data spasial untuk membaca sebaran risiko dan kondisi kebencanaan di wilayah Daerah Istimewa Yogyakarta.',
   },
   {
-    title: 'Business / System Value',
+    title: 'System / Business Value',
     label: 'DECISION SUPPORT',
-    metric: '6',
-    metricLabel: 'Disaster Categories',
     icon: DatabaseZap,
     description:
-      'Membantu menyajikan informasi kebencanaan secara lebih terstruktur, interaktif, dan berbasis data untuk mendukung pemahaman publik dan pengambilan keputusan.',
-    points: ['Information system', 'Decision support', 'Public dashboard'],
+      'Menyajikan informasi kebencanaan secara lebih terstruktur, interaktif, dan berbasis data untuk mendukung pemahaman publik dan pengambilan keputusan.',
   },
 ];
 
@@ -40,14 +31,16 @@ export default function BestProjectShowcase({ project, onOpen }) {
   if (!project) return null;
 
   return (
-    <div className="mb-12">
-      <div className="mb-5 flex flex-col justify-between gap-3 md:flex-row md:items-end">
+    <div className="mb-14">
+      <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
         <div>
           <p className="mono-label">[BEST PROJECT SHOWCASE]</p>
-          <h3 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">Jogja Siaga as featured analytical case study.</h3>
+          <h3 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
+            Best project built around spatial data, analytics, and public information value.
+          </h3>
         </div>
         <p className="max-w-xl text-sm leading-7 text-slate-400">
-          A WebGIS project that combines disaster data, spatial visualization, dashboard thinking, and public information system value.
+          A focused case study that connects disaster risk mapping, WebGIS interaction, and data-driven decision support.
         </p>
       </div>
 
@@ -61,7 +54,11 @@ export default function BestProjectShowcase({ project, onOpen }) {
         >
           <div className="absolute inset-0 dot-grid opacity-20" />
           <div className="relative h-72 overflow-hidden sm:h-80 lg:h-[22rem]">
-            <img src={project.images[0]} alt={project.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+            <img
+              src={project.images[0]}
+              alt={`${project.title} thumbnail`}
+              className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/40 to-transparent" />
             <div className="absolute right-5 top-5 hidden w-48 rounded-3xl border border-white/10 bg-black/35 p-3 backdrop-blur-xl sm:block">
               <p className="mono-label">Map Signal</p>
@@ -77,17 +74,25 @@ export default function BestProjectShowcase({ project, onOpen }) {
             <p className="mt-3 text-sm font-bold text-cyan-100">{project.category}</p>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">{project.summary}</p>
 
-            <div className="mt-5 grid gap-2 sm:grid-cols-2">
-              {project.highlights.map((item) => (
-                <span key={item} className="rounded-2xl border border-cyanx/15 bg-cyanx/[0.06] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-cyan-100">
-                  {item}
-                </span>
-              ))}
-            </div>
+            {project.highlights?.length > 0 && (
+              <div className="mt-5 grid gap-2 sm:grid-cols-2">
+                {project.highlights.slice(0, 4).map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-2xl border border-cyanx/15 bg-cyanx/[0.06] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-cyan-100"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            )}
 
             <div className="mt-5 flex flex-wrap gap-2">
               {project.tech.map((item) => (
-                <span key={item} className="rounded-full border border-white/10 bg-white/[0.055] px-3 py-1.5 text-xs font-semibold text-slate-300">
+                <span
+                  key={item}
+                  className="rounded-full border border-white/10 bg-white/[0.055] px-3 py-1.5 text-xs font-semibold text-slate-300"
+                >
                   {item}
                 </span>
               ))}
@@ -115,8 +120,8 @@ export default function BestProjectShowcase({ project, onOpen }) {
         </motion.article>
 
         <div className="grid gap-5">
-          {detailCards.map((card, index) => (
-            <BestProjectDetailCard key={card.title} card={card} index={index} />
+          {insights.map((card, index) => (
+            <BestProjectInsightCard key={card.title} card={card} index={index} />
           ))}
         </div>
       </div>
@@ -124,36 +129,28 @@ export default function BestProjectShowcase({ project, onOpen }) {
   );
 }
 
-function BestProjectDetailCard({ card, index }) {
-  const Icon = card.icon || ShieldAlert;
+function BestProjectInsightCard({ card, index }) {
+  const Icon = card.icon;
 
   return (
     <motion.article
-      className="group rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-4 shadow-2xl shadow-black/10 backdrop-blur-2xl transition hover:-translate-y-1 hover:border-cyanx/35 hover:bg-white/[0.065] hover:shadow-glow"
+      className="group rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-5 shadow-2xl shadow-black/10 backdrop-blur-2xl transition duration-500 hover:-translate-y-1 hover:border-cyanx/35 hover:bg-white/[0.065] hover:shadow-glow"
       initial={{ opacity: 0, x: 30 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.58, delay: index * 0.1 }}
     >
-      <div className="mb-4 flex items-start justify-between gap-4">
-        <span className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-cyanx/10 text-cyan-100 transition group-hover:scale-110">
-          <Icon size={20} />
+      <div className="mb-5 flex items-start justify-between gap-4">
+        <span className="grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-cyanx/10 text-cyan-100 transition group-hover:scale-110">
+          <Icon size={21} />
         </span>
-        <div className="text-right">
-          <p className="font-display text-2xl font-bold text-white">{card.metric}</p>
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">{card.metricLabel}</p>
-        </div>
+        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+          {String(index + 1).padStart(2, '0')}
+        </span>
       </div>
       <p className="mono-label">[{card.label}]</p>
       <h4 className="mt-2 font-display text-xl font-bold text-white">{card.title}</h4>
-      <p className="mt-2 text-sm leading-6 text-slate-400">{card.description}</p>
-      <div className="mt-4 flex flex-wrap gap-2">
-        {card.points.map((point) => (
-          <span key={point} className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-semibold text-slate-300">
-            {point}
-          </span>
-        ))}
-      </div>
+      <p className="mt-3 text-sm leading-7 text-slate-400">{card.description}</p>
     </motion.article>
   );
 }

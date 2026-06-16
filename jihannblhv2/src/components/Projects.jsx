@@ -8,33 +8,17 @@ import MagneticButton from './MagneticButton';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 
-const priorityProjects = [
-  'Data Analysis Project',
-  'Personal Portfolio',
-  'GoFood Marketing Analytics & Strategy',
-  'Enterprise Blueprint',
-  'Global Superstore Executive Dashboard',
-  '3 Lots Business Diagram',
-];
-
-const hiddenFromProjectPreview = ['Jogja Siaga WebGIS', 'BarangBareng'];
-
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
   const [selected, setSelected] = useState(null);
   const [imageIndex, setImageIndex] = useState(0);
 
-  const orderedProjects = useMemo(() => {
-    const previewProjects = projects.filter((project) => !hiddenFromProjectPreview.includes(project.title));
-    const prioritized = priorityProjects
-      .map((title) => previewProjects.find((project) => project.title === title))
-      .filter(Boolean);
-    const remaining = previewProjects.filter((project) => !priorityProjects.includes(project.title));
-    return [...prioritized, ...remaining];
-  }, []);
-
+  const bestProject = useMemo(() => projects.find((project) => project.title === 'Jogja Siaga WebGIS'), []);
+  const orderedProjects = useMemo(
+    () => projects.filter((project) => project.title !== 'Jogja Siaga WebGIS'),
+    [],
+  );
   const visibleProjects = showAll ? orderedProjects : orderedProjects.slice(0, 6);
-  const bestProject = projects.find((project) => project.title === 'Jogja Siaga WebGIS');
 
   useEffect(() => {
     document.body.style.overflow = selected ? 'hidden' : '';
@@ -65,12 +49,28 @@ export default function Projects() {
   return (
     <section id="projects" className="section-shell scroll-mt-24">
       <SectionHeader
-        eyebrow="Case Studies / Projects"
-        title="Featured Work & Analytical Projects"
-        description="Project portfolio focused on data analysis, business analysis, dashboard, system thinking, and digital solutions."
+        eyebrow="PROJECTS / CASE STUDIES"
+        title="Selected Analytical Projects"
+        description="A collection of data, business, system, and digital projects that reflect my analytical and problem-solving journey."
       />
 
       <BestProjectShowcase project={bestProject} onOpen={open} />
+
+      <motion.div
+        className="mb-7 flex flex-col justify-between gap-3 md:flex-row md:items-end"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div>
+          <p className="mono-label">[SELECTED PROJECTS]</p>
+          <h3 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">More analytical work.</h3>
+        </div>
+        <p className="max-w-xl text-sm leading-7 text-slate-400">
+          Six additional projects across data analysis, business process, dashboard, system modeling, and digital product design.
+        </p>
+      </motion.div>
 
       <motion.div layout className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         <AnimatePresence mode="popLayout">
@@ -80,7 +80,6 @@ export default function Projects() {
               project={project}
               index={index}
               onOpen={open}
-              featured={!showAll && index === 0}
             />
           ))}
         </AnimatePresence>
