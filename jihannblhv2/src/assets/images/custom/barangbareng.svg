@@ -1,0 +1,19 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="44" fill="#050816"/>
+  <rect x="82" y="82" width="1036" height="596" rx="38" fill="#0B1020" stroke="#312E81"/>
+  <rect x="150" y="150" width="262" height="350" rx="30" fill="#111827" stroke="#334155"/>
+  <rect x="469" y="150" width="262" height="350" rx="30" fill="#111827" stroke="#334155"/>
+  <rect x="788" y="150" width="262" height="350" rx="30" fill="#111827" stroke="#334155"/>
+  <circle cx="281" cy="273" r="72" fill="#20E7FF" fill-opacity=".22"/>
+  <circle cx="600" cy="273" r="72" fill="#8B5CF6" fill-opacity=".24"/>
+  <circle cx="919" cy="273" r="72" fill="#F472B6" fill-opacity=".22"/>
+  <path d="M246 288H316M281 253V323M566 290H634M566 257H634M873 299L919 251L965 299" stroke="white" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="181" y="394" width="200" height="26" rx="13" fill="#334155"/>
+  <rect x="500" y="394" width="200" height="26" rx="13" fill="#334155"/>
+  <rect x="819" y="394" width="200" height="26" rx="13" fill="#334155"/>
+  <rect x="181" y="444" width="150" height="20" rx="10" fill="#1D4ED8"/>
+  <rect x="500" y="444" width="150" height="20" rx="10" fill="#7C3AED"/>
+  <rect x="819" y="444" width="150" height="20" rx="10" fill="#DB2777"/>
+  <text x="150" y="585" fill="white" font-family="Inter, Arial" font-size="54" font-weight="800">BarangBareng</text>
+  <text x="151" y="630" fill="#94A3B8" font-family="Inter, Arial" font-size="25" font-weight="500">Rental marketplace product concept</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="44" fill="#050816"/>
+  <rect x="88" y="92" width="1024" height="576" rx="36" fill="#0B1020" stroke="#1E293B"/>
+  <rect x="138" y="142" width="924" height="74" rx="24" fill="#111827" stroke="#334155"/>
+  <circle cx="185" cy="179" r="12" fill="#EF4444"/>
+  <circle cx="225" cy="179" r="12" fill="#F59E0B"/>
+  <circle cx="265" cy="179" r="12" fill="#22C55E"/>
+  <text x="149" y="337" fill="white" font-family="Inter, Arial" font-size="76" font-weight="800">Jihan Nabilah</text>
+  <text x="153" y="390" fill="#93C5FD" font-family="Inter, Arial" font-size="28" font-weight="700">Data • UI/UX • WebGIS • Digital Product</text>
+  <rect x="155" y="463" width="218" height="62" rx="31" fill="#20E7FF"/>
+  <text x="198" y="504" fill="#050816" font-family="Inter, Arial" font-size="22" font-weight="800">View Work</text>
+  <rect x="700" y="292" width="274" height="230" rx="34" fill="#111827" stroke="#8B5CF6"/>
+  <path d="M758 445L818 372L874 416L930 339" stroke="#20E7FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="933" cy="338" r="18" fill="#8B5CF6"/>
+</svg>

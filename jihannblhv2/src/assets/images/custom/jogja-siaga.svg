@@ -1,0 +1,21 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="44" fill="#050816"/>
+  <rect x="54" y="54" width="1092" height="652" rx="34" fill="#0B1020" stroke="#1E3A8A"/>
+  <path d="M140 165C252 92 350 194 462 138C604 66 688 218 820 157C939 101 1025 137 1082 205V608H140V165Z" fill="url(#g)"/>
+  <path d="M209 558L332 437L456 476L575 326L720 398L886 255L1014 333" stroke="#20E7FF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="332" cy="437" r="22" fill="#8B5CF6"/>
+  <circle cx="575" cy="326" r="22" fill="#20E7FF"/>
+  <circle cx="886" cy="255" r="22" fill="#F472B6"/>
+  <rect x="111" y="102" width="292" height="76" rx="22" fill="#111827" stroke="#334155"/>
+  <text x="137" y="151" fill="white" font-family="Inter, Arial" font-size="28" font-weight="700">Jogja Siaga WebGIS</text>
+  <rect x="838" y="550" width="232" height="86" rx="20" fill="#0F172A" stroke="#20E7FF" stroke-opacity=".5"/>
+  <text x="866" y="586" fill="#93C5FD" font-family="Inter, Arial" font-size="18" font-weight="700">Risk Layer</text>
+  <text x="866" y="616" fill="#E2E8F0" font-family="Inter, Arial" font-size="24" font-weight="800">Spatial Data</text>
+  <defs>
+    <linearGradient id="g" x1="140" y1="117" x2="891" y2="680" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20E7FF" stop-opacity=".38"/>
+      <stop offset=".52" stop-color="#8B5CF6" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#050816" stop-opacity=".1"/>
+    </linearGradient>
+  </defs>
+</svg>
