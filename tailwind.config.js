@@ -7,7 +7,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Outfit', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Space Grotesk"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'Sora', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        midnight: '#050816',
+        ink: '#070A13',
+        panel: '#0B1020',
+        cyanx: '#20E7FF',
+        violetx: '#8B5CF6',
+      },
+      boxShadow: {
+        glow: '0 0 48px rgba(32, 231, 255, 0.24)',
+        violet: '0 0 48px rgba(139, 92, 246, 0.24)',
       },
 
       keyframes: {

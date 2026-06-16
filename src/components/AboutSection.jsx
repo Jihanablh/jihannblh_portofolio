@@ -40,7 +40,7 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
 
 export default function AboutSection() {
   return (
-    <section id="about" className="max-w-6xl mx-auto scroll-mt-28 px-4 mt-20 mb-20">
+    <section id="about" className="mx-auto mt-20 mb-20 max-w-7xl scroll-mt-28 px-5 sm:px-8 lg:px-10">
       
       <RevealOnScroll delay={0}>
         <h2 className="text-3xl sm:text-4xl font-bold mb-12 flex items-center gap-3">
@@ -59,8 +59,8 @@ export default function AboutSection() {
           <RevealOnScroll delay={200} className="h-full">
             <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800/50 backdrop-blur-xl rounded-3xl p-8 border border-white/5 hover:border-blue-500/30 transition-all duration-500 group relative overflow-hidden h-full shadow-2xl hover:shadow-blue-500/10">
               
-              <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/20 blur-[100px] rounded-full group-hover:bg-blue-500/30 transition-all duration-700"></div>
-              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-600/10 blur-[100px] rounded-full group-hover:bg-purple-500/20 transition-all duration-700"></div>
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/20 blur-[100px] rounded-full transition-all duration-700"></div>
+              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-600/10 blur-[100px] rounded-full transition-all duration-700"></div>
               
               <div className="relative z-10 flex flex-col h-full">
                 
@@ -68,13 +68,12 @@ export default function AboutSection() {
                   <div className="flex-1">
                     <h3 className="text-3xl font-bold text-white flex items-center gap-3">
                       Hi, I'm Jihan
-                      <span className="inline-block hover:animate-spin cursor-default text-4xl transition-transform hover:scale-125 duration-300">👋</span>
                     </h3>
                     <p className="text-slate-400 text-sm mt-1">
                       Aspiring Data Analyst & Business Analyst
                     </p>
                   </div>
-                  <span className="flex items-center gap-2 text-xs font-mono text-blue-200 bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20 hover:bg-blue-500/20 transition-colors cursor-default">
+                  <span className="flex items-center gap-2 text-xs font-semibold text-blue-200 bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20 transition-colors cursor-default">
                     <MapPin size={14} className="animate-bounce" /> Jakarta, ID
                   </span>
                 </div>
@@ -90,13 +89,13 @@ export default function AboutSection() {
 
                 <div className="flex flex-wrap gap-3 mt-8 pt-6 border-t border-white/5">
                   {[
-                    { icon: <Database size={16} />, text: "Data Analysis", color: "blue" },
-                    { icon: <Code size={16} />, text: "Business Intelligence", color: "purple" },
-                    { icon: <Users size={16} />, text: "People Analytics", color: "green" }
+                    { icon: <Database size={16} />, text: "Data Analysis", className: "bg-blue-500/5 text-blue-300 border-blue-500/10 hover:border-blue-500/30" },
+                    { icon: <Code size={16} />, text: "Business Intelligence", className: "bg-purple-500/5 text-purple-300 border-purple-500/10 hover:border-purple-500/30" },
+                    { icon: <Users size={16} />, text: "People Analytics", className: "bg-green-500/5 text-green-300 border-green-500/10 hover:border-green-500/30" }
                   ].map((tag, idx) => (
                     <span
                       key={idx}
-                      className={`px-4 py-2 bg-${tag.color}-500/5 text-${tag.color}-300 rounded-lg text-sm font-medium border border-${tag.color}-500/10 flex items-center gap-2 hover:bg-${tag.color}-500/10 hover:border-${tag.color}-500/30 transition-all hover:-translate-y-1 cursor-default`}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium border flex items-center gap-2 transition-all hover:-translate-y-1 cursor-default ${tag.className}`}
                     >
                       {tag.icon} {tag.text}
                     </span>
@@ -111,15 +110,13 @@ export default function AboutSection() {
           
           <RevealOnScroll delay={400} className="flex-1">
             <div className="bg-slate-900/80 backdrop-blur-md rounded-3xl p-6 border border-slate-700 hover:border-purple-500/50 transition-all duration-300 flex flex-col justify-center h-full group hover:shadow-xl hover:shadow-purple-900/20 hover:-translate-y-1 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-purple-500/10 rounded-xl text-purple-400 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
+                  <div className="p-3 bg-purple-500/10 rounded-xl text-purple-400 group-hover:scale-110 transition-all duration-300">
                     <GraduationCap size={24} />
                   </div>
                   <div>
-                    <p className="text-slate-400 text-xs uppercase tracking-wider font-bold">Education</p>
+                    <p className="text-slate-400 text-xs font-bold">Education</p>
                     <h4 className="text-white font-bold text-lg">Univ. Bakrie</h4>
                   </div>
                 </div>
@@ -131,7 +128,7 @@ export default function AboutSection() {
                     Focus: Data Analysis & Business Intelligence
                   </p>
                   <div className="pl-3 pt-1">
-                    <span className="text-purple-300 font-bold text-[10px] uppercase bg-purple-500/20 px-2 py-1 rounded border border-purple-500/20">
+                    <span className="text-purple-300 font-semibold text-xs bg-purple-500/20 px-2.5 py-1 rounded-lg border border-purple-500/20">
                       High Distinction
                     </span>
                   </div>
@@ -142,11 +139,9 @@ export default function AboutSection() {
 
           <RevealOnScroll delay={600} className="flex-1">
             <div className="bg-slate-900/80 backdrop-blur-md rounded-3xl p-6 border border-slate-700 hover:border-green-500/50 transition-all duration-300 flex flex-col justify-center h-full group hover:shadow-xl hover:shadow-green-900/20 hover:-translate-y-1 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-3 bg-green-500/10 rounded-xl text-green-400 group-hover:scale-110 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                  <div className="p-3 bg-green-500/10 rounded-xl text-green-400 group-hover:scale-110 transition-all duration-300">
                     <Briefcase size={24} />
                   </div>
                   <div className="flex items-center gap-2 px-3 py-1 bg-green-950/50 rounded-full border border-green-500/30">
@@ -154,7 +149,7 @@ export default function AboutSection() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
-                    <span className="text-[10px] font-bold text-green-400 uppercase tracking-wide">
+                    <span className="text-xs font-semibold text-green-400">
                       Available
                     </span>
                   </div>

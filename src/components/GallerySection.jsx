@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ImageIcon, X } from 'lucide-react';
 
-const fallbackImage = '/images_projects_data_analis/BI_Gojek/Dashboard_BI_Gojek.png';
+const fallbackImage = '/images_projects_data_analyst/BI_Gojek/Dashboard_BI_Gojek.png';
 
 const RevealOnScroll = ({ children, delay = 0, className = '' }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,10 +60,10 @@ export default function GallerySection({ projects = [] }) {
   }, [selectedItem]);
 
   return (
-    <section id="gallery" className="mx-auto mt-20 mb-20 max-w-6xl scroll-mt-28 px-4 sm:px-6">
+    <section id="gallery" className="mx-auto mt-20 mb-20 max-w-7xl scroll-mt-28 px-5 sm:px-8 lg:px-10">
       <RevealOnScroll>
         <div className="mb-12 flex flex-col">
-          <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-pink-400/20 bg-pink-500/10 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-pink-200">
+          <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-pink-400/20 bg-pink-500/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.24em] text-pink-200">
             <ImageIcon size={14} />
             Gallery
           </p>
@@ -93,10 +93,10 @@ export default function GallerySection({ projects = [] }) {
               <img src={item.image} alt={item.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-5">
-                <span className="rounded-full border border-white/15 bg-slate-950/60 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-blue-100 backdrop-blur-xl">
+                <span className="inline-flex max-w-full rounded-full border border-white/15 bg-slate-950/60 px-3 py-1 text-[11px] font-semibold leading-5 text-blue-100 backdrop-blur-xl">
                   {item.category}
                 </span>
-                <h3 className="mt-3 line-clamp-2 text-lg font-bold text-white">{item.title}</h3>
+                <h3 className="mt-3 text-lg font-bold leading-snug text-white">{item.title}</h3>
               </div>
             </button>
           </RevealOnScroll>
@@ -116,7 +116,7 @@ export default function GallerySection({ projects = [] }) {
               type="button"
               aria-label="Close gallery preview"
               onClick={() => setSelectedItem(null)}
-              className="absolute right-4 top-4 z-10 rounded-full border border-white/10 bg-black/50 p-2 text-white backdrop-blur-md transition hover:bg-red-500"
+              className="absolute right-4 top-4 z-10 rounded-full border border-white/10 bg-black/50 p-2 text-white backdrop-blur-md transition hover:border-red-400/60 hover:text-red-200"
             >
               <X size={20} />
             </button>

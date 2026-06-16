@@ -56,7 +56,7 @@ export default function CertificationsSection({ allAchievements }) {
   };
 
   return (
-    <section id="certifications" className="max-w-6xl mx-auto scroll-mt-28 px-4 sm:px-6 mt-20 mb-20">
+    <section id="certifications" className="mx-auto mt-20 mb-20 max-w-7xl scroll-mt-28 px-5 sm:px-8 lg:px-10">
       
       <RevealOnScroll>
         <div className="flex flex-col mb-12">
@@ -82,7 +82,7 @@ export default function CertificationsSection({ allAchievements }) {
               onClick={() => setSelectedCert(item)}
               className="cursor-pointer group relative h-full bg-slate-900 border border-slate-800 rounded-2xl p-6 overflow-hidden hover:border-purple-500/40 transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.15)] hover:-translate-y-2"
             >
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-600/5 blur-[60px] rounded-full group-hover:bg-purple-600/10 transition-all z-0"></div>
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-600/5 blur-[60px] rounded-full transition-all z-0"></div>
               <div className="relative z-10 flex flex-col h-full">
                 
                 <div className="flex justify-between items-start mb-6">
@@ -90,22 +90,22 @@ export default function CertificationsSection({ allAchievements }) {
                     {item.icon && React.cloneElement(item.icon, { className: "text-slate-400 group-hover:text-purple-400 transition-colors" })}
                   </div>
                   
-                  <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full border bg-slate-800 border-slate-700 text-slate-400 group-hover:bg-purple-500/10 group-hover:border-purple-500/50 group-hover:text-purple-400 transition-all shadow-sm">
+                  <span className="px-3 py-1 text-xs font-semibold rounded-full border bg-slate-800 border-slate-700 text-slate-400 group-hover:border-purple-500/50 group-hover:text-purple-400 transition-all shadow-sm">
                     {item.type}
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors leading-snug line-clamp-2">
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors leading-snug">
                   {item.title}
                 </h3>
                 
-                <div className="flex items-center gap-2 text-slate-500 text-xs mb-4 font-bold font-mono uppercase">
+                <div className="flex flex-wrap items-center gap-2 text-slate-500 text-xs mb-4 font-semibold">
                   <span>{item.issuer}</span>
                   <span className="w-1 h-1 rounded-full bg-slate-700"></span>
                   <span>{item.date}</span>
                 </div>
 
-                <p className="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3 flex-1 border-l-2 border-slate-800 pl-3 group-hover:border-purple-500/30 transition-colors">
+                <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1 border-l-2 border-slate-800 pl-3 group-hover:border-purple-500/30 transition-colors">
                   {item.desc}
                 </p>
                 
@@ -129,7 +129,7 @@ export default function CertificationsSection({ allAchievements }) {
             <div className="mt-14 flex justify-center">
             <button 
                 onClick={toggleViewMode}
-                className="group relative inline-flex items-center gap-2 px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-full transition-all duration-300 border border-slate-700 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
+                className="group relative inline-flex items-center gap-2 px-8 py-3 bg-slate-800 text-white font-semibold rounded-full transition-all duration-300 border border-slate-700 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
             >
                 {visibleCount < allAchievements.length ? (
                     <>Show More <ChevronDown size={18} /></>
@@ -152,14 +152,14 @@ export default function CertificationsSection({ allAchievements }) {
             
             <div className="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-900 z-10">
               <div className="flex items-center gap-3">
-                 <h3 className="text-lg sm:text-xl font-bold text-white truncate max-w-[200px] sm:max-w-md">
+                 <h3 className="text-lg sm:text-xl font-bold text-white leading-snug">
                     {selectedCert.title}
                  </h3>
-                 <a href={selectedCert.link} target="_blank" rel="noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-white transition-colors" title="Open in New Tab">
+                 <a href={selectedCert.link} target="_blank" rel="noreferrer" className="p-2 bg-slate-800 rounded-lg border border-slate-700 text-slate-400 hover:border-purple-500/50 hover:text-white transition-colors" title="Open in New Tab">
                     <ExternalLink size={16} />
                  </a>
               </div>
-              <button onClick={() => setSelectedCert(null)} className="p-2 bg-slate-800 rounded-full hover:bg-red-500/20 hover:text-red-400 transition-colors">
+              <button onClick={() => setSelectedCert(null)} className="p-2 bg-slate-800 rounded-full border border-slate-700 hover:border-red-400/50 hover:text-red-400 transition-colors">
                 <X size={20} />
               </button>
             </div>
@@ -185,7 +185,7 @@ export default function CertificationsSection({ allAchievements }) {
                 </div>
                 <button 
                     onClick={() => setSelectedCert(null)}
-                    className="px-5 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-medium text-sm transition-colors shadow-lg shadow-purple-900/20"
+                    className="px-5 py-2 bg-purple-600 text-white rounded-lg font-medium text-sm transition-colors shadow-lg shadow-purple-900/20 hover:shadow-purple-500/30"
                 >
                     Close Preview
                 </button>

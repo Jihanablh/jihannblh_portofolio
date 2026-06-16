@@ -41,7 +41,7 @@ const RevealOnScroll = ({ children, delay = 0, className = "" }) => {
 
 export default function ExperienceSection({ experience }) {
   return (
-    <section id="experience" className="max-w-5xl mx-auto scroll-mt-28 mt-20 px-4">
+    <section id="experience" className="mx-auto mt-20 max-w-7xl scroll-mt-28 px-5 sm:px-8 lg:px-10">
       
       <RevealOnScroll>
         <h2 className="text-3xl sm:text-4xl font-bold mb-16 flex items-center gap-4">
@@ -63,7 +63,7 @@ export default function ExperienceSection({ experience }) {
             {/* Timeline Dot */}
             <div className="absolute -left-[5px] top-6 z-20 flex items-center justify-center">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-20 animate-ping group-hover:opacity-40 duration-1000"></span>
-                <div className="w-3 h-3 bg-slate-900 rounded-full border-2 border-slate-600 group-hover:border-blue-400 group-hover:bg-blue-500 group-hover:scale-125 transition-all duration-300 shadow-[0_0_0_4px_rgba(15,23,42,1)]"></div>
+                <div className="w-3 h-3 bg-slate-900 rounded-full border-2 border-slate-600 group-hover:border-blue-400 group-hover:scale-125 transition-all duration-300 shadow-[0_0_0_4px_rgba(15,23,42,1)]"></div>
             </div>
 
             {/* Card Content */}
@@ -92,7 +92,7 @@ export default function ExperienceSection({ experience }) {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-2 text-xs font-bold font-mono text-slate-300 bg-slate-800/50 px-3 py-1.5 rounded-lg border border-slate-700 w-fit h-fit whitespace-nowrap group-hover:border-blue-500/30 group-hover:text-blue-200 transition-colors">
+                  <div className="flex w-fit max-w-full flex-wrap items-center gap-2 text-xs font-bold text-slate-300 bg-slate-800/50 px-3 py-1.5 rounded-lg border border-slate-700 h-fit group-hover:border-blue-500/30 group-hover:text-blue-200 transition-colors">
                     <Calendar size={12} />
                     {exp.period}
                   </div>
@@ -118,7 +118,7 @@ export default function ExperienceSection({ experience }) {
 
                 <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-800/50">
                   {exp.tech.map((tech, i) => (
-                    <span key={i} className="px-2.5 py-1 bg-slate-900 text-slate-400 rounded-md text-xs font-medium border border-slate-800 hover:text-blue-300 hover:border-blue-500/30 hover:bg-blue-500/5 transition-all cursor-default select-none">
+                    <span key={i} className="px-2.5 py-1 bg-slate-900 text-slate-400 rounded-md text-xs font-medium border border-slate-800 hover:text-blue-300 hover:border-blue-500/30 transition-all cursor-default select-none">
                       {tech}
                     </span>
                   ))}

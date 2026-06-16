@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { 
   BarChart3, Database, TrendingUp, Code, Mail, Linkedin, Github, 
   Award, Briefcase, GraduationCap, ChevronRight, Users, Trophy, 
@@ -18,11 +18,12 @@ import CertificationsSection from './CertificationsSection';
 import ContactSection from './ContactSection';
 
 export default function Portfolio() {
-  const [activeTab, setActiveTab] = useState('about');
+  const [activeTab, setActiveTab] = useState('home');
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showAllCerts, setShowAllCerts] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null);
+  const projectScrollPositionRef = useRef(0);
 
   const openCertImage = (cert) => {
     setSelectedCert(cert);
@@ -67,14 +68,27 @@ export default function Portfolio() {
   };
 
   const openProjectDetail = (project) => {
+    projectScrollPositionRef.current = window.scrollY || window.pageYOffset || 0;
     setSelectedProject(project);
     setCurrentImageIndex(0);
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${projectScrollPositionRef.current}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
   };
 
   const closeProjectDetail = () => {
+    const restoreY = projectScrollPositionRef.current;
     setSelectedProject(null);
-    document.body.style.overflow = 'unset'; 
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = 'unset';
+    window.scrollTo({ top: restoreY, behavior: 'auto' });
   };
 
   const contactInfo = {
@@ -145,6 +159,45 @@ export default function Portfolio() {
 
   const projects = [
     {
+      title: 'WebGIS Yogyakarta',
+      category: 'WebGIS / GIS / Mapping / Spatial Data',
+      projectGroup: 'WebGIS & GIS',
+      shortDesc: 'WebGIS interaktif untuk informasi spasial dan visualisasi data wilayah Yogyakarta.',
+      description: 'WebGIS Yogyakarta adalah project berbasis peta digital yang menampilkan informasi spasial dan visualisasi data wilayah Yogyakarta. Project ini berkaitan dengan WebGIS, pemetaan, analisis spasial, dan penyajian data geografis secara interaktif.',
+      challenges: ['Menyajikan data spasial agar mudah dibaca oleh pengguna umum.', 'Menghubungkan tampilan peta, statistik, dan informasi wilayah dalam satu pengalaman interaktif.', 'Menjaga performa dan keterbacaan visual pada data geografis yang kompleks.'],
+      outcomes: ['WebGIS publik yang membantu pengguna membaca informasi wilayah Yogyakarta secara visual.', 'Peta interaktif dengan dukungan tampilan statistik dan dashboard.', 'Penyajian data geografis yang lebih informatif untuk kebutuhan analisis wilayah.'],
+      tech: ['WebGIS', 'GIS', 'Mapping', 'Spatial Data'],
+      github: '',
+      demo: 'https://webgisyogyakarta.vercel.app/',
+      images: ['/images_projects_gis_analyst/webgisyogya_dashboard.png', '/images_projects_gis_analyst/webgisyogya_peta.png', '/images_projects_gis_analyst/webgisyogya_statistik.png']
+    },
+    {
+      title: 'BarangBareng',
+      category: 'Marketplace / Web App / UI/UX / Sistem Informasi',
+      projectGroup: 'Digital Product',
+      shortDesc: 'Marketplace rental barang yang mempertemukan penyewa dan penyedia barang dalam satu platform digital.',
+      description: 'BarangBareng adalah project marketplace rental barang yang mempertemukan penyewa dan penyedia barang. Project ini memiliki konsep platform digital untuk sewa barang dengan fitur seperti listing barang, detail barang, checkout, pembayaran simulasi, dan pengalaman pengguna yang modern.',
+      challenges: ['Menyusun alur rental yang jelas dari discovery hingga checkout.', 'Membuat konsep marketplace yang mudah dipahami oleh penyewa dan pemilik barang.', 'Menerjemahkan kebutuhan sistem informasi rental ke dalam pengalaman web yang modern.'],
+      outcomes: ['Platform rental barang dengan flow listing, detail produk, checkout, dan simulasi pembayaran.', 'Pengalaman pengguna yang lebih jelas untuk transaksi rental barang.', 'Konsep sistem informasi marketplace yang mendukung kebutuhan penyewa dan penyedia barang.'],
+      tech: ['React', 'Web App', 'UI/UX', 'Marketplace'],
+      github: '',
+      demo: 'https://barangbareng-barengintech.vercel.app/',
+      images: ['/images_project_digital_product/barangbareng.png']
+    },
+    {
+      title: 'Proyek GIS',
+      category: 'GIS / Spatial Analysis / Mapping / QGIS',
+      projectGroup: 'WebGIS & GIS',
+      shortDesc: 'Project GIS untuk pengolahan data spasial, analisis buffer, visualisasi peta, dan analisis wilayah.',
+      description: 'Proyek GIS adalah project yang berkaitan dengan pengolahan data spasial, pemetaan, analisis buffer, visualisasi peta, dan pemanfaatan data geografis untuk kebutuhan analisis wilayah.',
+      challenges: ['Mengolah data spasial menjadi peta analitis yang mudah dipahami.', 'Menerapkan analisis buffer dan service area untuk membaca cakupan wilayah.', 'Menyusun layout peta yang informatif untuk kebutuhan presentasi dan analisis.'],
+      outcomes: ['Visualisasi peta kerawanan dan service area yang mendukung analisis wilayah.', 'Dokumentasi spasial berbasis QGIS untuk kebutuhan pengambilan keputusan.', 'Output peta yang rapi dan mudah digunakan sebagai bahan komunikasi analitis.'],
+      tech: ['QGIS', 'Spatial Analysis', 'Mapping', 'Buffer Analysis'],
+      github: '',
+      demo: '',
+      images: ['/images_projects_gis_analyst/layout_servicesarea_umbulharjo.png', '/images_projects_gis_analyst/layout_kerawananlongsor_bandung.png']
+    },
+    {
       title: 'GoFood Marketing Analytics & Strategy',
       category: 'Business Analysis',
       projectGroup: 'Data Analytics & BI',
@@ -154,7 +207,7 @@ export default function Portfolio() {
       outcomes: ['Memberikan roadmap penghematan budget marketing sebesar 15% melalui penargetan ulang (retargeting).', 'Dashboard interaktif untuk memantau performa merchant mitra GoFood.', 'Rekomendasi promosi spesifik berdasarkan jam sibuk (peak hours).'],
       tech: ['SQL', 'Tableau', 'Marketing Analytics', 'Excel'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project01_GoFood_Marketing_Analysis', demo: '',
-      images: ['/images_projects_data_analis/BI_Gojek/Dashboard_BI_Gojek.png', '/images_projects_data_analis/BI_Gojek/Data_BI_Gojek.png']
+      images: ['/images_projects_data_analyst/BI_Gojek/Dashboard_BI_Gojek.png', '/images_projects_data_analyst/BI_Gojek/Data_BI_Gojek.png']
     },
     {
       title: 'Global Superstore Executive Dashboard',
@@ -166,7 +219,7 @@ export default function Portfolio() {
       outcomes: ['Identifikasi 3 negara dengan performa terburuk untuk evaluasi strategi pasar.', 'Peningkatan visibilitas terhadap tren penjualan musiman.', 'Dashboard interaktif yang menjadi standar pelaporan bulanan.'],
       tech: ['Power BI', 'Data Modeling', 'DAX', 'SQL'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project4_Global_Superstore_Analytics', demo: '',
-      images: ['/images_projects_data_analis/BI_Global/Dashboard_BI_Global.png', '/images_projects_data_analis/BI_Global/Data_BI_Global.png']
+      images: ['/images_projects_data_analyst/BI_Global/Dashboard_BI_Global.png', '/images_projects_data_analyst/BI_Global/Data_BI_Global.png']
     },
     {
       title: 'E-Commerce Sales Performance Analysis',
@@ -178,7 +231,7 @@ export default function Portfolio() {
       outcomes: ['Menemukan korelasi kuat antara keterlambatan pengiriman dan penurunan rating toko.', 'Rekomendasi bundling produk yang meningkatkan rata-rata nilai transaksi (AOV).', 'Laporan tren kategori produk terlaris per kuartal.'],
       tech: ['Python', 'Pandas', 'Seaborn', 'Matplotlib'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project5_Ecommerce_Sales_Analysis', demo: '',
-      images: ['/images_projects_data_analis/BI_Ecommerce/Dashboard_BI_Ecommerce.png', '/images_projects_data_analis/BI_Ecommerce/Data_BI_Ecommerce.png', '/images_projects_data_analis/BI_Ecommerce/Star_Schema_BI_Ecommerce.png']
+      images: ['/images_projects_data_analyst/BI_Ecommerce/Dashboard_BI_Ecommerce.png', '/images_projects_data_analyst/BI_Ecommerce/Data_BI_Ecommerce.png', '/images_projects_data_analyst/BI_Ecommerce/Star_Schema_BI_Ecommerce.png']
     },
     {
       title: 'HR Analytics: Workforce Architecture',
@@ -190,7 +243,7 @@ export default function Portfolio() {
       outcomes: ['Dashboard Diversity & Inclusion untuk memantau target kesetaraan perusahaan.', 'Identifikasi departemen dengan tingkat promosi internal tertinggi.', 'Analisis kompensasi untuk memastikan keadilan gaji internal.'],
       tech: ['Looker Studio', 'SQL', 'HR Metrics', 'Spreadsheet'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project2_HR_Analytics_Architecture', demo: '',
-      images: ['/images_projects_data_analis/BI_HR/Dashboard_BI_HR.png', '/images_projects_data_analis/BI_HR/Data_BI_HR.png', '/images_projects_data_analis/BI_HR/Star_Schema_BI_HR.png']
+      images: ['/images_projects_data_analyst/BI_HR/Dashboard_BI_HR.png', '/images_projects_data_analyst/BI_HR/Data_BI_HR.png', '/images_projects_data_analyst/BI_HR/Star_Schema_BI_HR.png']
     },
     {
     title: 'Global Layoffs Analysis: Business Analysis & Trends',
@@ -202,7 +255,7 @@ export default function Portfolio() {
     outcomes: ['Identifikasi sektor teknologi sebagai industri dengan dampak PHK terbesar.', 'Visualisasi tren puncak PHK global pada periode 2023-2024.', 'Wawasan strategis mengenai stabilitas perusahaan berdasarkan tahapan pendanaan (Startup vs IPO).'],
     tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn'],
     github: 'https://github.com/Jihanablh/Bootcamp_IBM_X_Hacktiv8/tree/main/Project1_Layoffs_Analysis', demo: '', 
-    images: ['/images_projects_data_analis/Py_Layoffs/Py_Layoffs.png', '/images_projects_data_analis/Py_Layoffs/Py_Layoffs2.png', '/images_projects_data_analis/Py_Layoffs/Py_Layoffs3.png', '/images_projects_data_analis/Py_Layoffs/Py_Layoffs4.png', '/images_projects_data_analis/Py_Layoffs/Py_Layoffs5.png']
+    images: ['/images_projects_data_analyst/Py_Layoffs/Py_Layoffs.png', '/images_projects_data_analyst/Py_Layoffs/Py_Layoffs2.png', '/images_projects_data_analyst/Py_Layoffs/Py_Layoffs3.png', '/images_projects_data_analyst/Py_Layoffs/Py_Layoffs4.png', '/images_projects_data_analyst/Py_Layoffs/Py_Layoffs5.png']
     },
     {
       title: 'AI Job Market Trends Analysis',
@@ -214,7 +267,7 @@ export default function Portfolio() {
       outcomes: ['Peta persebaran lowongan kerja AI/Data di berbagai industri.', 'Daftar 10 top technical skills yang wajib dikuasai pelamar.', 'Insight mengenai kesenjangan supply dan demand talenta data.'],
       tech: ['Python', 'NLP', 'Data Visualization', 'Pandas'],
       github: 'https://github.com/Jihanablh/Bootcamp_DibimbingID/tree/main/Project2_Ai_Job_Market_Analysis', demo: '',
-      images: ['/images_projects_data_analis/Py_Job/Py_Job.png', '/images_projects_data_analis/Py_Job/Py_Job2.png', '/images_projects_data_analis/Py_Job/Py_Job3.png', '/images_projects_data_analis/Py_Job/Py_Job4.png', '/images_projects_data_analis/Py_Job/Py_Job5.png']
+      images: ['/images_projects_data_analyst/Py_Job/Py_Job.png', '/images_projects_data_analyst/Py_Job/Py_Job2.png', '/images_projects_data_analyst/Py_Job/Py_Job3.png', '/images_projects_data_analyst/Py_Job/Py_Job4.png', '/images_projects_data_analyst/Py_Job/Py_Job5.png']
     },
     {
       title: 'Retail Sales Trend Analysis',
@@ -226,7 +279,7 @@ export default function Portfolio() {
       outcomes: ['Visualisasi tren penjualan yang jelas dan mudah dipahami.', 'Identifikasi hari-hari dengan penjualan terendah untuk strategi promosi.'],
       tech: ['Excel', 'Tableau', 'Descriptive Analytics'],
       github: 'https://github.com/Jihanablh/BI_Analyst_Projects/tree/main/Project3_Retail_Sales_Trend_Analysis', demo: '',
-      images: ['/images_projects_data_analis/BI_Retail/Dashboard_BI_Retail.png', '/images_projects_data_analis/BI_Retail/Data_BI_Retail.png']
+      images: ['/images_projects_data_analyst/BI_Retail/Dashboard_BI_Retail.png', '/images_projects_data_analyst/BI_Retail/Data_BI_Retail.png']
     },
     {
       title: 'Marketing Customer Segmentation',
@@ -238,7 +291,7 @@ export default function Portfolio() {
       outcomes: ['Terbentuknya profil persona pelanggan (misal: Loyal, New, Churn Risk).', 'Strategi komunikasi yang berbeda untuk setiap segmen.'],
       tech: ['R Language', 'Data Analysis', 'Statistics'],
       github: 'https://github.com/Jihanablh/Bootcamp_DQLab/tree/main/project2_marketing_customer', demo: '',
-      images: ['/images_projects_data_analis/Py_Marketing/Py_Marketing.png', '/images_projects_data_analis/Py_Marketing/Py_Marketing2.png', '/images_projects_data_analis/Py_Marketing/Py_Marketing3.png']
+      images: ['/images_projects_data_analyst/Py_Marketing/Py_Marketing.png', '/images_projects_data_analyst/Py_Marketing/Py_Marketing2.png', '/images_projects_data_analyst/Py_Marketing/Py_Marketing3.png']
     },
     {
       title: 'Business Decision Research',
@@ -250,7 +303,7 @@ export default function Portfolio() {
       outcomes: ['Laporan rekomendasi keputusan berbasis fakta.', 'Validasi asumsi manajemen dengan data riil.'],
       tech: ['R Language', 'Statistics', 'Data Cleaning'],
       github: 'https://github.com/Jihanablh/Bootcamp_DQLab/tree/main/project1__business_decision', demo: '',
-      images: ['/images_projects_data_analis/Py_Business/Py_Business.png', '/images_projects_data_analis/Py_Business/Py_Business2.png', '/images_projects_data_analis/Py_Business/Py_Business3.png']
+      images: ['/images_projects_data_analyst/Py_Business/Py_Business.png', '/images_projects_data_analyst/Py_Business/Py_Business2.png', '/images_projects_data_analyst/Py_Business/Py_Business3.png']
     },
     {
       title: '3 Lots Business Diagram',
@@ -263,7 +316,7 @@ export default function Portfolio() {
       tech: ['draw.io', 'Swimlane Diagram', 'Business Analysis'],
       github: '',
       demo: 'https://drive.google.com/file/d/1H6ns4wqD6cMomXW3Cl8gZJ7V2jUc1HTm/view?usp=sharing',
-      images: ['/images_projects_bisnis_analiss/project_placeholders/3lots.drawio.png']
+      images: ['/images_projects_business_analyst/project_placeholders/3lots.drawio.png']
     },
     {
       title: 'Aplikasi Bank All-in-One',
@@ -276,7 +329,7 @@ export default function Portfolio() {
       tech: ['Figma', 'UI/UX Design', 'Prototyping', 'Mobile App'],
       github: '',
       demo: 'https://www.figma.com/design/6Vw12eUHW8SkkMDmfOdtlI/Aplikasi-Bank-All-in-One',
-      images: ['/images_projects_bisnis_analiss/project_placeholders/banking_app.png']
+      images: ['/images_projects_business_analyst/project_placeholders/banking_app.png']
     },
     {
       title: 'Enterprise Blueprint',
@@ -289,7 +342,7 @@ export default function Portfolio() {
       tech: ['draw.io', 'Enterprise Architecture', 'Business Process Modeling', 'System Analysis'],
       github: '',
       demo: '',
-      images: ['/images_projects_bisnis_analiss/project_placeholders/enterpriseblueprint.png', '/images_projects_bisnis_analiss/project_placeholders/enterpriseblueprint2.png']
+      images: ['/images_projects_business_analyst/project_placeholders/enterpriseblueprint.png', '/images_projects_business_analyst/project_placeholders/enterpriseblueprint2.png']
     },
     {
       title: 'Event Hub Platform',
@@ -302,7 +355,7 @@ export default function Portfolio() {
       tech: ['Figma', 'UI/UX Design', 'Platform Design', 'Event Management'],
       github: '',
       demo: '',
-      images: ['/images_projects_bisnis_analiss/project_placeholders/eventhubplatform.png']
+      images: ['/images_projects_business_analyst/project_placeholders/eventhubplatform.png']
     },
     {
       title: 'UML Bank All-in-One',
@@ -315,7 +368,7 @@ export default function Portfolio() {
       tech: ['draw.io', 'UML', 'Class Diagram', 'Swimlane Diagram', 'Systems Analysis'],
       github: '',
       demo: '',
-      images: ['/images_projects_bisnis_analiss/uml_bankallinone/bankallinone_classdiagram.png', '/images_projects_bisnis_analiss/uml_bankallinone/bankallinone_swimlanediagram.png']
+      images: ['/images_projects_business_analyst/uml_bankallinone/bankallinone_classdiagram.png', '/images_projects_business_analyst/uml_bankallinone/bankallinone_swimlanediagram.png']
     },
     {
       title: 'Web GoFun',
@@ -329,12 +382,12 @@ export default function Portfolio() {
       github: '',
       demo: '',
       images: [
-        '/images_projects_bisnis_analiss/web_gofun/webgofun.png',
-        '/images_projects_bisnis_analiss/web_gofun/gofun_level 0.drawio.png',
-        '/images_projects_bisnis_analiss/web_gofun/gofun_level1.drawio.png',
-        '/images_projects_bisnis_analiss/web_gofun/gofun_level2_p1.drawio.png',
-        '/images_projects_bisnis_analiss/web_gofun/gofun_level2_p2.drawio.png',
-        '/images_projects_bisnis_analiss/web_gofun/gofun_level2_p9.drawio.png'
+        '/images_projects_business_analyst/web_gofun/webgofun.png',
+        '/images_projects_business_analyst/web_gofun/gofun_level 0.drawio.png',
+        '/images_projects_business_analyst/web_gofun/gofun_level1.drawio.png',
+        '/images_projects_business_analyst/web_gofun/gofun_level2_p1.drawio.png',
+        '/images_projects_business_analyst/web_gofun/gofun_level2_p2.drawio.png',
+        '/images_projects_business_analyst/web_gofun/gofun_level2_p9.drawio.png'
       ]
     }
   ];
@@ -522,11 +575,16 @@ export default function Portfolio() {
   ];
 
 return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-white relative">
-      <Navbar activeTab={activeTab} scrollToSection={scrollToSection} />
+    <div className="relative min-h-screen overflow-x-hidden text-white">
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <div className="absolute left-[-8rem] top-24 h-80 w-80 rounded-full bg-blue-500/10 blur-[110px]" />
+        <div className="absolute right-[-7rem] top-1/3 h-96 w-96 rounded-full bg-pink-500/10 blur-[130px]" />
+        <div className="absolute bottom-12 left-1/3 h-72 w-72 rounded-full bg-purple-500/10 blur-[120px]" />
+      </div>
+      {!selectedProject && <Navbar activeTab={activeTab} scrollToSection={scrollToSection} />}
       <HeroSection contactInfo={contactInfo} scrollToSection={scrollToSection} />
       
-      <div className="container mx-auto px-4 sm:px-6 space-y-16">
+      <div className="relative z-10 space-y-16">
         <AboutSection />
         <ExperienceSection experience={experience} />
         <ProjectsSection 
@@ -551,9 +609,7 @@ return (
           closeCertImage={closeCertImage} 
         />
       </div>
-      <section id="contact">
-          <ContactSection contactInfo={contactInfo} scrollToSection={scrollToSection} />
-      </section>
+      <ContactSection contactInfo={contactInfo} scrollToSection={scrollToSection} />
       
     </div>
   );

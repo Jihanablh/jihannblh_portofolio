@@ -12,7 +12,7 @@ export default function HeroSection({ contactInfo, scrollToSection }) {
   }
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 pb-10">
+    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 pb-10">
       
       <div className="absolute inset-0 bg-slate-950">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
@@ -20,7 +20,7 @@ export default function HeroSection({ contactInfo, scrollToSection }) {
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[80px]"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col h-full justify-between">
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col justify-between px-5 sm:px-8 lg:px-10">
         
         <div className="flex-1 flex flex-col justify-center items-center text-center">
           
@@ -29,10 +29,10 @@ export default function HeroSection({ contactInfo, scrollToSection }) {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
-            Data Science Student & Junior Data Scientist
+            Data Analyst Student & Junior Data Scientist
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 leading-tight whitespace-nowrap">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 leading-tight">
             <span className="bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent">Jihan</span>{' '}
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-purple-500 bg-clip-text text-transparent">Nabilah</span>{' '}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Rahman</span>
@@ -45,7 +45,7 @@ export default function HeroSection({ contactInfo, scrollToSection }) {
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <button 
               onClick={() => scrollToSection && scrollToSection('projects')} 
-              className="group relative px-6 py-3 bg-blue-600 rounded-xl font-bold text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/50 transition-all hover:-translate-y-1 overflow-hidden"
+              className="group relative overflow-hidden rounded-xl border border-blue-400/30 bg-blue-600 px-6 py-3 font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:-translate-y-1 hover:border-blue-300/60 hover:shadow-blue-500/50"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               <div className="flex items-center gap-2"><Code size={18} /> View Projects</div>
@@ -53,12 +53,12 @@ export default function HeroSection({ contactInfo, scrollToSection }) {
             
             <button 
               onClick={() => scrollToSection && scrollToSection('about')} 
-              className="px-6 py-3 bg-slate-900/50 border border-slate-700 hover:border-purple-500/50 rounded-xl font-bold text-slate-300 hover:text-white hover:bg-slate-800 transition-all hover:-translate-y-1 flex items-center gap-2"
+              className="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/50 px-6 py-3 font-bold text-slate-300 transition-all hover:-translate-y-1 hover:border-purple-500/50 hover:text-white"
             >
               <Users size={18} /> About Me
             </button>
             
-            <a href="#" className="px-6 py-3 bg-slate-900/50 border border-slate-700 hover:border-pink-500/50 rounded-xl font-bold text-slate-300 hover:text-white hover:bg-slate-800 transition-all hover:-translate-y-1 flex items-center gap-2">
+            <a href="#" className="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/50 px-6 py-3 font-bold text-slate-300 transition-all hover:-translate-y-1 hover:border-pink-500/50 hover:text-white">
               <FileText size={18} /> CV
             </a>
           </div>
@@ -74,28 +74,28 @@ export default function HeroSection({ contactInfo, scrollToSection }) {
           </div>
         </div>
 
-        <div className="w-full max-w-6xl mx-auto mt-auto">
+        <div className="mx-auto mt-auto w-full max-w-7xl">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="relative group bg-slate-900 border border-slate-800 rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-900/20 text-left">
-              <div className="absolute -right-4 -top-4 text-blue-900/20 group-hover:text-blue-900/40 transition-colors duration-300"><Briefcase size={80} /></div>
-              <div className="relative z-10"><h3 className="text-3xl sm:text-4xl font-extrabold text-blue-400 mb-1">15+</h3><p className="text-slate-400 text-xs sm:text-sm font-semibold uppercase tracking-wider">Projects Completed</p></div>
+              <div className="absolute -right-4 -top-4 text-blue-900/20 transition-colors duration-300"><Briefcase size={80} /></div>
+              <div className="relative z-10"><h3 className="text-3xl sm:text-4xl font-extrabold text-blue-400 mb-1">15+</h3><p className="text-slate-400 text-xs sm:text-sm font-semibold">Projects Completed</p></div>
             </div>
             <div className="relative group bg-slate-900 border border-slate-800 rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-900/20 text-left">
-              <div className="absolute -right-4 -top-4 text-purple-900/20 group-hover:text-purple-900/40 transition-colors duration-300"><Award size={80} /></div>
-              <div className="relative z-10"><h3 className="text-3xl sm:text-4xl font-extrabold text-purple-400 mb-1">6+</h3><p className="text-slate-400 text-xs sm:text-sm font-semibold uppercase tracking-wider">Certifications</p></div>
+              <div className="absolute -right-4 -top-4 text-purple-900/20 transition-colors duration-300"><Award size={80} /></div>
+              <div className="relative z-10"><h3 className="text-3xl sm:text-4xl font-extrabold text-purple-400 mb-1">6+</h3><p className="text-slate-400 text-xs sm:text-sm font-semibold">Certifications</p></div>
             </div>
             <div className="relative group bg-slate-900 border border-slate-800 rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-pink-500/50 hover:shadow-lg hover:shadow-pink-900/20 text-left">
-              <div className="absolute -right-4 -top-4 text-pink-900/20 group-hover:text-pink-900/40 transition-colors duration-300"><GraduationCap size={80} /></div>
-              <div className="relative z-10"><h3 className="text-3xl sm:text-4xl font-extrabold text-pink-400 mb-1">3.8</h3><p className="text-slate-400 text-xs sm:text-sm font-semibold uppercase tracking-wider">GPA / IPK</p></div>
+              <div className="absolute -right-4 -top-4 text-pink-900/20 transition-colors duration-300"><GraduationCap size={80} /></div>
+              <div className="relative z-10"><h3 className="text-3xl sm:text-4xl font-extrabold text-pink-400 mb-1">3.72</h3><p className="text-slate-400 text-xs sm:text-sm font-semibold">GPA / IPK</p></div>
             </div>
             <div className="relative group bg-slate-900 border border-slate-800 rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-900/20 text-left">
-              <div className="absolute -right-4 -top-4 text-green-900/20 group-hover:text-green-900/40 transition-colors duration-300"><Users size={80} /></div>
-              <div className="relative z-10"><h3 className="text-3xl sm:text-4xl font-extrabold text-green-400 mb-1">4+</h3><p className="text-slate-400 text-xs sm:text-sm font-semibold uppercase tracking-wider">Organizations</p></div>
+              <div className="absolute -right-4 -top-4 text-green-900/20 transition-colors duration-300"><Users size={80} /></div>
+              <div className="relative z-10"><h3 className="text-3xl sm:text-4xl font-extrabold text-green-400 mb-1">4+</h3><p className="text-slate-400 text-xs sm:text-sm font-semibold">Organizations</p></div>
             </div>
           </div>
         </div>
 
       </div>
-    </div>
+    </section>
   );
 }

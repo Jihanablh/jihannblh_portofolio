@@ -12,12 +12,12 @@ import {
   Github,
   Globe2,
   Layers,
-  Map,
   Target,
   X,
+  Lightbulb,
 } from 'lucide-react';
 
-const fallbackImage = '/images_projects_data_analis/BI_Gojek/Dashboard_BI_Gojek.png';
+const fallbackImage = '/images_projects_data_analyst/BI_Gojek/Dashboard_BI_Gojek.png';
 
 const bestProjectInsights = [
   {
@@ -39,6 +39,12 @@ const bestProjectInsights = [
     text: 'Menyajikan informasi kebencanaan secara lebih terstruktur, interaktif, dan berbasis data untuk mendukung pemahaman publik dan pengambilan keputusan.',
   },
 ];
+
+const getProjectNarrative = (project) => ({
+  objective: project.shortDesc || project.description,
+  approach: project.challenges?.[0] || project.description,
+  value: project.outcomes?.[0] || project.shortDesc,
+});
 
 const RevealOnScroll = ({ children, delay = 0, className = '' }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -84,7 +90,13 @@ export default function ProjectsSection({
   const [showAll, setShowAll] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const bestProject = useMemo(() => projects.find((project) => project.title === 'Jogja Siaga WebGIS') || projects[0], [projects]);
+  const bestProject = useMemo(
+    () =>
+      projects.find((project) => project.title === 'WebGIS Yogyakarta') ||
+      projects.find((project) => project.title === 'Jogja Siaga WebGIS') ||
+      projects[0],
+    [projects],
+  );
   const selectedProjects = useMemo(
     () => projects.filter((project) => project.title !== bestProject?.title),
     [projects, bestProject],
@@ -112,10 +124,10 @@ export default function ProjectsSection({
   };
 
   return (
-    <section id="projects" className="mx-auto mt-20 mb-20 max-w-6xl scroll-mt-28 px-4 sm:px-6">
+    <section id="projects" className="mx-auto mt-20 mb-20 max-w-7xl scroll-mt-28 px-5 sm:px-8 lg:px-10">
       <RevealOnScroll>
         <div className="mb-12 flex flex-col">
-          <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-blue-400/20 bg-blue-500/10 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-blue-200">
+          <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-blue-400/20 bg-blue-500/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.24em] text-blue-200">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-400 shadow-[0_0_18px_rgba(96,165,250,.9)]" />
             Projects / Case Studies
           </p>
@@ -131,58 +143,68 @@ export default function ProjectsSection({
       </RevealOnScroll>
 
       {bestProject && (
-        <div className="mb-16 grid gap-6 lg:grid-cols-[1.2fr_.8fr]">
+        <div className="mb-16 grid items-stretch gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)]">
           <RevealOnScroll className="h-full">
             <article
               onClick={() => openProjectDetail(bestProject)}
-              className="group relative h-full cursor-pointer overflow-hidden rounded-3xl border border-white/10 bg-slate-900/90 shadow-2xl shadow-blue-950/30 transition-all duration-500 hover:-translate-y-1 hover:border-blue-400/50 hover:shadow-[0_0_45px_rgba(59,130,246,0.18)]"
+              className="premium-border group relative h-full cursor-pointer overflow-hidden rounded-[2rem] border border-white/10 bg-panel/85 shadow-2xl shadow-black/25 transition-all duration-500 hover:-translate-y-1 hover:border-cyanx/40 hover:shadow-glow"
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,.18),transparent_38%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,.12),transparent_36%)]" />
-              <div className="relative h-72 overflow-hidden sm:h-96">
+              <div className="relative h-64 overflow-hidden sm:h-80 lg:h-[22rem]">
                 <img
                   src={bestProject.images?.[0] || fallbackImage}
                   alt={bestProject.title}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent" />
-                <div className="absolute left-5 top-5 rounded-full border border-blue-300/25 bg-slate-950/60 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-blue-100 backdrop-blur-xl">
+                <div className="absolute left-5 top-5 rounded-full border border-blue-300/25 bg-slate-950/60 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-blue-100 backdrop-blur-xl">
                   Best Project / Featured Case Study
                 </div>
               </div>
 
-              <div className="relative p-6 sm:p-8">
+              <div className="relative p-6 sm:p-7 lg:p-8">
+                {(() => {
+                  const narrative = getProjectNarrative(bestProject);
+                  return (
+                    <>
                 <div className="mb-4 flex flex-wrap items-center gap-3">
-                  <span className="rounded-full border border-blue-400/20 bg-blue-500/10 px-4 py-2 text-xs font-bold text-blue-200">
+                  <span className="rounded-full border border-cyanx/25 bg-cyanx/10 px-4 py-2 text-xs font-bold text-cyan-100">
                     {bestProject.category}
                   </span>
-                  <span className="rounded-full border border-purple-400/20 bg-purple-500/10 px-4 py-2 text-xs font-bold text-purple-200">
+                  <span className="rounded-full border border-violet-300/20 bg-violet-300/10 px-4 py-2 text-xs font-bold text-violet-100">
                     Data Visualization / WebGIS / Spatial Data Analysis
                   </span>
                 </div>
-                <h3 className="text-3xl font-extrabold text-white sm:text-5xl">{bestProject.title}</h3>
+                <h3 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">{bestProject.title}</h3>
                 <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">{bestProject.shortDesc}</p>
 
-                <div className="mt-6 grid gap-2 sm:grid-cols-2">
+                <div className="mt-5 grid gap-3 lg:grid-cols-3">
+                  <MiniInfo icon={Target} label="Objective" text={narrative.objective} />
+                  <MiniInfo icon={Layers} label="Approach" text={narrative.approach} />
+                  <MiniInfo icon={Lightbulb} label="Value" text={narrative.value} />
+                </div>
+
+                <div className="mt-5 grid gap-2 sm:grid-cols-2">
                   {(bestProject.outcomes || []).slice(0, 4).map((item) => (
                     <span
                       key={item}
-                      className="rounded-2xl border border-blue-400/15 bg-blue-500/[0.06] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-blue-100"
+                      className="rounded-2xl border border-blue-400/15 bg-blue-500/[0.06] px-3 py-2 text-xs font-semibold leading-5 text-blue-100"
                     >
                       {item}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-5 flex flex-wrap gap-2">
                   {bestProject.tech.map((item) => (
-                    <span key={item} className="rounded-full border border-slate-700 bg-slate-950/60 px-3 py-1.5 text-xs font-semibold text-slate-300">
+                    <span key={item} className="rounded-full border border-white/10 bg-white/[0.055] px-3 py-1.5 text-xs font-semibold text-slate-300">
                       {item}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-900/30 transition group-hover:bg-blue-500">
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-cyanx px-5 py-3 text-sm font-bold text-midnight shadow-glow transition">
                     <ArrowUpRight size={18} />
                     View Case Study
                   </span>
@@ -192,7 +214,7 @@ export default function ProjectsSection({
                       target="_blank"
                       rel="noreferrer"
                       onClick={(event) => event.stopPropagation()}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-bold text-white transition hover:border-blue-400/50 hover:bg-white/[0.08]"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-blue-400/50 hover:shadow-[0_0_22px_rgba(59,130,246,0.22)]"
                     >
                       <Globe2 size={18} />
                       Live Demo
@@ -204,20 +226,23 @@ export default function ProjectsSection({
                       target="_blank"
                       rel="noreferrer"
                       onClick={(event) => event.stopPropagation()}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-bold text-white transition hover:border-purple-400/50 hover:bg-white/[0.08]"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-purple-400/50 hover:shadow-[0_0_22px_rgba(168,85,247,0.22)]"
                     >
                       <Github size={18} />
                       GitHub
                     </a>
                   )}
                 </div>
+                    </>
+                  );
+                })()}
               </div>
             </article>
           </RevealOnScroll>
 
-          <div className="grid gap-5">
+          <div className="grid h-full gap-4 lg:grid-rows-3">
             {bestProjectInsights.map((card, index) => (
-              <RevealOnScroll key={card.title} delay={index * 100}>
+              <RevealOnScroll key={card.title} delay={index * 100} className="h-full">
                 <InsightCard card={card} index={index} />
               </RevealOnScroll>
             ))}
@@ -228,7 +253,7 @@ export default function ProjectsSection({
       <RevealOnScroll>
         <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-blue-300">Selected Projects</p>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-blue-300">Selected Projects</p>
             <h3 className="mt-2 text-2xl font-bold text-white sm:text-4xl">More analytical work</h3>
           </div>
           <p className="max-w-xl text-sm leading-7 text-slate-400">
@@ -250,7 +275,7 @@ export default function ProjectsSection({
           <div className="mt-14 flex justify-center">
             <button
               onClick={toggleShowAll}
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-blue-400/30 bg-blue-600 px-8 py-4 font-bold text-white shadow-lg shadow-blue-900/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500 hover:shadow-[0_0_35px_rgba(59,130,246,0.32)] active:scale-95"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-blue-400/30 bg-blue-600 px-8 py-4 font-bold text-white shadow-lg shadow-blue-900/30 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200/60 hover:shadow-[0_0_35px_rgba(59,130,246,0.32)] active:scale-95"
             >
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               <span className="relative inline-flex items-center gap-3">
@@ -291,18 +316,18 @@ function InsightCard({ card, index }) {
   const Icon = card.icon;
 
   return (
-    <article className="group rounded-3xl border border-white/10 bg-slate-900/75 p-6 shadow-2xl shadow-black/10 backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:border-blue-400/40 hover:bg-slate-900 hover:shadow-[0_0_35px_rgba(59,130,246,0.14)]">
-      <div className="mb-5 flex items-start justify-between gap-4">
-        <span className="grid h-12 w-12 place-items-center rounded-2xl border border-blue-300/15 bg-blue-500/10 text-blue-200 transition group-hover:scale-110">
+    <article className="group flex h-full flex-col justify-center rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-5 shadow-2xl shadow-black/10 backdrop-blur-2xl transition duration-500 hover:-translate-y-1 hover:border-cyanx/35 hover:shadow-glow">
+      <div className="mb-4 flex items-start justify-between gap-4">
+        <span className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-cyanx/10 text-cyan-100 transition group-hover:scale-105">
           <Icon size={21} />
         </span>
-        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
           {String(index + 1).padStart(2, '0')}
         </span>
       </div>
-      <p className="font-mono text-[10px] font-black uppercase tracking-[0.18em] text-blue-200">[{card.label}]</p>
-      <h4 className="mt-2 text-xl font-bold text-white">{card.title}</h4>
-      <p className="mt-3 text-sm leading-7 text-slate-400">{card.text}</p>
+      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-cyan-100">[{card.label}]</p>
+      <h4 className="mt-2 text-lg font-bold text-white sm:text-xl">{card.title}</h4>
+      <p className="mt-2 text-sm leading-6 text-slate-400">{card.text}</p>
     </article>
   );
 }
@@ -311,7 +336,7 @@ function ProjectGridCard({ project, openProjectDetail }) {
   return (
     <article
       onClick={() => openProjectDetail(project)}
-      className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/85 shadow-2xl shadow-black/20 transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-[0_24px_60px_rgba(8,112,184,0.16)]"
+      className="premium-border group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-panel/80 shadow-2xl shadow-black/25 transition-all duration-500 hover:-translate-y-2 hover:border-cyanx/35 hover:shadow-glow"
     >
       <div className="relative h-56 overflow-hidden">
         <img
@@ -320,41 +345,82 @@ function ProjectGridCard({ project, openProjectDetail }) {
           className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent" />
-        <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-slate-950/60 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-blue-100 backdrop-blur-xl">
+        <span className="absolute left-4 right-4 top-4 w-fit max-w-[calc(100%-2rem)] rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-[11px] font-semibold leading-5 text-cyan-100 backdrop-blur-xl">
           {project.category}
         </span>
       </div>
 
       <div className="flex flex-1 flex-col p-6">
+        {(() => {
+          const narrative = getProjectNarrative(project);
+          return (
+            <>
         <h3 className="text-xl font-bold text-white transition group-hover:text-blue-200">{project.title}</h3>
-        <p className="mt-3 line-clamp-3 flex-1 text-sm leading-7 text-slate-400">{project.shortDesc}</p>
+        <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{project.shortDesc}</p>
 
         <div className="mt-5 flex flex-wrap gap-2">
           {project.tech.slice(0, 3).map((tech) => (
-            <span key={tech} className="rounded-full border border-slate-700 bg-slate-950/60 px-3 py-1 text-xs font-medium text-slate-300">
+            <span key={tech} className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-semibold text-slate-300">
               {tech}
             </span>
           ))}
           {project.tech.length > 3 && (
-            <span className="rounded-full border border-slate-700 bg-slate-950/60 px-3 py-1 text-xs text-slate-500">
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-slate-500">
               +{project.tech.length - 3}
             </span>
           )}
         </div>
 
-        {project.outcomes?.[0] && (
-          <div className="mt-5 rounded-2xl border border-blue-400/10 bg-blue-500/[0.055] p-3">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-blue-200">Business Highlight</p>
-            <p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-400">{project.outcomes[0]}</p>
+        <div className="mt-5 grid gap-2">
+          <MiniInfo icon={Target} label="Objective" text={narrative.objective} />
+          <MiniInfo icon={Layers} label="Approach" text={narrative.approach} />
+          <MiniInfo icon={Lightbulb} label="Value" text={narrative.value} />
+        </div>
+
+        {narrative.value && (
+          <div className="mt-5 rounded-2xl border border-cyanx/10 bg-cyanx/[0.06] p-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-100">Business Highlight</p>
+            <p className="mt-1 text-xs leading-5 text-slate-400">{narrative.value}</p>
           </div>
         )}
 
-        <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-300 transition group-hover:text-white">
-          View Case Study
-          <ArrowUpRight size={16} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <span className="inline-flex items-center gap-2 text-sm font-bold text-cyan-100 transition group-hover:text-white">
+            View Case Study
+            <ArrowUpRight size={16} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </span>
+          {project.demo && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(event) => event.stopPropagation()}
+              className="inline-flex items-center gap-2 rounded-full border border-cyanx/25 bg-cyanx/10 px-3.5 py-2 text-xs font-bold text-cyan-100 transition hover:border-cyanx/50 hover:text-white hover:shadow-[0_0_18px_rgba(32,231,255,0.18)]"
+            >
+              <Globe2 size={14} />
+              Live Demo
+            </a>
+          )}
         </div>
+            </>
+          );
+        })()}
       </div>
     </article>
+  );
+}
+
+function MiniInfo({ icon: Icon, label, text }) {
+  if (!text) return null;
+
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-3">
+      <div className="mb-1 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em] text-cyan-100">
+        <Icon size={12} />
+        {label}
+      </div>
+      <p className="text-xs leading-5 text-slate-400">{text}</p>
+    </div>
   );
 }
 
@@ -368,27 +434,38 @@ function ProjectModal({
   selectedProjectLink,
   setIsHovered,
 }) {
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeProjectDetail();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [closeProjectDetail]);
+
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6">
+    <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6">
       <button
         type="button"
         aria-label="Close project modal"
-        className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
+        className="modal-overlay absolute inset-0 bg-slate-950/85 backdrop-blur-md"
         onClick={closeProjectDetail}
       />
 
-      <div className="relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-2xl">
+      <div className="modal-panel relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-slate-950/92 shadow-2xl shadow-black/60 backdrop-blur-2xl ring-1 ring-cyanx/10">
         <button
           onClick={closeProjectDetail}
           aria-label="Close project detail"
-          className="absolute right-5 top-5 z-50 rounded-full border border-white/10 bg-black/45 p-2.5 text-white/80 backdrop-blur-md transition hover:bg-red-500/80 hover:text-white"
+          className="absolute right-5 top-5 z-50 rounded-full border border-white/10 bg-black/45 p-2.5 text-white/80 backdrop-blur-md transition hover:border-red-300/60 hover:text-white hover:shadow-[0_0_24px_rgba(248,113,113,0.24)]"
         >
           <X size={20} />
         </button>
 
-        <div className="overflow-y-auto">
+        <div className="max-h-[90vh] overflow-y-auto custom-scrollbar">
           <div
-            className="relative h-72 shrink-0 select-none bg-slate-950 sm:h-[500px]"
+            className="group relative h-72 shrink-0 select-none bg-slate-950 sm:h-[440px]"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -406,7 +483,7 @@ function ProjectModal({
                     event.stopPropagation();
                     prevImage();
                   }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/25 p-3 text-white opacity-100 backdrop-blur-md transition hover:bg-blue-600/80 sm:opacity-0 sm:group-hover:opacity-100"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/35 p-3 text-white opacity-100 backdrop-blur-md transition hover:border-cyanx/50 hover:shadow-glow sm:opacity-0 sm:group-hover:opacity-100"
                 >
                   <ChevronLeft size={24} />
                 </button>
@@ -415,7 +492,7 @@ function ProjectModal({
                     event.stopPropagation();
                     nextImage();
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/25 p-3 text-white opacity-100 backdrop-blur-md transition hover:bg-blue-600/80 sm:opacity-0 sm:group-hover:opacity-100"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/35 p-3 text-white opacity-100 backdrop-blur-md transition hover:border-cyanx/50 hover:shadow-glow sm:opacity-0 sm:group-hover:opacity-100"
                 >
                   <ChevronRight size={24} />
                 </button>
@@ -423,8 +500,8 @@ function ProjectModal({
             )}
           </div>
 
-          <div className="p-6 sm:p-10">
-            <div className="mb-8 flex flex-col justify-between gap-6 border-b border-slate-800 pb-8 lg:flex-row lg:items-end">
+          <div className="p-6 pb-12 sm:p-10 sm:pb-14">
+            <div className="mb-8 flex flex-col justify-between gap-6 border-b border-white/10 pb-8 lg:flex-row lg:items-end">
               <div className="flex-1 space-y-4">
                 <span className="inline-flex rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-sm font-bold tracking-wide text-blue-300">
                   {selectedProject.category}
@@ -437,10 +514,10 @@ function ProjectModal({
                   href={selectedProjectLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-bold text-white shadow-lg shadow-blue-900/30 transition hover:bg-blue-500"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-blue-300/25 bg-blue-600 px-6 py-3 font-bold text-white shadow-lg shadow-blue-900/30 transition hover:-translate-y-0.5 hover:border-blue-200/60 hover:shadow-[0_0_28px_rgba(59,130,246,0.32)]"
                 >
                   <ExternalLink size={20} />
-                  View Project
+                  {selectedProject.demo ? 'Live Demo' : 'View Project'}
                 </a>
               )}
             </div>
@@ -462,14 +539,14 @@ function ProjectModal({
               </div>
 
               <aside className="space-y-8">
-                <div className="rounded-2xl border border-slate-700/50 bg-slate-800/40 p-6 backdrop-blur-sm">
+                <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-6 backdrop-blur-sm">
                   <h3 className="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-slate-400">
                     <Layers size={16} />
                     Technologies Used
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tech.map((tech) => (
-                      <span key={tech} className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-300">
+                      <span key={tech} className="rounded-lg border border-white/10 bg-slate-900/80 px-3 py-1.5 text-sm text-slate-300">
                         {tech}
                       </span>
                     ))}
