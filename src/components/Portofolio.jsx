@@ -11,6 +11,8 @@ import HeroSection from './HeroSection';
 import AboutSection from './AboutSection';
 import ExperienceSection from './ExperienceSection';
 import ProjectsSection from './ProjectsSection';
+import CaseStudiesSection from './CaseStudiesSection';
+import GallerySection from './GallerySection';
 import SkillsSection from './SkillsSection';
 import CertificationsSection from './CertificationsSection';
 import ContactSection from './ContactSection';
@@ -261,7 +263,7 @@ export default function Portfolio() {
       tech: ['draw.io', 'Swimlane Diagram', 'Business Analysis'],
       github: '',
       demo: 'https://drive.google.com/file/d/1H6ns4wqD6cMomXW3Cl8gZJ7V2jUc1HTm/view?usp=sharing',
-      images: ['/images_projects_bisnis_analis/project_placeholders/3lots.drawio.png']
+      images: ['/images_projects_bisnis_analiss/project_placeholders/3lots.drawio.png']
     },
     {
       title: 'Aplikasi Bank All-in-One',
@@ -274,7 +276,7 @@ export default function Portfolio() {
       tech: ['Figma', 'UI/UX Design', 'Prototyping', 'Mobile App'],
       github: '',
       demo: 'https://www.figma.com/design/6Vw12eUHW8SkkMDmfOdtlI/Aplikasi-Bank-All-in-One',
-      images: ['/images_projects_bisnis_analis/project_placeholders/banking_app.png']
+      images: ['/images_projects_bisnis_analiss/project_placeholders/banking_app.png']
     },
     {
       title: 'Enterprise Blueprint',
@@ -287,7 +289,7 @@ export default function Portfolio() {
       tech: ['draw.io', 'Enterprise Architecture', 'Business Process Modeling', 'System Analysis'],
       github: '',
       demo: '',
-      images: ['/images_projects_bisnis_analis/project_placeholders/enterpriseblueprint.png', '/images_projects_bisnis_analis/project_placeholders/enterpriseblueprint2.png']
+      images: ['/images_projects_bisnis_analiss/project_placeholders/enterpriseblueprint.png', '/images_projects_bisnis_analiss/project_placeholders/enterpriseblueprint2.png']
     },
     {
       title: 'Event Hub Platform',
@@ -300,7 +302,7 @@ export default function Portfolio() {
       tech: ['Figma', 'UI/UX Design', 'Platform Design', 'Event Management'],
       github: '',
       demo: '',
-      images: ['/images_projects_bisnis_analis/project_placeholders/eventhubplatform.png']
+      images: ['/images_projects_bisnis_analiss/project_placeholders/eventhubplatform.png']
     },
     {
       title: 'UML Bank All-in-One',
@@ -313,7 +315,7 @@ export default function Portfolio() {
       tech: ['draw.io', 'UML', 'Class Diagram', 'Swimlane Diagram', 'Systems Analysis'],
       github: '',
       demo: '',
-      images: ['/images_projects_bisnis_analis/uml_bankallinone/bankallinone_classdiagram.png', '/images_projects_bisnis_analis/uml_bankallinone/bankallinone_swimlanediagram.png']
+      images: ['/images_projects_bisnis_analiss/uml_bankallinone/bankallinone_classdiagram.png', '/images_projects_bisnis_analiss/uml_bankallinone/bankallinone_swimlanediagram.png']
     },
     {
       title: 'Web GoFun',
@@ -327,12 +329,12 @@ export default function Portfolio() {
       github: '',
       demo: '',
       images: [
-        '/images_projects_bisnis_analis/web_gofun/webgofun.png',
-        '/images_projects_bisnis_analis/web_gofun/gofun_level 0.drawio.png',
-        '/images_projects_bisnis_analis/web_gofun/gofun_level1.drawio.png',
-        '/images_projects_bisnis_analis/web_gofun/gofun_level2_p1.drawio.png',
-        '/images_projects_bisnis_analis/web_gofun/gofun_level2_p2.drawio.png',
-        '/images_projects_bisnis_analis/web_gofun/gofun_level2_p9.drawio.png'
+        '/images_projects_bisnis_analiss/web_gofun/webgofun.png',
+        '/images_projects_bisnis_analiss/web_gofun/gofun_level 0.drawio.png',
+        '/images_projects_bisnis_analiss/web_gofun/gofun_level1.drawio.png',
+        '/images_projects_bisnis_analiss/web_gofun/gofun_level2_p1.drawio.png',
+        '/images_projects_bisnis_analiss/web_gofun/gofun_level2_p2.drawio.png',
+        '/images_projects_bisnis_analiss/web_gofun/gofun_level2_p9.drawio.png'
       ]
     }
   ];
@@ -536,6 +538,8 @@ return (
           nextImage={nextImage} 
           prevImage={prevImage} 
         />
+        <CaseStudiesSection projects={projects} openProjectDetail={openProjectDetail} />
+        <GallerySection projects={projects} />
         <SkillsSection skills={skills} />
         <CertificationsSection 
           allAchievements={allAchievements}
