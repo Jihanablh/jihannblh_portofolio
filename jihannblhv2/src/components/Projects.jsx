@@ -2,19 +2,22 @@ import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, ChevronUp } from 'lucide-react';
 import { projects } from '../data/projects';
+import BestProjectShowcase from './BestProjectShowcase';
 import SectionHeader from './SectionHeader';
 import MagneticButton from './MagneticButton';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 
 const priorityProjects = [
-  'Jogja Siaga WebGIS',
-  'BarangBareng',
   'Data Analysis Project',
   'Personal Portfolio',
   'GoFood Marketing Analytics & Strategy',
   'Enterprise Blueprint',
+  'Global Superstore Executive Dashboard',
+  '3 Lots Business Diagram',
 ];
+
+const hiddenFromProjectPreview = ['Jogja Siaga WebGIS', 'BarangBareng'];
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
@@ -22,14 +25,16 @@ export default function Projects() {
   const [imageIndex, setImageIndex] = useState(0);
 
   const orderedProjects = useMemo(() => {
+    const previewProjects = projects.filter((project) => !hiddenFromProjectPreview.includes(project.title));
     const prioritized = priorityProjects
-      .map((title) => projects.find((project) => project.title === title))
+      .map((title) => previewProjects.find((project) => project.title === title))
       .filter(Boolean);
-    const remaining = projects.filter((project) => !priorityProjects.includes(project.title));
+    const remaining = previewProjects.filter((project) => !priorityProjects.includes(project.title));
     return [...prioritized, ...remaining];
   }, []);
 
   const visibleProjects = showAll ? orderedProjects : orderedProjects.slice(0, 6);
+  const bestProject = projects.find((project) => project.title === 'Jogja Siaga WebGIS');
 
   useEffect(() => {
     document.body.style.overflow = selected ? 'hidden' : '';
@@ -60,10 +65,12 @@ export default function Projects() {
   return (
     <section id="projects" className="section-shell scroll-mt-24">
       <SectionHeader
-        eyebrow="Projects"
-        title="Analytical work presented as data and business case-study showcases."
-        description="Enam project utama ditampilkan langsung sebagai showcase Data Analyst dan Business Analyst, dengan problem, process, tools, insight, dan business value."
+        eyebrow="Case Studies / Projects"
+        title="Featured Work & Analytical Projects"
+        description="Project portfolio focused on data analysis, business analysis, dashboard, system thinking, and digital solutions."
       />
+
+      <BestProjectShowcase project={bestProject} onOpen={open} />
 
       <motion.div layout className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         <AnimatePresence mode="popLayout">
