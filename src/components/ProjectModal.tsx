@@ -38,8 +38,7 @@ export function ProjectModal({
   return (
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
       <DialogContent
-        className="max-w-4xl max-h-[90vh] overflow-hidden border-white/10 p-0 backdrop-blur-2xl [&>button]:hidden"
-        style={{ background: "oklch(0.12 0.04 270 / 0.95)" }}
+        className="max-w-4xl max-h-[90vh] overflow-hidden border-[var(--border-glass-strong)] bg-[var(--surface-modal)] p-0 backdrop-blur-2xl [&>button]:hidden"
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <div className="relative max-h-[90vh] overflow-y-auto">
@@ -50,7 +49,7 @@ export function ProjectModal({
               alt={project.title}
               className="absolute inset-0 h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.12_0.04_270)] via-[oklch(0.12_0.04_270)/0.4] to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
             <button
               onClick={onClose}
               aria-label="Close"
@@ -74,7 +73,7 @@ export function ProjectModal({
               {sections.map((s) => (
                 <div
                   key={s.key}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:bg-white/[0.05]"
+                  className="rounded-2xl border border-[var(--border-glass-strong)] bg-[var(--chip-bg)] p-5 transition-colors hover:bg-[var(--chip-bg-hover)]"
                 >
                   <div className="flex items-center gap-2">
                     <s.icon className={`h-4 w-4 ${s.color}`} />
@@ -89,7 +88,7 @@ export function ProjectModal({
               ))}
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <div className="rounded-2xl border border-[var(--border-glass-strong)] bg-[var(--chip-bg)] p-5">
               <div className="flex items-center gap-2">
                 <Wrench className="h-4 w-4 text-cyan" />
                 <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">

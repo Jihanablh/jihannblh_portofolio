@@ -58,7 +58,7 @@
   --secondary: oklch(0.22 0.05 280);
   --secondary-foreground: oklch(0.98 0.005 250);
   --muted: oklch(0.2 0.03 270);
-  --muted-foreground: oklch(0.7 0.03 260);
+  --muted-foreground: oklch(0.74 0.03 260);
   --accent: oklch(0.7 0.25 330);
   --accent-foreground: oklch(0.98 0.005 250);
   --destructive: oklch(0.65 0.22 25);
@@ -88,13 +88,14 @@
   --shadow-elevated: 0 30px 80px -20px oklch(0 0 0 / 0.6);
 
   /* Surface tokens used by glass/grid/chip utilities so they can be themed. */
-  --surface-glass: oklch(1 0 0 / 0.04);
-  --surface-glass-strong: oklch(0.18 0.04 270 / 0.6);
+  --surface-glass: oklch(1 0 0 / 0.06);
+  --surface-glass-strong: oklch(0.18 0.04 270 / 0.72);
   --border-glass: oklch(1 0 0 / 0.08);
   --border-glass-strong: oklch(1 0 0 / 0.1);
   --grid-line: oklch(1 0 0 / 0.04);
   --chip-bg: oklch(1 0 0 / 0.05);
   --chip-bg-hover: oklch(1 0 0 / 0.1);
+  --surface-modal: oklch(0.14 0.04 270 / 0.96);
 }
 
 /* PINK MODE — soft, cute, but readable. Dark text on warm pink. */
@@ -140,6 +141,7 @@
   --grid-line: oklch(0.22 0.06 340 / 0.08);
   --chip-bg: oklch(0.22 0.06 340 / 0.06);
   --chip-bg-hover: oklch(0.22 0.06 340 / 0.12);
+  --surface-modal: oklch(0.98 0.02 350 / 0.96);
 }
 
 @keyframes float {

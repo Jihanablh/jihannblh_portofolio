@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight, Github, Linkedin, Mail, FileText, MapPin, GraduationCap,
   Briefcase, Users, Building2, Sparkles, ExternalLink, ArrowUpRight,
-  Database, BarChart3, Map as MapIcon, Brain, Code2, Eye, Moon, Heart,
+  Database, BarChart3, Map as MapIcon, Brain, Code2, Eye, Moon, Heart, Menu, X,
 } from "lucide-react";
 import Hero3D from "@/components/Hero3D";
 import { Reveal } from "@/components/Reveal";
@@ -164,6 +164,7 @@ function ThemeToggle({ theme, setTheme }: { theme: ThemeMode; setTheme: (m: Them
 
 function Nav({ theme, setTheme }: { theme: ThemeMode; setTheme: (m: ThemeMode) => void }) {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const active = useScrollSpy();
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -171,12 +172,18 @@ function Nav({ theme, setTheme }: { theme: ThemeMode; setTheme: (m: ThemeMode) =
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  useEffect(() => {
+    if (mobileOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
   const links = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "experience", label: "Experience" },
     { id: "projects", label: "Projects" },
     { id: "case-studies", label: "Case Studies" },
+    { id: "gallery", label: "Gallery" },
     { id: "skills", label: "Skills" },
     { id: "contact", label: "Contact" },
   ];
@@ -218,9 +225,47 @@ function Nav({ theme, setTheme }: { theme: ThemeMode; setTheme: (m: ThemeMode) =
             <a href="#contact" className="hidden rounded-full bg-foreground/95 px-4 py-1.5 text-sm font-medium text-background transition-transform hover:scale-[1.03] sm:inline-flex">
               Hire me
             </a>
+            <button
+              type="button"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              onClick={() => setMobileOpen((v) => !v)}
+              className="grid h-9 w-9 place-items-center rounded-full glass md:hidden"
+            >
+              {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
           </div>
         </div>
       </nav>
+
+      {mobileOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mx-4 mt-2 rounded-2xl glass-strong p-4 shadow-[var(--shadow-elevated)] md:hidden"
+        >
+          <div className="grid gap-1">
+            {links.map((l) => (
+              <a
+                key={l.id}
+                href={`#${l.id}`}
+                onClick={() => setMobileOpen(false)}
+                className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                  active === l.id ? "bg-foreground/10 text-foreground" : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
+                }`}
+              >
+                {l.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="mt-2 rounded-full bg-[var(--gradient-aurora)] px-4 py-3 text-center text-sm font-semibold text-[color:var(--primary-foreground)]"
+            >
+              Hire me
+            </a>
+          </div>
+        </motion.div>
+      )}
     </header>
   );
 }
@@ -234,7 +279,8 @@ function Hero({ theme }: { theme: ThemeMode }) {
       <motion.div style={{ y, opacity }} className="pointer-events-none absolute inset-0">
         <Hero3D theme={theme} />
       </motion.div>
-      <div className="pointer-events-none absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background/90" />
+      <div className="pointer-events-none absolute inset-0 grid-bg opacity-25 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_80%)]" />
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
@@ -249,7 +295,7 @@ function Hero({ theme }: { theme: ThemeMode }) {
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-          className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl md:text-8xl"
+          className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)] sm:text-7xl md:text-8xl"
         >
           <span className="block">Jihan Nabilah</span>
           <span className="block text-aurora">Rahman</span>
@@ -296,7 +342,7 @@ function Hero({ theme }: { theme: ThemeMode }) {
           className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4"
         >
           {stats.map((s) => (
-            <div key={s.label} className="group relative overflow-hidden rounded-2xl glass p-5 text-left transition-all hover:-translate-y-1 hover:bg-white/[0.07]">
+            <div key={s.label} className="group relative overflow-hidden rounded-2xl glass-strong p-5 text-left transition-all hover:-translate-y-1 hover:bg-white/[0.09]">
               <div className={`font-display text-3xl font-bold ${s.color}`}>{s.value}</div>
               <div className="mt-1 text-xs text-muted-foreground">{s.label}</div>
               <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[var(--gradient-aurora)] opacity-0 blur-3xl transition-opacity group-hover:opacity-30" />
