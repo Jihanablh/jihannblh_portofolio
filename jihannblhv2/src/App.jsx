@@ -17,6 +17,7 @@ import BackToTop from './components/BackToTop';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const [projectModalOpen, setProjectModalOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 24, restDelta: 0.001 });
 
@@ -48,11 +49,23 @@ export default function App() {
     return () => window.removeEventListener('pointermove', move);
   }, []);
 
+  useEffect(() => {
+    const open = () => setProjectModalOpen(true);
+    const close = () => setProjectModalOpen(false);
+
+    window.addEventListener('project-modal-open', open);
+    window.addEventListener('project-modal-close', close);
+    return () => {
+      window.removeEventListener('project-modal-open', open);
+      window.removeEventListener('project-modal-close', close);
+    };
+  }, []);
+
   return (
     <>
       <AnimatePresence>{loading && <Preloader />}</AnimatePresence>
       <motion.div className="fixed left-0 right-0 top-0 z-[80] h-1 origin-left bg-gradient-to-r from-cyanx to-violetx" style={{ scaleX: progress }} />
-      <Navbar />
+      {!projectModalOpen && <Navbar />}
       <main>
         <Hero />
         <About />

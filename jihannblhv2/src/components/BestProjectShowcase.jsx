@@ -44,7 +44,7 @@ export default function BestProjectShowcase({ project, onOpen }) {
         </p>
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-[1.15fr_.85fr]">
+      <div className="grid items-stretch gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)]">
         <motion.article
           className="premium-border group relative overflow-hidden rounded-[2rem] border border-white/10 bg-panel text-left shadow-2xl shadow-black/25"
           initial={{ opacity: 0, x: -32, scale: 0.98 }}
@@ -66,8 +66,8 @@ export default function BestProjectShowcase({ project, onOpen }) {
             </div>
           </div>
 
-          <div className="relative p-5 sm:p-6">
-            <span className="inline-flex rounded-full border border-cyanx/25 bg-cyanx/10 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">
+          <div className="relative p-5 sm:p-7">
+            <span className="inline-flex rounded-full border border-cyanx/25 bg-cyanx/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">
               BEST PROJECT / FEATURED CASE STUDY
             </span>
             <h4 className="mt-4 font-display text-3xl font-bold text-white sm:text-5xl">{project.title}</h4>
@@ -79,7 +79,7 @@ export default function BestProjectShowcase({ project, onOpen }) {
                 {project.highlights.slice(0, 4).map((item) => (
                   <span
                     key={item}
-                    className="rounded-2xl border border-cyanx/15 bg-cyanx/[0.06] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-cyan-100"
+                    className="rounded-2xl border border-cyanx/15 bg-cyanx/[0.06] px-3 py-2 text-xs font-semibold leading-5 text-cyan-100"
                   >
                     {item}
                   </span>
@@ -119,7 +119,7 @@ export default function BestProjectShowcase({ project, onOpen }) {
           </div>
         </motion.article>
 
-        <div className="grid gap-5">
+        <div className="grid h-full gap-4 lg:grid-rows-3">
           {insights.map((card, index) => (
             <BestProjectInsightCard key={card.title} card={card} index={index} />
           ))}
@@ -134,23 +134,23 @@ function BestProjectInsightCard({ card, index }) {
 
   return (
     <motion.article
-      className="group rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-5 shadow-2xl shadow-black/10 backdrop-blur-2xl transition duration-500 hover:-translate-y-1 hover:border-cyanx/35 hover:bg-white/[0.065] hover:shadow-glow"
+      className="group flex h-full flex-col justify-center rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-5 shadow-2xl shadow-black/10 backdrop-blur-2xl transition duration-500 hover:-translate-y-1 hover:border-cyanx/35 hover:shadow-glow"
       initial={{ opacity: 0, x: 30 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.58, delay: index * 0.1 }}
     >
-      <div className="mb-5 flex items-start justify-between gap-4">
-        <span className="grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-cyanx/10 text-cyan-100 transition group-hover:scale-110">
+      <div className="mb-4 flex items-start justify-between gap-4">
+        <span className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-cyanx/10 text-cyan-100 transition group-hover:scale-105">
           <Icon size={21} />
         </span>
-        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
           {String(index + 1).padStart(2, '0')}
         </span>
       </div>
       <p className="mono-label">[{card.label}]</p>
       <h4 className="mt-2 font-display text-xl font-bold text-white">{card.title}</h4>
-      <p className="mt-3 text-sm leading-7 text-slate-400">{card.description}</p>
+      <p className="mt-2 text-sm leading-6 text-slate-400">{card.description}</p>
     </motion.article>
   );
 }

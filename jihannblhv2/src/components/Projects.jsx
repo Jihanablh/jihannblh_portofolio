@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, ChevronUp } from 'lucide-react';
 import { projects } from '../data/projects';
@@ -12,6 +12,7 @@ export default function Projects() {
   const [showAll, setShowAll] = useState(false);
   const [selected, setSelected] = useState(null);
   const [imageIndex, setImageIndex] = useState(0);
+  const scrollPositionRef = useRef(0);
 
   const bestProject = useMemo(() => projects.find((project) => project.title === 'Jogja Siaga WebGIS'), []);
   const orderedProjects = useMemo(
@@ -20,20 +21,40 @@ export default function Projects() {
   );
   const visibleProjects = showAll ? orderedProjects : orderedProjects.slice(0, 6);
 
-  useEffect(() => {
-    document.body.style.overflow = selected ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [selected]);
+  useEffect(() => () => {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.dispatchEvent(new Event('project-modal-close'));
+  }, []);
 
   const open = (project) => {
+    scrollPositionRef.current = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPositionRef.current}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+    window.dispatchEvent(new Event('project-modal-open'));
     setSelected(project);
     setImageIndex(0);
   };
 
   const close = () => {
+    const restoreY = scrollPositionRef.current;
     setSelected(null);
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.dispatchEvent(new Event('project-modal-close'));
+    window.scrollTo({ top: restoreY, behavior: 'auto' });
   };
 
   const next = () => {

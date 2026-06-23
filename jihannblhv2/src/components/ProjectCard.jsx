@@ -27,7 +27,7 @@ export default function ProjectCard({ project, onOpen, featured = false, index =
       onMouseMove={handleMove}
       onMouseLeave={reset}
       style={{ rotateX: springX, rotateY: springY, transformStyle: 'preserve-3d' }}
-      className={`premium-border group relative h-full overflow-hidden rounded-[1.75rem] bg-panel/80 text-left shadow-2xl shadow-black/25 outline-none transition duration-500 hover:-translate-y-2 focus-visible:ring-2 focus-visible:ring-cyanx ${
+      className={`premium-border group relative h-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-panel/80 text-left shadow-2xl shadow-black/25 outline-none transition duration-500 hover:-translate-y-1 hover:border-cyanx/35 hover:shadow-glow focus-visible:ring-2 focus-visible:ring-cyanx ${
         featured ? 'lg:col-span-2' : ''
       }`}
       initial={{ opacity: 0, y: 42, scale: 0.96 }}
@@ -35,7 +35,7 @@ export default function ProjectCard({ project, onOpen, featured = false, index =
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.62, delay: index * 0.055, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="absolute inset-0 rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.025] to-transparent" />
+      <div className="absolute inset-0 rounded-[1.75rem] border border-white/10" />
       <div className="relative overflow-hidden rounded-t-[1.75rem]">
         <img
           src={project.images[0]}
@@ -62,7 +62,7 @@ export default function ProjectCard({ project, onOpen, featured = false, index =
         <h3 className="font-display text-2xl font-bold text-white transition group-hover:text-cyan-100">
           {project.title}
         </h3>
-        <p className="mt-3 line-clamp-3 text-sm leading-7 text-slate-400">{project.summary}</p>
+        <p className="mt-3 text-sm leading-7 text-slate-400">{project.summary}</p>
         <div className="mt-5 grid gap-2">
           <MiniInfo icon={Target} label="Objective" text={project.objective} />
           <MiniInfo icon={ListChecks} label="Approach" text={project.process} />
@@ -78,7 +78,7 @@ export default function ProjectCard({ project, onOpen, featured = false, index =
         {project.highlights?.length > 0 && (
           <div className="mt-5 grid gap-2 sm:grid-cols-2">
             {project.highlights.slice(0, 4).map((item) => (
-              <span key={item} className="rounded-2xl border border-cyanx/10 bg-cyanx/[0.06] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-cyan-100">
+            <span key={item} className="rounded-2xl border border-cyanx/10 bg-cyanx/[0.06] px-3 py-2 text-xs font-semibold leading-5 text-cyan-100">
                 {item}
               </span>
             ))}
@@ -101,7 +101,7 @@ function MiniInfo({ icon: Icon, label, text }) {
         <Icon size={12} />
         {label}
       </div>
-      <p className="line-clamp-2 text-xs leading-5 text-slate-400">{text}</p>
+      <p className="text-xs leading-5 text-slate-400">{text}</p>
     </div>
   );
 }

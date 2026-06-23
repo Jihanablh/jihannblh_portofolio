@@ -16,33 +16,29 @@ export default function CaseStudies() {
         {caseStudies.map((study, index) => (
           <motion.article
             key={study.title}
-            className="glass-card premium-border overflow-hidden rounded-[2rem]"
+            className="glass-card premium-border overflow-hidden rounded-[2rem] transition duration-500 hover:-translate-y-1 hover:border-cyanx/30 hover:shadow-glow"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-70px' }}
             transition={{ duration: 0.62, delay: index * 0.06 }}
           >
-            <div className="relative h-64 overflow-hidden">
+            <div className="relative h-56 overflow-hidden sm:h-60">
               <img src={study.image} alt={`${study.title} visual`} loading="lazy" className="h-full w-full object-cover transition duration-700 hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-panel via-panel/25 to-transparent" />
-              <span className="absolute left-5 top-5 rounded-full border border-cyanx/20 bg-cyanx/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-cyan-100 backdrop-blur-xl">
+              <span className="absolute left-5 right-5 top-5 w-fit max-w-[calc(100%-2.5rem)] rounded-full border border-cyanx/20 bg-cyanx/10 px-4 py-2 text-xs font-semibold leading-5 text-cyan-100 backdrop-blur-xl">
                 {study.category}
               </span>
             </div>
-            <div className="p-6 sm:p-7">
-              <h3 className="font-display text-3xl font-bold text-white">{study.title}</h3>
-              <div className="mt-6 grid gap-4">
+            <div className="p-5 sm:p-6">
+              <h3 className="font-display text-2xl font-bold leading-tight text-white sm:text-3xl">{study.title}</h3>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <InfoBlock icon={Target} label="Problem" text={study.problem} />
                 <InfoBlock icon={ArrowUpRight} label="Objective" text={study.objective} />
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <ListBlock icon={ListChecks} label="Data / Requirement" items={study.data} />
-                  <ListBlock icon={Wrench} label="Process & Tools" items={[...study.process.slice(0, 2), ...study.tools.slice(0, 2)]} />
-                </div>
-                <InfoBlock icon={Lightbulb} label="Insight" text={study.insight} highlight />
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <InfoBlock label="Recommendation" text={study.recommendation} />
-                  <InfoBlock label="Result" text={study.result} />
-                </div>
+                <ListBlock icon={ListChecks} label="Data / Requirement" items={study.data} />
+                <ListBlock icon={Wrench} label="Process & Tools" items={[...study.process.slice(0, 2), ...study.tools.slice(0, 2)]} />
+                <InfoBlock className="sm:col-span-2" icon={Lightbulb} label="Insight" text={study.insight} highlight />
+                <InfoBlock label="Recommendation" text={study.recommendation} />
+                <InfoBlock label="Result" text={study.result} />
               </div>
             </div>
           </motion.article>
@@ -52,14 +48,14 @@ export default function CaseStudies() {
   );
 }
 
-function InfoBlock({ icon: Icon, label, text, highlight = false }) {
+function InfoBlock({ icon: Icon, label, text, highlight = false, className = '' }) {
   return (
-    <div className={`rounded-2xl border p-4 ${highlight ? 'border-cyanx/25 bg-cyanx/[0.07]' : 'border-white/10 bg-white/[0.035]'}`}>
+    <div className={`rounded-2xl border p-4 ${highlight ? 'border-cyanx/25 bg-cyanx/[0.07]' : 'border-white/10 bg-white/[0.035]'} ${className}`}>
       <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-cyan-100">
         {Icon && <Icon size={15} />}
         {label}
       </div>
-      <p className="text-sm leading-7 text-slate-300">{text}</p>
+      <p className="text-sm leading-6 text-slate-300">{text}</p>
     </div>
   );
 }
@@ -73,7 +69,7 @@ function ListBlock({ icon: Icon, label, items }) {
       </div>
       <div className="flex flex-wrap gap-2">
         {items.map((item) => (
-          <span key={item} className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs font-semibold text-slate-300">
+          <span key={item} className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-semibold leading-5 text-slate-300">
             {item}
           </span>
         ))}

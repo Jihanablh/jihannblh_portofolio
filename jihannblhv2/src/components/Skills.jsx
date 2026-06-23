@@ -67,7 +67,7 @@ function SkillArsenalCard({ skill, index, active, onActivate }) {
       className={`premium-border group relative overflow-hidden rounded-[1.7rem] border p-6 text-left transition duration-300 ${
         active
           ? 'border-cyanx/35 bg-white/[0.065] shadow-glow'
-          : 'border-white/10 bg-midnight/35 hover:-translate-y-1 hover:border-cyanx/30 hover:bg-white/[0.055]'
+          : 'border-white/10 bg-midnight/35 hover:-translate-y-1 hover:border-cyanx/30 hover:shadow-glow'
       }`}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ function SkillArsenalCard({ skill, index, active, onActivate }) {
         {skill.items.map((item, badgeIndex) => (
           <motion.span
             key={item}
-            className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-xs font-bold text-slate-300 transition hover:scale-105 hover:border-cyanx/45 hover:bg-cyanx/10 hover:text-white"
+            className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-xs font-bold text-slate-300 transition hover:scale-105 hover:border-cyanx/45 hover:text-white hover:shadow-[0_0_16px_rgba(32,231,255,0.16)]"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

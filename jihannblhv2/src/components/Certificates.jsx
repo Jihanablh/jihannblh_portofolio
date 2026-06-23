@@ -34,7 +34,7 @@ export default function Certificates() {
             type="button"
             key={cert.title}
             onClick={() => setSelected(cert)}
-            className="group glass-card premium-border overflow-hidden rounded-[1.5rem] text-left transition hover:-translate-y-2"
+            className="group glass-card premium-border overflow-hidden rounded-[1.5rem] text-left transition hover:-translate-y-1 hover:border-cyanx/35 hover:shadow-glow"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -58,7 +58,7 @@ export default function Certificates() {
               </div>
               <h3 className="font-display text-xl font-bold text-white">{cert.title}</h3>
               <p className="mt-2 text-sm font-semibold text-slate-400">{cert.issuer}</p>
-              <p className="mt-4 line-clamp-2 text-sm leading-6 text-slate-500">{cert.description}</p>
+              <p className="mt-4 text-sm leading-6 text-slate-500">{cert.description}</p>
               <p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-cyan-100">
                 Preview certificate
                 <ExternalLink size={15} />

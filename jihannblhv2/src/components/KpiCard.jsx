@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 export default function KpiCard({ label, value, detail, icon: Icon, delay = 0 }) {
   return (
     <motion.div
-      className="group rounded-3xl border border-white/10 bg-white/[0.045] p-5 shadow-2xl shadow-black/10 transition hover:-translate-y-1 hover:border-cyanx/40 hover:bg-cyanx/[0.06]"
+      className="group rounded-3xl border border-white/10 bg-white/[0.045] p-5 shadow-2xl shadow-black/10 transition hover:-translate-y-1 hover:border-cyanx/40 hover:shadow-glow"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

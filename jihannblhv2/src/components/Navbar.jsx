@@ -14,6 +14,10 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
+      if (window.scrollY < 80) {
+        setActive('home');
+        return;
+      }
       const current = profile.navItems
         .map((item) => document.getElementById(item.id))
         .filter(Boolean)
@@ -66,7 +70,7 @@ export default function Navbar() {
           <a
             href={`data:text/plain;charset=utf-8,${cvContent}`}
             download="Jihan-Nabilah-Rahman-CV.txt"
-            className="hidden items-center gap-2 rounded-full border border-cyanx/30 bg-cyanx/10 px-4 py-2 text-sm font-bold text-cyan-100 transition hover:border-cyanx hover:bg-cyanx hover:text-midnight md:inline-flex"
+            className="hidden items-center gap-2 rounded-full border border-cyanx/30 bg-cyanx/10 px-4 py-2 text-sm font-bold text-cyan-100 transition hover:border-cyanx hover:text-white hover:shadow-[0_0_20px_rgba(32,231,255,0.18)] md:inline-flex"
           >
             <Download size={16} />
             Download CV
@@ -94,7 +98,7 @@ export default function Navbar() {
               <button
                 key={item.id}
                 onClick={() => jump(item.id)}
-                className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white"
+                className="block w-full rounded-2xl border border-transparent px-4 py-3 text-left text-sm font-semibold text-slate-300 hover:border-cyanx/30 hover:text-white"
               >
                 {item.label}
               </button>

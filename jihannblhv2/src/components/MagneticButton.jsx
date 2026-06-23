@@ -26,11 +26,11 @@ export default function MagneticButton({
   };
 
   const base =
-    'group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-bold transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyanx';
+    'group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-bold transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyanx';
   const styles =
     variant === 'primary'
-      ? 'bg-cyanx text-midnight shadow-glow hover:bg-white'
-      : 'border border-white/15 bg-white/[0.04] text-white hover:border-cyanx/60 hover:bg-white/[0.08]';
+      ? 'border border-cyanx/35 bg-cyanx text-midnight shadow-glow hover:-translate-y-0.5 hover:border-white/70 hover:shadow-[0_0_32px_rgba(32,231,255,0.34)]'
+      : 'border border-white/15 bg-white/[0.04] text-white hover:-translate-y-0.5 hover:border-cyanx/60 hover:shadow-[0_0_24px_rgba(32,231,255,0.18)]';
   const Component = href ? motion.a : motion.button;
 
   return (

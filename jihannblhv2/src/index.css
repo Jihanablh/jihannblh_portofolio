@@ -89,11 +89,11 @@ body::after {
   }
 
   .bento-card:hover {
-    @apply -translate-y-1 border-cyanx/35 bg-white/[0.065] shadow-glow;
+    @apply -translate-y-1 border-cyanx/35 shadow-glow;
   }
 
   .mono-label {
-    @apply font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-cyan-100;
+    @apply text-[11px] font-bold uppercase tracking-[0.22em] text-cyan-100;
   }
 
   .dot-grid {

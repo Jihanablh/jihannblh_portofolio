@@ -68,7 +68,7 @@ export default function About() {
           return (
             <motion.div
               key={area}
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center transition hover:-translate-y-1 hover:border-violetx/40 hover:bg-violetx/[0.06]"
+              className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center transition hover:-translate-y-1 hover:border-violetx/40 hover:shadow-violet"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

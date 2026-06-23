@@ -17,7 +17,7 @@ export default function ProjectModal({ project, imageIndex, onClose, onNextImage
 
   return (
     <motion.div
-      className="fixed inset-0 z-[90]"
+      className="fixed inset-0 z-[120]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -42,7 +42,7 @@ export default function ProjectModal({ project, imageIndex, onClose, onNextImage
           <button
             type="button"
             onClick={onClose}
-            className="absolute right-4 top-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-black/50 text-white shadow-xl backdrop-blur-xl transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyanx"
+            className="absolute right-4 top-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-black/50 text-white shadow-xl backdrop-blur-xl transition hover:border-red-300/60 hover:shadow-[0_0_24px_rgba(248,113,113,0.24)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyanx"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -59,7 +59,7 @@ export default function ProjectModal({ project, imageIndex, onClose, onNextImage
 
             <div className="grid gap-8 p-6 pb-14 sm:p-8 sm:pb-16 lg:grid-cols-[1fr_340px] lg:p-10">
               <main>
-                <span className="inline-flex items-center gap-2 rounded-full border border-violetx/25 bg-violetx/10 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-violet-100">
+                <span className="inline-flex items-center gap-2 rounded-full border border-violetx/25 bg-violetx/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-violet-100">
                   <LayoutGrid size={15} />
                   {project.category}
                 </span>
@@ -144,7 +144,7 @@ function ProjectHero({ project, imageIndex, onNextImage, onPrevImage, onSelectIm
           <button
             type="button"
             onClick={onPrevImage}
-            className="absolute left-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-xl transition hover:bg-cyanx hover:text-midnight sm:h-12 sm:w-12"
+            className="absolute left-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-xl transition hover:border-cyanx/60 hover:shadow-glow sm:h-12 sm:w-12"
             aria-label="Previous image"
           >
             <ChevronLeft size={22} />
@@ -152,7 +152,7 @@ function ProjectHero({ project, imageIndex, onNextImage, onPrevImage, onSelectIm
           <button
             type="button"
             onClick={onNextImage}
-            className="absolute right-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-xl transition hover:bg-cyanx hover:text-midnight sm:h-12 sm:w-12"
+            className="absolute right-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-xl transition hover:border-cyanx/60 hover:shadow-glow sm:h-12 sm:w-12"
             aria-label="Next image"
           >
             <ChevronRight size={22} />
@@ -180,7 +180,7 @@ function DetailBlock({ icon: Icon, label, text, highlight = false }) {
   if (!text) return null;
   return (
     <div className={`rounded-2xl border p-4 ${highlight ? 'border-cyanx/25 bg-cyanx/[0.07]' : 'border-white/10 bg-white/[0.035]'}`}>
-      <div className="mb-2 flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">
+      <div className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">
         <Icon size={15} />
         {label}
       </div>
