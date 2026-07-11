@@ -1,10 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  ArrowRight, Github, Linkedin, Mail, FileText, MapPin, GraduationCap,
-  Briefcase, Users, Building2, Sparkles, ExternalLink, ArrowUpRight,
-  Database, BarChart3, Map as MapIcon, Brain, Code2, Eye, Moon, Heart, Menu, X,
+  ArrowRight,
+  Github,
+  Linkedin,
+  Mail,
+  FileText,
+  MapPin,
+  GraduationCap,
+  Briefcase,
+  Users,
+  Building2,
+  Sparkles,
+  ExternalLink,
+  ArrowUpRight,
+  Database,
+  BarChart3,
+  Map as MapIcon,
+  Brain,
+  Code2,
+  Eye,
+  Moon,
+  Heart,
+  Menu,
+  X,
+  TrendingUp,
+  type LucideIcon,
 } from "lucide-react";
 import Hero3D from "@/components/Hero3D";
 import { Reveal } from "@/components/Reveal";
@@ -24,65 +46,118 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const contactLinks = {
+  email: "mailto:jihannabilah624@gmail.com",
+  linkedin: "https://www.linkedin.com/in/jihan-nabilah-057318357",
+  github: "https://github.com/Jihanablh",
+} as const;
+
 const stats = [
   { value: "15+", label: "Projects Completed", color: "text-cyan" },
-  { value: "6+", label: "Certifications", color: "text-magenta" },
+  { value: "10+", label: "Certifications", color: "text-magenta" },
   { value: "3.72", label: "GPA / IPK", color: "text-violet" },
   { value: "4+", label: "Organizations", color: "text-lime" },
 ];
 
-const experiences = [
+const experiences: ExperienceItem[] = [
   {
-    role: "Data Analyst Intern",
-    org: "PT Vinix Seven Aurum (MSIB Kampus Merdeka)",
-    period: "Jan 2026 — Apr 2026",
+    role: "Junior Data Analyst",
+    org: "PT Vinix Seven Aurum - MSIB Mandiri Batch 4",
+    location: "Yogyakarta, Indonesia (Remote)",
+    period: "Feb 2026 - Jun 2026",
+    status: "Completed",
     icon: Database,
     accent: "from-cyan-400/30 to-blue-500/10",
     impact: [
-      "Data cleaning & EDA dengan Python (Matplotlib, Seaborn) untuk mengungkap tren & korelasi.",
-      "Membangun BI dashboard interaktif dengan Tableau & Google Data Studio.",
-      "Menerjemahkan analitik kompleks menjadi data storytelling visual untuk manajemen.",
+      "Conducted end-to-end data collection, cleaning, and validation on multi-source datasets, resolving missing values and anomalies to ensure analysis-ready data integrity.",
+      "Performed EDA, regression, and clustering analysis in Python and Excel to identify career-readiness patterns among Indonesian university students.",
+      "Designed and executed a national survey and sentiment analysis, translating unstructured responses into structured, actionable insights.",
+      "Built interactive dashboards in Power BI and Google Data Studio to support stakeholder decision-making.",
+      'Presented final analysis to industry mentors, earning a 95/100 evaluation score for the "Proyek Berdampak" capstone project.',
     ],
-    tags: ["Excel", "Python", "Tableau", "Looker Studio", "BI Dashboards"],
+    tags: [
+      "Excel",
+      "Python",
+      "Power BI",
+      "Google Data Studio",
+      "EDA",
+    ],
   },
   {
     role: "Asisten Dosen Sistem Operasi",
     org: "Universitas Bakrie",
-    period: "Feb 2025 — Mei 2025",
+    period: "Sep 2025 - Jan 2026",
+    status: "Completed",
     icon: Code2,
     accent: "from-fuchsia-400/30 to-purple-500/10",
     impact: [
       "Mengkoordinasikan sesi praktikum mingguan untuk 60+ mahasiswa.",
-      "Instalasi & troubleshooting Linux (Debian) dan Windows VM.",
-      "Mengembangkan modul pembelajaran interaktif & evaluasi tugas akhir.",
+      "Instalasi dan troubleshooting Linux (Debian) serta Windows VM.",
+      "Mengembangkan modul pembelajaran interaktif dan evaluasi tugas akhir.",
     ],
-    tags: ["Linux", "Bash", "VMware", "C++", "System Admin"],
+    tags: [
+      "Linux",
+      "Bash",
+      "VMware",
+      "Operating Systems",
+      "Troubleshooting",
+    ],
   },
   {
-    role: "Staff HRN — Human Resource Nomination",
+    role: "Teaching Assistant - Information Systems Analysis & Design",
+    org: "Universitas Bakrie",
+    period: "Mar 2026 - Jul 2026",
+    icon: GraduationCap,
+    accent: "from-pink-400/30 to-fuchsia-500/10",
+    impact: [
+      "Delivered instruction to 55+ students in a single course section, covering UML (Use Case, Activity, Sequence, Class Diagrams), ERD, flowcharting, and UI/UX prototyping in Figma.",
+      "Guided student teams through end-to-end system analysis and design projects, providing consultation and structured feedback on prototypes.",
+      "Authored practicum modules and grading rubrics in collaboration with course lecturers.",
+    ],
+    tags: [
+      "UML",
+      "ERD",
+      "Figma",
+      "System Analysis",
+      "Prototyping",
+    ],
+  },
+  {
+    role: "Human Resource & Network Staff",
     org: "IEEE Student Branch Universitas Bakrie",
-    period: "Mar 2025 — Present",
+    period: "Mar 2025 - Jun 2026",
+    status: "Completed",
     icon: Users,
     accent: "from-violet-400/30 to-indigo-500/10",
     impact: [
       "Memimpin rekrutmen end-to-end dari screening sampai onboarding.",
-      "Merancang program up-skilling & soft-skill yang meningkatkan retensi.",
+      "Merancang program up-skilling dan soft-skill yang meningkatkan retensi.",
       "Menginisiasi sistem administrasi HR berbasis KPI.",
     ],
-    tags: ["Talent Acquisition", "People Analytics", "HR Ops", "Leadership"],
+    tags: [
+      "Talent Acquisition",
+      "People Analytics",
+      "HR Operations",
+      "Leadership",
+    ],
   },
   {
     role: "Humas (Public Relations)",
     org: "Karang Taruna Cikoko",
-    period: "Jan 2025 — Present",
+    period: "Jan 2025 - Present",
     icon: Building2,
     accent: "from-emerald-400/30 to-teal-500/10",
     impact: [
-      "Strategi komunikasi digital & branding visual yang konsisten.",
-      "Mengelola hubungan eksternal & negosiasi kemitraan sponsor.",
-      "Manajemen krisis komunikasi & publikasi acara.",
+      "Strategi komunikasi digital dan branding visual yang konsisten.",
+      "Mengelola hubungan eksternal dan negosiasi kemitraan sponsor.",
+      "Manajemen krisis komunikasi dan publikasi acara.",
     ],
-    tags: ["PR", "Branding", "Stakeholder Mgmt", "Event Marketing"],
+    tags: [
+      "Public Relations",
+      "Branding",
+      "Stakeholder Management",
+      "Event Marketing",
+    ],
   },
 ];
 
@@ -98,16 +173,80 @@ const gallery = [
 ];
 
 const skillGroups = [
-  { title: "Languages", icon: Code2, items: ["Python", "SQL", "R", "C++", "JavaScript", "Bash", "HTML/CSS"] },
-  { title: "Analytics & BI", icon: BarChart3, items: ["Tableau", "Power BI", "Looker Studio", "Matplotlib", "Seaborn", "Plotly", "Streamlit"] },
-  { title: "Methods", icon: Brain, items: ["Data Cleaning", "Statistical Analysis", "A/B Testing", "ETL Pipelines", "Data Warehousing", "Business Intelligence"] },
-  { title: "Spatial & Systems", icon: MapIcon, items: ["QGIS", "WebGIS", "Spatial Analysis", "Buffer Analysis", "System Analysis"] },
+  {
+    title: "Languages",
+    icon: Code2,
+    items: ["Python", "SQL", "JavaScript", "HTML/CSS"],
+  },
+  {
+    title: "Analytics & BI",
+    icon: BarChart3,
+    items: [
+      "Power BI",
+      "Microsoft Excel",
+      "Google Data Studio",
+      "Matplotlib",
+      "Seaborn",
+      "Plotly",
+    ],
+  },
+  {
+    title: "Methods",
+    icon: Brain,
+    items: [
+      "Data Cleaning",
+      "Statistical Analysis",
+      "EDA",
+      "K-Means Clustering",
+      "Regression Analysis",
+      "Random Forest",
+      "A/B Testing",
+    ],
+  },
+  {
+    title: "Spatial & Systems",
+    icon: MapIcon,
+    items: ["QGIS", "WebGIS", "Spatial Analysis", "System Analysis"],
+  },
 ];
 
-const marqueeRow1 = ["Python", "SQL", "Tableau", "Power BI", "Looker Studio", "Pandas", "ETL", "Business Intelligence", "Data Storytelling"];
-const marqueeRow2 = ["Matplotlib", "Seaborn", "Plotly", "Streamlit", "QGIS", "WebGIS", "A/B Testing", "Statistical Analysis", "People Analytics"];
+const marqueeRow1 = [
+  "Python",
+  "SQL",
+  "Power BI",
+  "Microsoft Excel",
+  "Google Data Studio",
+  "EDA",
+  "Regression Analysis",
+  "Data Cleaning",
+  "Random Forest",
+];
+
+const marqueeRow2 = [
+  "Matplotlib",
+  "Seaborn",
+  "Plotly",
+  "QGIS",
+  "WebGIS",
+  "Spatial Analysis",
+  "K-Means Clustering",
+  "A/B Testing",
+  "System Analysis",
+];
 
 const sectionIds = ["home", "about", "experience", "projects", "case-studies", "gallery", "skills", "contact"];
+
+type ExperienceItem = {
+  role: string;
+  org: string;
+  location?: string;
+  period: string;
+  status?: "Completed";
+  icon: LucideIcon;
+  accent: string;
+  impact: string[];
+  tags: string[];
+};
 
 function useScrollSpy() {
   const [active, setActive] = useState("home");
@@ -330,11 +469,11 @@ function Hero({ theme }: { theme: ThemeMode }) {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.6 }}
           className="mt-8 flex items-center justify-center gap-4 text-muted-foreground"
         >
-          <a href="https://www.linkedin.com/in/jihan-nabilah-rahman/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-foreground"><Linkedin className="h-5 w-5" /></a>
+          <a href={contactLinks.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-foreground"><Linkedin className="h-5 w-5" /></a>
           <span className="h-px w-8 bg-border" />
-          <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub" className="transition-colors hover:text-foreground"><Github className="h-5 w-5" /></a>
+          <a href={contactLinks.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="transition-colors hover:text-foreground"><Github className="h-5 w-5" /></a>
           <span className="h-px w-8 bg-border" />
-          <a href="#contact" aria-label="Email" className="transition-colors hover:text-foreground"><Mail className="h-5 w-5" /></a>
+          <a href={contactLinks.email} aria-label="Email" className="transition-colors hover:text-foreground"><Mail className="h-5 w-5" /></a>
         </motion.div>
 
         <motion.div
@@ -385,10 +524,15 @@ function About() {
                 strategi bisnis yang berdampak.
               </p>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                Saya menyelesaikan magang sebagai <span className="text-foreground">Data Analyst Intern</span> di
-                Vinix7, fokus pada analisis data, reporting, dan otomatisasi. Saat ini memimpin inisiatif
-                <span className="text-foreground"> People Analytics</span> di IEEE Student Branch untuk
-                menganalisis data SDM dan meningkatkan efektivitas organisasi.
+                Saya telah menyelesaikan program{" "}
+                <span className="text-foreground">Junior Data Analyst</span> di
+                PT Vinix Seven Aurum melalui MSIB Mandiri Batch 4, dengan fokus pada
+                data collection, cleaning, validation, EDA, regression, clustering,
+                sentiment analysis, serta pengembangan dashboard interaktif. Saya juga
+                memiliki pengalaman mengajar sebagai{" "}
+                <span className="text-foreground">Teaching Assistant</span> dan
+                pengalaman organisasi melalui IEEE Student Branch Universitas Bakrie
+                serta Karang Taruna Cikoko.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {["Data Analysis", "Business Intelligence", "People Analytics", "UI/UX Thinking"].map((t) => (
@@ -453,7 +597,22 @@ function Experience() {
                       <div className="min-w-0">
                         <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">{e.period}</div>
                         <h3 className="mt-2 font-display text-2xl font-semibold">{e.role}</h3>
-                        <div className="mt-1 text-sm text-muted-foreground">{e.org}</div>
+                        <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                          <span>{e.org}</span>
+
+                          {e.location && (
+                            <>
+                              <span aria-hidden="true">•</span>
+                              <span>{e.location}</span>
+                            </>
+                          )}
+
+                          {e.status && (
+                            <span className="rounded-full bg-lime/10 px-2.5 py-0.5 text-xs font-medium text-lime">
+                              {e.status}
+                            </span>
+                          )}
+                        </div>                        
                       </div>
                       <e.icon className="h-6 w-6 shrink-0 text-foreground/40 md:hidden" />
                     </div>
@@ -482,6 +641,8 @@ function Experience() {
 }
 
 function ProjectCard({ p, onOpen }: { p: Project; onOpen: () => void }) {
+  const highlight = p.highlight;
+
   return (
     <div className="group relative h-full overflow-hidden rounded-3xl glass-strong transition-all hover:-translate-y-2 hover:border-cyan/30 hover:shadow-[0_0_40px_-8px_oklch(0.85_0.16_200/0.35)]">
       <button onClick={onOpen} className="block w-full text-left">
@@ -495,6 +656,12 @@ function ProjectCard({ p, onOpen }: { p: Project; onOpen: () => void }) {
         <div className="p-6">
           <h3 className="font-display text-xl font-semibold transition-colors group-hover:text-aurora">{p.title}</h3>
           <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{p.desc}</p>
+          {highlight && (
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-lime/10 px-3 py-1 text-xs font-semibold text-lime">
+              <TrendingUp className="h-3.5 w-3.5" />
+              {highlight}
+            </div>
+          )}
           <div className="mt-4 flex flex-wrap gap-1.5">
             {p.tags.slice(0, 4).map((t) => (
               <span key={t} className="rounded-full bg-white/5 px-2 py-0.5 text-[11px] text-foreground/70">{t}</span>
@@ -511,7 +678,7 @@ function ProjectCard({ p, onOpen }: { p: Project; onOpen: () => void }) {
             href={p.live}
             target="_blank"
             rel="noreferrer"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: MouseEvent<HTMLAnchorElement>) => e.stopPropagation()}
             className="inline-flex items-center gap-1.5 rounded-full bg-[var(--gradient-aurora)] px-3 py-1.5 text-xs font-semibold text-[color:var(--primary-foreground)] shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105"
           >
             Live Demo <ExternalLink className="h-3 w-3" />
@@ -523,8 +690,13 @@ function ProjectCard({ p, onOpen }: { p: Project; onOpen: () => void }) {
 }
 
 function Projects({ onOpen }: { onOpen: (p: Project) => void }) {
-  const featured = projects.find((p) => p.featured)!;
-  const rest = projects.filter((p) => !p.featured);
+  const featured = projects.find((p) => p.featured) ?? projects[0];
+
+  if (!featured) return null;
+
+  const featuredHighlight = featured.highlight;
+  const rest = projects.filter((p) => p.slug !== featured.slug);
+
   return (
     <section id="projects" className="relative px-6 py-32">
       <div className="mx-auto max-w-6xl">
@@ -548,6 +720,12 @@ function Projects({ onOpen }: { onOpen: (p: Project) => void }) {
                 <h3 className="mt-4 font-display text-3xl font-bold sm:text-4xl">{featured.title}</h3>
                 <div className="mt-1 text-sm text-muted-foreground">{featured.category}</div>
                 <p className="mt-4 text-foreground/80">{featured.desc}</p>
+                {featuredHighlight && (
+                  <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-lime/10 px-3 py-1.5 text-sm font-semibold text-lime">
+                    <TrendingUp className="h-4 w-4" />
+                    {featuredHighlight}
+                  </div>
+                )}
                 <div className="mt-6 grid grid-cols-3 gap-3">
                   {[
                     { k: "01", t: "Spatial Data", d: "Peta, statistik, dan ringkasan wilayah." },
@@ -589,7 +767,24 @@ function Projects({ onOpen }: { onOpen: (p: Project) => void }) {
 }
 
 function CaseStudies({ onOpen }: { onOpen: (p: Project) => void }) {
-  const top = useMemo(() => projects.slice(0, 3), []);
+  const top = useMemo(() => {
+    const priorities = ["webgis", "barangbareng", "gofood"];
+    const selected = priorities
+      .map((keyword) =>
+        projects.find((project) =>
+          `${project.slug} ${project.title}`.toLowerCase().includes(keyword),
+        ),
+      )
+      .filter((project): project is Project => Boolean(project));
+
+    if (selected.length === priorities.length) return selected;
+
+    const selectedSlugs = new Set(selected.map((project) => project.slug));
+    const fallback = projects.filter((project) => !selectedSlugs.has(project.slug));
+
+    return [...selected, ...fallback].slice(0, 3);
+  }, []);
+
   return (
     <section id="case-studies" className="relative px-6 py-32">
       <div className="mx-auto max-w-6xl">
@@ -739,13 +934,13 @@ function Contact() {
                 Ayo ngobrol soal projek, magang, atau kolaborasi.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="mailto:jihannabilahrahman@gmail.com" className="group inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-6 py-3 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[var(--shadow-glow-magenta)] transition-transform hover:scale-105">
+                <a href={contactLinks.email} className="group inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-6 py-3 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[var(--shadow-glow-magenta)] transition-transform hover:scale-105">
                   <Mail className="h-4 w-4" /> Send an email <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
-                <a href="https://www.linkedin.com/in/jihan-nabilah-rahman/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-semibold transition-colors hover:bg-white/10">
+                <a href={contactLinks.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-semibold transition-colors hover:bg-white/10">
                   <Linkedin className="h-4 w-4" /> LinkedIn
                 </a>
-                <a href="https://github.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-semibold transition-colors hover:bg-white/10">
+                <a href={contactLinks.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-semibold transition-colors hover:bg-white/10">
                   <Github className="h-4 w-4" /> GitHub
                 </a>
               </div>

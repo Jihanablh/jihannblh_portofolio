@@ -27,6 +27,7 @@ export type Project = {
   tags: string[];
   live?: string;
   featured?: boolean;
+  highlight?: string;
   icon: LucideIcon;
   caseStudy: CaseStudy;
 };
@@ -37,10 +38,12 @@ export const projects: Project[] = [
     title: "WebGIS Yogyakarta",
     category: "WebGIS · Spatial Data",
     desc: "WebGIS interaktif untuk informasi spasial dan visualisasi data wilayah Yogyakarta.",
-    image: "https://jihannabilah.vercel.app/images_projects_gis_analyst/webgisyogya_dashboard.png",
+    image:
+      "https://jihannabilah.vercel.app/images_projects_gis_analyst/webgisyogya_dashboard.png",
     tags: ["WebGIS", "Leaflet", "Spatial Analysis", "Mapping"],
     live: "https://webgisyogyakarta.vercel.app/",
     featured: true,
+    highlight: "3× faster spatial interpretation",
     icon: MapIcon,
     caseStudy: {
       problem:
@@ -64,9 +67,11 @@ export const projects: Project[] = [
     title: "BarangBareng",
     category: "Marketplace · Web App",
     desc: "Marketplace rental barang dengan flow listing, detail produk, checkout & simulasi pembayaran.",
-    image: "https://jihannabilah.vercel.app/images_project_digital_product/barangbareng.png",
+    image:
+      "https://jihannabilah.vercel.app/images_project_digital_product/barangbareng.png",
     tags: ["React", "UI/UX", "Marketplace", "Product Thinking"],
     live: "https://barangbareng-barengintech.vercel.app/",
+    highlight: "92% task-success rate",
     icon: Code2,
     caseStudy: {
       problem:
@@ -118,7 +123,13 @@ export const projects: Project[] = [
     desc: "Optimasi budget & konversi kampanye marketing GoFood — roadmap penghematan 15% via retargeting.",
     image:
       "https://jihannabilah.vercel.app/images_projects_data_analyst/BI_Gojek/Dashboard_BI_Gojek.png",
-    tags: ["SQL", "Tableau", "Marketing Analytics", "Funnel"],
+    tags: [
+      "SQL",
+      "Microsoft Excel",
+      "Marketing Analytics",
+      "Funnel Analysis",
+    ],
+    highlight: "15% projected budget savings",
     icon: BarChart3,
     caseStudy: {
       problem:
@@ -128,7 +139,7 @@ export const projects: Project[] = [
       data: "Dataset campaign performance (impression, click, conversion, cost) lintas 6 channel selama 6 bulan.",
       approach:
         "Funnel analysis → CAC per channel → cohort retention → simulasi reallocation budget.",
-      tools: ["SQL", "Tableau", "Excel"],
+      tools: ["SQL", "Microsoft Excel"],
       insight:
         "2 channel berbiaya tinggi menyumbang 38% spend namun hanya 12% konversi. Retargeting punya CAC 3× lebih rendah.",
       recommendation:
@@ -196,7 +207,7 @@ export const projects: Project[] = [
     desc: "Dashboard Diversity & Inclusion untuk memantau target kesetaraan & demografi karyawan.",
     image:
       "https://jihannabilah.vercel.app/images_projects_data_analyst/BI_HR/Dashboard_BI_HR.png",
-    tags: ["Looker Studio", "SQL", "HR Metrics", "DEI"],
+    tags: ["Google Data Studio", "SQL", "HR Metrics", "DEI"],
     icon: Users,
     caseStudy: {
       problem:
@@ -206,7 +217,7 @@ export const projects: Project[] = [
       data: "HRIS export: ~5k employee records (gender, age band, department, level, tenure).",
       approach:
         "Data cleaning HRIS → pivot demografi → benchmark vs target → highlight gap → KPI alert visual.",
-      tools: ["Looker Studio", "SQL", "Google Sheets"],
+      tools: ["Google Data Studio", "SQL", "Google Sheets"],
       insight:
         "Gender gap terbesar di level senior (78/22), padahal di entry level sudah 52/48 — pipeline retention issue.",
       recommendation:
