@@ -54,7 +54,7 @@ const contactLinks = {
 
 const stats = [
   { value: "15+", label: "Projects Completed", color: "text-cyan" },
-  { value: "20+", label: "Certifications", color: "text-magenta" },
+  { value: "10+", label: "Certifications", color: "text-magenta" },
   { value: "3.72", label: "GPA / IPK", color: "text-violet" },
   { value: "4+", label: "Organizations", color: "text-lime" },
 ];
