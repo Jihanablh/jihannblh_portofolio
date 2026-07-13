@@ -399,7 +399,7 @@ function Nav({
             <ThemeToggle theme={theme} setTheme={setTheme} />
             <a
               href="#contact"
-              className="hidden rounded-full bg-foreground/95 px-4 py-1.5 text-sm font-medium text-background transition-transform hover:scale-[1.03] sm:inline-flex"
+              className="hidden rounded-full bg-[var(--gradient-aurora)] px-4 py-1.5 text-sm font-medium text-white shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-[1.03] sm:inline-flex [.theme-pink_&]:text-neutral-950"
             >
               Hire me
             </a>
@@ -443,7 +443,7 @@ function Nav({
             <a
               href="#contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-full bg-[var(--gradient-aurora)] px-4 py-3 text-center text-sm font-semibold text-[color:var(--primary-foreground)]"
+              className="mt-2 rounded-full bg-[var(--gradient-aurora)] px-4 py-3 text-center text-sm font-semibold text-white [.theme-pink_&]:text-neutral-950"
             >
               Hire me
             </a>
@@ -516,7 +516,7 @@ function Hero({ theme }: { theme: ThemeMode }) {
         >
           <a
             href="#projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-6 py-3 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105"
+            className="group inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-6 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow-cyan)] [.theme-pink_&]:text-neutral-950 transition-transform hover:scale-105"
           >
             View Projects{" "}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -528,10 +528,13 @@ function Hero({ theme }: { theme: ThemeMode }) {
             About Me
           </a>
           <a
-            href="#contact"
+            href="/CV_Jihan_Nabilah_Rahman.pdf"
+            target="_blank"
+            rel="noreferrer"
+            download="CV_Jihan_Nabilah_Rahman.pdf"
             className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-white/10"
           >
-            <FileText className="h-4 w-4" /> CV
+            <FileText className="h-4 w-4" /> Download CV
           </a>
         </motion.div>
 
@@ -854,7 +857,7 @@ function ProjectCard({ p, onOpen }: { p: Project; onOpen: () => void }) {
             target="_blank"
             rel="noreferrer"
             onClick={(e: MouseEvent<HTMLAnchorElement>) => e.stopPropagation()}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[var(--gradient-aurora)] px-3 py-1.5 text-xs font-semibold text-[color:var(--primary-foreground)] shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105"
+            className="inline-flex items-center gap-1.5 rounded-full bg-[var(--gradient-aurora)] px-3 py-1.5 text-xs font-semibold text-white shadow-[var(--shadow-glow-cyan)] [.theme-pink_&]:text-neutral-950 transition-transform hover:scale-105"
           >
             Live Demo <ExternalLink className="h-3 w-3" />
           </a>
@@ -960,7 +963,7 @@ function Projects({ onOpen }: { onOpen: (p: Project) => void }) {
                       href={featured.live}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-5 py-2.5 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105"
+                      className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-5 py-2.5 text-sm font-semibold text-white shadow-[var(--shadow-glow-cyan)] [.theme-pink_&]:text-neutral-950 transition-transform hover:scale-105"
                     >
                       Live Demo <ExternalLink className="h-4 w-4" />
                     </a>
@@ -1211,8 +1214,17 @@ function Contact() {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
+                  href="/CV_Jihan_Nabilah_Rahman.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  download="CV_Jihan_Nabilah_Rahman.pdf"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-6 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105 [.theme-pink_&]:text-neutral-950"
+                >
+                  <FileText className="h-4 w-4" /> Download CV
+                </a>
+                <a
                   href={contactLinks.email}
-                  className="group inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-6 py-3 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[var(--shadow-glow-magenta)] transition-transform hover:scale-105"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-6 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow-magenta)] [.theme-pink_&]:text-neutral-950 transition-transform hover:scale-105"
                 >
                   <Mail className="h-4 w-4" /> Send an email{" "}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

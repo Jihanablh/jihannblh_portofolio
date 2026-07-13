@@ -54,7 +54,7 @@
   --popover: oklch(0.16 0.04 270);
   --popover-foreground: oklch(0.98 0.005 250);
   --primary: oklch(0.82 0.18 200);
-  --primary-foreground: oklch(0.13 0.04 270);
+  --primary-foreground: oklch(0.99 0.005 250);
   --secondary: oklch(0.22 0.05 280);
   --secondary-foreground: oklch(0.98 0.005 250);
   --muted: oklch(0.2 0.03 270);
@@ -76,13 +76,16 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --gradient-aurora: linear-gradient(135deg,
+  --gradient-aurora: linear-gradient(
+    135deg,
     oklch(0.85 0.16 200) 0%,
     oklch(0.68 0.22 290) 45%,
-    oklch(0.72 0.26 330) 100%);
-  --gradient-mesh: radial-gradient(at 20% 20%, oklch(0.4 0.2 290 / 0.5) 0px, transparent 50%),
-                   radial-gradient(at 80% 10%, oklch(0.4 0.22 330 / 0.4) 0px, transparent 50%),
-                   radial-gradient(at 60% 80%, oklch(0.4 0.2 200 / 0.4) 0px, transparent 50%);
+    oklch(0.72 0.26 330) 100%
+  );
+  --gradient-mesh:
+    radial-gradient(at 20% 20%, oklch(0.4 0.2 290 / 0.5) 0px, transparent 50%),
+    radial-gradient(at 80% 10%, oklch(0.4 0.22 330 / 0.4) 0px, transparent 50%),
+    radial-gradient(at 60% 80%, oklch(0.4 0.2 200 / 0.4) 0px, transparent 50%);
   --shadow-glow-cyan: 0 0 60px -10px oklch(0.85 0.16 200 / 0.5);
   --shadow-glow-magenta: 0 0 60px -10px oklch(0.72 0.26 330 / 0.45);
   --shadow-elevated: 0 30px 80px -20px oklch(0 0 0 / 0.6);
@@ -107,7 +110,7 @@
   --popover: oklch(0.98 0.02 350);
   --popover-foreground: oklch(0.22 0.06 340);
   --primary: oklch(0.68 0.22 350);
-  --primary-foreground: oklch(0.99 0.01 350);
+  --primary-foreground: oklch(0.2 0.05 340);
   --secondary: oklch(0.92 0.06 350);
   --secondary-foreground: oklch(0.22 0.06 340);
   --muted: oklch(0.93 0.04 350);
@@ -123,13 +126,20 @@
   --brand-violet: oklch(0.55 0.22 300);
   --brand-lime: oklch(0.62 0.18 150);
 
-  --gradient-aurora: linear-gradient(135deg,
+  --gradient-aurora: linear-gradient(
+    135deg,
     oklch(0.78 0.18 25) 0%,
     oklch(0.7 0.22 350) 50%,
-    oklch(0.65 0.22 300) 100%);
-  --gradient-mesh: radial-gradient(at 20% 20%, oklch(0.85 0.12 350 / 0.6) 0px, transparent 55%),
-                   radial-gradient(at 80% 10%, oklch(0.88 0.1 25 / 0.55) 0px, transparent 55%),
-                   radial-gradient(at 60% 85%, oklch(0.86 0.1 300 / 0.45) 0px, transparent 55%);
+    oklch(0.65 0.22 300) 100%
+  );
+  --gradient-mesh:
+    radial-gradient(
+      at 20% 20%,
+      oklch(0.85 0.12 350 / 0.6) 0px,
+      transparent 55%
+    ),
+    radial-gradient(at 80% 10%, oklch(0.88 0.1 25 / 0.55) 0px, transparent 55%),
+    radial-gradient(at 60% 85%, oklch(0.86 0.1 300 / 0.45) 0px, transparent 55%);
   --shadow-glow-cyan: 0 0 60px -10px oklch(0.7 0.22 350 / 0.45);
   --shadow-glow-magenta: 0 0 60px -10px oklch(0.78 0.18 25 / 0.4);
   --shadow-elevated: 0 30px 80px -20px oklch(0.4 0.18 350 / 0.3);
@@ -145,24 +155,47 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes grid-pan {
-  0% { background-position: 0 0; }
-  100% { background-position: 60px 60px; }
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 60px 60px;
+  }
 }
 
 @layer base {
@@ -181,7 +214,10 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
