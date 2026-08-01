@@ -26,6 +26,9 @@ import {
   Menu,
   X,
   TrendingUp,
+  Award,
+  BadgeCheck,
+  Download,
   type LucideIcon,
 } from "lucide-react";
 import Hero3D from "@/components/Hero3D";
@@ -163,6 +166,86 @@ const experiences: ExperienceItem[] = [
   },
 ];
 
+const certifications: CertificateItem[] = [
+  {
+    title: "Quantium Data Analytics Job Simulation",
+    issuer: "Forage",
+    period: "March 2026",
+    credential: "Extra-curricular certification",
+    summary:
+      "Completed a job simulation focused on Data Analytics and Commercial Insights for Quantium's data science team.",
+    highlights: [
+      "Prepared and analysed transaction datasets to uncover customer behaviour and commercially relevant insights.",
+      "Identified benchmark stores and applied uplift testing to evaluate trial store layouts using evidence-based comparisons.",
+      "Turned findings into a structured report for the Category Manager, including clear recommendations for commercial decision-making.",
+    ],
+    skills: [
+      "Data Preparation",
+      "Customer Analytics",
+      "Uplift Testing",
+      "Commercial Insights",
+      "Business Reporting",
+    ],
+    accent: "from-rose-400/30 via-fuchsia-500/15 to-violet-500/10",
+  },
+  {
+    title: "Data Analyst Internship — MSIB Mandiri Batch 4",
+    issuer: "PT Vinix Seven Aurum",
+    period: "23 February - 23 June 2026",
+    credential: "No. 007/Batch-IV-MSIB/VINIX7/Div-Data Analyst",
+    summary:
+      "Successfully completed the independent internship program in the Data Analyst Division with a very good performance assessment.",
+    highlights: [
+      "Collected, cleaned, wrangled, integrated, and analysed multi-source datasets for decision-support insights.",
+      "Performed EDA, basic statistical analysis, hypothesis testing, and regression using Excel, SQL, and visualisation platforms.",
+      "Built dashboards and data-driven reports for business and stakeholder needs.",
+    ],
+    skills: ["Data Cleaning", "EDA", "Excel", "SQL", "Dashboarding"],
+    pdf: "/certificates/Jihan Nabilah Rahman_Sertifikat Utama_Vinix7.pdf",
+    thumbnail: "/certificate-previews/vinix-internship.png",
+    accent: "from-blue-400/30 via-cyan-500/15 to-violet-500/10",
+  },
+  {
+    title: "Impact Project — Data Analyst",
+    issuer: "PT Vinix Seven Aurum",
+    period: "2026",
+    credential: "Final score: 95/100",
+    summary:
+      "Analysed career readiness among Indonesian university students through survey implementation, sentiment analysis, and a data visualisation dashboard.",
+    highlights: [
+      "Designed and executed a career-readiness survey for Indonesian university students.",
+      "Applied sentiment analysis to transform open-ended responses into structured insight.",
+      "Presented findings through an interactive dashboard and earned a 95/100 project score.",
+    ],
+    skills: [
+      "Survey Analysis",
+      "Sentiment Analysis",
+      "Data Visualisation",
+      "Reporting",
+    ],
+    pdf: "/certificates/Jihan Nabilah Rahman_Sertifikat Proyek_vinix7.pdf",
+    thumbnail: "/certificate-previews/vinix-impact-project.png",
+    accent: "from-cyan-400/30 via-blue-500/15 to-indigo-500/10",
+  },
+  {
+    title: "Operating System Practicum Assistant",
+    issuer: "Universitas Bakrie",
+    period: "Academic Year 2025/2026",
+    credential: "No. 014/FTIK-UB/SER/I/2026",
+    summary:
+      "Appointed as an Operating System practicum assistant for the 2025/2026 academic period.",
+    highlights: [
+      "Facilitated hands-on Operating System practicum sessions and technical mentoring.",
+      "Supported Linux, Windows, and virtual machine learning environments.",
+      "Assisted with assessment, troubleshooting, and practical learning activities.",
+    ],
+    skills: ["Operating Systems", "Linux", "Virtual Machines", "Mentoring"],
+    pdf: "/certificates/Sertifikat Asisten Praktikum System Operation SIF Ganjil 20252026.pdf",
+    thumbnail: "/certificate-previews/operating-system-assistant.png",
+    accent: "from-orange-400/25 via-rose-500/15 to-red-500/10",
+  },
+];
+
 const gallery = [
   "https://jihannabilah.vercel.app/images_projects_gis_analyst/webgisyogya_dashboard.png",
   "https://jihannabilah.vercel.app/images_projects_gis_analyst/webgisyogya_peta.png",
@@ -240,6 +323,7 @@ const sectionIds = [
   "home",
   "about",
   "experience",
+  "certificates",
   "projects",
   "case-studies",
   "gallery",
@@ -257,6 +341,19 @@ type ExperienceItem = {
   accent: string;
   impact: string[];
   tags: string[];
+};
+
+type CertificateItem = {
+  title: string;
+  issuer: string;
+  period: string;
+  credential: string;
+  summary: string;
+  highlights: string[];
+  skills: string[];
+  pdf?: string;
+  thumbnail?: string;
+  accent: string;
 };
 
 function useScrollSpy() {
@@ -350,6 +447,7 @@ function Nav({
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "experience", label: "Experience" },
+    { id: "certificates", label: "Credentials" },
     { id: "projects", label: "Projects" },
     { id: "case-studies", label: "Case Studies" },
     { id: "gallery", label: "Gallery" },
@@ -375,7 +473,7 @@ function Nav({
               Jihan<span className="text-aurora">.</span>
             </span>
           </a>
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-1 lg:flex">
             {links.map((l) => {
               const isActive = active === l.id;
               return (
@@ -416,7 +514,7 @@ function Nav({
               type="button"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               onClick={() => setMobileOpen((v) => !v)}
-              className="grid h-9 w-9 place-items-center rounded-full glass md:hidden"
+              className="grid h-9 w-9 place-items-center rounded-full glass lg:hidden"
             >
               {mobileOpen ? (
                 <X className="h-4 w-4" />
@@ -432,7 +530,7 @@ function Nav({
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mx-4 mt-2 rounded-2xl glass-strong p-4 shadow-[var(--shadow-elevated)] md:hidden"
+          className="mx-4 mt-2 rounded-2xl glass-strong p-4 shadow-[var(--shadow-elevated)] lg:hidden"
         >
           <div className="grid gap-1">
             {links.map((l) => (
@@ -804,6 +902,121 @@ function Experience() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Certifications() {
+  return (
+    <section id="certificates" className="relative px-6 py-32">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle
+          eyebrow="Certifications & Credentials"
+          title="Verified learning, simulations & academic contributions"
+          desc="A selection of credentials that demonstrate applied data analytics, commercial insight, dashboard development, and technical mentoring. Uploaded PDF certificates can be previewed or downloaded directly."
+        />
+
+        <div className="grid gap-6 lg:grid-cols-2">
+          {certifications.map((certificate, index) => (
+            <Reveal key={`${certificate.title}-${certificate.issuer}`} delay={index * 0.06}>
+              <article className="group flex h-full flex-col overflow-hidden rounded-3xl glass-strong transition-all hover:-translate-y-1 hover:border-cyan/30">
+                <div className="relative aspect-[16/8] overflow-hidden border-b border-border/60 bg-white/[0.03]">
+                  {certificate.thumbnail ? (
+                    <img
+                      src={certificate.thumbnail}
+                      alt={`Preview of ${certificate.title} certificate`}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  ) : (
+                    <div
+                      className={`relative flex h-full items-center justify-center overflow-hidden bg-gradient-to-br ${certificate.accent}`}
+                    >
+                      <div className="absolute inset-0 grid-bg opacity-30" />
+                      <div className="absolute -left-10 -top-16 h-52 w-52 rounded-full bg-cyan/20 blur-3xl" />
+                      <div className="absolute -bottom-20 -right-10 h-60 w-60 rounded-full bg-magenta/20 blur-3xl" />
+                      <div className="relative text-center">
+                        <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl glass-strong shadow-[var(--shadow-glow-magenta)]">
+                          <Award className="h-8 w-8 text-magenta" />
+                        </div>
+                        <div className="mt-4 font-mono text-xs uppercase tracking-[0.25em] text-foreground/70">
+                          Forage Job Simulation
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full glass-strong px-3 py-1 text-xs font-medium">
+                    <BadgeCheck className="h-3.5 w-3.5 text-lime" />
+                    {certificate.issuer}
+                  </div>
+                </div>
+
+                <div className="flex flex-1 flex-col p-7">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                    <span>{certificate.period}</span>
+                    <span className="rounded-full bg-lime/10 px-2.5 py-1 normal-case tracking-normal text-lime">
+                      {certificate.credential}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-4 font-display text-2xl font-semibold">
+                    {certificate.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {certificate.summary}
+                  </p>
+
+                  <ul className="mt-5 space-y-2.5">
+                    {certificate.highlights.map((highlight) => (
+                      <li key={highlight} className="flex gap-3 text-sm text-foreground/80">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-5 flex flex-wrap gap-1.5">
+                    {certificate.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-foreground/70"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex flex-wrap items-center gap-2 pt-7">
+                    {certificate.pdf ? (
+                      <>
+                        <a
+                          href={certificate.pdf}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-4 py-2 text-xs font-semibold text-white shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105 [.theme-pink_&]:text-neutral-950"
+                        >
+                          <Eye className="h-3.5 w-3.5" /> View Certificate
+                        </a>
+                        <a
+                          href={certificate.pdf}
+                          download
+                          className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10"
+                        >
+                          <Download className="h-3.5 w-3.5" /> Download PDF
+                        </a>
+                      </>
+                    ) : (
+                      <div className="inline-flex items-center gap-2 rounded-full bg-magenta/10 px-4 py-2 text-xs font-semibold text-magenta">
+                        <Award className="h-3.5 w-3.5" /> Portfolio credential summary
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -1263,7 +1476,7 @@ function Contact() {
             © {new Date().getFullYear()} Jihan Nabilah Rahman — Built with
             curiosity & data.
           </div>
-          <div className="font-mono">v3.0 · Crafted in Jakarta</div>
+          <div className="font-mono">v3.1 · Crafted in Jakarta</div>
         </footer>
       </div>
     </section>
@@ -1281,6 +1494,7 @@ function Index() {
       <Hero theme={theme} />
       <About />
       <Experience />
+      <Certifications />
       <Projects onOpen={setOpenProject} />
       <CaseStudies onOpen={setOpenProject} />
       <Gallery onOpen={setLightboxSrc} />

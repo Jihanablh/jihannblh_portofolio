@@ -19,6 +19,12 @@ export type CaseStudy = {
   impact: string;
 };
 
+export type ProjectVisual = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -27,6 +33,8 @@ export type Project = {
   image: string;
   tags: string[];
   live?: string;
+  linkLabel?: string;
+  gallery?: ProjectVisual[];
   featured?: boolean;
   highlight?: string;
   icon: LucideIcon;
@@ -119,28 +127,66 @@ export const projects: Project[] = [
   },
   {
     slug: "tokopedia-text-mining",
-    title: "Tokopedia Text Mining",
-    category: "Data Analysis · NLP",
-    desc: "Text mining dan analisis sentimen pada data review produk Tokopedia menggunakan Python di Google Colab.",
-    image: "/images_projects_data_analyst/tokopedia_textmining.svg",
-    tags: ["Python", "Google Colab", "NLP", "Text Mining"],
-    live: "https://github.com/Jihanablh/textmining_tokopedia/blob/main/textmining_tokopedia.ipynb",
+    title: "Tokopedia Review Text Mining & Sentiment Analysis",
+    category: "Data Mining · NLP",
+    desc: "Analisis 2.882 ulasan Tokopedia untuk memahami distribusi rating, tren harian, kata kunci, sentimen, dan performa klasifikasi Naive Bayes.",
+    image:
+      "/images_projects_data_analyst/Tokopedia_Text_Mining/wordcloud-keywords.png",
+    tags: ["Python", "Text Mining", "Sentiment Analysis", "Naive Bayes"],
+    live: "https://github.com/Jihanablh/textmining_tokopedia/tree/main",
+    linkLabel: "View GitHub",
+    highlight: "61% positive sentiment · 91.0% accuracy",
+    gallery: [
+      {
+        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/rating-distribution.png",
+        alt: "Bar chart showing Tokopedia review rating distribution",
+        caption: "Rating Distribution — ratings 5 and 1 dominate the dataset",
+      },
+      {
+        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/sentiment-percentage.png",
+        alt: "Pie chart showing positive and negative Tokopedia review sentiment",
+        caption: "Sentiment Composition — 61% positive and 39% negative",
+      },
+      {
+        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/daily-review-trend.png",
+        alt: "Line chart showing the daily number of Tokopedia reviews",
+        caption: "Daily Review Trend — peak activity occurred around 11 June 2026",
+      },
+      {
+        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/wordcloud-keywords.png",
+        alt: "Word cloud of frequently occurring terms in Tokopedia reviews",
+        caption: "Keyword Word Cloud — recurring words reveal common review themes",
+      },
+      {
+        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/confusion-matrix-naive-bayes.png",
+        alt: "Confusion matrix for the Naive Bayes sentiment classification model",
+        caption: "Naive Bayes Evaluation — 443 of 487 test records classified correctly",
+      },
+    ],
     icon: Code2,
     caseStudy: {
       problem:
-        "Review produk Tokopedia dalam jumlah besar sulit dibaca manual untuk menemukan pola keluhan atau kepuasan pelanggan secara sistematis.",
+        "Ribuan ulasan Tokopedia sulit dievaluasi secara manual, sehingga pola kepuasan, keluhan, kata kunci, dan perubahan volume ulasan tidak mudah terlihat secara konsisten.",
       objective:
-        "Menerapkan text mining dan NLP untuk mengekstrak pola kata kunci dan sinyal sentimen dari data review produk.",
-      data: "Dataset review produk Tokopedia (teks ulasan pelanggan).",
+        "Mengolah ulasan menjadi insight terukur melalui EDA, visualisasi rating dan tren waktu, ekstraksi kata kunci, analisis sentimen, serta evaluasi model klasifikasi Naive Bayes.",
+      data:
+        "2.882 ulasan Tokopedia dengan distribusi rating: 1 sebanyak 1.001, 2 sebanyak 122, 4 sebanyak 122, dan 5 sebanyak 1.637 ulasan.",
       approach:
-        "Text preprocessing (cleaning, tokenization, stopword removal) → ekstraksi keyword → analisis sentimen menggunakan Python di Google Colab.",
-      tools: ["Python", "Google Colab", "NLP"],
+        "Data cleaning dan text preprocessing → eksplorasi distribusi rating dan jumlah ulasan harian → kategorisasi sentimen → visualisasi word cloud → pembagian train-test 80:20 → klasifikasi Naive Bayes dan evaluasi confusion matrix.",
+      tools: [
+        "Python",
+        "Google Colab",
+        "Text Preprocessing",
+        "Data Visualization",
+        "Word Cloud",
+        "Naive Bayes",
+      ],
       insight:
-        "Ekstraksi keyword dan pola sentimen memberikan gambaran cepat mengenai aspek produk yang paling sering dikeluhkan atau dipuji pelanggan.",
+        "Sentimen ulasan terdiri dari 61% positif dan 39% negatif. Rating paling banyak adalah 5 (1.637 ulasan), diikuti rating 1 (1.001 ulasan). Volume ulasan harian mencapai puncak sekitar 240 ulasan pada pertengahan Juni 2026 sebelum kembali stabil.",
       recommendation:
-        "Insight ini dapat digunakan tim produk untuk prioritas perbaikan fitur berdasarkan sentimen review paling dominan.",
+        "Prioritaskan investigasi tema negatif yang berulang pada ulasan rating rendah, pantau pergeseran sentimen secara berkala, dan gunakan hasil klasifikasi sebagai alat penyaringan awal sebelum analisis manual yang lebih mendalam.",
       impact:
-        "Menjadi studi kasus penerapan NLP untuk customer insight di konteks e-commerce Indonesia.",
+        "Pada split test 80:20, model mengklasifikasikan 443 dari 487 data uji dengan benar: akurasi 91,0%, precision kelas positif 94,7%, dan recall kelas positif 88,3%.",
     },
   },
   {
