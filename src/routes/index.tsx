@@ -35,6 +35,7 @@ import Hero3D from "@/components/Hero3D";
 import { Reveal } from "@/components/Reveal";
 import { ProjectModal } from "@/components/ProjectModal";
 import { Lightbox } from "@/components/Lightbox";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { projects, type Project } from "@/data/projects";
 
 export const Route = createFileRoute("/")({
@@ -90,6 +91,20 @@ const experiences: ExperienceItem[] = [
       'Presented the final analysis to industry mentors and earned a 95/100 evaluation score for the "Impact Project" capstone.',
     ],
     tags: ["Excel", "Python", "Power BI", "Google Data Studio", "EDA"],
+    documents: [
+      {
+        label: "View Internship Certificate",
+        title: "Data Analyst Internship - PT Vinix Seven Aurum",
+        file: "/certificates/Jihan Nabilah Rahman_Sertifikat Utama_Vinix7.pdf",
+        type: "PDF",
+      },
+      {
+        label: "View Impact Project Certificate",
+        title: "Impact Project - Data Analyst",
+        file: "/certificates/Jihan Nabilah Rahman_Sertifikat Proyek_vinix7.pdf",
+        type: "PDF",
+      },
+    ],
   },
   {
     role: "Operating System Teaching Assistant",
@@ -110,6 +125,14 @@ const experiences: ExperienceItem[] = [
       "VMware",
       "Operating Systems",
       "Technical Mentoring",
+    ],
+    documents: [
+      {
+        label: "View Teaching Assistant Certificate",
+        title: "Operating System Teaching Assistant",
+        file: "/certificates/Sertifikat Asisten Praktikum System Operation SIF Ganjil 20252026.pdf",
+        type: "PDF",
+      },
     ],
   },
   {
@@ -144,8 +167,14 @@ const experiences: ExperienceItem[] = [
       "Retention Strategy",
       "Leadership",
     ],
-    certificate: "/certificates/HRN IEEE Jihan Nabilah Rahman.png",
-    certificateLabel: "View Certificate",
+    documents: [
+      {
+        label: "View Appreciation Certificate",
+        title: "IEEE HRN Committee Appreciation Certificate",
+        file: "/certificates/HRN IEEE Jihan Nabilah Rahman.png",
+        type: "Image",
+      },
+    ],
   },
   {
     role: "Public Relations Officer",
@@ -784,6 +813,13 @@ const sectionIds = [
   "contact",
 ];
 
+type PortfolioDocument = {
+  label: string;
+  title: string;
+  file: string;
+  type: "PDF" | "Image";
+};
+
 type ExperienceItem = {
   role: string;
   org: string;
@@ -794,8 +830,7 @@ type ExperienceItem = {
   accent: string;
   impact: string[];
   tags: string[];
-  certificate?: string;
-  certificateLabel?: string;
+  documents?: PortfolioDocument[];
 };
 
 type CertCategory =
@@ -1299,230 +1334,355 @@ function About() {
   );
 }
 
-function CertificateThumbnail({ certificate }: { certificate: CertificateItem }) {
-  const [hasError, setHasError] = useState(false);
+const encodeAssetPath = (file: string) => encodeURI(file);
 
-  if (certificate.thumbnail && !hasError) {
+function DocumentViewer({
+  document,
+  onClose,
+}: {
+  document: PortfolioDocument | null;
+  onClose: () => void;
+}) {
+  return (
+    <Dialog open={Boolean(document)} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent
+        className="h-[90vh] max-w-6xl overflow-hidden border-[var(--border-glass-strong)] bg-[var(--surface-modal)] p-0 backdrop-blur-2xl [&>button]:hidden"
+        onOpenAutoFocus={(event) => event.preventDefault()}
+      >
+        {document && (
+          <div className="flex h-full min-h-0 flex-col">
+            <div className="flex shrink-0 items-center justify-between gap-4 border-b border-border/60 px-5 py-4 sm:px-6">
+              <div className="min-w-0">
+                <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                  Document Preview
+                </div>
+                <h3 className="mt-1 truncate font-display text-lg font-semibold sm:text-xl">
+                  {document.title}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Close preview"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full glass transition-transform hover:scale-105 hover:bg-white/10"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            <div className="min-h-0 flex-1 bg-black/20 p-3 sm:p-5">
+              {document.type === "Image" ? (
+                <img
+                  src={encodeAssetPath(document.file)}
+                  alt={document.title}
+                  className="h-full w-full rounded-2xl object-contain"
+                />
+              ) : (
+                <iframe
+                  title={document.title}
+                  src={`${encodeAssetPath(document.file)}#toolbar=0&navpanes=0&view=FitH`}
+                  className="h-full w-full rounded-2xl border-0 bg-white"
+                />
+              )}
+            </div>
+
+            <div className="flex shrink-0 flex-wrap items-center justify-end gap-2 border-t border-border/60 px-5 py-3 sm:px-6">
+              <a
+                href={encodeAssetPath(document.file)}
+                download
+                className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10"
+              >
+                <Download className="h-3.5 w-3.5" /> Download
+              </a>
+              <button
+                type="button"
+                onClick={onClose}
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-4 py-2 text-xs font-semibold text-white shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105 [.theme-pink_&]:text-neutral-950"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function CertificateThumbnail({ certificate }: { certificate: CertificateItem }) {
+  if (certificate.fileLabel === "Image") {
     return (
       <img
-        src={encodeURI(certificate.thumbnail)}
+        src={encodeAssetPath(certificate.file)}
         alt={`Preview of ${certificate.title} certificate`}
         loading="lazy"
-        onError={() => setHasError(true)}
         className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
       />
     );
   }
 
   return (
-    <div
-      className={`relative flex h-full items-center justify-center overflow-hidden bg-gradient-to-br ${certificate.accent}`}
-    >
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute -left-10 -top-16 h-52 w-52 rounded-full bg-cyan/20 blur-3xl" />
-      <div className="absolute -bottom-20 -right-10 h-60 w-60 rounded-full bg-magenta/20 blur-3xl" />
-      <div className="relative text-center">
-        <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl glass-strong shadow-[var(--shadow-glow-magenta)]">
-          <Award className="h-8 w-8 text-magenta" />
+    <div className={`relative h-full overflow-hidden bg-gradient-to-br ${certificate.accent}`}>
+      <div className="absolute inset-0 grid-bg opacity-20" />
+      <object
+        data={`${encodeAssetPath(certificate.file)}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+        type="application/pdf"
+        aria-label={`Preview of ${certificate.title} certificate`}
+        className="relative h-full w-full bg-white pointer-events-none"
+      >
+        <div className="flex h-full items-center justify-center">
+          <div className="text-center">
+            <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl glass-strong">
+              <Award className="h-7 w-7 text-magenta" />
+            </div>
+            <div className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-foreground/70">
+              Certificate
+            </div>
+          </div>
         </div>
-        <div className="mt-4 font-mono text-xs uppercase tracking-[0.25em] text-foreground/70">
-          Certificate
-        </div>
-      </div>
+      </object>
     </div>
   );
 }
 
 function Experience() {
+  const [selectedDocument, setSelectedDocument] = useState<PortfolioDocument | null>(null);
+
   return (
-    <section id="experience" className="relative px-6 py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionTitle
-          eyebrow="Experience & Leadership"
-          title="Building impact through data & people"
-          desc="From data analytics internships to academic teaching and HR analytics leadership — a track record of turning structured thinking into measurable results."
-        />
-        <div className="relative">
-          <div className="absolute left-4 top-0 bottom-0 hidden w-px bg-gradient-to-b from-cyan/40 via-magenta/30 to-transparent md:block" />
-          <div className="space-y-6">
-            {experiences.map((e, i) => (
-              <Reveal key={e.role} delay={i * 0.05}>
-                <div className="group relative md:pl-16">
-                  <div className="absolute left-0 top-6 hidden h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full glass-strong md:flex">
-                    <e.icon className="h-4 w-4 text-cyan" />
-                  </div>
-                  <div className="relative overflow-hidden rounded-3xl glass-strong p-8 transition-all hover:-translate-y-1 hover:border-white/20">
-                    <div
-                      className={`pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br ${e.accent} blur-3xl opacity-60`}
-                    />
-                    <div className="relative grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4">
-                      <div className="min-w-0">
-                        <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-                          {e.period}
-                        </div>
-                        <h3 className="mt-2 font-display text-2xl font-semibold">
-                          {e.role}
-                        </h3>
-                        <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-                          <span>{e.org}</span>
+    <>
+      <section id="experience" className="relative px-6 py-32">
+        <div className="mx-auto max-w-6xl">
+          <SectionTitle
+            eyebrow="Experience & Leadership"
+            title="Building impact through data & people"
+            desc="From data analytics internships to academic teaching and HR analytics leadership — a track record of turning structured thinking into measurable results."
+          />
 
-                          {e.location && (
-                            <>
-                              <span aria-hidden="true">•</span>
-                              <span>{e.location}</span>
-                            </>
-                          )}
+          <div className="relative">
+            <div className="absolute bottom-8 left-5 top-8 hidden w-px bg-gradient-to-b from-cyan/50 via-magenta/35 to-transparent md:block" />
 
-                          {e.status && (
-                            <span className="rounded-full bg-lime/10 px-2.5 py-0.5 text-xs font-medium text-lime">
-                              {e.status}
-                            </span>
-                          )}
+            <div className="space-y-6">
+              {experiences.map((experience, index) => (
+                <Reveal key={experience.role} delay={index * 0.05}>
+                  <div className="group relative md:pl-20">
+                    <div className="absolute left-5 top-9 z-10 hidden h-11 w-11 -translate-x-1/2 items-center justify-center rounded-2xl border border-cyan/30 bg-background/90 shadow-[0_0_24px_-8px_oklch(0.85_0.16_200/0.65)] backdrop-blur-xl md:flex">
+                      <experience.icon className="h-5 w-5 text-cyan" />
+                    </div>
+                    <div className="absolute left-5 top-[3.55rem] hidden h-px w-11 bg-gradient-to-r from-cyan/40 to-transparent md:block" />
+
+                    <div className="relative overflow-hidden rounded-3xl glass-strong p-8 transition-all hover:-translate-y-1 hover:border-white/20">
+                      <div
+                        className={`pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br ${experience.accent} blur-3xl opacity-60`}
+                      />
+
+                      <div className="relative grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4">
+                        <div className="min-w-0">
+                          <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                            {experience.period}
+                          </div>
+                          <h3 className="mt-2 font-display text-2xl font-semibold">
+                            {experience.role}
+                          </h3>
+                          <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                            <span>{experience.org}</span>
+                            {experience.location && (
+                              <>
+                                <span aria-hidden="true">•</span>
+                                <span>{experience.location}</span>
+                              </>
+                            )}
+                            {experience.status && (
+                              <span className="rounded-full bg-lime/10 px-2.5 py-0.5 text-xs font-medium text-lime">
+                                {experience.status}
+                              </span>
+                            )}
+                          </div>
                         </div>
+                        <experience.icon className="h-6 w-6 shrink-0 text-foreground/40 md:hidden" />
                       </div>
-                      <e.icon className="h-6 w-6 shrink-0 text-foreground/40 md:hidden" />
-                    </div>
-                    <ul className="relative mt-6 space-y-2">
-                      {e.impact.map((line) => (
-                        <li
-                          key={line}
-                          className="flex gap-3 text-sm text-foreground/80"
-                        >
-                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan" />
-                          {line}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="relative mt-5 flex flex-wrap gap-1.5">
-                      {e.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-foreground/70"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                    {e.certificate && (
-                      <div className="relative mt-5">
-                        <a
-                          href={e.certificate}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10"
-                        >
-                          <Eye className="h-3.5 w-3.5" />
-                          {e.certificateLabel ?? "View Certificate"}
-                        </a>
+
+                      <ul className="relative mt-6 space-y-2">
+                        {experience.impact.map((line) => (
+                          <li key={line} className="flex gap-3 text-sm text-foreground/80">
+                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan" />
+                            {line}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="relative mt-5 flex flex-wrap gap-1.5">
+                        {experience.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-foreground/70"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
-                    )}
+
+                      {experience.documents && experience.documents.length > 0 && (
+                        <div className="relative mt-5 flex flex-wrap gap-2">
+                          {experience.documents.map((document) => (
+                            <button
+                              key={document.file}
+                              type="button"
+                              onClick={() => setSelectedDocument(document)}
+                              className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10"
+                            >
+                              <Eye className="h-3.5 w-3.5" />
+                              {document.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <DocumentViewer document={selectedDocument} onClose={() => setSelectedDocument(null)} />
+    </>
   );
 }
 
-
 function Certifications() {
   const [showAll, setShowAll] = useState(false);
-  const initialCount = 8;
-  const visibleCertificates = showAll
-    ? certifications
-    : certifications.slice(0, initialCount);
+  const [selectedDocument, setSelectedDocument] = useState<PortfolioDocument | null>(null);
+  const initialCount = 6;
+  const visibleCertificates = showAll ? certifications : certifications.slice(0, initialCount);
   const hasMore = certifications.length > initialCount;
 
   return (
-    <section id="certificates" className="relative px-6 py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionTitle
-          eyebrow="Certifications & Credentials"
-          title="Verified learning, simulations & academic contributions"
-          desc="A selection of credentials that demonstrate applied data analytics, commercial insight, dashboard development, and technical mentoring. Uploaded certificates can be previewed or downloaded directly."
-        />
+    <>
+      <section id="certificates" className="relative px-6 py-32">
+        <div className="mx-auto max-w-7xl">
+          <SectionTitle
+            eyebrow="Certifications & Credentials"
+            title="Verified learning, simulations & academic contributions"
+            desc="Credentials aligned with data analysis, business intelligence, business analysis, and systems analysis. Select View Certificate to preview each document without leaving the portfolio."
+          />
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          {visibleCertificates.map((certificate, index) => (
-            <Reveal
-              key={`${certificate.title}-${certificate.issuer}`}
-              delay={Math.min(index * 0.06, 0.3)}
-            >
-              <article className="group flex h-full flex-col overflow-hidden rounded-3xl glass-strong transition-all hover:-translate-y-1 hover:border-cyan/30">
-                <div className="relative aspect-[16/8] overflow-hidden border-b border-border/60 bg-white/[0.03]">
-                  <CertificateThumbnail certificate={certificate} />
-                  <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full glass-strong px-3 py-1 text-xs font-medium">
-                    <BadgeCheck className="h-3.5 w-3.5 text-lime" />
-                    {certificate.issuer}
-                  </div>
-                </div>
-
-                <div className="flex flex-1 flex-col p-7">
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground">
-                    <span>{certificate.period}</span>
-                    <span className="rounded-full bg-lime/10 px-2.5 py-1 normal-case tracking-normal text-lime">
-                      {certificate.credential}
-                    </span>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {visibleCertificates.map((certificate, index) => (
+              <Reveal
+                key={`${certificate.title}-${certificate.issuer}`}
+                delay={Math.min(index * 0.05, 0.25)}
+              >
+                <article className="group flex h-full flex-col overflow-hidden rounded-3xl glass-strong transition-all hover:-translate-y-1 hover:border-cyan/30">
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border/60 bg-white/[0.03]">
+                    <CertificateThumbnail certificate={certificate} />
+                    <div className="absolute left-4 top-4 inline-flex max-w-[calc(100%-2rem)] items-center gap-1.5 rounded-full glass-strong px-3 py-1 text-xs font-medium">
+                      <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-lime" />
+                      <span className="truncate">{certificate.issuer}</span>
+                    </div>
                   </div>
 
-                  <h3 className="mt-4 font-display text-2xl font-semibold">
-                    {certificate.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {certificate.summary}
-                  </p>
-
-                  <ul className="mt-5 space-y-2.5">
-                    {certificate.highlights.map((highlight) => (
-                      <li key={highlight} className="flex gap-3 text-sm text-foreground/80">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-5 flex flex-wrap gap-1.5">
-                    {certificate.skills.map((skill) => (
-                      <span key={skill} className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-foreground/70">
-                        {skill}
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
+                      <span>{certificate.period}</span>
+                      <span className="rounded-full bg-lime/10 px-2.5 py-1 normal-case tracking-normal text-lime">
+                        {certificate.credential}
                       </span>
-                    ))}
-                  </div>
+                    </div>
 
-                  <div className="mt-auto flex flex-wrap items-center gap-2 pt-7">
-                    <a href={certificate.file} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-4 py-2 text-xs font-semibold text-white shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105 [.theme-pink_&]:text-neutral-950">
-                      <Eye className="h-3.5 w-3.5" /> View Certificate
-                    </a>
-                    <a href={certificate.file} download className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10">
-                      <Download className="h-3.5 w-3.5" /> Download PDF
-                    </a>
-                    {certificate.supportingFile && (
-                      <a href={certificate.supportingFile} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10">
-                        <FileText className="h-3.5 w-3.5" />
-                        {certificate.supportingFileLabel ?? "Supporting File"}
+                    <h3 className="mt-4 font-display text-xl font-semibold leading-snug">
+                      {certificate.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {certificate.summary}
+                    </p>
+
+                    <ul className="mt-5 space-y-2.5">
+                      {certificate.highlights.map((highlight) => (
+                        <li key={highlight} className="flex gap-3 text-sm text-foreground/80">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-5 flex flex-wrap gap-1.5">
+                      {certificate.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-foreground/70"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto flex flex-wrap items-center gap-2 pt-7">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setSelectedDocument({
+                            label: "View Certificate",
+                            title: certificate.title,
+                            file: certificate.file,
+                            type: certificate.fileLabel,
+                          })
+                        }
+                        className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-4 py-2 text-xs font-semibold text-white shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105 [.theme-pink_&]:text-neutral-950"
+                      >
+                        <Eye className="h-3.5 w-3.5" /> View Certificate
+                      </button>
+
+                      <a
+                        href={encodeAssetPath(certificate.file)}
+                        download
+                        className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10"
+                      >
+                        <Download className="h-3.5 w-3.5" /> Download
                       </a>
-                    )}
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
 
-        {hasMore && (
-          <Reveal>
-            <div className="mt-10 flex justify-center">
-              <button type="button" onClick={() => setShowAll((value) => !value)} className="inline-flex items-center gap-2 rounded-full glass-strong px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:bg-white/10">
-                {showAll ? "Show Less" : `See All Certificates (${certifications.length})`}
-              </button>
-            </div>
-          </Reveal>
-        )}
-      </div>
-    </section>
+                      {certificate.supportingFile && (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setSelectedDocument({
+                              label: certificate.supportingFileLabel ?? "Supporting File",
+                              title: `${certificate.title} - ${certificate.supportingFileLabel ?? "Supporting File"}`,
+                              file: certificate.supportingFile!,
+                              type: "PDF",
+                            })
+                          }
+                          className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10"
+                        >
+                          <FileText className="h-3.5 w-3.5" />
+                          {certificate.supportingFileLabel ?? "Supporting File"}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+
+          {hasMore && (
+            <Reveal>
+              <div className="mt-10 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => setShowAll((value) => !value)}
+                  className="inline-flex items-center gap-2 rounded-full glass-strong px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:bg-white/10"
+                >
+                  {showAll ? "Show Less" : `See All Certificates (${certifications.length})`}
+                </button>
+              </div>
+            </Reveal>
+          )}
+        </div>
+      </section>
+
+      <DocumentViewer document={selectedDocument} onClose={() => setSelectedDocument(null)} />
+    </>
   );
 }
 
