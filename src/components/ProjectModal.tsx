@@ -36,35 +36,40 @@ export function ProjectModal({
   onClose: () => void;
 }) {
   const [activeImage, setActiveImage] = useState(0);
+  const [isImageHovered, setIsImageHovered] = useState(false);
 
-  const gallery = useMemo(() => {
+  const heroImages = useMemo(() => {
     if (!project) return [];
 
-    const visuals = project.gallery ?? [];
-    if (visuals.length > 0) return visuals;
-
-    return [
+    const images = [
       {
         src: project.image,
         alt: project.title,
         caption: project.title,
       },
+      ...(project.gallery ?? []),
     ];
+
+    return images.filter(
+      (image, index, allImages) =>
+        allImages.findIndex((item) => item.src === image.src) === index,
+    );
   }, [project]);
 
   useEffect(() => {
     setActiveImage(0);
+    setIsImageHovered(false);
   }, [project?.slug, open]);
 
   useEffect(() => {
-    if (!open || gallery.length <= 1) return;
+    if (!open || isImageHovered || heroImages.length <= 1) return;
 
     const interval = window.setInterval(() => {
-      setActiveImage((current) => (current + 1) % gallery.length);
+      setActiveImage((current) => (current + 1) % heroImages.length);
     }, 3500);
 
     return () => window.clearInterval(interval);
-  }, [open, gallery.length, project?.slug]);
+  }, [open, isImageHovered, heroImages.length, project?.slug]);
 
   if (!project) return null;
   const cs = project.caseStudy;
@@ -76,73 +81,66 @@ export function ProjectModal({
         onOpenAutoFocus={(event) => event.preventDefault()}
       >
         <div className="relative max-h-[90vh] overflow-y-auto">
-          <div className="relative h-56 overflow-hidden sm:h-72">
-            <img
-              src={toAssetPath(project.image)}
-              alt={project.title}
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+          <div
+            className="relative h-56 overflow-hidden sm:h-72"
+            onMouseEnter={() => setIsImageHovered(true)}
+            onMouseLeave={() => setIsImageHovered(false)}
+          >
+            {heroImages.map((image, index) => (
+              <img
+                key={`${project.slug}-${image.src}`}
+                src={toAssetPath(image.src)}
+                alt={image.alt}
+                loading={index === 0 ? "eager" : "lazy"}
+                className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
+                  index === activeImage
+                    ? "scale-100 opacity-100"
+                    : "pointer-events-none scale-[1.03] opacity-0"
+                }`}
+              />
+            ))}
+
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+
             <button
               type="button"
               onClick={onClose}
               aria-label="Close"
-              className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full glass-strong text-foreground transition-transform hover:scale-105"
+              className="absolute right-4 top-4 z-20 grid h-9 w-9 place-items-center rounded-full glass-strong text-foreground transition-transform hover:scale-105"
             >
               <X className="h-4 w-4" />
             </button>
-            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+
+            <div className="absolute bottom-0 left-0 right-0 z-10 p-6 sm:p-8">
               <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs">
                 <project.icon className="h-3 w-3 text-cyan" /> {project.category}
               </div>
-              <h2 className="mt-3 font-display text-2xl font-bold sm:text-4xl">{project.title}</h2>
+              <h2 className="mt-3 max-w-3xl font-display text-2xl font-bold sm:text-4xl">
+                {project.title}
+              </h2>
+
+              {heroImages.length > 1 && (
+                <div className="mt-4 flex items-center gap-2">
+                  {heroImages.map((_, index) => (
+                    <button
+                      key={`${project.slug}-hero-dot-${index}`}
+                      type="button"
+                      aria-label={`Show image ${index + 1}`}
+                      onClick={() => setActiveImage(index)}
+                      className={`h-2 rounded-full transition-all ${
+                        index === activeImage
+                          ? "w-7 bg-cyan"
+                          : "w-2 bg-white/50 hover:bg-white/80"
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
           <div className="space-y-5 p-6 sm:p-8">
             <p className="text-foreground/80">{project.desc}</p>
-
-            {gallery.length > 0 && (
-              <div className="relative overflow-hidden rounded-3xl border border-[var(--border-glass-strong)] bg-[var(--chip-bg)]">
-                <div className="relative aspect-[16/10] overflow-hidden bg-black/20">
-                  {gallery.map((visual, index) => (
-                    <img
-                      key={`${project.slug}-${visual.src}`}
-                      src={toAssetPath(visual.src)}
-                      alt={visual.alt}
-                      loading={index === 0 ? "eager" : "lazy"}
-                      className={`absolute inset-0 h-full w-full object-contain p-4 transition-all duration-700 sm:p-6 ${
-                        index === activeImage
-                          ? "translate-x-0 opacity-100"
-                          : "pointer-events-none translate-x-4 opacity-0"
-                      }`}
-                    />
-                  ))}
-
-                  {gallery.length > 1 && (
-                    <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/35 px-3 py-2 backdrop-blur-md">
-                      {gallery.map((_, index) => (
-                        <button
-                          key={`${project.slug}-dot-${index}`}
-                          type="button"
-                          aria-label={`Show image ${index + 1}`}
-                          onClick={() => setActiveImage(index)}
-                          className={`h-2.5 rounded-full transition-all ${
-                            index === activeImage ? "w-7 bg-cyan" : "w-2.5 bg-white/45 hover:bg-white/70"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {gallery[activeImage]?.caption && (
-                  <div className="border-t border-border/60 px-5 py-3 text-sm text-foreground/80">
-                    {gallery[activeImage].caption}
-                  </div>
-                )}
-              </div>
-            )}
 
             <div className="grid gap-4 sm:grid-cols-2">
               {sections.map((section) => (
