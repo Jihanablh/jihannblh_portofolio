@@ -26,9 +26,9 @@ import {
   Menu,
   X,
   TrendingUp,
+  Download,
   Award,
   BadgeCheck,
-  Download,
   type LucideIcon,
 } from "lucide-react";
 import Hero3D from "@/components/Hero3D";
@@ -68,7 +68,7 @@ const contactLinks = {
 
 const stats = [
   { value: "15+", label: "Projects Completed", color: "text-cyan" },
-  { value: "10+", label: "Certifications", color: "text-magenta" },
+  { value: "30+", label: "Certifications", color: "text-magenta" },
   { value: "3.72", label: "GPA / IPK", color: "text-violet" },
   { value: "4+", label: "Organizations", color: "text-lime" },
 ];
@@ -83,26 +83,26 @@ const experiences: ExperienceItem[] = [
     icon: Database,
     accent: "from-cyan-400/30 to-blue-500/10",
     impact: [
-      "Conducted end-to-end data collection, cleaning, and validation on multi-source datasets, resolving missing values and anomalies to ensure analysis-ready data integrity.",
-      "Performed EDA, regression, and clustering analysis in Python and Excel to identify career-readiness patterns among Indonesian university students.",
-      "Designed and executed a national survey and sentiment analysis, translating unstructured responses into structured, actionable insights.",
-      "Built interactive dashboards in Power BI and Google Data Studio to support stakeholder decision-making.",
-      'Presented final analysis to industry mentors, earning a 95/100 evaluation score for the "Proyek Berdampak" capstone project.',
+      "Conducted end-to-end data collection, cleaning, and validation across multi-source datasets, resolving missing values and anomalies to ensure analysis-ready data integrity.",
+      "Performed exploratory data analysis, regression, and clustering in Python and Excel to uncover career-readiness patterns among Indonesian university students.",
+      "Designed and executed a national survey and sentiment-analysis workflow, transforming unstructured responses into structured and actionable insights.",
+      "Built interactive dashboards in Power BI and Google Data Studio to support stakeholder reporting and decision-making.",
+      'Presented the final analysis to industry mentors and earned a 95/100 evaluation score for the "Impact Project" capstone.',
     ],
     tags: ["Excel", "Python", "Power BI", "Google Data Studio", "EDA"],
   },
   {
-    role: "Asisten Dosen Sistem Operasi",
+    role: "Operating System Teaching Assistant",
     org: "Universitas Bakrie",
     period: "Sep 2025 - Jan 2026",
     status: "Completed",
     icon: Code2,
     accent: "from-fuchsia-400/30 to-purple-500/10",
     impact: [
-      "Mengkoordinasikan dan memfasilitasi sesi praktikum mingguan untuk 60+ mahasiswa, mencakup materi Memory Management, Process Scheduling, dan File Systems.",
-      "Melakukan instalasi dan troubleshooting environment Linux (Debian) serta Windows di Virtual Machine, mencapai 100% kelangsungan sesi praktikum tanpa downtime selama satu semester penuh.",
-      "Mengembangkan modul pembelajaran interaktif dan skenario ujian praktik, memperkuat kompetensi hands-on mahasiswa dalam pemrograman tingkat sistem.",
-      "Mengevaluasi tugas dan proyek akhir mahasiswa, memberikan feedback teknis terstruktur yang mempercepat perkembangan skill mereka.",
+      "Coordinated and facilitated weekly practicum sessions for more than 60 students, covering Memory Management, Process Scheduling, and File Systems.",
+      "Installed and troubleshot Linux (Debian) and Windows environments on virtual machines, maintaining full practicum continuity throughout the semester.",
+      "Developed interactive learning modules and practical exam scenarios that strengthened students' hands-on understanding of system-level concepts.",
+      "Evaluated assignments and final projects, providing structured technical feedback that accelerated student progress.",
     ],
     tags: [
       "Linux",
@@ -113,29 +113,29 @@ const experiences: ExperienceItem[] = [
     ],
   },
   {
-    role: "Teaching Assistant - Information Systems Analysis & Design",
+    role: "Teaching Assistant - Information Systems Analysis and Design",
     org: "Universitas Bakrie",
     period: "Mar 2026 - Jul 2026",
     icon: GraduationCap,
     accent: "from-pink-400/30 to-fuchsia-500/10",
     impact: [
-      "Delivered instruction to 55+ students in a single course section, covering UML (Use Case, Activity, Sequence, Class Diagrams), ERD, flowcharting, and UI/UX prototyping in Figma.",
-      "Guided student teams through end-to-end system analysis and design projects, providing consultation and structured feedback on prototypes.",
-      "Authored practicum modules and grading rubrics in collaboration with course lecturers.",
+      "Supported a class of more than 55 students in learning UML, ERD, flowcharting, and UI/UX prototyping with Figma.",
+      "Guided student teams through end-to-end systems analysis and design projects, providing consultation and structured feedback on requirements and prototypes.",
+      "Prepared practicum modules and grading rubrics in collaboration with course lecturers to maintain clear and consistent evaluation standards.",
     ],
     tags: ["UML", "ERD", "Figma", "System Analysis", "Prototyping"],
   },
   {
-    role: "Human Resource & Network Staff",
+    role: "Human Resource & Nomination Committee Staff",
     org: "IEEE Student Branch Universitas Bakrie",
     period: "Mar 2025 - Jun 2026",
     status: "Completed",
     icon: Users,
     accent: "from-violet-400/30 to-indigo-500/10",
     impact: [
-      "Mengelola proses rekrutmen end-to-end (sourcing, screening, hingga onboarding) untuk 50+ pendaftar per periode, secara konsisten memilih kandidat yang selaras dengan nilai dan tujuan organisasi.",
-      "Merancang dan menjalankan program upskilling untuk 30+ anggota, mencakup needs assessment dan evaluasi kinerja yang berhasil meningkatkan retensi anggota sebesar 65%.",
-      "Membangun sistem administrasi HR terstruktur untuk memantau KPI anggota di 6 divisi, meningkatkan efisiensi pelaporan lintas divisi.",
+      "Managed the end-to-end recruitment process, from sourcing and screening to onboarding, for more than 50 applicants per period while maintaining alignment with organisational values and goals.",
+      "Designed and delivered upskilling initiatives for over 30 members, including needs assessment and performance evaluation, contributing to stronger member retention.",
+      "Built a structured HR administration system to track member KPIs across six divisions, improving reporting efficiency and internal coordination.",
     ],
     tags: [
       "Talent Acquisition",
@@ -144,17 +144,19 @@ const experiences: ExperienceItem[] = [
       "Retention Strategy",
       "Leadership",
     ],
+    certificate: "/certificates/HRN IEEE Jihan Nabilah Rahman.png",
+    certificateLabel: "View Certificate",
   },
   {
-    role: "Humas (Public Relations)",
+    role: "Public Relations Officer",
     org: "Karang Taruna Cikoko",
     period: "Jan 2025 - Present",
     icon: Building2,
     accent: "from-emerald-400/30 to-teal-500/10",
     impact: [
-      "Merancang dan menjalankan strategi komunikasi digital serta branding visual yang konsisten di seluruh kanal publikasi organisasi.",
-      "Mengelola hubungan eksternal dan memimpin negosiasi kemitraan dengan sponsor untuk mendukung program kerja organisasi.",
-      "Menangani manajemen krisis komunikasi serta mengoordinasikan publikasi acara dari tahap perencanaan hingga eksekusi.",
+      "Planned and executed digital communication strategies and consistent visual branding across the organisation's public channels.",
+      "Managed external relations and led partnership negotiations with sponsors to support organisational programmes.",
+      "Handled communication issues and coordinated event publicity from planning through execution.",
     ],
     tags: [
       "Public Relations",
@@ -168,84 +170,530 @@ const experiences: ExperienceItem[] = [
 
 const certifications: CertificateItem[] = [
   {
-    title: "Quantium Data Analytics Job Simulation",
-    issuer: "Forage",
-    period: "March 2026",
-    credential: "Extra-curricular certification",
-    summary:
-      "Completed a job simulation focused on Data Analytics and Commercial Insights for Quantium's data science team.",
-    highlights: [
-      "Prepared and analysed transaction datasets to uncover customer behaviour and commercially relevant insights.",
-      "Identified benchmark stores and applied uplift testing to evaluate trial store layouts using evidence-based comparisons.",
-      "Turned findings into a structured report for the Category Manager, including clear recommendations for commercial decision-making.",
-    ],
-    skills: [
-      "Data Preparation",
-      "Customer Analytics",
-      "Uplift Testing",
-      "Commercial Insights",
-      "Business Reporting",
-    ],
-    accent: "from-rose-400/30 via-fuchsia-500/15 to-violet-500/10",
-  },
-  {
-    title: "Data Analyst Internship — MSIB Mandiri Batch 4",
+    title: "Data Analyst Internship - MSIB Mandiri Batch 4",
     issuer: "PT Vinix Seven Aurum",
     period: "23 February - 23 June 2026",
     credential: "No. 007/Batch-IV-MSIB/VINIX7/Div-Data Analyst",
-    summary:
-      "Successfully completed the independent internship program in the Data Analyst Division with a very good performance assessment.",
+    category: "Applied Analytics",
+    level: "Featured",
+    summary: "Completed a four-month independent internship in the Data Analyst Division with a very good performance assessment.",
     highlights: [
-      "Collected, cleaned, wrangled, integrated, and analysed multi-source datasets for decision-support insights.",
-      "Performed EDA, basic statistical analysis, hypothesis testing, and regression using Excel, SQL, and visualisation platforms.",
-      "Built dashboards and data-driven reports for business and stakeholder needs.",
+      "Worked across data collection, cleaning, wrangling, exploratory analysis, statistics, dashboards, and stakeholder reporting.",
+      "Applied Excel, SQL, Python, and dashboarding workflows to support data-driven business decisions."
     ],
     skills: ["Data Cleaning", "EDA", "Excel", "SQL", "Dashboarding"],
-    pdf: "/certificates/Jihan Nabilah Rahman_Sertifikat Utama_Vinix7.pdf",
-    thumbnail: "/certificate-previews/vinix-internship.png",
+    file: "/certificates/Jihan Nabilah Rahman_Sertifikat Utama_Vinix7.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-vinix-data-analyst-internship.png",
     accent: "from-blue-400/30 via-cyan-500/15 to-violet-500/10",
   },
   {
-    title: "Impact Project — Data Analyst",
+    title: "Impact Project - Data Analyst",
     issuer: "PT Vinix Seven Aurum",
     period: "2026",
     credential: "Final score: 95/100",
-    summary:
-      "Analysed career readiness among Indonesian university students through survey implementation, sentiment analysis, and a data visualisation dashboard.",
+    category: "Applied Analytics",
+    level: "Featured",
+    summary: "Analysed the career readiness of Indonesian university students through survey execution, sentiment analysis, and dashboard visualisation.",
     highlights: [
-      "Designed and executed a career-readiness survey for Indonesian university students.",
-      "Applied sentiment analysis to transform open-ended responses into structured insight.",
-      "Presented findings through an interactive dashboard and earned a 95/100 project score.",
+      "Turned survey and open-text responses into structured findings for career-readiness analysis.",
+      "Presented the results through a dashboard-based report and earned a final score of 95/100."
     ],
-    skills: [
-      "Survey Analysis",
-      "Sentiment Analysis",
-      "Data Visualisation",
-      "Reporting",
-    ],
-    pdf: "/certificates/Jihan Nabilah Rahman_Sertifikat Proyek_vinix7.pdf",
-    thumbnail: "/certificate-previews/vinix-impact-project.png",
+    skills: ["Survey Analysis", "Sentiment Analysis", "Data Visualisation", "Reporting"],
+    file: "/certificates/Jihan Nabilah Rahman_Sertifikat Proyek_vinix7.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-vinix-impact-project.png",
     accent: "from-cyan-400/30 via-blue-500/15 to-indigo-500/10",
   },
   {
-    title: "Operating System Practicum Assistant",
+    title: "Data Analyst Program Participation - MSIB Mandiri Batch 4",
+    issuer: "PT Vinix Seven Aurum",
+    period: "23 February - 23 June 2026",
+    credential: "Participation Certificate",
+    category: "Applied Analytics",
+    level: "Featured",
+    summary: "Recognition for completing the MSIB Mandiri programme and contributing consistently to the Data Analyst Division.",
+    highlights: [
+      "Completed the full programme period and carried out assigned analytical responsibilities.",
+      "Provides additional formal evidence of professional participation and commitment."
+    ],
+    skills: ["Data Analysis", "Professional Practice", "MSIB", "Team Collaboration"],
+    file: "/certificates/Jihan Nabilah Nabilah_Sertifikat KEIKUTSERTAAN_Vinix7.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-vinix-participation.png",
+    accent: "from-blue-400/30 via-cyan-500/15 to-indigo-500/10",
+  },
+  {
+    title: "Quantium Data Analytics Job Simulation",
+    issuer: "Forage x Quantium",
+    period: "March 2026",
+    credential: "Certificate of Completion",
+    category: "Applied Analytics",
+    level: "Featured",
+    summary: "Completed practical tasks in data preparation, customer analytics, experimentation, uplift testing, and commercial application.",
+    highlights: [
+      "Prepared transaction data and analysed customer behaviour to identify commercially relevant insights.",
+      "Selected benchmark stores, evaluated trial performance, and translated findings into recommendations for a Category Manager."
+    ],
+    skills: ["Customer Analytics", "Uplift Testing", "Commercial Insights", "Reporting"],
+    file: "/certificates/Sertifikat_Data Analytics_Quantium_FORAGE.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-quantium-data-analytics.png",
+    accent: "from-rose-400/30 via-fuchsia-500/15 to-violet-500/10",
+  },
+  {
+    title: "Data - AI Agent for Data Analysis",
+    issuer: "IBM SkillsBuild x Hacktiv8",
+    period: "21-24 April 2026",
+    credential: "9 hours · Score 98/100",
+    category: "Applied Analytics",
+    level: "Featured",
+    summary: "Completed an IBM SkillsBuild university programme focused on AI-assisted data-analysis workflows.",
+    highlights: [
+      "Completed the programme requirements and delivered the final project as part of the university track.",
+      "Earned a score of 98 in the accompanying transcript assessment."
+    ],
+    skills: ["AI-Assisted Analysis", "Data Analysis", "Analytical Workflow", "Final Project"],
+    file: "/certificates/Sertifikat IBM_Data AI Agent for Data Analysis.pdf",
+    fileLabel: "PDF",
+    supportingFile: "/certificates/Nilai Transkrip IBM_Data AI Agent for Data Analysis.pdf",
+    supportingFileLabel: "View Transcript",
+    thumbnail: "/certificates/preview-ibm-ai-agent-data-analysis.png",
+    accent: "from-sky-400/30 via-blue-500/15 to-indigo-500/10",
+  },
+  {
+    title: "Data Analyst Bootcamp - Excel, SQL, Python & Power BI",
+    issuer: "KarirNex",
+    period: "8, 14 & 15 March 2026",
+    credential: "Expert · No. 0837/B-4/KBT.DA.4/KRX/III/2026",
+    category: "Analytics & BI",
+    level: "Featured",
+    summary: "Completed a data analyst bootcamp covering Excel, SQL, Python, and Power BI with an Expert-level result.",
+    highlights: [
+      "Strengthened end-to-end analytical skills from spreadsheets and SQL querying to Python processing.",
+      "Practised presenting analytical results through business-intelligence dashboards in Power BI."
+    ],
+    skills: ["Excel", "SQL", "Python", "Power BI", "Business Intelligence"],
+    file: "/certificates/Jihan Nabilah Rahman - Sertifikat Data Analyst Batch 4 (1).pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-karirnex-data-analyst-bootcamp.png",
+    accent: "from-orange-400/30 via-amber-500/15 to-rose-500/10",
+  },
+  {
+    title: "Data Analyst Project: Business Decision Research",
+    issuer: "DQLab",
+    period: "13 February 2025",
+    credential: "Project Certificate",
+    category: "Business & Systems",
+    level: "Professional",
+    summary: "Completed a project-oriented data analyst course focused on turning analysis into business decision support.",
+    highlights: [
+      "Connected analytical findings with real business decision contexts.",
+      "Demonstrated project-based problem solving and communication of insights."
+    ],
+    skills: ["Business Analysis", "Decision Research", "Data Analysis", "Insight Communication"],
+    file: "/certificates/Sertifikat Jihan Nabilah Rahman_Data Analyst Project Business Decision Research_Dqlab.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-dqlab-business-decision-research.png",
+    accent: "from-fuchsia-400/25 via-purple-500/15 to-indigo-500/10",
+  },
+  {
+    title: "Study Case Bootcamp Data Analyst with SQL & Python",
+    issuer: "DQLab",
+    period: "8 June 2025",
+    credential: "Bootcamp Certificate",
+    category: "Analytics & BI",
+    level: "Professional",
+    summary: "Completed a data-analyst case-study bootcamp using SQL and Python for practical data processing and analysis.",
+    highlights: [
+      "Applied SQL querying and Python analysis in a structured case-study format.",
+      "Strengthened the bridge between data extraction, transformation, and analytical interpretation."
+    ],
+    skills: ["SQL", "Python", "Case Study", "Data Analysis"],
+    file: "/certificates/certificate-DQLABMB6SPOPIBWD.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-dqlab-data-analyst-sql-python.png",
+    accent: "from-emerald-400/25 via-cyan-500/15 to-blue-500/10",
+  },
+  {
+    title: "Customer Segmentation with Python - Part 1",
+    issuer: "DQLab",
+    period: "12 March 2025",
+    credential: "Course Certificate",
+    category: "Analytics & BI",
+    level: "Professional",
+    summary: "Completed the first part of a marketing-analytics course on customer segmentation using Python.",
+    highlights: [
+      "Used Python in a marketing-analytics context to study customer grouping.",
+      "Built foundational segmentation knowledge for customer and commercial analysis."
+    ],
+    skills: ["Customer Segmentation", "Python", "Marketing Analytics", "Customer Analytics"],
+    file: "/certificates/Sertifikat Jihan Nabilah Rahman_Customer Segmentation with Python - Part 1_Dqlab.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-dqlab-customer-segmentation-part-1.png",
+    accent: "from-pink-400/25 via-rose-500/15 to-orange-500/10",
+  },
+  {
+    title: "Customer Segmentation with Python - Part 2",
+    issuer: "DQLab",
+    period: "8 June 2025",
+    credential: "Course Certificate",
+    category: "Analytics & BI",
+    level: "Professional",
+    summary: "Completed the continuation of DQLab's customer-segmentation course using Python for marketing analytics.",
+    highlights: [
+      "Extended customer-segmentation practice beyond the introductory course.",
+      "Reinforced customer profiling and analytical thinking for business use cases."
+    ],
+    skills: ["Customer Segmentation", "Python", "Customer Profiling", "Marketing Analytics"],
+    file: "/certificates/certificate-DQLABDSCS1OGQADB.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-dqlab-customer-segmentation-part-2.png",
+    accent: "from-rose-400/25 via-fuchsia-500/15 to-purple-500/10",
+  },
+  {
+    title: "Belajar Dasar Visualisasi Data",
+    issuer: "Dicoding Indonesia",
+    period: "1 July 2025",
+    credential: "GRX5JN35YX0M",
+    category: "Analytics & BI",
+    level: "Professional",
+    summary: "Completed an industry-aligned data-visualisation course covering chart selection and communication best practices.",
+    highlights: [
+      "Studied effective visualisation principles, media selection, and practical chart creation.",
+      "Practised translating data into clear and decision-friendly visuals."
+    ],
+    skills: ["Data Visualisation", "Google Sheets", "Chart Design", "Data Storytelling"],
+    file: "/certificates/Sertifikat_Belajar Dasar Visualisasi Data_Dicoding.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-dicoding-data-visualisation.png",
+    accent: "from-teal-400/25 via-cyan-500/15 to-blue-500/10",
+  },
+  {
+    title: "Intro to Data Analytics",
+    issuer: "RevoU",
+    period: "31 January 2025",
+    credential: "DAMC-20012025-01-1-00134",
+    category: "Analytics & BI",
+    level: "Professional",
+    summary: "Completed RevoU's certified mini course introducing the data-analytics workflow and analyst mindset.",
+    highlights: [
+      "Built a structured overview of the data-analysis process and its business applications.",
+      "Completed the course with verified identity and participation."
+    ],
+    skills: ["Data Analytics", "Analytical Thinking", "Business Insight", "Data Workflow"],
+    file: "/certificates/Jihan Nabilah Rahman_Revou_Data Analisis.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-revou-intro-data-analytics.png",
+    accent: "from-orange-400/25 via-red-500/15 to-pink-500/10",
+  },
+  {
+    title: "Getting Started with Data",
+    issuer: "IBM SkillsBuild",
+    period: "24 April 2026",
+    credential: "Learning Plan Completed",
+    category: "Analytics & BI",
+    level: "Professional",
+    summary: "Completed IBM SkillsBuild's Getting Started with Data learning plan and earned the associated credential.",
+    highlights: [
+      "Developed data literacy and a stronger understanding of data-driven work.",
+      "Completed the learning plan recorded in IBM's Your Learning Builder system."
+    ],
+    skills: ["Data Literacy", "Data Fundamentals", "Analytical Thinking"],
+    file: "/certificates/Sertifikat_Getting Started with Data_IBM.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-ibm-getting-started-with-data.png",
+    accent: "from-slate-300/20 via-blue-400/15 to-cyan-500/10",
+  },
+  {
+    title: "Big Data Integration and Processing",
+    issuer: "UC San Diego via Coursera",
+    period: "6 April 2025",
+    credential: "Course Certificate",
+    category: "Data Science & ML",
+    level: "Professional",
+    summary: "Completed a course on big-data integration and processing through Coursera.",
+    highlights: [
+      "Developed foundational understanding of integrating data from multiple sources.",
+      "Strengthened knowledge of workflows used in larger-scale data environments."
+    ],
+    skills: ["Big Data", "Data Integration", "Data Processing", "Data Pipelines"],
+    file: "/certificates/Sertifikat Jihan Nabilah Rahman_Big Data Integration and Processing_Coursera.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-coursera-big-data-integration.png",
+    accent: "from-blue-400/25 via-indigo-500/15 to-violet-500/10",
+  },
+  {
+    title: "Classifying Data Using IBM Granite",
+    issuer: "IBM SkillsBuild",
+    period: "10 June 2025",
+    credential: "Module Completion",
+    category: "Data Science & ML",
+    level: "Professional",
+    summary: "Completed an IBM SkillsBuild module on classifying data using IBM Granite.",
+    highlights: [
+      "Explored a practical data-classification use case with IBM Granite.",
+      "Strengthened understanding of AI-assisted categorisation inside a data workflow."
+    ],
+    skills: ["Data Classification", "IBM Granite", "AI for Data", "Categorisation"],
+    file: "/certificates/Completion Certificate _ SkillsBuild.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-ibm-granite-data-classification.png",
+    accent: "from-amber-300/25 via-yellow-500/10 to-slate-500/10",
+  },
+  {
+    title: "Belajar Dasar Data Science",
+    issuer: "Dicoding Indonesia",
+    period: "7 November 2024",
+    credential: "N9ZOYN7KRPG5",
+    category: "Data Science & ML",
+    level: "Specialized",
+    summary: "Completed a foundational data-science class covering data concepts and data-driven decision making.",
+    highlights: [
+      "Studied core data-science concepts, data types, and the role of data in decision-making.",
+      "Completed an industry-referenced competency course with certificate validity through 2027."
+    ],
+    skills: ["Data Science", "Data Fundamentals", "Decision Making", "Data Concepts"],
+    file: "/certificates/Sertifikat Jihan Nabilah Rahman_Data Scientist.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-dicoding-basic-data-science.png",
+    accent: "from-sky-400/25 via-cyan-500/15 to-teal-500/10",
+  },
+  {
+    title: "Get Started with Machine Learning in Azure",
+    issuer: "Microsoft Learn",
+    period: "15 June 2025",
+    credential: "Achievement",
+    category: "Data Science & ML",
+    level: "Specialized",
+    summary: "Completed a Microsoft Learn achievement introducing machine-learning workflows in Azure.",
+    highlights: [
+      "Explored cloud-based machine-learning concepts in the Azure ecosystem.",
+      "Added platform familiarity relevant to data-intelligence and model-development workflows."
+    ],
+    skills: ["Azure", "Machine Learning", "Cloud Analytics", "Microsoft Learn"],
+    file: "/certificates/Achievements - jihannabilahrahman-9879 _ Microsoft Learn.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-microsoft-machine-learning-azure.png",
+    accent: "from-blue-500/25 via-sky-500/15 to-cyan-500/10",
+  },
+  {
+    title: "Preparation Course for Azure AI Fundamentals",
+    issuer: "Microsoft AI Skills",
+    period: "2 June 2025",
+    credential: "AI-900 Preparation Course",
+    category: "Data Science & ML",
+    level: "Specialized",
+    summary: "Completed a preparation course for Microsoft Azure AI Fundamentals to strengthen cloud-based AI and data-intelligence foundations.",
+    highlights: [
+      "Covered core AI concepts and Azure services relevant to modern analytics workflows.",
+      "Built preparation for the AI-900 fundamentals pathway."
+    ],
+    skills: ["Azure AI", "AI Fundamentals", "Cloud Concepts", "Data Intelligence"],
+    file: "/certificates/1861463 - Jihan Nabilah Rahman - Certificate of Completion.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-azure-ai-fundamentals.png",
+    accent: "from-sky-400/25 via-blue-500/15 to-indigo-500/10",
+  },
+  {
+    title: "Machine Learning - Fundamental of Python Machine Learning",
+    issuer: "Udemy",
+    period: "24 January 2025",
+    credential: "3.5 total hours",
+    category: "Data Science & ML",
+    level: "Specialized",
+    summary: "Completed a focused course on the fundamentals of machine learning with Python.",
+    highlights: [
+      "Strengthened Python-based machine-learning foundations.",
+      "Completed 3.5 hours of guided course material."
+    ],
+    skills: ["Python", "Machine Learning", "Model Fundamentals", "Udemy"],
+    file: "/certificates/Sertifikat Jihan Nabilah Rahman_Machine Learning - Fundamental of Python Machine Learning_Udemy.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-udemy-python-machine-learning.png",
+    accent: "from-violet-400/25 via-purple-500/15 to-fuchsia-500/10",
+  },
+  {
+    title: "Study Case Bootcamp Machine Learning & AI for Beginner",
+    issuer: "DQLab",
+    period: "8 June 2025",
+    credential: "Bootcamp Certificate",
+    category: "Data Science & ML",
+    level: "Specialized",
+    summary: "Completed a beginner machine-learning and AI bootcamp case study through DQLab.",
+    highlights: [
+      "Applied introductory ML and AI concepts in a case-study learning format.",
+      "Expanded modelling knowledge alongside the core data-analyst skill set."
+    ],
+    skills: ["Machine Learning", "Artificial Intelligence", "Case Study", "DQLab"],
+    file: "/certificates/certificate-DQLABMB6MAIBNELWF.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-dqlab-machine-learning-ai.png",
+    accent: "from-indigo-400/25 via-violet-500/15 to-purple-500/10",
+  },
+  {
+    title: "Flexible Kickstart Data Science Journey",
+    issuer: "Rakamin Academy",
+    period: "November 2025",
+    credential: "Participation Certificate",
+    category: "Data Science & ML",
+    level: "Foundation",
+    summary: "Participated in Rakamin Academy's Flexible Kickstart Data Science Journey.",
+    highlights: [
+      "Completed a structured introductory learning period in data science.",
+      "Added foundational exposure to the data-science career pathway."
+    ],
+    skills: ["Data Science", "Career Exploration", "Data Fundamentals"],
+    file: "/certificates/certificate-293709DATA_SCIENCE1112025.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-rakamin-data-science-journey.png",
+    accent: "from-emerald-400/25 via-green-500/15 to-lime-500/10",
+  },
+  {
+    title: "DSF 37 - Data Science",
+    issuer: "Dibimbing",
+    period: "Data Science Festival 37",
+    credential: "Certificate of Participation",
+    category: "Data Science & ML",
+    level: "Foundation",
+    summary: "Participated in Dibimbing's DSF 37 Data Science programme.",
+    highlights: [
+      "Joined a focused data-science learning event.",
+      "Reinforced exposure to current data-science topics and career development."
+    ],
+    skills: ["Data Science", "Industry Learning", "Career Development"],
+    file: "/certificates/SERTIFIKAT JIHAN NABILAH RAHMAN_DATA SCIENCE_DIBIMBING.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-dibimbing-data-science-festival.png",
+    accent: "from-sky-400/25 via-blue-500/15 to-cyan-500/10",
+  },
+  {
+    title: "Memulai Pemrograman dengan Python",
+    issuer: "Dicoding Indonesia",
+    period: "17 November 2024",
+    credential: "1OP84VJRVZQK",
+    category: "Analytics & BI",
+    level: "Foundation",
+    summary: "Completed Dicoding's beginner Python programming class using VS Code, Jupyter Notebook, and Google Colab.",
+    highlights: [
+      "Built programming foundations needed for data preparation and analysis.",
+      "Practised Python syntax and development environments commonly used in analytics."
+    ],
+    skills: ["Python", "Jupyter Notebook", "Google Colab", "Programming Fundamentals"],
+    file: "/certificates/SERTIFIKAT JIHAN NABILAH RAHMAN_PEMROGRAMAN DENGAN PYTHON_DICODING.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-dicoding-python-programming.png",
+    accent: "from-cyan-400/25 via-sky-500/15 to-blue-500/10",
+  },
+  {
+    title: "Samsung Innovation Campus Batch 7 - Stage 1 Coding",
+    issuer: "Samsung Innovation Campus",
+    period: "15 August - 13 September 2025",
+    credential: "Python Programming",
+    category: "Analytics & BI",
+    level: "Foundation",
+    summary: "Completed Stage 1 Coding in Samsung Innovation Campus Batch 7 with a focus on Python programming.",
+    highlights: [
+      "Completed a structured coding stage covering Python programming.",
+      "Strengthened the technical foundation that supports automation and data-analysis work."
+    ],
+    skills: ["Python", "Coding", "Programming Fundamentals", "Technical Foundation"],
+    file: "/certificates/Sertifikat SIC Jihan Nabilah Rahman.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-samsung-innovation-campus-python.png",
+    accent: "from-blue-400/25 via-indigo-500/15 to-slate-500/10",
+  },
+  {
+    title: "Operating System Teaching Assistant",
     issuer: "Universitas Bakrie",
     period: "Academic Year 2025/2026",
     credential: "No. 014/FTIK-UB/SER/I/2026",
-    summary:
-      "Appointed as an Operating System practicum assistant for the 2025/2026 academic period.",
+    category: "Business & Systems",
+    level: "Specialized",
+    summary: "Recognition for serving as an Operating System practicum assistant during the 2025/2026 academic period.",
     highlights: [
-      "Facilitated hands-on Operating System practicum sessions and technical mentoring.",
-      "Supported Linux, Windows, and virtual machine learning environments.",
-      "Assisted with assessment, troubleshooting, and practical learning activities.",
+      "Supported practical learning in operating-system concepts and technical problem solving.",
+      "Demonstrates systems knowledge, documentation, communication, and structured technical mentoring."
     ],
-    skills: ["Operating Systems", "Linux", "Virtual Machines", "Mentoring"],
-    pdf: "/certificates/Sertifikat Asisten Praktikum System Operation SIF Ganjil 20252026.pdf",
-    thumbnail: "/certificate-previews/operating-system-assistant.png",
-    accent: "from-orange-400/25 via-rose-500/15 to-red-500/10",
+    skills: ["Operating Systems", "System Fundamentals", "Technical Mentoring", "Problem Solving"],
+    file: "/certificates/Sertifikat Asisten Praktikum System Operation SIF Ganjil 20252026.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-operating-system-assistant.png",
+    accent: "from-orange-400/25 via-amber-500/15 to-rose-500/10",
+  },
+  {
+    title: "Computer Networks and Network Security",
+    issuer: "IBM via Coursera",
+    period: "12 April 2025",
+    credential: "Course Certificate",
+    category: "Business & Systems",
+    level: "Specialized",
+    summary: "Completed a Coursera course covering computer networks and network security concepts that support systems-oriented analytical work.",
+    highlights: [
+      "Strengthened understanding of network architecture, communication concepts, and security basics.",
+      "Supports system-analysis capability through broader technical infrastructure knowledge."
+    ],
+    skills: ["Computer Networks", "Network Security", "System Fundamentals", "Technical Analysis"],
+    file: "/certificates/Sertifikat Jihan Nabilah Rahman_Computer Networks and Network Security_Coursera.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-coursera-network-security.png",
+    accent: "from-cyan-400/25 via-blue-500/15 to-indigo-500/10",
+  },
+  {
+    title: "Cybersecurity Compliance Framework, Standards & Regulations",
+    issuer: "IBM via Coursera",
+    period: "30 April 2025",
+    credential: "Course Certificate",
+    category: "Business & Systems",
+    level: "Specialized",
+    summary: "Completed an IBM course on cybersecurity compliance frameworks, standards, and regulations relevant to systems governance and requirements analysis.",
+    highlights: [
+      "Developed awareness of security governance, compliance frameworks, and regulatory considerations.",
+      "Supports system-analysis work by strengthening risk, control, and non-functional requirements knowledge."
+    ],
+    skills: ["Cybersecurity Compliance", "Governance", "System Requirements", "Risk Controls"],
+    file: "/certificates/Sertifikat Jihan Nabilah Rahman_Cybersecurity Compliance Framework, Standards & Regulations_Coursera.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-coursera-cybersecurity-compliance.png",
+    accent: "from-indigo-400/25 via-blue-500/15 to-cyan-500/10",
+  },
+  {
+    title: "Design Thinking",
+    issuer: "Universitas Bakrie",
+    period: "12 March 2025",
+    credential: "Soft Skills Training",
+    category: "Business & Systems",
+    level: "Foundation",
+    summary: "Completed Design Thinking training that supports user-centred business and system analysis.",
+    highlights: [
+      "Practised a structured approach to understanding needs and framing problems.",
+      "Added a user-centred method relevant to business requirements and solution design."
+    ],
+    skills: ["Design Thinking", "Problem Framing", "User Needs", "Solution Design"],
+    file: "/certificates/Sertifikat_Jihan Nabilah Rahman_Design Thinking_UBakrie.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-ubakrie-design-thinking.png",
+    accent: "from-amber-400/25 via-orange-500/15 to-yellow-500/10",
+  },
+  {
+    title: "Figma Tools",
+    issuer: "MySkill",
+    period: "9 November 2024",
+    credential: "Course Completion · 1 hour",
+    category: "Business & Systems",
+    level: "Foundation",
+    summary: "Completed a Figma tools course relevant to interface prototyping and system-design communication.",
+    highlights: [
+      "Built familiarity with Figma for translating requirements into visual interface concepts.",
+      "Supports system-analysis deliverables such as wireframes, prototypes, and stakeholder walkthroughs."
+    ],
+    skills: ["Figma", "UI Prototyping", "Wireframing", "System Design"],
+    file: "/certificates/Sertifikat Jihan Nabilah Rahman_FIGMA TOOLS_MySkill.pdf",
+    fileLabel: "PDF",
+    thumbnail: "/certificates/preview-myskill-figma-tools.png",
+    accent: "from-emerald-400/25 via-teal-500/15 to-cyan-500/10",
   },
 ];
-
 const gallery = [
   "https://jihannabilah.vercel.app/images_projects_gis_analyst/webgisyogya_dashboard.png",
   "https://jihannabilah.vercel.app/images_projects_gis_analyst/webgisyogya_peta.png",
@@ -255,6 +703,11 @@ const gallery = [
   "https://jihannabilah.vercel.app/images_projects_data_analyst/BI_Gojek/Dashboard_BI_Gojek.png",
   "https://jihannabilah.vercel.app/images_projects_data_analyst/BI_Gojek/Data_BI_Gojek.png",
   "https://jihannabilah.vercel.app/images_projects_data_analyst/BI_Global/Dashboard_BI_Global.png",
+  "/images_projects_data_analyst/Tokopedia_Text_Mining/Tokopedia_Text_Mining 1.png",
+  "/images_projects_data_analyst/Tokopedia_Text_Mining/Tokopedia_Text_Mining 2.png",
+  "/images_projects_data_analyst/Tokopedia_Text_Mining/Tokopedia_Text_Mining 3.png",
+  "/images_projects_data_analyst/Tokopedia_Text_Mining/Tokopedia_Text_Mining 4.png",
+  "/images_projects_data_analyst/Tokopedia_Text_Mining/Confusion Matrix Tokopedia_Text_Mining.png",
 ];
 
 const skillGroups = [
@@ -341,18 +794,37 @@ type ExperienceItem = {
   accent: string;
   impact: string[];
   tags: string[];
+  certificate?: string;
+  certificateLabel?: string;
 };
+
+type CertCategory =
+  | "Applied Analytics"
+  | "Analytics & BI"
+  | "Data Science & ML"
+  | "Business & Systems";
+
+type CertificateLevel =
+  | "Featured"
+  | "Professional"
+  | "Specialized"
+  | "Foundation";
 
 type CertificateItem = {
   title: string;
   issuer: string;
   period: string;
   credential: string;
+  category: CertCategory;
+  level: CertificateLevel;
   summary: string;
   highlights: string[];
   skills: string[];
-  pdf?: string;
-  thumbnail?: string;
+  file: string;
+  fileLabel: "PDF" | "Image";
+  supportingFile?: string;
+  supportingFileLabel?: string;
+  thumbnail: string;
   accent: string;
 };
 
@@ -473,7 +945,7 @@ function Nav({
               Jihan<span className="text-aurora">.</span>
             </span>
           </a>
-          <div className="hidden items-center gap-1 lg:flex">
+          <div className="hidden items-center gap-1 md:flex">
             {links.map((l) => {
               const isActive = active === l.id;
               return (
@@ -514,7 +986,7 @@ function Nav({
               type="button"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               onClick={() => setMobileOpen((v) => !v)}
-              className="grid h-9 w-9 place-items-center rounded-full glass lg:hidden"
+              className="grid h-9 w-9 place-items-center rounded-full glass md:hidden"
             >
               {mobileOpen ? (
                 <X className="h-4 w-4" />
@@ -530,7 +1002,7 @@ function Nav({
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mx-4 mt-2 rounded-2xl glass-strong p-4 shadow-[var(--shadow-elevated)] lg:hidden"
+          className="mx-4 mt-2 rounded-2xl glass-strong p-4 shadow-[var(--shadow-elevated)] md:hidden"
         >
           <div className="grid gap-1">
             {links.map((l) => (
@@ -827,6 +1299,40 @@ function About() {
   );
 }
 
+function CertificateThumbnail({ certificate }: { certificate: CertificateItem }) {
+  const [hasError, setHasError] = useState(false);
+
+  if (certificate.thumbnail && !hasError) {
+    return (
+      <img
+        src={encodeURI(certificate.thumbnail)}
+        alt={`Preview of ${certificate.title} certificate`}
+        loading="lazy"
+        onError={() => setHasError(true)}
+        className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+      />
+    );
+  }
+
+  return (
+    <div
+      className={`relative flex h-full items-center justify-center overflow-hidden bg-gradient-to-br ${certificate.accent}`}
+    >
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      <div className="absolute -left-10 -top-16 h-52 w-52 rounded-full bg-cyan/20 blur-3xl" />
+      <div className="absolute -bottom-20 -right-10 h-60 w-60 rounded-full bg-magenta/20 blur-3xl" />
+      <div className="relative text-center">
+        <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl glass-strong shadow-[var(--shadow-glow-magenta)]">
+          <Award className="h-8 w-8 text-magenta" />
+        </div>
+        <div className="mt-4 font-mono text-xs uppercase tracking-[0.25em] text-foreground/70">
+          Certificate
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Experience() {
   return (
     <section id="experience" className="relative px-6 py-32">
@@ -897,6 +1403,19 @@ function Experience() {
                         </span>
                       ))}
                     </div>
+                    {e.certificate && (
+                      <div className="relative mt-5">
+                        <a
+                          href={e.certificate}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10"
+                        >
+                          <Eye className="h-3.5 w-3.5" />
+                          {e.certificateLabel ?? "View Certificate"}
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </Reveal>
@@ -908,45 +1427,33 @@ function Experience() {
   );
 }
 
+
 function Certifications() {
+  const [showAll, setShowAll] = useState(false);
+  const initialCount = 8;
+  const visibleCertificates = showAll
+    ? certifications
+    : certifications.slice(0, initialCount);
+  const hasMore = certifications.length > initialCount;
+
   return (
     <section id="certificates" className="relative px-6 py-32">
       <div className="mx-auto max-w-6xl">
         <SectionTitle
           eyebrow="Certifications & Credentials"
           title="Verified learning, simulations & academic contributions"
-          desc="A selection of credentials that demonstrate applied data analytics, commercial insight, dashboard development, and technical mentoring. Uploaded PDF certificates can be previewed or downloaded directly."
+          desc="A selection of credentials that demonstrate applied data analytics, commercial insight, dashboard development, and technical mentoring. Uploaded certificates can be previewed or downloaded directly."
         />
 
         <div className="grid gap-6 lg:grid-cols-2">
-          {certifications.map((certificate, index) => (
-            <Reveal key={`${certificate.title}-${certificate.issuer}`} delay={index * 0.06}>
+          {visibleCertificates.map((certificate, index) => (
+            <Reveal
+              key={`${certificate.title}-${certificate.issuer}`}
+              delay={Math.min(index * 0.06, 0.3)}
+            >
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl glass-strong transition-all hover:-translate-y-1 hover:border-cyan/30">
                 <div className="relative aspect-[16/8] overflow-hidden border-b border-border/60 bg-white/[0.03]">
-                  {certificate.thumbnail ? (
-                    <img
-                      src={certificate.thumbnail}
-                      alt={`Preview of ${certificate.title} certificate`}
-                      loading="lazy"
-                      className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                  ) : (
-                    <div
-                      className={`relative flex h-full items-center justify-center overflow-hidden bg-gradient-to-br ${certificate.accent}`}
-                    >
-                      <div className="absolute inset-0 grid-bg opacity-30" />
-                      <div className="absolute -left-10 -top-16 h-52 w-52 rounded-full bg-cyan/20 blur-3xl" />
-                      <div className="absolute -bottom-20 -right-10 h-60 w-60 rounded-full bg-magenta/20 blur-3xl" />
-                      <div className="relative text-center">
-                        <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl glass-strong shadow-[var(--shadow-glow-magenta)]">
-                          <Award className="h-8 w-8 text-magenta" />
-                        </div>
-                        <div className="mt-4 font-mono text-xs uppercase tracking-[0.25em] text-foreground/70">
-                          Forage Job Simulation
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  <CertificateThumbnail certificate={certificate} />
                   <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full glass-strong px-3 py-1 text-xs font-medium">
                     <BadgeCheck className="h-3.5 w-3.5 text-lime" />
                     {certificate.issuer}
@@ -979,38 +1486,24 @@ function Certifications() {
 
                   <div className="mt-5 flex flex-wrap gap-1.5">
                     {certificate.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-foreground/70"
-                      >
+                      <span key={skill} className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-foreground/70">
                         {skill}
                       </span>
                     ))}
                   </div>
 
                   <div className="mt-auto flex flex-wrap items-center gap-2 pt-7">
-                    {certificate.pdf ? (
-                      <>
-                        <a
-                          href={certificate.pdf}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-4 py-2 text-xs font-semibold text-white shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105 [.theme-pink_&]:text-neutral-950"
-                        >
-                          <Eye className="h-3.5 w-3.5" /> View Certificate
-                        </a>
-                        <a
-                          href={certificate.pdf}
-                          download
-                          className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10"
-                        >
-                          <Download className="h-3.5 w-3.5" /> Download PDF
-                        </a>
-                      </>
-                    ) : (
-                      <div className="inline-flex items-center gap-2 rounded-full bg-magenta/10 px-4 py-2 text-xs font-semibold text-magenta">
-                        <Award className="h-3.5 w-3.5" /> Portfolio credential summary
-                      </div>
+                    <a href={certificate.file} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-4 py-2 text-xs font-semibold text-white shadow-[var(--shadow-glow-cyan)] transition-transform hover:scale-105 [.theme-pink_&]:text-neutral-950">
+                      <Eye className="h-3.5 w-3.5" /> View Certificate
+                    </a>
+                    <a href={certificate.file} download className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10">
+                      <Download className="h-3.5 w-3.5" /> Download PDF
+                    </a>
+                    {certificate.supportingFile && (
+                      <a href={certificate.supportingFile} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10">
+                        <FileText className="h-3.5 w-3.5" />
+                        {certificate.supportingFileLabel ?? "Supporting File"}
+                      </a>
                     )}
                   </div>
                 </div>
@@ -1018,6 +1511,16 @@ function Certifications() {
             </Reveal>
           ))}
         </div>
+
+        {hasMore && (
+          <Reveal>
+            <div className="mt-10 flex justify-center">
+              <button type="button" onClick={() => setShowAll((value) => !value)} className="inline-flex items-center gap-2 rounded-full glass-strong px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:bg-white/10">
+                {showAll ? "Show Less" : `See All Certificates (${certifications.length})`}
+              </button>
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );
@@ -1081,7 +1584,7 @@ function ProjectCard({ p, onOpen }: { p: Project; onOpen: () => void }) {
             onClick={(e: MouseEvent<HTMLAnchorElement>) => e.stopPropagation()}
             className="inline-flex items-center gap-1.5 rounded-full bg-[var(--gradient-aurora)] px-3 py-1.5 text-xs font-semibold text-white shadow-[var(--shadow-glow-cyan)] [.theme-pink_&]:text-neutral-950 transition-transform hover:scale-105"
           >
-            Live Demo <ExternalLink className="h-3 w-3" />
+            {p.linkLabel ?? "Live Demo"} <ExternalLink className="h-3 w-3" />
           </a>
         )}
       </div>
@@ -1187,7 +1690,8 @@ function Projects({ onOpen }: { onOpen: (p: Project) => void }) {
                       rel="noreferrer"
                       className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-aurora)] px-5 py-2.5 text-sm font-semibold text-white shadow-[var(--shadow-glow-cyan)] [.theme-pink_&]:text-neutral-950 transition-transform hover:scale-105"
                     >
-                      Live Demo <ExternalLink className="h-4 w-4" />
+                      {featured.linkLabel ?? "Live Demo"}{" "}
+                      <ExternalLink className="h-4 w-4" />
                     </a>
                   )}
                 </div>
@@ -1476,7 +1980,7 @@ function Contact() {
             © {new Date().getFullYear()} Jihan Nabilah Rahman — Built with
             curiosity & data.
           </div>
-          <div className="font-mono">v3.1 · Crafted in Jakarta</div>
+          <div className="font-mono">v3.0 · Crafted in Jakarta</div>
         </footer>
       </div>
     </section>

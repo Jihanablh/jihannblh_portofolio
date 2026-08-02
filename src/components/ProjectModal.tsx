@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import type { Project } from "@/data/projects";
 import {
@@ -11,44 +12,19 @@ import {
   Wrench,
   AlertCircle,
   CheckCircle2,
-  Images,
-  ZoomIn,
 } from "lucide-react";
 
 const sections = [
-  {
-    key: "problem",
-    label: "Business Problem",
-    icon: AlertCircle,
-    color: "text-magenta",
-  },
+  { key: "problem", label: "Business Problem", icon: AlertCircle, color: "text-magenta" },
   { key: "objective", label: "Objective", icon: Target, color: "text-cyan" },
-  {
-    key: "data",
-    label: "Data / Requirement",
-    icon: Database,
-    color: "text-violet",
-  },
-  {
-    key: "approach",
-    label: "Analytical Approach",
-    icon: Workflow,
-    color: "text-cyan",
-  },
+  { key: "data", label: "Data / Requirement", icon: Database, color: "text-violet" },
+  { key: "approach", label: "Analytical Approach", icon: Workflow, color: "text-cyan" },
   { key: "insight", label: "Insight", icon: Lightbulb, color: "text-lime" },
-  {
-    key: "recommendation",
-    label: "Recommendation",
-    icon: CheckCircle2,
-    color: "text-cyan",
-  },
-  {
-    key: "impact",
-    label: "Result & Impact",
-    icon: TrendingUp,
-    color: "text-magenta",
-  },
+  { key: "recommendation", label: "Recommendation", icon: CheckCircle2, color: "text-cyan" },
+  { key: "impact", label: "Result & Impact", icon: TrendingUp, color: "text-magenta" },
 ] as const;
+
+const toAssetPath = (src: string) => (src.startsWith("http") ? src : encodeURI(src));
 
 export function ProjectModal({
   project,
@@ -59,28 +35,58 @@ export function ProjectModal({
   open: boolean;
   onClose: () => void;
 }) {
-  if (!project) return null;
+  const [activeImage, setActiveImage] = useState(0);
 
+  const gallery = useMemo(() => {
+    if (!project) return [];
+
+    const visuals = project.gallery ?? [];
+    if (visuals.length > 0) return visuals;
+
+    return [
+      {
+        src: project.image,
+        alt: project.title,
+        caption: project.title,
+      },
+    ];
+  }, [project]);
+
+  useEffect(() => {
+    setActiveImage(0);
+  }, [project?.slug, open]);
+
+  useEffect(() => {
+    if (!open || gallery.length <= 1) return;
+
+    const interval = window.setInterval(() => {
+      setActiveImage((current) => (current + 1) % gallery.length);
+    }, 3500);
+
+    return () => window.clearInterval(interval);
+  }, [open, gallery.length, project?.slug]);
+
+  if (!project) return null;
   const cs = project.caseStudy;
 
   return (
     <Dialog open={open} onOpenChange={(value) => !value && onClose()}>
       <DialogContent
-        className="max-w-5xl max-h-[90vh] overflow-hidden border-[var(--border-glass-strong)] bg-[var(--surface-modal)] p-0 backdrop-blur-2xl [&>button]:hidden"
+        className="max-w-4xl max-h-[90vh] overflow-hidden border-[var(--border-glass-strong)] bg-[var(--surface-modal)] p-0 backdrop-blur-2xl [&>button]:hidden"
         onOpenAutoFocus={(event) => event.preventDefault()}
       >
         <div className="relative max-h-[90vh] overflow-y-auto">
-          <div className="relative h-56 overflow-hidden bg-white sm:h-72">
+          <div className="relative h-56 overflow-hidden sm:h-72">
             <img
-              src={project.image}
+              src={toAssetPath(project.image)}
               alt={project.title}
               className="absolute inset-0 h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/45 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
             <button
               type="button"
               onClick={onClose}
-              aria-label="Close project details"
+              aria-label="Close"
               className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full glass-strong text-foreground transition-transform hover:scale-105"
             >
               <X className="h-4 w-4" />
@@ -89,51 +95,53 @@ export function ProjectModal({
               <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs">
                 <project.icon className="h-3 w-3 text-cyan" /> {project.category}
               </div>
-              <h2 className="mt-3 font-display text-2xl font-bold sm:text-4xl">
-                {project.title}
-              </h2>
+              <h2 className="mt-3 font-display text-2xl font-bold sm:text-4xl">{project.title}</h2>
             </div>
           </div>
 
           <div className="space-y-5 p-6 sm:p-8">
             <p className="text-foreground/80">{project.desc}</p>
 
-            {project.gallery && project.gallery.length > 0 && (
-              <section className="rounded-2xl border border-[var(--border-glass-strong)] bg-[var(--chip-bg)] p-5">
-                <div className="flex items-center gap-2">
-                  <Images className="h-4 w-4 text-cyan" />
-                  <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-                    Project Visuals
-                  </div>
+            {gallery.length > 0 && (
+              <div className="relative overflow-hidden rounded-3xl border border-[var(--border-glass-strong)] bg-[var(--chip-bg)]">
+                <div className="relative aspect-[16/10] overflow-hidden bg-black/20">
+                  {gallery.map((visual, index) => (
+                    <img
+                      key={`${project.slug}-${visual.src}`}
+                      src={toAssetPath(visual.src)}
+                      alt={visual.alt}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      className={`absolute inset-0 h-full w-full object-contain p-4 transition-all duration-700 sm:p-6 ${
+                        index === activeImage
+                          ? "translate-x-0 opacity-100"
+                          : "pointer-events-none translate-x-4 opacity-0"
+                      }`}
+                    />
+                  ))}
+
+                  {gallery.length > 1 && (
+                    <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/35 px-3 py-2 backdrop-blur-md">
+                      {gallery.map((_, index) => (
+                        <button
+                          key={`${project.slug}-dot-${index}`}
+                          type="button"
+                          aria-label={`Show image ${index + 1}`}
+                          onClick={() => setActiveImage(index)}
+                          className={`h-2.5 rounded-full transition-all ${
+                            index === activeImage ? "w-7 bg-cyan" : "w-2.5 bg-white/45 hover:bg-white/70"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
 
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                  {project.gallery.map((visual) => (
-                    <a
-                      key={visual.src}
-                      href={visual.src}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group/visual overflow-hidden rounded-2xl border border-border/70 bg-white transition-all hover:-translate-y-0.5 hover:border-cyan/40"
-                    >
-                      <div className="relative aspect-[16/10] overflow-hidden bg-white">
-                        <img
-                          src={visual.src}
-                          alt={visual.alt}
-                          loading="lazy"
-                          className="h-full w-full object-contain transition-transform duration-500 group-hover/visual:scale-[1.02]"
-                        />
-                        <div className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-black/65 text-white opacity-0 transition-opacity group-hover/visual:opacity-100">
-                          <ZoomIn className="h-4 w-4" />
-                        </div>
-                      </div>
-                      <div className="border-t border-black/10 px-4 py-3 text-xs font-medium text-neutral-700">
-                        {visual.caption}
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </section>
+                {gallery[activeImage]?.caption && (
+                  <div className="border-t border-border/60 px-5 py-3 text-sm text-foreground/80">
+                    {gallery[activeImage].caption}
+                  </div>
+                )}
+              </div>
             )}
 
             <div className="grid gap-4 sm:grid-cols-2">

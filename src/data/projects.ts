@@ -131,36 +131,36 @@ export const projects: Project[] = [
     category: "Data Mining · NLP",
     desc: "Analisis 2.882 ulasan Tokopedia untuk memahami distribusi rating, tren harian, kata kunci, sentimen, dan performa klasifikasi Naive Bayes.",
     image:
-      "/images_projects_data_analyst/Tokopedia_Text_Mining/wordcloud-keywords.png",
+      "/images_projects_data_analyst/Tokopedia_Text_Mining/Tokopedia_Text_Mining.png",
     tags: ["Python", "Text Mining", "Sentiment Analysis", "Naive Bayes"],
     live: "https://github.com/Jihanablh/textmining_tokopedia/tree/main",
     linkLabel: "View GitHub",
     highlight: "61% positive sentiment · 91.0% accuracy",
     gallery: [
       {
-        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/rating-distribution.png",
-        alt: "Bar chart showing Tokopedia review rating distribution",
-        caption: "Rating Distribution — ratings 5 and 1 dominate the dataset",
+        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/Tokopedia_Text_Mining 1.png",
+        alt: "Distribusi rating ulasan Tokopedia",
+        caption: "Distribusi Rating Tokopedia",
       },
       {
-        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/sentiment-percentage.png",
-        alt: "Pie chart showing positive and negative Tokopedia review sentiment",
-        caption: "Sentiment Composition — 61% positive and 39% negative",
+        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/Tokopedia_Text_Mining 2.png",
+        alt: "Persentase kategori sentimen ulasan Tokopedia",
+        caption: "Persentase Kategori Sentimen",
       },
       {
-        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/daily-review-trend.png",
-        alt: "Line chart showing the daily number of Tokopedia reviews",
-        caption: "Daily Review Trend — peak activity occurred around 11 June 2026",
+        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/Tokopedia_Text_Mining 3.png",
+        alt: "Tren jumlah ulasan Tokopedia harian",
+        caption: "Tren Jumlah Ulasan Harian",
       },
       {
-        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/wordcloud-keywords.png",
-        alt: "Word cloud of frequently occurring terms in Tokopedia reviews",
-        caption: "Keyword Word Cloud — recurring words reveal common review themes",
+        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/Tokopedia_Text_Mining 4.png",
+        alt: "Word cloud kata kunci ulasan Tokopedia",
+        caption: "Word Cloud Kata Kunci",
       },
       {
-        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/confusion-matrix-naive-bayes.png",
-        alt: "Confusion matrix for the Naive Bayes sentiment classification model",
-        caption: "Naive Bayes Evaluation — 443 of 487 test records classified correctly",
+        src: "/images_projects_data_analyst/Tokopedia_Text_Mining/Confusion Matrix Tokopedia_Text_Mining.png",
+        alt: "Confusion matrix model Naive Bayes untuk sentimen Tokopedia",
+        caption: "Confusion Matrix Naive Bayes",
       },
     ],
     icon: Code2,
@@ -182,11 +182,11 @@ export const projects: Project[] = [
         "Naive Bayes",
       ],
       insight:
-        "Sentimen ulasan terdiri dari 61% positif dan 39% negatif. Rating paling banyak adalah 5 (1.637 ulasan), diikuti rating 1 (1.001 ulasan). Volume ulasan harian mencapai puncak sekitar 240 ulasan pada pertengahan Juni 2026 sebelum kembali stabil.",
+        "Sentimen ulasan terdiri dari 61% positif dan 39% negatif. Rating paling banyak adalah 5 (1.637 ulasan), diikuti rating 1 (1.001 ulasan).",
       recommendation:
-        "Prioritaskan investigasi tema negatif yang berulang pada ulasan rating rendah, pantau pergeseran sentimen secara berkala, dan gunakan hasil klasifikasi sebagai alat penyaringan awal sebelum analisis manual yang lebih mendalam.",
+        "Prioritaskan investigasi tema negatif yang berulang pada ulasan rating rendah, pantau perubahan sentimen secara berkala, dan gunakan hasil klasifikasi sebagai penyaringan awal sebelum analisis manual lebih lanjut.",
       impact:
-        "Pada split test 80:20, model mengklasifikasikan 443 dari 487 data uji dengan benar: akurasi 91,0%, precision kelas positif 94,7%, dan recall kelas positif 88,3%.",
+        "Pada split test 80:20, model mengklasifikasikan 443 dari 487 data uji dengan benar dengan akurasi sekitar 91,0%.",
     },
   },
   {
